@@ -1,0 +1,1016 @@
+openapi: 3.0.3
+
+info:
+  title: ShardX Browser — Automation API
+  version: "0.1.0"
+  description: |
+    ShardX 反检测浏览器的本地 HTTP 自动化 API：
+    生成指纹、创建/启动/停止配置文件，获取
+    Chrome DevTools Protocol (CDP) WebSocket 端点，以便通过
+    Puppeteer / Playwright 控制已启动的配置文件。
+
+    ## 绑定与生命周期
+    服务器在启动器应用内部运行，仅监听 **127.0.0.1**，
+    端口由 *Settings → Automation API* 指定（默认 **40325**）。
+    外部主机**无法访问**。更改端口及启用/停用设置
+    在重启应用后生效。
+
+    ## 身份验证
+    除 `GET /health` 外，所有端点均需要 **Bearer JWT**（HS256，
+    由启动器密钥签名）：
+
+        Authorization: Bearer <token>
+
+    永久令牌显示于 *Settings → Automation API*（从那里复制）。
+    **Regenerate token** 按钮会立即轮换签名密钥：新令牌即刻生效，
+    所有旧令牌同时失效。没有单独的 API 密钥或令牌签发端点——
+    令牌本身即为凭据。
+
+    缺失/无效令牌 → 返回空响应体的 `401`。
+
+    ## 典型流程
+    1. `GET /fingerprint/new/{platform}` → 完全唯一化的指纹
+       （随机 platform_version、考虑主机的 CPU/RAM、裁剪后的屏幕、
+       各向量噪音），**不**保存。
+    2. 可选：编辑返回的 `fingerprint` 对象（例如启用
+       `noise.fonts.enabled`、设置 `webrtc`、调整 `navigator`）。
+    3. `POST /profiles`（或 `POST /folders/{folder}/profiles`），将该对象
+       作为 `fingerprint` → 启动器**原样**保存
+       （create 不会重新随机化）。
+    4. `POST /profiles/{id}/start` → 返回 CDP 端点；以
+       `browserWSEndpoint = cdp.web_socket_debugger_url` 方式连接。
+    5. 完成后执行 `POST /profiles/{id}/stop`。
+
+    ## 代理与 QUIC/WebRTC
+    **每次**启动（通过 UI 或 API）时，在浏览器启动之前，
+    绑定代理会实时探测 UDP-relay（SOCKS5 UDP_ASSOCIATE）的支持情况。
+    如果 UDP 可用——启用 QUIC，WebRTC 通过代理 UDP relay 通信；
+    如果不可用——禁用 QUIC，WebRTC 强制切换为 TCP-only 模式，
+    防止真实 IP 泄露。`auto` 模式下的时区、语言和地理位置字段
+    也会在启动时通过代理实时解析。若在创建永久配置文件时传入
+    `proxy`（字符串）——代理将被添加到存储并完成全量测试；
+    临时配置文件的代理以内联方式存储。
+
+    ## 临时配置文件
+    `POST /profiles/temporary` 创建带 `temporary` 标志的配置文件：
+    在 `GET /profiles` 和启动器界面中隐藏，浏览器关闭后**自动删除**
+    （配置 + 数据文件夹）。若应用在配置文件打开时崩溃——
+    将在下次启动时删除。
+
+    ## fingerprint 对象
+    `GET /fingerprint/new*` 返回、创建端点接受的 `fingerprint`
+    是启动器原生的 FingerprintConfig。该对象被原样传递，
+    因此下方 schema 记录了常见的子对象，但刻意保持开放
+    （`additionalProperties: true`）。
+
+    ## MCP 服务器
+    独立的 **MCP**（Model Context Protocol）服务器允许 AI 客户端
+    通过*此* API 控制启动器，并通过 CDP 控制配置文件的浏览器。
+    这是一个独立的 Node 进程——**不**是本 HTTP API 的组成部分，
+    也不由其托管。可直接从启动器下载
+    （**Settings → MCP server → Download MCP server** 或侧边栏"Download MCP"按钮）；
+    启动器会将源代码保存到所选文件夹。
+    也可从仓库获取：`rust/shardx-launcher/mcp/`。
+
+    其底层只是调用此 API：配置
+    `SHARDX_API`（基础 URL）和 `SHARDX_TOKEN`（来自
+    *Settings → Automation API* 的 Bearer 令牌）。MCP 服务器提供：
+    - **API 工具** — 对下方端点的轻量封装
+      （配置文件、指纹、代理、文件夹、cookies、启动/停止）。
+    - **浏览器工具**（基于 CDP 的 patchright）— `browser_navigate`、
+      `browser_evaluate`、`browser_screenshot`、`browser_click`、
+      `browser_fill`、标签页管理、等待操作等，作用于通过
+      `POST /profiles/{id}/start` 启动的配置文件（该端点返回
+      CDP 端点）。
+
+    启动方式：通过 **stdio**（由客户端启动）或通过 HTTP
+    在 `127.0.0.1:<port>/mcp`（若设置了 `MCP_HTTP_PORT`）。详情见
+    MCP 服务器的 README。（启动器仅负责下载，不负责运行。）
+
+servers:
+  - url: http://127.0.0.1:40325
+    description: 本地启动器（默认端口；可在 Settings 中修改）
+
+security:
+  - bearerAuth: []
+
+tags:
+  - name: System
+    description: 系统端点
+  - name: Fingerprints
+    description: 指纹生成与管理
+  - name: Profiles
+    description: 配置文件管理
+  - name: Folders
+    description: 文件夹管理
+  - name: Proxies
+    description: 代理管理
+
+paths:
+  /health:
+    get:
+      tags: [System]
+      summary: 检查服务器可用性
+      description: 返回服务器基本信息。这是唯一**不**需要身份验证的端点。
+      security: []
+      responses:
+        "200":
+          description: 服务器正常运行。
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ok: { type: boolean, example: true }
+                  name: { type: string, example: shardx-launcher }
+                  version: { type: string, example: "0.1.0" }
+
+  /fingerprint/new:
+    get:
+      tags: [Fingerprints]
+      summary: 生成新指纹（主机 OS）
+      description: |
+        返回**主机**操作系统完全唯一化的指纹，不保存。
+        等价于以主机平台调用 `/fingerprint/new/{platform}`。
+      responses:
+        "200":
+          description: 唯一化的未保存指纹。
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/FingerprintEnvelope"
+        "401": { $ref: "#/components/responses/Unauthorized" }
+        "404":
+          description: 指纹库为空。
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/Error" }
+
+  /fingerprint/new/{platform}:
+    get:
+      tags: [Fingerprints]
+      summary: 为指定平台生成新指纹
+      description: |
+        从库中随机选取与 `platform` 匹配的指纹，然后进行唯一化：
+        生成新的 `platform_version`（用于 Sec-CH-UA），
+        `hardware_concurrency`/`device_memory` 受主机限制（不超过真实值），
+        屏幕裁剪至真实显示器尺寸。
+        返回时不保存——请作为 `fingerprint` 传入创建端点。
+      parameters:
+        - name: platform
+          in: path
+          required: true
+          description: 不区分大小写；接受别名 `win`/`osx`/`darwin`。
+          schema:
+            type: string
+            enum: [Windows, macOS, Linux]
+      responses:
+        "200":
+          description: 唯一化的未保存指纹。
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/FingerprintEnvelope"
+        "401": { $ref: "#/components/responses/Unauthorized" }
+        "404":
+          description: 未找到匹配指纹或库为空。
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/Error" }
+
+  /profiles:
+    get:
+      tags: [Profiles]
+      summary: 配置文件列表
+      description: |
+        返回永久配置文件（临时文件隐藏），按从新到旧排序，
+        已置顶的排在最前。每条记录附带当前运行状态。
+      responses:
+        "200":
+          description: 配置文件列表。
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: "#/components/schemas/ProfileListItem" }
+        "401": { $ref: "#/components/responses/Unauthorized" }
+    post:
+      tags: [Profiles]
+      summary: 创建配置文件
+      description: |
+        将客户端传入的 `fingerprint` 对象**原样**保存为配置文件
+        （不进行重新随机化——唯一化已在 `/fingerprint/new` 完成）。
+        使用 `folder` 将配置文件放入文件夹；通过存储中的 `proxy_id`
+        或内联的 `proxy`（字符串，**不**保存到代理存储）绑定代理。
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: "#/components/schemas/CreateProfileRequest" }
+      responses:
+        "200":
+          description: 已创建配置文件的元数据。
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/ProfileMeta" }
+        "400":
+          description: 缺少 `fingerprint` 或其不是对象，或代理字符串无法解析。
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/Error" }
+        "401": { $ref: "#/components/responses/Unauthorized" }
+
+  /profiles/temporary:
+    post:
+      tags: [Profiles]
+      summary: 创建临时配置文件
+      description: |
+        从库中随机（或指定）指纹创建配置文件，唯一化方式与
+        `/fingerprint/new` 相同，原样保存，带 `temporary` 标志：
+        在列表和界面中隐藏，浏览器关闭后**自动删除**（含数据文件夹，
+        或在崩溃后下次启动时删除）。
+        配合 `POST /profiles/{id}/start` 使用。
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema: { $ref: "#/components/schemas/TempProfileRequest" }
+      responses:
+        "200":
+          description: 已创建的临时配置文件。
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id: { type: string, format: uuid }
+                  name: { type: string }
+                  fingerprint_id:
+                    type: string
+                    description: 生成该配置文件所基于的库条目。
+                  temporary: { type: boolean, example: true }
+                  proxy_inline:
+                    type: boolean
+                    description: 是否附加了内联代理。
+        "400":
+          description: 代理字符串无法解析。
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/Error" }
+        "401": { $ref: "#/components/responses/Unauthorized" }
+        "404":
+          description: 未找到匹配指纹 / 库为空。
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/Error" }
+
+  /profiles/{id}:
+    get:
+      tags: [Profiles]
+      summary: 获取配置文件
+      description: |
+        返回完整的已保存配置文件：`_meta` 包装层加上
+        展开的 FingerprintConfig。若配置文件正在运行——
+        附带 `running` 和 `cdp`。
+      parameters:
+        - $ref: "#/components/parameters/ProfileId"
+      responses:
+        "200":
+          description: 已保存的配置文件。
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/StoredProfile" }
+        "401": { $ref: "#/components/responses/Unauthorized" }
+        "404":
+          description: 未找到配置文件。
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/Error" }
+    delete:
+      tags: [Profiles]
+      summary: 删除配置文件
+      description: 删除配置文件的配置及其用户数据文件夹。
+      parameters:
+        - $ref: "#/components/parameters/ProfileId"
+      responses:
+        "200":
+          description: 已删除。
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  deleted: { type: boolean, example: true }
+                  id: { type: string, format: uuid }
+        "401": { $ref: "#/components/responses/Unauthorized" }
+        "500":
+          description: 删除时出错。
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/Error" }
+    patch:
+      tags: [Profiles]
+      summary: 编辑配置文件
+      description: |
+        仅更新传入的字段。若传入 `fingerprint`——它将**原样替换**
+        已保存的指纹（不重新随机化）。
+        `folder: ""` 将配置文件移出文件夹；`proxy_id: ""` 解绑代理；
+        代理 `proxy` 字符串保存（去重）+ 完整测试，然后绑定。
+        返回更新后的配置文件。
+      parameters:
+        - $ref: "#/components/parameters/ProfileId"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: "#/components/schemas/EditProfileRequest" }
+      responses:
+        "200":
+          description: 更新后的已保存配置文件。
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/StoredProfile" }
+        "400":
+          description: 无效的 fingerprint（非对象）或无法解析的代理。
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/Error" }
+        "401": { $ref: "#/components/responses/Unauthorized" }
+        "404":
+          description: 未找到配置文件。
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/Error" }
+
+  /profiles/{id}/start:
+    post:
+      tags: [Profiles]
+      summary: 启动配置文件（含 CDP）
+      description: |
+        为配置文件启动启用了 remote-debugging 的 ShardX 浏览器，
+        通过绑定代理填充 `auto` 字段（时区/语言/地理位置），
+        并在 Chrome 写入 DevToolsActivePort 后返回 CDP 端点。
+        CDP **仅**在通过 API 启动时启用（通过界面启动不开放调试端口——
+        反检测能力不受影响）。
+        若在超时内无法读取端点，`cdp` 返回 `null`。
+        适用于普通配置文件和临时配置文件。
+      parameters:
+        - $ref: "#/components/parameters/ProfileId"
+      requestBody:
+        required: false
+        description: 可选。空请求体以图形界面模式启动。
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                headless:
+                  type: boolean
+                  default: false
+                  description: 以 headless 模式启动（--headless=new）。
+      responses:
+        "200":
+          description: 已启动。
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  profile_id: { type: string }
+                  pid: { type: integer, format: int64, description: 操作系统进程 PID。 }
+                  headless: { type: boolean }
+                  cdp:
+                    nullable: true
+                    allOf: [{ $ref: "#/components/schemas/CdpInfo" }]
+        "401": { $ref: "#/components/responses/Unauthorized" }
+        "500":
+          description: 未配置二进制文件 / 无法启动进程。
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/Error" }
+
+  /profiles/{id}/stop:
+    post:
+      tags: [Profiles]
+      summary: 停止配置文件
+      description: |
+        向浏览器发送 graceful shutdown 信号（Unix 上为 SIGTERM；等待 5 秒，
+        然后发送 SIGKILL）。临时配置文件在关闭过程中被删除。
+        若配置文件未运行，`stopped` 返回 `false`。
+      parameters:
+        - $ref: "#/components/parameters/ProfileId"
+      responses:
+        "200":
+          description: 已发送停止命令。
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  profile_id: { type: string }
+                  stopped: { type: boolean }
+        "401": { $ref: "#/components/responses/Unauthorized" }
+
+  /profiles/{id}/cookies:
+    get:
+      tags: [Profiles]
+      summary: 导出 cookies
+      description: |
+        读取配置文件的 Chromium cookie 存储，以**解密形式**返回所有 cookies。
+        对正在运行和已停止的配置文件均有效。
+        若配置文件从未启动过，返回空数组。
+      parameters:
+        - $ref: "#/components/parameters/ProfileId"
+      responses:
+        "200":
+          description: Cookies。
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  cookies:
+                    type: array
+                    items: { $ref: "#/components/schemas/Cookie" }
+        "401": { $ref: "#/components/responses/Unauthorized" }
+        "500":
+          description: 读取或解密 cookie 数据库时出错。
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/Error" }
+    post:
+      tags: [Profiles]
+      summary: 导入 cookies
+      description: |
+        将 cookies 写入配置文件存储（按 Chromium v10 方案重新加密）。
+        配置文件**必须已停止**——运行中的浏览器在退出时会覆盖存储，
+        导致导入内容丢失。
+      parameters:
+        - $ref: "#/components/parameters/ProfileId"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [cookies]
+              properties:
+                cookies:
+                  type: array
+                  items: { $ref: "#/components/schemas/Cookie" }
+      responses:
+        "200":
+          description: 已导入。
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  imported: { type: integer, description: 已写入的 cookie 数量。 }
+        "401": { $ref: "#/components/responses/Unauthorized" }
+        "409":
+          description: 配置文件正在运行——请先停止它。
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/Error" }
+        "500":
+          description: 写入 cookie 数据库时出错。
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/Error" }
+
+  /folders:
+    get:
+      tags: [Folders]
+      summary: 文件夹列表
+      description: 所有永久配置文件中唯一的非空文件夹标签。
+      responses:
+        "200":
+          description: 文件夹名称。
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { type: string }
+                example: ["work", "scrapers"]
+        "401": { $ref: "#/components/responses/Unauthorized" }
+
+  /folders/{folder}:
+    patch:
+      tags: [Folders]
+      summary: 重命名文件夹
+      description: 为文件夹中所有配置文件更新标签。返回受影响的配置文件数量。
+      parameters:
+        - name: folder
+          in: path
+          required: true
+          schema: { type: string }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [name]
+              properties:
+                name: { type: string, description: 新文件夹名称。 }
+      responses:
+        "200":
+          description: 已重命名。
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  renamed_to: { type: string }
+                  profiles: { type: integer, description: 已重新打标签的配置文件数量。 }
+        "401": { $ref: "#/components/responses/Unauthorized" }
+    delete:
+      tags: [Folders]
+      summary: 删除文件夹
+      description: |
+        删除文件夹标签。若 `delete_profiles=true`，文件夹内的配置文件也会被删除；
+        否则它们移至"全部"（仅移除标签）。
+      parameters:
+        - name: folder
+          in: path
+          required: true
+          schema: { type: string }
+        - name: delete_profiles
+          in: query
+          required: false
+          description: 删除文件夹中的配置文件（默认 false = 仅移除标签）。
+          schema: { type: boolean, default: false }
+      responses:
+        "200":
+          description: 已删除。
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  deleted_folder: { type: string }
+                  delete_profiles: { type: boolean }
+                  profiles: { type: integer, description: 受影响的配置文件数量。 }
+        "401": { $ref: "#/components/responses/Unauthorized" }
+
+  /folders/{folder}/profiles:
+    post:
+      tags: [Folders]
+      summary: 在文件夹中创建配置文件
+      description: |
+        与 `POST /profiles` 相同，但文件夹从路径中获取
+        （覆盖请求体中的 `folder` 字段）。
+      parameters:
+        - name: folder
+          in: path
+          required: true
+          schema: { type: string }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: "#/components/schemas/CreateProfileRequest" }
+      responses:
+        "200":
+          description: 已创建配置文件的元数据。
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/ProfileMeta" }
+        "400":
+          description: 缺少 `fingerprint` 或其不是对象，或代理字符串无法解析。
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/Error" }
+        "401": { $ref: "#/components/responses/Unauthorized" }
+
+  /fingerprints:
+    get:
+      tags: [Fingerprints]
+      summary: 指纹库列表
+      description: 磁盘上的指纹库（GPU 预设），由启动器提供/导入。
+      responses:
+        "200":
+          description: 库条目。
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: "#/components/schemas/LibraryEntry" }
+        "401": { $ref: "#/components/responses/Unauthorized" }
+
+  /running:
+    get:
+      tags: [Profiles]
+      summary: 正在运行的配置文件列表
+      description: 拥有活跃浏览器进程的配置文件，通过 API 启动时包含 CDP 端点。
+      responses:
+        "200":
+          description: 正在运行的配置文件。
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: "#/components/schemas/RunningProfile" }
+        "401": { $ref: "#/components/responses/Unauthorized" }
+
+  /proxies:
+    get:
+      tags: [Proxies]
+      summary: 已保存代理列表
+      description: 保存在启动器存储中的代理。**不返回凭据（用户名/密码）。**
+      responses:
+        "200":
+          description: 代理摘要信息。
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: "#/components/schemas/ProxySummary" }
+        "401": { $ref: "#/components/responses/Unauthorized" }
+    post:
+      tags: [Proxies]
+      summary: 添加代理
+      description: |
+        将代理添加到存储（按端点去重）。传入
+        `proxy` 字符串或显式的 `host`/`port` 字段（+ `kind`/`username`/`password`）。
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: "#/components/schemas/AddProxyRequest" }
+      responses:
+        "200":
+          description: 已保存代理的摘要信息。
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/ProxySummary" }
+        "400":
+          description: 代理字符串无法解析 / 未提供 host 和 port。
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/Error" }
+        "401": { $ref: "#/components/responses/Unauthorized" }
+
+  /proxies/{id}:
+    delete:
+      tags: [Proxies]
+      summary: 删除代理
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        "200":
+          description: 已删除。
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  deleted: { type: boolean, example: true }
+                  id: { type: string }
+        "401": { $ref: "#/components/responses/Unauthorized" }
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: 来自 Settings → Automation API 的永久 JWT。
+
+  parameters:
+    ProfileId:
+      name: id
+      in: path
+      required: true
+      description: 配置文件的 UUID。
+      schema: { type: string, format: uuid }
+
+  responses:
+    Unauthorized:
+      description: 缺失或无效的 Bearer 令牌。
+
+  schemas:
+    Error:
+      type: object
+      properties:
+        error: { type: string }
+      required: [error]
+
+    FingerprintEnvelope:
+      type: object
+      properties:
+        fingerprint: { $ref: "#/components/schemas/Fingerprint" }
+      required: [fingerprint]
+
+    Fingerprint:
+      type: object
+      description: |
+        原生 FingerprintConfig。记录的子对象为最常见的；
+        该对象是开放的，创建端点会原样保存，
+        因此此处的任何字段都会原封不动地传递。
+      additionalProperties: true
+      properties:
+        name: { type: string }
+        notes: { type: string }
+        seed:
+          type: integer
+          description: 0 = 仅覆盖模式（典型情况）。
+        navigator:
+          type: object
+          additionalProperties: true
+          properties:
+            user_agent: { type: string }
+            platform: { type: string, example: "Win32" }
+            hardware_concurrency: { type: integer, example: 12 }
+            device_memory: { type: integer, enum: [8, 16, 32], example: 16 }
+            language: { type: string }
+            do_not_track: { type: boolean }
+        screen:
+          type: object
+          additionalProperties: true
+          properties:
+            width: { type: integer }
+            height: { type: integer }
+            avail_width: { type: integer }
+            avail_height: { type: integer }
+            color_depth: { type: integer, example: 24 }
+            device_pixel_ratio: { type: number, example: 2 }
+            color_gamut: { type: string, enum: ["", srgb, p3, rec2020] }
+        client_hints:
+          type: object
+          description: Sec-CH-UA 系列（在 browser.vision 中称为 `hints`）。
+          additionalProperties: true
+          properties:
+            platform: { type: string }
+            platform_version: { type: string }
+            architecture: { type: string, example: "x86" }
+            bitness: { type: string, example: "64" }
+            mobile: { type: boolean }
+        webgl:
+          type: object
+          additionalProperties: true
+          properties:
+            unmasked_vendor: { type: string }
+            unmasked_renderer: { type: string }
+        webgpu:
+          type: object
+          additionalProperties: true
+        webrtc:
+          type: string
+          description: WebRTC 处理模式。
+          enum: [auto, tcp_only, block]
+        noise:
+          $ref: "#/components/schemas/NoisePrefs"
+        network:
+          type: object
+          properties:
+            blocked_ports:
+              type: array
+              items: { type: integer }
+              description: 局域网端口扫描防护（ports_protection）。
+        timezone:
+          type: string
+          description: IANA 名称或 "auto"——将在启动时通过绑定代理解析。
+
+    NoisePrefs:
+      type: object
+      description: |
+        各向量的反指纹噪音配置。每个块：`{enabled, seed}`
+        （+ 特定参数）。`enabled:false` = 直接透传。
+      properties:
+        canvas: { $ref: "#/components/schemas/NoiseBlock" }
+        webgl:
+          allOf: [{ $ref: "#/components/schemas/NoiseBlock" }]
+          properties:
+            intensity: { type: number }
+        audio:
+          allOf: [{ $ref: "#/components/schemas/NoiseBlock" }]
+          properties:
+            intensity: { type: number }
+        client_rects:
+          allOf: [{ $ref: "#/components/schemas/NoiseBlock" }]
+          properties:
+            max_offset: { type: number }
+        sensors: { $ref: "#/components/schemas/NoiseBlock" }
+        fonts:
+          allOf: [{ $ref: "#/components/schemas/NoiseBlock" }]
+          description: |
+            `enabled:true` 为每个配置文件隐藏少量确定性的
+            非关键字体子集（其余真实主机字体直接透传）。
+
+    NoiseBlock:
+      type: object
+      properties:
+        enabled: { type: boolean }
+        seed:
+          type: integer
+          description: 每个配置文件的熵值；0 = 自动计算。
+
+    CreateProfileRequest:
+      type: object
+      required: [fingerprint]
+      properties:
+        name: { type: string }
+        notes: { type: string }
+        proxy_id:
+          type: string
+          description: 绑定存储中的代理（按 id）。
+        proxy:
+          type: string
+          description: |
+            以字符串方式绑定代理（`host:port:user:pass` 或
+            `scheme://user:pass@host:port`）。对于**永久**配置文件，代理
+            会被添加到存储（按端点去重）并完成全量测试（UDP + 地理位置），
+            然后按 id 绑定——显示在代理列表中，QUIC/WebRTC 结果被缓存。
+            对于**临时**配置文件，代理以内联方式附加（不保存）。
+            若已指定 `proxy_id` 则忽略。
+          example: "socks5://user:pass@1.2.3.4:1080"
+        folder:
+          type: string
+          description: 文件夹标签（对于 /folders/{folder}/profiles 被忽略——路径优先）。
+        fingerprint:
+          allOf: [{ $ref: "#/components/schemas/Fingerprint" }]
+          description: 原样保存。从 /fingerprint/new 获取后按需编辑。
+
+    EditProfileRequest:
+      type: object
+      description: 所有字段均为可选——仅更新传入的字段。
+      properties:
+        name: { type: string }
+        notes: { type: string }
+        folder: { type: string, description: '""将配置文件移出文件夹（移至"全部"）。' }
+        proxy_id: { type: string, description: '""解绑代理。' }
+        proxy:
+          type: string
+          description: 代理字符串——保存（去重）+ 全量测试，然后绑定。
+        fingerprint:
+          allOf: [{ $ref: "#/components/schemas/Fingerprint" }]
+          description: 若提供，则原样**替换**已保存的指纹。
+
+    TempProfileRequest:
+      type: object
+      properties:
+        fingerprint_id:
+          type: string
+          description: 配置文件所基于的库条目；未提供时，在 `platform` 下随机选取。
+        platform:
+          type: string
+          enum: [Windows, macOS, Linux]
+          description: 若未指定 `fingerprint_id` 则用于随机选取指纹；两者均未提供时使用主机 OS。
+        proxy:
+          type: string
+          description: 内联代理字符串（不保存到存储中）。
+        name: { type: string }
+        folder: { type: string }
+
+    ProfileMeta:
+      type: object
+      description: 启动器中配置文件的元数据（创建时返回）。
+      properties:
+        id: { type: string, format: uuid }
+        name: { type: string }
+        notes: { type: string }
+        proxy_id: { type: string, nullable: true }
+        last_launched_at: { type: string, nullable: true, description: ISO-8601 或 null。 }
+        created_at: { type: string, nullable: true }
+        pinned: { type: boolean }
+        folder: { type: string }
+
+    ProfileListItem:
+      allOf:
+        - $ref: "#/components/schemas/ProfileMeta"
+        - type: object
+          properties:
+            running: { type: boolean }
+            pid: { type: integer, format: int64, nullable: true }
+            cdp:
+              nullable: true
+              allOf: [{ $ref: "#/components/schemas/CdpInfo" }]
+
+    StoredProfile:
+      type: object
+      description: |
+        磁盘上的完整配置文件：`_meta` 包装层加上展开的
+        FingerprintConfig（所有 `Fingerprint` 字段位于顶层）。
+        `running`/`cdp` 仅在配置文件运行时存在。
+      additionalProperties: true
+      properties:
+        _meta:
+          type: object
+          properties:
+            id: { type: string, format: uuid }
+            proxy_id: { type: string, nullable: true }
+            inline_proxy:
+              nullable: true
+              allOf: [{ $ref: "#/components/schemas/ProxyEntry" }]
+            last_launched_at: { type: string, nullable: true }
+            created_at: { type: string, nullable: true }
+            pinned: { type: boolean }
+            folder: { type: string }
+            temporary: { type: boolean }
+        running: { type: boolean }
+        cdp:
+          nullable: true
+          allOf: [{ $ref: "#/components/schemas/CdpInfo" }]
+
+    CdpInfo:
+      type: object
+      description: 正在运行的配置文件的 CDP 端点。
+      properties:
+        port: { type: integer, description: Chrome 选择的 remote-debugging 端口。 }
+        http_url:
+          type: string
+          example: "http://127.0.0.1:53217"
+          description: REST 基础地址（/json、/json/version）。
+        web_socket_debugger_url:
+          type: string
+          example: "ws://127.0.0.1:53217/devtools/browser/ab12-..."
+          description: Puppeteer/Playwright `connect` 使用的浏览器级 WS 端点。
+
+    RunningProfile:
+      type: object
+      properties:
+        profile_id: { type: string }
+        pid: { type: integer, format: int64 }
+        cdp:
+          nullable: true
+          allOf: [{ $ref: "#/components/schemas/CdpInfo" }]
+
+    LibraryEntry:
+      type: object
+      properties:
+        id: { type: string }
+        label: { type: string }
+        platform: { type: string, enum: [Windows, macOS, Linux] }
+        chrome: { type: string, description: Chrome 版本字符串。 }
+        gpu: { type: string }
+        builtin: { type: boolean, description: 包含在随附的起始集中。 }
+
+    AddProxyRequest:
+      type: object
+      description: 代理字符串或显式字段（字符串优先）。
+      properties:
+        proxy:
+          type: string
+          description: "`scheme://user:pass@host:port` 或 `host:port:user:pass`。"
+        kind: { type: string, enum: [socks5, http, https] }
+        host: { type: string }
+        port: { type: integer }
+        username: { type: string }
+        password: { type: string }
+        name: { type: string }
+        country: { type: string }
+        notes: { type: string }
+
+    ProxySummary:
+      type: object
+      description: 不含凭据的已保存代理信息。
+      properties:
+        id: { type: string }
+        name: { type: string }
+        kind: { type: string, enum: [socks5, http, https] }
+        host: { type: string }
+        port: { type: integer }
+        country: { type: string, description: '信息标签（例如"US"）。' }
+
+    Cookie:
+      type: object
+      description: |
+        工具友好格式的 cookie（兼容 EditThisCookie / Puppeteer 格式——
+        导入时接受 `httpOnly`/`sameSite` 作为别名）。
+      required: [domain, name, value]
+      properties:
+        domain:
+          type: string
+          description: Cookie 主机（Chromium `host_key`），例如".example.com"。
+        name: { type: string }
+        value: { type: string }
+        path: { type: string, default: "/" }
+        expires:
+          type: number
+          nullable: true
+          description: Unix 秒数；null/缺失 = 会话 cookie。
+        secure: { type: boolean, default: false }
+        http_only: { type: boolean, default: false }
+        same_site:
+          type: string
+          enum: [Strict, Lax, None, unspecified]
+          description: 导入时不区分大小写。
+
+    ProxyEntry:
+      type: object
+      description: 完整的代理条目（嵌入在 `_meta.inline_proxy` 中）。
+      properties:
+        id: { type: string }
+        name: { type: string }
+        kind: { type: string, enum: [socks5, http, https] }
+        host: { type: string }
+        port: { type: integer }
+        username: { type: string }
+        password: { type: string }
+        country: { type: string }
+        notes: { type: string }

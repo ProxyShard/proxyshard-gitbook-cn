@@ -1,0 +1,1645 @@
+openapi: 3.0.3
+info:
+  title: ProxyShard 用户 API 计费
+  version: 1.0.0
+  description: >
+    所有方法都需要 Authorization: Bearer <API_KEY> 路径标头
+    从 /user/api/ 开始。
+  x-gitbook-description-document:
+    object: document
+    data:
+      schemaVersion: 9
+    nodes:
+      - object: block
+        type: paragraph
+        isVoid: false
+        data: {}
+        nodes:
+          - object: text
+            leaves:
+              - object: leaf
+                text: >-
+                  所有方法都需要 Authorization: Bearer <API_KEY> 标头
+                  对于以 /user/api/ 开头的路径。
+                marks: []
+            key: W9AMVuV3X2nr
+        key: N826mpAA6bPi
+    key: 3pQjnI1fT5Tx
+  x-gitbook-description-html: >-
+    <p>所有方法都需要 Authorization: Bearer <API_KEY> 标头
+    以 /user/api/.</p> 开头的路径
+tags:
+  - name: Datacenter & ISP Proxies
+    description: 数据中心和 ISP 代理的操作
+    x-gitbook-description-document:
+      object: document
+      data:
+        schemaVersion: 9
+      nodes:
+        - object: block
+          type: paragraph
+          isVoid: false
+          data: {}
+          nodes:
+            - object: text
+              leaves:
+                - object: leaf
+                  text: 数据中心和 ISP 代理的操作
+                  marks: []
+              key: Y5DyHZExD0Z1
+          key: TNYN9BzKcb7R
+      key: FV8JUezeGRVG
+    x-gitbook-description-html: <p>数据中心和 ISP 代理的操作</p>
+  - name: Residential Proxies
+    description: 住宅代理的操作
+    x-gitbook-description-document:
+      object: document
+      data:
+        schemaVersion: 9
+      nodes:
+        - object: block
+          type: paragraph
+          isVoid: false
+          data: {}
+          nodes:
+            - object: text
+              leaves:
+                - object: leaf
+                  text: 住宅代理的操作
+                  marks: []
+              key: rR2I6Lv0N6kX
+          key: iBD5gLwqAKCi
+      key: ZeCc5kz7S5s6
+    x-gitbook-description-html: <p>住宅代理操作</p>
+  - name: General
+    description: 一般操作（简介、订单、参考数据）
+    x-gitbook-description-document:
+      object: document
+      data:
+        schemaVersion: 9
+      nodes:
+        - object: block
+          type: paragraph
+          isVoid: false
+          data: {}
+          nodes:
+            - object: text
+              leaves:
+                - object: leaf
+                  text: 一般操作（简介、订单、参考数据）
+                  marks: []
+              key: LL5lIQ1Nofxb
+          key: 6zcCj8DYlgFj
+      key: o5kyefuuGtq2
+    x-gitbook-description-html: <p>一般操作（简介、订单、参考数据）</p>
+servers:
+  - url: https://user-api.proxyshard.com
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+  schemas:
+    ApiSuccess:
+      type: object
+      properties:
+        success:
+          type: boolean
+      required:
+        - success
+    ApiError:
+      type: object
+      properties:
+        success:
+          type: boolean
+          example: false
+        message:
+          type: string
+      required:
+        - success
+        - message
+    PurchaseRequest:
+      type: object
+      properties:
+        product:
+          type: string
+          example: Datacenter Proxy
+        location:
+          type: string
+          nullable: true
+          example: DE
+        cycle:
+          type: string
+          example: monthly
+        quantity:
+          type: integer
+          minimum: 1
+          default: 1
+          example: 10
+        promo_code:
+          type: string
+          nullable: true
+          example: SAVE10
+        auto_renewal:
+          type: boolean
+          default: false
+      required:
+        - product
+        - cycle
+    PurchaseRequestDcIsp:
+      type: object
+      description: 为数据中心/ISP 购买 — 需要位置字段。
+      properties:
+        product:
+          type: string
+          enum:
+            - Datacenter Proxy
+            - ISP Proxy
+          example: Datacenter Proxy
+        location:
+          type: string
+          example: DE
+        cycle:
+          type: string
+          example: monthly
+        quantity:
+          type: integer
+          minimum: 1
+          default: 1
+          example: 10
+        promo_code:
+          type: string
+          nullable: true
+        auto_renewal:
+          type: boolean
+          default: false
+      required:
+        - product
+        - location
+        - cycle
+      x-gitbook-description-html: <p>购买数据中心/ISP — 位置字段是必需的。</p>
+    PurchaseRequestResidentialStandard:
+      type: object
+      description: >-
+        购买标准住宅代理 — 不需要位置；循环
+        是固定的（一生）。
+      properties:
+        product:
+          type: string
+          enum:
+            - Standart Residential Proxy
+          example: Standart Residential Proxy
+        quantity:
+          type: integer
+          minimum: 1
+          default: 1
+          example: 1
+        promo_code:
+          type: string
+          nullable: true
+      required:
+        - product
+      x-gitbook-description-html: >-
+        <p>购买标准住宅代理 — 不需要位置；循环
+        是固定的（生命周期）。</p>
+    PurchaseRequestResidentialPremium:
+      type: object
+      description: >-
+        购买高级住宅代理 — 不需要位置；循环
+        是固定的（一生）。
+      properties:
+        product:
+          type: string
+          enum:
+            - Premium Residential Proxy
+          example: Premium Residential Proxy
+        quantity:
+          type: integer
+          minimum: 1
+          default: 1
+          example: 1
+        promo_code:
+          type: string
+          nullable: true
+      required:
+        - product
+      x-gitbook-description-html: >-
+        <p>购买高级住宅代理 — 不需要位置；循环
+        是固定的（生命周期）。</p>
+    PurchaseRequestResidentialUnmetered:
+      type: object
+      description: 购买不限流量住宅代理 — 支持自动续订。
+      properties:
+        product:
+          type: string
+          enum:
+            - Unmetered Residential proxy
+          example: Unmetered Residential proxy
+        cycle:
+          type: string
+          example: monthly
+        promo_code:
+          type: string
+          nullable: true
+        auto_renewal:
+          type: boolean
+          default: false
+      required:
+        - product
+        - cycle
+      x-gitbook-description-html: >-
+        <p>购买不限流量住宅代理 — 支持
+        自动续订.</p>
+    PurchaseResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          example: true
+        message:
+          type: string
+          example: Order paid successfully
+        order_id:
+          type: integer
+      required:
+        - success
+        - message
+        - order_id
+    ActiveProxyItem:
+      type: object
+      properties:
+        ip:
+          type: string
+        username:
+          type: string
+        password:
+          type: string
+        http_port:
+          type: integer
+        socks_port:
+          type: integer
+        until:
+          type: string
+          description: ISO8601/字符串日期
+          x-gitbook-description-html: <p>ISO8601/字符串日期</p>
+        status:
+          type: string
+      required:
+        - ip
+        - username
+        - password
+        - http_port
+        - socks_port
+        - until
+        - status
+    AvailableCountRequest:
+      type: object
+      properties:
+        country:
+          type: string
+          example: DE
+        product:
+          type: string
+          example: dc
+      required:
+        - country
+        - product
+    AvailableCountResponse:
+      type: object
+      properties:
+        country:
+          type: string
+        product:
+          type: string
+        amount:
+          type: integer
+      required:
+        - country
+        - product
+        - amount
+    ApiMeResponse:
+      type: object
+      properties:
+        email:
+          type: string
+        active_orders:
+          type: integer
+        wallet_balance:
+          type: integer
+          description: 以美分为单位
+          x-gitbook-description-html: <p></p>
+      required:
+        - email
+        - active_orders
+        - wallet_balance
+    ProductWithCycles:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+          nullable: true
+        location:
+          type: string
+          nullable: true
+        cycles:
+          type: array
+          items:
+            type: string
+      required:
+        - name
+        - cycles
+    AddBandwidthRequest:
+      type: object
+      properties:
+        amount:
+          type: integer
+          example: 5
+          description: 容量（GB）
+          x-gitbook-description-html: <p>GB 量 </p>
+        promo_code:
+          type: string
+          nullable: true
+      required:
+        - amount
+    GetSubUsersRequest:
+      type: object
+      properties:
+        offset:
+          type: integer
+          example: 0
+          description: 偏移量（默认 0）
+          x-gitbook-description-html: <p>偏移（默认0）</p>
+        limit:
+          type: integer
+          example: 20
+          description: 页面大小（默认 20）
+          x-gitbook-description-html: <p>页面大小（默认20）</p>
+    EditSubUserPayload:
+      type: object
+      properties:
+        name:
+          type: string
+      required:
+        - name
+    CreateSubUserPayload:
+      type: object
+      properties:
+        proxy_type:
+          type: string
+          example: standart
+        name:
+          type: string
+        data:
+          type: integer
+          example: 5
+          description: 容量（GB）
+          x-gitbook-description-html: <p>GB 量 </p>
+      required:
+        - proxy_type
+        - name
+        - data
+    ChangeSubUserPasswordPayload:
+      type: object
+      properties:
+        proxy_type:
+          type: string
+          example: standart
+      required:
+        - proxy_type
+    ModifyTrafficPayload:
+      type: object
+      properties:
+        proxy_type:
+          type: string
+          example: standart
+        data:
+          type: integer
+          example: 5
+          description: 容量（GB）
+          x-gitbook-description-html: <p>GB 量 </p>
+      required:
+        - proxy_type
+        - data
+    Country:
+      type: object
+      properties:
+        code:
+          type: string
+          maxLength: 10
+          description: ISO国家代码
+          x-gitbook-description-html: <p>ISO国家代码</p>
+        name:
+          type: string
+          maxLength: 255
+          description: 国家名称
+          x-gitbook-description-html: <p>国名</p>
+      required:
+        - code
+        - name
+    Region:
+      type: object
+      properties:
+        code:
+          type: string
+          maxLength: 10
+          description: 地区代码（州/省代码）
+          x-gitbook-description-html: <p>地区代码（州/省代码）</p>
+        name:
+          type: string
+          maxLength: 255
+          description: 地区名称（州/省名称）
+          x-gitbook-description-html: <p>地区名称（州/省名称）</p>
+        country:
+          $ref: '#/components/schemas/Country'
+      required:
+        - code
+        - name
+        - country
+    City:
+      type: object
+      properties:
+        code:
+          type: string
+          maxLength: 50
+          description: 城市代码（通常为 slug 格式）
+          x-gitbook-description-html: <p>城市代码（通常为slug格式）</p>
+        name:
+          type: string
+          maxLength: 255
+          description: 城市名称
+          x-gitbook-description-html: <p>城市名称</p>
+        country:
+          $ref: '#/components/schemas/Country'
+        region:
+          type: object
+          nullable: true
+          properties:
+            code:
+              type: string
+              maxLength: 10
+              description: 地区代码
+              x-gitbook-description-html: <p>区域代码</p>
+            name:
+              type: string
+              maxLength: 255
+              description: 地区名称
+              x-gitbook-description-html: <p>区域名称</p>
+          required:
+            - code
+            - name
+      required:
+        - code
+        - name
+        - country
+    PagedCountriesResponse:
+      type: object
+      properties:
+        count:
+          type: integer
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Country'
+      required:
+        - count
+        - results
+    PagedRegionsResponse:
+      type: object
+      properties:
+        count:
+          type: integer
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Region'
+      required:
+        - count
+        - results
+    PagedCitiesResponse:
+      type: object
+      properties:
+        count:
+          type: integer
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/City'
+      required:
+        - count
+        - results
+paths:
+  /user/api/orders/purchase:
+    post:
+      tags:
+        - General
+      security:
+        - bearerAuth: []
+      summary: 创建订单并付款
+      description: |
+        按产品名称、地点和周期购买。
+        对于数据中心/ISP，需要位置。
+        对于标准住宅代理，不需要位置。
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              oneOf:
+                - $ref: '#/components/schemas/PurchaseRequestDcIsp'
+                - $ref: '#/components/schemas/PurchaseRequestResidentialStandard'
+                - $ref: '#/components/schemas/PurchaseRequestResidentialPremium'
+                - $ref: '#/components/schemas/PurchaseRequestResidentialUnmetered'
+                - $ref: '#/components/schemas/PurchaseRequest'
+            examples:
+              datacenter:
+                value:
+                  product: Datacenter Proxy
+                  location: DE
+                  cycle: monthly
+                  quantity: 10
+                  auto_renewal: true
+              isp:
+                value:
+                  product: ISP Proxy
+                  location: US
+                  cycle: monthly
+                  quantity: 5
+              residentialStandard:
+                value:
+                  product: Standart Residential Proxy
+                  quantity: 1
+              residentialPremium:
+                value:
+                  product: Premium Residential Proxy
+                  quantity: 1
+              residentialNew:
+                value:
+                  product: Residential Proxy NEW
+                  cycle: monthly
+                  quantity: 1
+              unmeteredResidential:
+                value:
+                  product: Unmetered Residential proxy
+                  cycle: monthly
+                  auto_renewal: true
+              mobile:
+                value:
+                  product: Mobile Proxy Plan Name
+                  cycle: day
+                  quantity: 1
+      responses:
+        '200':
+          description: 成功的
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PurchaseResponse'
+          x-gitbook-description-html: <p>成功</p>
+        '400':
+          description: 验证/余额错误/库存不足
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+          x-gitbook-description-html: <p>验证/余额错误/库存不足</p>
+        '401':
+          description: 未经授权
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+          x-gitbook-description-html: <p>未经授权</p>
+      x-gitbook-description-document:
+        object: document
+        data:
+          schemaVersion: 9
+        nodes:
+          - object: block
+            type: paragraph
+            isVoid: false
+            data: {}
+            nodes:
+              - object: text
+                leaves:
+                  - object: leaf
+                    text: >-
+                      按产品名称、地点和周期购买。为了
+                      数据中心/ISP，需要位置。标准版
+                      住宅代理，位置不需要。
+                    marks: []
+                key: a6YDYJfLO9R9
+            key: S5jpGa8ot9FH
+        key: 7j57RKNQ66xt
+      x-gitbook-description-html: >-
+        <p>按产品名称、地点、周期进行采购。对于数据中心/ISP，
+        位置为必填项。对于标准住宅代理，位置不是
+        必填.</p>
+  /user/api/orders/change-billing-cycle/{order_id}:
+    post:
+      tags:
+        - General
+      security:
+        - bearerAuth: []
+      summary: 更改订单结算周期
+      description: >
+        按周期名称更改计费周期。仅适用于数据中心和 ISP
+        代理。
+
+        如果促销代码在所选周期内不可用，则会自动
+        重置。
+      parameters:
+        - in: path
+          name: order_id
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                cycle:
+                  type: string
+                  example: monthly
+              required:
+                - cycle
+      responses:
+        '200':
+          description: 成功的
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+                  order:
+                    type: object
+          x-gitbook-description-html: <p>成功</p>
+        '400':
+          description: 无效的产品或周期
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+          x-gitbook-description-html: <p>无效的产品或周期</p>
+        '401':
+          description: 未经授权
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+          x-gitbook-description-html: <p>未经授权</p>
+        '403':
+          description: 该用户无法使用循环
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+          x-gitbook-description-html: <p>该用户无法使用循环</p>
+      x-gitbook-description-document:
+        object: document
+        data:
+          schemaVersion: 9
+        nodes:
+          - object: block
+            type: paragraph
+            isVoid: false
+            data: {}
+            nodes:
+              - object: text
+                leaves:
+                  - object: leaf
+                    text: >-
+                      按周期名称更改计费周期。只为
+                      数据中心和 ISP 代理。如果促销代码不适用于
+                      选定的周期后，将自动重置。
+                    marks: []
+                key: FCRCqYnCRIMJ
+            key: CstYjsmMFFpH
+        key: RctxTbOKuya7
+      x-gitbook-description-html: >-
+        <p> 按周期名称更改计费周期。仅适用于数据中心和
+        ISP 代理。如果促销代码不适用于所选周期，则将
+        自动复位.</p>
+  /user/api/orders/edit-auto-renewal/{order_id}:
+    post:
+      tags:
+        - General
+      security:
+        - bearerAuth: []
+      summary: 变更订单自动续订
+      description: |
+        启用/禁用自动续订。仅适用于数据中心和 ISP 代理。
+      parameters:
+        - in: path
+          name: order_id
+          required: true
+          schema:
+            type: integer
+        - in: query
+          name: auto_renewal
+          required: true
+          schema:
+            type: boolean
+            example: true
+      responses:
+        '200':
+          description: 成功的
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+          x-gitbook-description-html: <p>成功</p>
+        '400':
+          description: 此操作的产品无效
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+          x-gitbook-description-html: <p>此操作无效产品</p>
+        '401':
+          description: 未经授权
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+          x-gitbook-description-html: <p>未经授权</p>
+      x-gitbook-description-document:
+        object: document
+        data:
+          schemaVersion: 9
+        nodes:
+          - object: block
+            type: paragraph
+            isVoid: false
+            data: {}
+            nodes:
+              - object: text
+                leaves:
+                  - object: leaf
+                    text: >-
+                      启用/禁用自动续订。仅适用于数据中心和
+                      ISP 代理。
+                    marks: []
+                key: K9SC5NGtClVi
+            key: wsP9craixrO9
+        key: lPUU4UXDZMgV
+      x-gitbook-description-html: >-
+        <p>启用/禁用自动续订。仅适用于数据中心和 ISP
+        代理.</p>
+  /user/api/proxies/active:
+    get:
+      tags:
+        - Datacenter & ISP Proxies
+      security:
+        - bearerAuth: []
+      summary: 获取订单的有效代理
+      parameters:
+        - in: query
+          name: order_id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: 代理列表
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ActiveProxyItem'
+                  order_tag:
+                    type: string
+                    nullable: true
+                required:
+                  - success
+                  - data
+          x-gitbook-description-html: <p>代理列表</p>
+        '403':
+          description: 此订单无法使用该方法
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+          x-gitbook-description-html: <p> 该订单无法使用该方法</p>
+  /user/api/proxies/products:
+    get:
+      tags:
+        - General
+      security:
+        - bearerAuth: []
+      summary: 获取产品及其周期
+      description: 返回具有可用循环名称的 API 产品。
+      responses:
+        '200':
+          description: 产品列表
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  products:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ProductWithCycles'
+                required:
+                  - success
+                  - products
+          x-gitbook-description-html: <p>产品列表</p>
+      x-gitbook-description-document:
+        object: document
+        data:
+          schemaVersion: 9
+        nodes:
+          - object: block
+            type: paragraph
+            isVoid: false
+            data: {}
+            nodes:
+              - object: text
+                leaves:
+                  - object: leaf
+                    text: 返回具有可用循环名称的 API 产品。
+                    marks: []
+                key: ae0gjXUIoxK0
+            key: H8DZM6car1fH
+        key: dPLJyH3Xi2mm
+      x-gitbook-description-html: <p> 返回具有可用循环名称的 API 产品。</p>
+  /user/api/proxies/available-count:
+    get:
+      tags:
+        - General
+      security:
+        - bearerAuth: []
+      summary: 查看可用代理数量
+      description: 返回所有产品的总可用数量。
+      responses:
+        '200':
+          description: 成功的
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AvailableCountResponse'
+          x-gitbook-description-html: <p>成功</p>
+      x-gitbook-description-document:
+        object: document
+        data:
+          schemaVersion: 9
+        nodes:
+          - object: block
+            type: paragraph
+            isVoid: false
+            data: {}
+            nodes:
+              - object: text
+                leaves:
+                  - object: leaf
+                    text: >-
+                      返回所有可用的总数量
+                      产品。
+                    marks: []
+                key: rZiZPAWJWDci
+            key: 89ELMwrVTwTZ
+        key: hs4oQPezyl5t
+      x-gitbook-description-html: <p> 返回所有产品的总可用数量。</p>
+  /user/api/me:
+    get:
+      tags:
+        - General
+      security:
+        - bearerAuth: []
+      summary: 用户信息
+      responses:
+        '200':
+          description: 个人资料数据
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiMeResponse'
+          x-gitbook-description-html: <p>配置文件数据</p>
+  /user/api/orders:
+    get:
+      tags:
+        - General
+      security:
+        - bearerAuth: []
+      summary: 订单清单
+      parameters:
+        - in: query
+          name: status
+          required: true
+          description: 活跃 |等待 |取消 |全部
+          schema:
+            type: string
+          x-gitbook-description-html: <p>活动 |等待 |取消 |全部</p>
+        - in: query
+          name: offset
+          required: false
+          description: 选择偏移量（默认 0）
+          schema:
+            type: integer
+            minimum: 0
+            example: 0
+          x-gitbook-description-html: <p>选择偏移量（默认0）</p>
+        - in: query
+          name: limit
+          required: false
+          description: 页面大小（1..100，默认 20）
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 100
+            example: 20
+          x-gitbook-description-html: <p>页面大小（1..100，默认20）</p>
+      responses:
+        '200':
+          description: 订单清单
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  orders:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        order_id:
+                          type: integer
+                        product_id:
+                          type: integer
+                        product_name:
+                          type: string
+                        cycle_id:
+                          type: integer
+                        cycle_name:
+                          type: string
+                        expires_at:
+                          type: string
+                          nullable: true
+                          description: ISO8601有效期
+                          x-gitbook-description-html: <p>ISO8601过期时间</p>
+                        auto_renewal:
+                          type: boolean
+                          nullable: true
+                        tag:
+                          type: string
+                          nullable: true
+                      required:
+                        - order_id
+                        - product_id
+                        - product_name
+                        - cycle_id
+                        - cycle_name
+                  count:
+                    type: integer
+                    description: 当前选择的订单数量
+                    x-gitbook-description-html: <p> 当前选择的订单数量</p>
+                  prev:
+                    type: string
+                    nullable: true
+                    description: 上一页 URI
+                    x-gitbook-description-html: <p>上一页 URI</p>
+                  next:
+                    type: string
+                    nullable: true
+                    description: 下一页 URI
+                    x-gitbook-description-html: <p>下一页 URI</p>
+                required:
+                  - success
+                  - orders
+          x-gitbook-description-html: <p>订单列表</p>
+  /user/api/orders/{id}:
+    get:
+      tags:
+        - General
+      security:
+        - bearerAuth: []
+      summary: 获取订单信息
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: 订单信息
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  order:
+                    type: object
+                    properties:
+                      order_id:
+                        type: integer
+                      product_name:
+                        type: string
+                      cycle_name:
+                        type: string
+                      quantity:
+                        type: integer
+                      price_paid:
+                        type: integer
+                      status:
+                        type: string
+                      created_at:
+                        type: string
+                        nullable: true
+                      expires_at:
+                        type: string
+                        nullable: true
+                      promo_code:
+                        type: string
+                        nullable: true
+                      auto_renewal:
+                        type: boolean
+                        nullable: true
+                      tag:
+                        type: string
+                        nullable: true
+                required:
+                  - success
+                  - order
+          x-gitbook-description-html: <p>订购信息</p>
+  /user/api/orders/{id}/renew:
+    post:
+      tags:
+        - General
+      security:
+        - bearerAuth: []
+      summary: 续订订单
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: 成功的
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiSuccess'
+          x-gitbook-description-html: <p>成功</p>
+        '400':
+          description: 余额不足/验证错误
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+          x-gitbook-description-html: <p>余额不足/验证错误</p>
+  /user/api/orders/{id}/add-bandwidth:
+    post:
+      tags:
+        - Residential Proxies
+      security:
+        - bearerAuth: []
+      summary: 购买额外流量（住宅）
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AddBandwidthRequest'
+      responses:
+        '200':
+          description: 成功的
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiSuccess'
+          x-gitbook-description-html: <p>成功</p>
+  /user/api/orders/{id}/tag:
+    post:
+      tags:
+        - General
+      security:
+        - bearerAuth: []
+      summary: 更改订单标签
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tag:
+                  type: string
+                  example: none
+              required:
+                - tag
+      responses:
+        '200':
+          description: 成功的
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiSuccess'
+          x-gitbook-description-html: <p>成功</p>
+  /user/api/proxies/sub-users:
+    get:
+      tags:
+        - Residential Proxies
+      security:
+        - bearerAuth: []
+      summary: 子用户列表
+      parameters:
+        - in: query
+          name: proxy_type
+          required: true
+          description: 代理类型（标准 | 高级）
+          schema:
+            type: string
+            example: standart
+          x-gitbook-description-html: <p>代理类型（标准 | 高级）</p>
+        - in: query
+          name: offset
+          required: false
+          schema:
+            type: integer
+            example: 0
+        - in: query
+          name: limit
+          required: false
+          schema:
+            type: integer
+            example: 20
+      responses:
+        '200':
+          description: 成功的
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        user_id:
+                          type: string
+                        first_name:
+                          type: string
+                        proxy_password:
+                          type: string
+                        data:
+                          type: integer
+                        data_spent:
+                          type: integer
+                      required:
+                        - user_id
+                        - first_name
+                        - proxy_password
+                        - data
+                        - data_spent
+          x-gitbook-description-html: <p>成功</p>
+  /user/api/proxies/sub-user/{user_id}:
+    get:
+      tags:
+        - Residential Proxies
+      security:
+        - bearerAuth: []
+      summary: 通过ID获取子用户
+      parameters:
+        - in: path
+          name: user_id
+          required: true
+          schema:
+            type: string
+        - in: query
+          name: proxy_type
+          required: true
+          description: 代理类型（标准 | 高级）
+          schema:
+            type: string
+            example: standart
+          x-gitbook-description-html: <p>代理类型（标准 | 高级）</p>
+      responses:
+        '200':
+          description: 成功的
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        user_id:
+                          type: string
+                        first_name:
+                          type: string
+                        proxy_password:
+                          type: string
+                        data:
+                          type: integer
+                        data_spent:
+                          type: integer
+                      required:
+                        - user_id
+                        - first_name
+                        - proxy_password
+                        - data
+                        - data_spent
+          x-gitbook-description-html: <p>成功</p>
+    patch:
+      tags:
+        - Residential Proxies
+      security:
+        - bearerAuth: []
+      summary: 编辑子用户（名称/包）
+      parameters:
+        - in: path
+          name: user_id
+          required: true
+          schema:
+            type: string
+        - in: query
+          name: proxy_type
+          required: true
+          description: 代理类型（标准 | 高级）
+          schema:
+            type: string
+            example: standart
+          x-gitbook-description-html: <p>代理类型（标准 | 高级）</p>
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EditSubUserPayload'
+      responses:
+        '200':
+          description: 成功的
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  data:
+                    type: object
+          x-gitbook-description-html: <p>成功</p>
+    delete:
+      tags:
+        - Residential Proxies
+      security:
+        - bearerAuth: []
+      summary: 删除子用户
+      parameters:
+        - in: path
+          name: user_id
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: 成功的
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  data:
+                    type: object
+          x-gitbook-description-html: <p>成功</p>
+  /user/api/proxies/sub-user:
+    post:
+      tags:
+        - Residential Proxies
+      security:
+        - bearerAuth: []
+      summary: 创建子用户
+      parameters:
+        - in: query
+          name: proxy_type
+          required: true
+          description: 代理类型（标准 | 高级）
+          schema:
+            type: string
+            example: standart
+          x-gitbook-description-html: <p>代理类型（标准 | 高级）</p>
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                data:
+                  type: integer
+              required:
+                - name
+                - data
+      responses:
+        '200':
+          description: 成功的
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        user_id:
+                          type: string
+                        first_name:
+                          type: string
+                        proxy_password:
+                          type: string
+                        data:
+                          type: integer
+                        data_spent:
+                          type: integer
+                      required:
+                        - user_id
+                        - first_name
+                        - proxy_password
+                        - data
+                        - data_spent
+          x-gitbook-description-html: <p>成功</p>
+  /user/api/proxies/sub-user/{user_id}/data/add:
+    post:
+      tags:
+        - Residential Proxies
+      security:
+        - bearerAuth: []
+      summary: 给子用户添加流量
+      parameters:
+        - in: path
+          name: user_id
+          required: true
+          schema:
+            type: string
+        - in: query
+          name: proxy_type
+          required: true
+          description: 代理类型（标准 | 高级）
+          schema:
+            type: string
+            example: standart
+          x-gitbook-description-html: <p>代理类型（标准 | 高级）</p>
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                data:
+                  type: integer
+                  example: 5
+                  description: 容量（GB）
+                  x-gitbook-description-html: <p>GB 量 </p>
+              required:
+                - data
+      responses:
+        '200':
+          description: 成功的
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  data:
+                    type: object
+          x-gitbook-description-html: <p>成功</p>
+  /user/api/proxies/sub-user/{user_id}/data/subtract:
+    post:
+      tags:
+        - Residential Proxies
+      security:
+        - bearerAuth: []
+      summary: 扣除子用户流量
+      parameters:
+        - in: path
+          name: user_id
+          required: true
+          schema:
+            type: string
+        - in: query
+          name: proxy_type
+          required: true
+          description: 代理类型（标准 | 高级）
+          schema:
+            type: string
+            example: standart
+          x-gitbook-description-html: <p>代理类型（标准 | 高级）</p>
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                data:
+                  type: integer
+                  example: 5
+                  description: 容量（GB）
+                  x-gitbook-description-html: <p>GB 量 </p>
+              required:
+                - data
+      responses:
+        '200':
+          description: 成功的
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  data:
+                    type: object
+          x-gitbook-description-html: <p>成功</p>
+  /user/api/proxies/sub-user/{user_id}/password:
+    post:
+      tags:
+        - Residential Proxies
+      security:
+        - bearerAuth: []
+      summary: 修改子用户密码
+      parameters:
+        - in: path
+          name: user_id
+          required: true
+          schema:
+            type: string
+        - in: query
+          name: proxy_type
+          required: true
+          description: 代理类型（标准 | 高级）
+          schema:
+            type: string
+            example: standart
+          x-gitbook-description-html: <p>代理类型（标准 | 高级）</p>
+      responses:
+        '200':
+          description: 成功的
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  data:
+                    type: object
+          x-gitbook-description-html: <p>成功</p>
+  /user/api/proxies/countries:
+    get:
+      tags:
+        - Residential Proxies
+      security:
+        - bearerAuth: []
+      summary: 国家列表
+      parameters:
+        - in: query
+          name: proxy_type
+          required: true
+          description: 代理类型（标准 | 高级）
+          schema:
+            type: string
+            example: standart
+          x-gitbook-description-html: <p>代理类型（标准 | 高级）</p>
+      responses:
+        '200':
+          description: 成功的
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PagedCountriesResponse'
+          x-gitbook-description-html: <p>成功</p>
+  /user/api/proxies/regions:
+    get:
+      tags:
+        - Residential Proxies
+      security:
+        - bearerAuth: []
+      summary: 地区列表
+      parameters:
+        - in: query
+          name: proxy_type
+          required: true
+          description: 代理类型（标准 | 高级）
+          schema:
+            type: string
+            example: standart
+          x-gitbook-description-html: <p>代理类型（标准 | 高级）</p>
+        - in: query
+          name: country_code
+          required: true
+          description: ISO国家代码
+          schema:
+            type: string
+            example: DE
+          x-gitbook-description-html: <p>ISO国家代码</p>
+      responses:
+        '200':
+          description: 成功的
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PagedRegionsResponse'
+          x-gitbook-description-html: <p>成功</p>
+  /user/api/proxies/cities:
+    get:
+      tags:
+        - Residential Proxies
+      security:
+        - bearerAuth: []
+      summary: 城市列表
+      parameters:
+        - in: query
+          name: proxy_type
+          required: true
+          description: 代理类型（标准 | 高级）
+          schema:
+            type: string
+            example: standart
+          x-gitbook-description-html: <p>代理类型（标准 | 高级）</p>
+        - in: query
+          name: country_code
+          required: true
+          description: ISO国家代码
+          schema:
+            type: string
+            example: DE
+          x-gitbook-description-html: <p>ISO国家代码</p>
+        - in: query
+          name: region_code
+          required: true
+          description: 地区代码（州/省）
+          schema:
+            type: string
+            example: BE
+          x-gitbook-description-html: <p>区域代码（州/省）</p>
+      responses:
+        '200':
+          description: 成功的
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PagedCitiesResponse'
+          x-gitbook-description-html: <p>成功</p>
