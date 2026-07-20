@@ -67,13 +67,12 @@ icon: fingerprint
 
 ## 支持情况
 
-p0f 伪装适用于以下产品：
+p0f 伪装和设备筛选适用于以下产品：
 
 * [数据中心代理](datacenter-proxies.md)
 * [ISP 代理](isp-proxies.md)
 * [移动代理](mobile-proxies.md)
-
-[住宅代理](residential-proxies/) 不支持 p0f 伪装。[Premium Residential](residential-proxies/premium-residential.md) 仅提供通过 Device OS 参数进行的设备筛选。
+* [Premium Residential](residential-proxies/premium-residential.md) - 通过 [Device OS](residential-proxies/#she-zhi-zi-duan-shuo-ming) 参数筛选设备，不提供 p0f 伪装
 
 {% hint style="warning" %}
 p0f 伪装在某些[移动代理](mobile-proxies.md)上不可用。请参阅[限制](restrictions.md)页面上的完整限制列表。

@@ -13,7 +13,7 @@ icon: hand
 以下内容无法通过代理获得：
 
 * 银行网站（网上银行、银行个人账户）
-* 政府门户网站和网站
+* 政府门户网站和网站，以及 `.gov` 和 `.edu` 域名的网站
 * 支付处理器：<mark style="color:purple;">Stripe</mark>、<mark style="color:purple;">PayPal</mark>（包括 <mark style="color:purple;">Yahoo</mark>）
 
 这是旨在限制欺诈活动的监管要求。该块**不适用于**加密服务和支付系统，例如交易所。
@@ -23,6 +23,11 @@ icon: hand
 
 Stripe 和 PayPal 可在数据中心和 ISP 代理上使用。
 {% endhint %}
+
+住宅代理的其他限制：
+
+* Premium Residential 无法访问 `apple.com`。
+* Standard Residential 和 Unlimited Residential 无法使用 Microsoft 服务。
 
 ***
 
@@ -59,6 +64,12 @@ UDP 在所有其他位置都可以正常工作。
 
 ***
 
+## 数据中心和 ISP 代理的连接数限制
+
+[数据中心代理](datacenter-proxies.md)和 [ISP 代理](isp-proxies.md)的限制为：每个 IP 最多 **2,500 个连接**。
+
+***
+
 ## 关闭端口
 
 {% hint style="info" %}
@@ -80,5 +91,3 @@ UDP 在所有其他位置都可以正常工作。
 
 * 基本连接数限制=5000。可以增加；更多详情请参见[支持](../contact-us.md)。
 * 每个订单的最大速度 = 75 **Mbps**
-
-
