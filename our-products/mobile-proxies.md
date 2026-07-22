@@ -62,11 +62,17 @@ icon: signal
 
 <figure><img src="../.gitbook/assets/image (59).png" alt=""><figcaption></figcaption></figure>
 
+{% hint style="warning" %}
+购买后，请激活端口：在订单中点击 <mark style="color:purple;">**Restart**</mark>，或访问您的专属 <mark style="color:purple;">**Reset URL**</mark>。端口激活前，代理无法工作。
+{% endhint %}
+
+<figure><img src="../.gitbook/assets/mobile_pred.png" alt="移动代理端口激活提示" width="492"><figcaption></figcaption></figure>
+
 ## 订单字段说明
 
 让我们回顾一下 <mark style="color:purple;">order</mark> 字段：
 
-<figure><img src="../.gitbook/assets/image (20) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/mobile_order2.png" alt="移动代理订单字段"><figcaption></figcaption></figure>
 
 <mark style="color:purple;">代理信息</mark> - 产品名称
 
@@ -127,5 +133,4 @@ icon: signal
 {% hint style="info" %}
 您可以在我们的[设置指南](../setup-guides/getting-started.md)部分了解如何配置代理。
 {% endhint %}
-
 
