@@ -12,7 +12,7 @@ icon: house-signal
 
 | 参数              | 值                              |
 | --------------- | ------------------------------ |
-| 池大小            | 300,000 — 400,000 台设备        |
+| 池大小            | 300,000 - 400,000 台设备        |
 | 最大连接数         | 35,000                         |
 | 每个订单最大速度     | 75 Mbps                        |
 | UDP 支持          | ✓（美国位置不可用）               |
@@ -28,7 +28,7 @@ icon: house-signal
 - 处理屏蔽数据中心 IP 的平台
 
 {% hint style="info" %}
-需要去除流量限制？请参阅 [Unlimited Residential](unlimited-residential-proxy.md) — 同一个池，但不计 GB。\
+需要去除流量限制？请参阅 [Unlimited Residential](unlimited-residential-proxy.md) - 同一个池，但不计 GB。\
 需要最大且最干净的池？请参阅 [Premium Residential](premium-residential.md)。
 {% endhint %}
 

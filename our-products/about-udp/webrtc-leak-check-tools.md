@@ -26,7 +26,7 @@ icon: check-to-slot
 
 ## 2.IP绑定
 
-<mark style="color:purple;">**Ipbinding**</mark> — 用于检查 WebRTC 泄漏的服务。
+<mark style="color:purple;">**Ipbinding**</mark> - 用于检查 WebRTC 泄漏的服务。
 
 {% embed url="https://ipbinding.online/" %}
 

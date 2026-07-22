@@ -15,10 +15,10 @@ icon: circle-question
 
 网络指纹伪装（<mark style="color:purple;">p0f</mark>）或按操作系统筛选设备可在以下产品中使用：
 
-* [**Premium Residential**](../../our-products/residential-proxies/premium-residential.md) — Device OS 筛选
-* [**Datacenter**](../../our-products/datacenter-proxies.md) 代理 — p0f 伪装
-* [**ISP**](../../our-products/isp-proxies.md) 代理 — p0f 伪装
-* [**Mobile**](../../our-products/mobile-proxies.md) 代理 — p0f 伪装，但并非所有运营商均支持
+* [**Premium Residential**](../../our-products/residential-proxies/premium-residential.md) - Device OS 筛选
+* [**Datacenter**](../../our-products/datacenter-proxies.md) 代理 - p0f 伪装
+* [**ISP**](../../our-products/isp-proxies.md) 代理 - p0f 伪装
+* [**Mobile**](../../our-products/mobile-proxies.md) 代理 - p0f 伪装，但并非所有运营商均支持
 
 移动代理的运营商限制请参阅[移动代理页面](../../our-products/mobile-proxies.md)。
 
@@ -320,7 +320,7 @@ resident.eu.proxyshard.com:8080:plan-limited-country-NL-sid-ABXdedq:AAAbbbbCC
 nslookup mobile.eu.proxyshard.com
 ```
 
-响应中的 **Addresses** 部分会列出 IPv4 地址 — 任选其一替换域名即可。
+响应中的 **Addresses** 部分会列出 IPv4 地址 - 任选其一替换域名即可。
 
 {% hint style="warning" %}
 域名后面有多台服务器，它们的 IP **可能发生变化**。如果用「写死的」IP 连接突然无法工作，请重新解析域名并替换为新地址。
@@ -349,8 +349,8 @@ nslookup mobile.eu.proxyshard.com
 
 任何产品都不内置对所消耗通道**速度**的测量。可用的统计如下：
 
-* <mark style="color:purple;">**Unlimited Residential**</mark> — 有活动连接计数器；
-* <mark style="color:purple;">**Residential**</mark> — 有已用流量统计（以 GB 计）；
+* <mark style="color:purple;">**Unlimited Residential**</mark> - 有活动连接计数器；
+* <mark style="color:purple;">**Residential**</mark> - 有已用流量统计（以 GB 计）；
 * 在**其他产品**（Datacenter、ISP、Mobile）上，**不进行**流量测量和请求日志记录。
 
 ***
@@ -377,7 +377,7 @@ nslookup mobile.eu.proxyshard.com
 如果对最低延迟和速度有要求，请使用 <mark style="color:purple;">**Datacenter**</mark> 或 <mark style="color:purple;">**ISP**</mark> 代理。它们的连接开销极低：没有负载均衡服务器这一层，连接是直连的。
 {% endhint %}
 
-为获得**尽可能低的 ping**，请从代理所在的同一国家进行连接。这通常通过在目标国家租用 <mark style="color:purple;">VPS / VDS / Bare-Metal</mark> 服务器来实现。例如，对于美国的 ISP 代理，理想做法是通过纽约的 VPS 工作 — ping 会最低，而从欧洲连接时 ping 至少为 **80–120 ms**。
+为获得**尽可能低的 ping**，请从代理所在的同一国家进行连接。这通常通过在目标国家租用 <mark style="color:purple;">VPS / VDS / Bare-Metal</mark> 服务器来实现。例如，对于美国的 ISP 代理，理想做法是通过纽约的 VPS 工作 - ping 会最低，而从欧洲连接时 ping 至少为 **80–120 ms**。
 
 ***
 

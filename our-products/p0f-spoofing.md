@@ -51,7 +51,7 @@ icon: fingerprint
 中期测试显示，在通过反欺诈检查方面取得了显着进步。确诊病例1例：
 
 {% hint style="success" %}
-**谷歌账户：**我们与[Vision Browser](../setup-guides/antidetect-browsers/vision-browser.md)的开发者一起，在不修改浏览器指纹的情况下测试了谷歌注册。在没有 p0f 伪装的干净配置文件上，系统会立即提供二维码（QR 码）验证。通过 p0f 伪装 Windows 10/11 后，二维码验证不再出现，Google 转而要求电话号码验证——这确认了不存在代理检测。
+**谷歌账户：**我们与[Vision Browser](../setup-guides/antidetect-browsers/vision-browser.md)的开发者一起，在不修改浏览器指纹的情况下测试了谷歌注册。在没有 p0f 伪装的干净配置文件上，系统会立即提供二维码（QR 码）验证。通过 p0f 伪装 Windows 10/11 后，二维码验证不再出现，Google 转而要求电话号码验证--这确认了不存在代理检测。
 {% endhint %}
 
 从事谷歌注册工作的人都知道，如果不“破坏”桌面上的指纹，就不可能获得电话号码验证：系统将始终要求提供二维码。 p0f 伪装在网络层面解决了这个问题。

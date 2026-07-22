@@ -118,11 +118,11 @@ o=- 46117317 2 IN IP4 127.0.0.1
 
 ### 首先看什么
 
-* `\[TM] WebRTC hook installed` — 脚本加载成功。
-* `\[WebRTC] created` — 该页面确实创建了 WebRTC 连接。
-* `\[WebRTC] local candidate parsed` — 本地候选者可见。
-* `\[WebRTC] remote candidate parsed` — 远程候选者可见。
-* `\[WebRTC] REAL REMOTE ENDPOINT` — 最有用的日志。它显示了 WebRTC 选择的最终远程端点。
+* `\[TM] WebRTC hook installed` - 脚本加载成功。
+* `\[WebRTC] created` - 该页面确实创建了 WebRTC 连接。
+* `\[WebRTC] local candidate parsed` - 本地候选者可见。
+* `\[WebRTC] remote candidate parsed` - 远程候选者可见。
+* `\[WebRTC] REAL REMOTE ENDPOINT` - 最有用的日志。它显示了 WebRTC 选择的最终远程端点。
 
 ### 如果日志很少
 

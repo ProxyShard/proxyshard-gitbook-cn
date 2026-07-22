@@ -21,8 +21,8 @@ IP 地址来自真实的家庭宽带。如果池中的设备退出流量共享�
 
 | 参数              | [Standard](standard-residential.md) | [Unlimited](unlimited-residential-proxy.md) | [Premium](premium-residential.md) |
 | --------------- | ------------------------------------ | ------------------------------------------- | --------------------------------- |
-| 池大小            | 300k — 400k                          | 300k — 400k (= Standard)                    | 3.8M — 4.6M                       |
-| 最大连接数         | 35,000                               | 5,000                                       | —                                 |
+| 池大小            | 300k - 400k                          | 300k - 400k (= Standard)                    | 3.8M - 4.6M                       |
+| 最大连接数         | 35,000                               | 5,000                                       | -                                 |
 | 最大速度           | 75 Mbps                              | 75 Mbps                                     | 75 Mbps                           |
 | [UDP 支持](../about-udp/) | ✓（美国除外）                          | ✓（美国除外）                                | ✗                                 |
 | [Device OS 筛选 (p0f)](README.md#she-zhi-zi-duan-shuo-ming) | ✗ | ✗ | ✓ |
@@ -144,18 +144,18 @@ IP 地址来自真实的家庭宽带。如果池中的设备退出流量共享�
 
 #### <mark style="color:green;">优点：</mark>
 
-* **灵活计费** — 按量付费或无限订阅（Unlimited）
-* **更换 IP** — 按需或按计时器（TTL）轮换地址
-* **广泛的地理定位** — 可选择国家、地区、城市和运营商
-* **家庭来源地址** — IP 注册在家庭宽带运营商名下
-* **UDP 支持** — Standard 和 Unlimited 可用（美国位置除外）
+* **灵活计费** - 按量付费或无限订阅（Unlimited）
+* **更换 IP** - 按需或按计时器（TTL）轮换地址
+* **广泛的地理定位** - 可选择国家、地区、城市和运营商
+* **家庭来源地址** - IP 注册在家庭宽带运营商名下
+* **UDP 支持** - Standard 和 Unlimited 可用（美国位置除外）
 
 #### <mark style="color:red;">缺点：</mark>
 
-* **可能出现速度下降** — 取决于终端设备的网络质量，这是该产品的特性
-* **动态 IP** — 地址可能随时被切换；如需静态 IP，请参阅 [ISP](../isp-proxies.md) 或 [Datacenter](../datacenter-proxies.md)
-* **不支持 p0f 伪装** — Premium Residential 仅提供 [Device OS 筛选](README.md#she-zhi-zi-duan-shuo-ming)
-* **美国位置不支持 UDP** — 在 Standard 和 Unlimited 上
+* **可能出现速度下降** - 取决于终端设备的网络质量，这是该产品的特性
+* **动态 IP** - 地址可能随时被切换；如需静态 IP，请参阅 [ISP](../isp-proxies.md) 或 [Datacenter](../datacenter-proxies.md)
+* **不支持 p0f 伪装** - Premium Residential 仅提供 [Device OS 筛选](README.md#she-zhi-zi-duan-shuo-ming)
+* **美国位置不支持 UDP** - 在 Standard 和 Unlimited 上
 
 {% hint style="success" %}
 没有 UDP 或需要静态地址？[ISP 代理](../isp-proxies.md)同时满足这两点。

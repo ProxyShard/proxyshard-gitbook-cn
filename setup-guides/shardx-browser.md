@@ -6,7 +6,7 @@ icon: browser
 # ShardX Launcher
 
 {% hint style="info" %}
-ShardX Launcher 以 MIT 许可证发布，是面向个人使用的免费工具。软件按「原样」提供。我们会定期发布更新，但不提供实时聊天支持——如遇严重问题，请在 [GitHub](https://github.com/ProxyShard/ShardBrowser/issues) 上提交 Bug 报告。
+ShardX Launcher 以 MIT 许可证发布，是面向个人使用的免费工具。软件按「原样」提供。我们会定期发布更新，但不提供实时聊天支持--如遇严重问题，请在 [GitHub](https://github.com/ProxyShard/ShardBrowser/issues) 上提交 Bug 报告。
 {% endhint %}
 
 ## 系统要求
@@ -20,7 +20,7 @@ ShardX Launcher 以 MIT 许可证发布，是面向个人使用的免费工具�
 | 处理器       | 双核 64 位，支持 SSE3                             | 四核及以上                                          |
 | 内存         | 4 GB                                              | 8 GB（多配置文件并行运行建议 16 GB）                |
 | 磁盘空间     | 1 GB                                              | 5 GB+                                               |
-| 运行环境     | Microsoft Edge WebView2                           | —                                                   |
+| 运行环境     | Microsoft Edge WebView2                           | -                                                   |
 
 ### macOS
 
@@ -47,9 +47,9 @@ ShardX Launcher 以 MIT 许可证发布，是面向个人使用的免费工具�
 
 <figure><img src="../.gitbook/assets/shardx-win-download.png" alt=""><figcaption>在 Assets 中选择 .exe 或 .msi</figcaption></figure>
 
-运行下载的文件。<mark style="color:purple;">Windows SmartScreen</mark> 可能会弹出警告——点击 <mark style="color:purple;">**更多信息**</mark>，然后点击 <mark style="color:purple;">**仍然运行**</mark>。
+运行下载的文件。<mark style="color:purple;">Windows SmartScreen</mark> 可能会弹出警告--点击 <mark style="color:purple;">**更多信息**</mark>，然后点击 <mark style="color:purple;">**仍然运行**</mark>。
 
-<figure><img src="../.gitbook/assets/shardx-win-smartscreen.png" alt=""><figcaption>SmartScreen — 点击「Run anyway」</figcaption></figure>
+<figure><img src="../.gitbook/assets/shardx-win-smartscreen.png" alt=""><figcaption>SmartScreen - 点击「Run anyway」</figcaption></figure>
 
 安装程序将在几秒钟内完成。
 
@@ -74,7 +74,7 @@ ShardX Launcher 以 MIT 许可证发布，是面向个人使用的免费工具�
 ### 解除 Gatekeeper 限制
 
 {% hint style="warning" %}
-此步骤为必要操作。macOS 会阻止所有未经签名的应用——跳过此步骤将无法打开程序。
+此步骤为必要操作。macOS 会阻止所有未经签名的应用--跳过此步骤将无法打开程序。
 {% endhint %}
 
 通过以下两种方式之一打开 <mark style="color:purple;">**终端（Terminal）**</mark>：
@@ -91,7 +91,7 @@ ShardX Launcher 以 MIT 许可证发布，是面向个人使用的免费工具�
 xattr -dr com.apple.quarantine "/Applications/ShardX Launcher.app"
 ```
 
-<figure><img src="../.gitbook/assets/shardx-mac-xattr-command.png" alt=""><figcaption>命令执行时无任何输出——这是正常的</figcaption></figure>
+<figure><img src="../.gitbook/assets/shardx-mac-xattr-command.png" alt=""><figcaption>命令执行时无任何输出--这是正常的</figcaption></figure>
 
 完成后，通过 <mark style="color:purple;">Spotlight</mark>（`⌘ + 空格` → `shardx`）或从 <mark style="color:purple;">应用程序（Applications）</mark> 文件夹启动应用。
 
@@ -132,9 +132,9 @@ scheme://user:pass@host:port
 
 <figure><img src="../.gitbook/assets/shardx-setup-check-proxy.png" alt=""><figcaption>点击「Test all」检测，然后点击「Import」</figcaption></figure>
 
-检测完成后，每条代理将显示状态。带有 <mark style="color:purple;">**UDP**</mark> 标记的代理支持 <mark style="color:purple;">SOCKS5 UDP</mark>，同时也支持 <mark style="color:purple;">WebRTC</mark>——这在对抗严格反欺诈系统时非常有用。如果没有 <mark style="color:purple;">**UDP**</mark> 标记，浏览器配置文件将自动切换为 <mark style="color:purple;">**TCP-only**</mark> 模式：IP 不会泄露，但流量可能会被高级反欺诈系统判定为可疑。我们强烈建议使用[支持 UDP 的代理](../our-products/about-udp/)。
+检测完成后，每条代理将显示状态。带有 <mark style="color:purple;">**UDP**</mark> 标记的代理支持 <mark style="color:purple;">SOCKS5 UDP</mark>，同时也支持 <mark style="color:purple;">WebRTC</mark>--这在对抗严格反欺诈系统时非常有用。如果没有 <mark style="color:purple;">**UDP**</mark> 标记，浏览器配置文件将自动切换为 <mark style="color:purple;">**TCP-only**</mark> 模式：IP 不会泄露，但流量可能会被高级反欺诈系统判定为可疑。我们强烈建议使用[支持 UDP 的代理](../our-products/about-udp/)。
 
-点击 <mark style="color:purple;">**Import**</mark>——代理将出现在列表中，状态为 <mark style="color:purple;">**Active**</mark>。
+点击 <mark style="color:purple;">**Import**</mark>--代理将出现在列表中，状态为 <mark style="color:purple;">**Active**</mark>。
 
 <figure><img src="../.gitbook/assets/shardx-setup-proxy-done.png" alt=""><figcaption>代理已添加</figcaption></figure>
 
@@ -146,7 +146,7 @@ scheme://user:pass@host:port
 
 <figure><img src="../.gitbook/assets/shardx-setup-profiles-empty.png" alt=""><figcaption>Browsers 部分</figcaption></figure>
 
-无需更改默认参数——ShardX 会自动生成唯一的<mark style="color:purple;">浏览器指纹（fingerprint）</mark>。请务必在表单底部的 <mark style="color:purple;">**Proxy**</mark> 字段中选择代理。
+无需更改默认参数--ShardX 会自动生成唯一的<mark style="color:purple;">浏览器指纹（fingerprint）</mark>。请务必在表单底部的 <mark style="color:purple;">**Proxy**</mark> 字段中选择代理。
 
 <figure><img src="../.gitbook/assets/shardx-setup-new-profile.png" alt=""><figcaption>选择代理并点击「Create profile」</figcaption></figure>
 
@@ -158,7 +158,7 @@ scheme://user:pass@host:port
 
 ## 启动配置文件
 
-点击 <mark style="color:purple;">**Start**</mark>——浏览器将以独立指纹和代理启动。
+点击 <mark style="color:purple;">**Start**</mark>--浏览器将以独立指纹和代理启动。
 
 <figure><img src="../.gitbook/assets/shardx-setup-done.png" alt=""><figcaption>配置文件已启动</figcaption></figure>
 
@@ -176,7 +176,7 @@ scheme://user:pass@host:port
 
 ### macOS：「ShardX Launcher 已损坏，无法打开」
 
-这是 <mark style="color:purple;">Gatekeeper</mark> 的标准拦截行为。请按照[解除 Gatekeeper 限制](#jie-chu-gatekeeper-xian-zhi)部分的步骤操作——其中包含打开终端的两种方式以及解除隔离的命令。
+这是 <mark style="color:purple;">Gatekeeper</mark> 的标准拦截行为。请按照[解除 Gatekeeper 限制](#jie-chu-gatekeeper-xian-zhi)部分的步骤操作--其中包含打开终端的两种方式以及解除隔离的命令。
 
 ---
 

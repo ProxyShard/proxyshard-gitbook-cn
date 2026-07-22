@@ -4,14 +4,14 @@ icon: signal
 
 # 移动代理
 
-<mark style="color:purple;">移动代理</mark>托管在配备真实 SIM 卡的路由器上。其连接的类型和质量与通过移动运营商的普通移动互联网完全相同 — 就像您手机上的网络一样。支持 <mark style="color:purple;">UDP</mark>，并提供丰富的地点和运营商选择。
+<mark style="color:purple;">移动代理</mark>托管在配备真实 SIM 卡的路由器上。其连接的类型和质量与通过移动运营商的普通移动互联网完全相同 - 就像您手机上的网络一样。支持 <mark style="color:purple;">UDP</mark>，并提供丰富的地点和运营商选择。
 
 {% hint style="info" %}
 **移动代理可在任何设备上工作。** “移动”一词仅指通过 SIM 卡连接的方式，而非终端设备的类型。无论是在 PC、笔记本还是反检测浏览器中，都同样好用。
 {% endhint %}
 
 {% hint style="warning" %}
-**这是一款专业产品 — 面向了解其用途的用户。** 流量经由真实 SIM 卡传输，因此速度可能波动 — 这是正常现象，而非故障。如果不确定移动代理是否适合您的任务，请在 [live 聊天](../contact-us.md)中咨询，或考虑 [ISP 代理](isp-proxies.md)（速度稳定、家庭 IP）或[住宅代理](residential-proxies/README.md)（庞大的池、海量会话）。
+**这是一款专业产品 - 面向了解其用途的用户。** 流量经由真实 SIM 卡传输，因此速度可能波动 - 这是正常现象，而非故障。如果不确定移动代理是否适合您的任务，请在 [live 聊天](../contact-us.md)中咨询，或考虑 [ISP 代理](isp-proxies.md)（速度稳定、家庭 IP）或[住宅代理](residential-proxies/README.md)（庞大的池、海量会话）。
 {% endhint %}
 
 {% hint style="danger" %}
@@ -27,7 +27,7 @@ icon: signal
 | 参数              | 值                                     |
 | --------------- | ------------------------------------- |
 | IP 类型           | 移动 IPv4                              |
-| 共享              | 否 — 一个端口对应一个用户               |
+| 共享              | 否 - 一个端口对应一个用户               |
 | 流量              | 无限                                   |
 | UDP 支持          | ✓                                     |
 | p0f 支持          | ✓（并非所有位置可用，见上文）            |
@@ -99,7 +99,7 @@ icon: signal
 
 <mark style="color:purple;">重新生成</mark> - 更改代理密码
 
-<mark style="color:purple;">Restart</mark>——启动或更改IP；相当于 <mark style="color:purple;">Reset URL</mark> 地址
+<mark style="color:purple;">Restart</mark>--启动或更改IP；相当于 <mark style="color:purple;">Reset URL</mark> 地址
 
 ## 适用于哪些任务
 
@@ -109,20 +109,20 @@ icon: signal
 
 #### <mark style="color:green;">优点：</mark>
 
-* **可选择具体运营商** — 通过所需的移动运营商接入
-* **通过 Reset URL 更换 IP** — 轮换频率不超过每分钟一次
-* **支持 p0f** — 大多数位置可用（见[限制](restrictions.md)）
+* **可选择具体运营商** - 通过所需的移动运营商接入
+* **通过 Reset URL 更换 IP** - 轮换频率不超过每分钟一次
+* **支持 p0f** - 大多数位置可用（见[限制](restrictions.md)）
 * **支持 UDP**
-* **灵活的租期** — 从一天到一个月
-* **专属端口** — 一张 SIM 卡，一个用户
+* **灵活的租期** - 从一天到一个月
+* **专属端口** - 一张 SIM 卡，一个用户
 
 #### <mark style="color:red;">缺点：</mark>
 
-* **可能出现速度下降** — 当运营商基站过载时 — 少见，但有可能
-* **对新手而言较复杂的产品** — 建议购买前先在[支持](../contact-us.md)处咨询
+* **可能出现速度下降** - 当运营商基站过载时 - 少见，但有可能
+* **对新手而言较复杂的产品** - 建议购买前先在[支持](../contact-us.md)处咨询
 * **在 macOS / iOS 上切换 p0f** 会因算法复杂而降低通道速度
-* **动态 IP** — 地址可能随时由运营商主动切换
-* **同时只能一个会话** — 一个端口保持一个 IP。如果需要_同时_连接多个设备（不是轮流，而是在同一时刻），请购买单独的端口或考虑[住宅代理](residential-proxies/README.md)
+* **动态 IP** - 地址可能随时由运营商主动切换
+* **同时只能一个会话** - 一个端口保持一个 IP。如果需要_同时_连接多个设备（不是轮流，而是在同一时刻），请购买单独的端口或考虑[住宅代理](residential-proxies/README.md)
 
 {% hint style="info" %}
 您可以在我们的[设置指南](../setup-guides/getting-started.md)部分了解如何配置代理。
