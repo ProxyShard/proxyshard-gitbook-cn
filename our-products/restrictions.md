@@ -26,8 +26,7 @@ Stripe 和 PayPal 可在数据中心和 ISP 代理上使用。
 
 住宅代理的其他限制：
 
-* Premium Residential 无法访问 `apple.com`。
-* Standard Residential 和 Unlimited Residential 无法使用 Microsoft 服务。
+* [Standard Residential](residential-proxies/standard-residential.md) / [Unlimited Residential](residential-proxies/unlimited-residential-proxy.md) / [Premium Residential](residential-proxies/premium-residential.md) 无法使用 Microsoft 和 Apple 服务。
 
 ***
 
