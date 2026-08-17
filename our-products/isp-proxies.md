@@ -32,6 +32,7 @@ icon: fire
 | 🇹🇷 土耳其 |
 | 🇺🇸 美国 |
 | 🇨🇿 捷克 |
+| 🇺🇦 乌克兰 |
 
 {% hint style="info" %}
 位置列表正在不断扩充。
@@ -103,4 +104,3 @@ icon: fire
 {% hint style="info" %}
 您可以在我们的[设置指南](../setup-guides/getting-started.md)部分了解如何配置代理。
 {% endhint %}
-
