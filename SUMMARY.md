@@ -49,6 +49,7 @@
 * [订单搜索 (Product tag)](site-navigation/order-search-product-tag.md)
 * [账单](site-navigation/invoices.md)
 * [我的订单](site-navigation/my-orders.md)
+* [团队空间](site-navigation/teamspaces.md)
 * [推荐计划](site-navigation/referral-program.md)
 
 ## 问答 <a href="#questions-and-answers" id="questions-and-answers"></a>
