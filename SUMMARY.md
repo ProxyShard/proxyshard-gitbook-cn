@@ -121,7 +121,7 @@
 * [IP Checker](https://proxyshard.com/ip-checker)
 * [Proxy Tester](https://proxyshard.com/proxy-tester)
 
-## ProxyShard API <a href="#proxyshard-api" id="proxyshard-api"></a>
+## ProxyShard API
 
 * ```yaml
   props:
@@ -135,7 +135,7 @@
         spec: proxysharddoc-api
   ```
 
-## ShardX Launcher API <a href="#shardx-launcher-api" id="shardx-launcher-api"></a>
+## ShardX Launcher API
 
 * ```yaml
   props:
