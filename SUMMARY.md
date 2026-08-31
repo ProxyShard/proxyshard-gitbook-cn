@@ -30,11 +30,10 @@
 
 * [网络指纹伪装 (p0f)](our-products/p0f-spoofing.md)
 * [关于 UDP 协议](our-products/about-udp/README.md)
-  * [安装 Tampermonkey 和 WebRTC 调试脚本](our-products/about-udp/tampermonkey-webrtc-debug.md)
   * [WebRTC 泄漏的工作原理](our-products/about-udp/how-webrtc-leak-works.md)
   * [在哪里检查 WebRTC 泄漏](our-products/about-udp/webrtc-leak-check-tools.md)
-  * [为什么只有 TCP 代理还不够](our-products/about-udp/why-tcp-proxy-not-enough.md)
   * [为什么禁用 WebRTC 不能避免被识别](our-products/about-udp/why-blocking-webrtc-doesnt-help.md)
+  * [安装 Tampermonkey 和 WebRTC 调试脚本](our-products/about-udp/tampermonkey-webrtc-debug.md)
   * [我们的实测结果](our-products/about-udp/field-test-results.md)
   * [启用 WebRTC 的软件方案](our-products/about-udp/webrtc-software-solutions.md)
 

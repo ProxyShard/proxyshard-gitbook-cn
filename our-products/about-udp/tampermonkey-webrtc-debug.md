@@ -5,9 +5,11 @@ icon: server
 
 # 如何安装 Tampermonkey 和 WebRTC 调试脚本
 
-## 安装 Tampermonkey
+## 简介
 
-要在 Chrome 中运行自定义脚本，可以方便地使用 **Tampermonkey** 扩展。
+Tampermonkey 可以在浏览器中运行用户脚本。本指南介绍如何使用该扩展判断网站是否执行 WebRTC 检查。
+
+## 安装 Tampermonkey
 
 前往 Chrome 网上应用店并安装扩展程序：
 
@@ -142,6 +144,5 @@ __dumpAllWebRTCStats()
 启动脚本后，您可以使用[如何检查WebRTC泄漏](webrtc-leak-check-tools.md)一文中的服务来检查WebRTC行为。
 
 如果您想了解泄漏机制本身，请参阅[WebRTC泄漏的工作原理](how-webrtc-leak-works.md)。
-
 
 

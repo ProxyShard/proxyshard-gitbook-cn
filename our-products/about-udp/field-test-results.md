@@ -2,20 +2,15 @@
 icon: island-tropical
 ---
 
-# 我们的现场测试结果
+# 我们的实测结果
 
-最初，我们向所有 <mark style="color:purple;">Datacenter</mark> 代理位置添加了 <mark style="color:purple;">**UDP**</mark> 支持，并通过 ClashX 对其进行了测试。我们得到以下结果：
+我们在所有 [<mark style="color:purple;">**Datacenter**</mark>](../datacenter-proxies.md) 代理位置启用了 <mark style="color:purple;">**UDP**</mark>，并使用 [Vision](../../setup-guides/antidetect-browsers/vision-browser.md) 浏览器进行了测试。结果如下：
 
-* Google - 连续创建 15 个帐户，没有错误，也没有电话号码。
-* Discord - 注册和服务器登录，包括具有增强机器人检查的服务器，均成功！ Even on servers that usually block ISP proxies.
-* Twitter - 10 张图像的验证码被接受，但有错误，并且重新验证顺利通过。
-* Facebook/Instagram/FB ADS... - 注册没有问题或验证码。
+* Google：连续创建 15 个账号，没有出现错误，也不需要手机号验证。
+* Discord：注册以及加入启用了严格机器人检查的服务器均成功，包括通常会阻止 ISP 代理的服务器。
+* Twitter：包含 10 张图片的 CAPTCHA 验证成功，后续重新验证也顺利完成。
+* Facebook、Instagram 和 Facebook Ads：注册过程没有出现问题，也没有 CAPTCHA。
 
-为了进行比较，通过没有 **UDP** 的 ISP 代理进行的相同操作会导致错误或需要 SMS 验证。
+相比之下，通过不支持 **UDP** 的 ISP 代理执行相同操作时会出现错误，或需要短信验证。
 
-而这一切都在数据中心代理上！
-
-**我们的所有产品现已提供支持** :tada:
-
-
-
+在这些测试中，WebRTC 正确工作后，没有再出现误判机器人活动的问题。
