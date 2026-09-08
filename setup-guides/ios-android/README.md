@@ -6,6 +6,13 @@ icon: mobile-signal-out
 
 ## iOS / Android 上的代理设置程序
 
+### [<mark style="color:purple;">**Octo Browser**</mark>](octo-browser.md)
+
+* 平台：<mark style="color:purple;">iOS</mark>
+* UDP 支持：是
+* 难度：简单
+* 分流：是，代理仅在所选配置文件内生效
+
 ### [<mark style="color:purple;">**V2Box**</mark>](v2box.md)
 
 * 平台：<mark style="color:purple;">iOS</mark>、<mark style="color:purple;">Android、MacOS</mark>
@@ -26,6 +33,5 @@ icon: mobile-signal-out
 * UDP支持：是
 * 难度：简单
 * 分割路由：否，完整隧道
-
 
 
