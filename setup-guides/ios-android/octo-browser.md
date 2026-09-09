@@ -1,4 +1,8 @@
-# iOS 版 Octo Browser
+---
+icon: octopus
+---
+
+# iOS 和 Android 版 Octo Browser
 
 {% hint style="warning" %}
 代理仅在已启动的 Octo Browser 配置文件内生效。设备上的其他应用仍使用常规互联网连接。
@@ -6,9 +10,11 @@
 
 ## 安装 Octo Browser
 
-从 App Store 下载 Octo Browser。
+从 App Store 或 Google Play 下载 Octo Browser。
 
 {% embed url="https://apps.apple.com/us/app/octo-browser/id6762627194" %}
+
+{% embed url="https://play.google.com/store/apps/details?id=net.octobrowser.mobile&pli=1" %}
 
 ## 注册和登录
 

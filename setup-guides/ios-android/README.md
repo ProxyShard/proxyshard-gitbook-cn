@@ -8,7 +8,7 @@ icon: mobile-signal-out
 
 ### [<mark style="color:purple;">**Octo Browser**</mark>](octo-browser.md)
 
-* 平台：<mark style="color:purple;">iOS</mark>
+* 平台：<mark style="color:purple;">iOS</mark>、<mark style="color:purple;">Android</mark>
 * UDP 支持：是
 * 难度：简单
 * 分流：是，代理仅在所选配置文件内生效
