@@ -8,29 +8,29 @@ icon: magnifying-glass
 
 {% embed url="https://proxyshard.com/ip-checker" %}
 
-<figure><img src="../.gitbook/assets/image (41).png" alt="" width="563"><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/ip-checker-overview.png" alt=""><figcaption></figcaption></figure>
 
 ***
 
 ## 主要字段
 
-### 我的IP
+### My IP address
 
 所有网站都能看到您当前的外部 IP 地址。旁边显示国旗和复制按钮。如果代理连接正确，这应该是 <mark style="color:purple;"> 代理服务器 IP</mark>，而不是您的真实地址。
 
-### 浏览器分数
+### Risk score
 
-显示检测到的匿名问题数量的数字分数。 **越低越好。**
+根据检测到的匿名问题计算风险分数。**分数越低越好。**
 
 {% hint style="info" %}
-单击 **“查看详细信息”** 查看每个参数的完整报告。
+打开详细诊断页面可查看每个参数的报告。
 {% endhint %}
 
 ***
 
-## 一般 IP 信息
+## General info
 
-### 提供者
+### Provider
 
 拥有您的 IP 的互联网提供商 (ISP) 的名称。例如：`WYOCORE TECHNOLOGIES LLC`。如果您使用代理，此字段将显示代理服务器提供商。
 
@@ -40,7 +40,7 @@ icon: magnifying-glass
 这是最重要的领域。如果显示 **“WebRTC 已泄露”**，则表示在代理处于活动状态时，您的真实 IP 对网站可见。更多详细信息：[WebRTC 泄漏的工作原理](about-udp/how-webrtc-leak-works.md)
 {% endhint %}
 
-<mark style="color:purple;">WebRTC</mark> 是用于 p2p 连接的浏览器协议。它可以绕过代理和 VPN 暴露真实的 IP。该字段显示 <mark style="color:purple;">WebRTC</mark> 检测到的 IP。如果它与 **我的 IP** 不同，则存在泄漏。
+<mark style="color:purple;">WebRTC</mark> 是用于 P2P 连接的浏览器协议。它可以绕过代理和 VPN 暴露真实 IP。该字段显示 <mark style="color:purple;">WebRTC</mark> 检测到的 IP。如果它与 **My IP address** 不同，则存在泄漏。
 
 |状态 |这意味着什么 |
 | ------------------- | ------------------------------------- |
@@ -52,7 +52,7 @@ icon: magnifying-glass
 正常情况下，<mark style="color:purple;">WebRTC</mark> 应该显示代理 IP 地址本身。
 {% endhint %}
 
-### 假ISP
+### Fake ISP
 
 检查提供商是否是“假的”。这对于某些掩盖其来源的 VPN 服务来说很常见。 `No` 表示提供商是真实的。
 
@@ -60,7 +60,7 @@ icon: magnifying-glass
 
 您的 IP 的反向 DNS 记录（PTR 记录）。显示哪个域名链接到该地址。
 
-### 匿名器
+### Anonymizer
 
 确定您的 IP 是否属于已知的匿名基础设施：VPN、代理或 Tor。 `No` 表示该 IP 未在匿名器数据库中列出。
 
@@ -68,7 +68,9 @@ icon: magnifying-glass
 
 ## 浏览器状态报告
 
-使用 **“查看详细信息”** 按钮打开。显示按严重性级别分组的详细浏览器和网络分析结果：
+<figure><img src="../.gitbook/assets/ip-checker-diagnostics.png" alt=""><figcaption></figcaption></figure>
+
+详细诊断页面按严重程度显示浏览器和网络分析结果。要查看检测到的问题详情，请点击对应卡片上的 **View troubles**。
 
 |水平|这意味着什么 |
 | ------------ | -------------------------------------------------- |
@@ -173,7 +175,7 @@ icon: magnifying-glass
 ## 如何读取结果
 
 {% hint style="success" %}
-**一切都很好：**我的 IP = 代理 IP，WebRTC 未检测到或被阻止，浏览器分数 = 0，ISP 类型 = `residential`。
+**一切正常：** My IP address = 代理 IP，未检测到 WebRTC 或 WebRTC 已被阻止，Risk score = 0，ISP type = `residential`。
 {% endhint %}
 
 {% hint style="warning" %}

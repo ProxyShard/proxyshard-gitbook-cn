@@ -10,14 +10,14 @@ icon: vial
 
 ***
 
-<figure><img src="../.gitbook/assets/image (46).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/proxy-tester-check-result.png" alt=""><figcaption></figcaption></figure>
 
 ## 如何使用
 
 1. 打开 [proxyshard.com/proxy-tester](https://proxyshard.com/proxy-tester)
-2. 将代理粘贴到文本字段中，如果有多个，则每行一个
-3. 点击 <mark style="color:purple;">**测试代理**</mark>
-4. 等待右侧 <mark style="color:purple;">History</mark> 表中的结果
+2. 将一个或多个代理粘贴到 <mark style="color:purple;">**Proxy list**</mark> 字段中，每行一个
+3. 点击 <mark style="color:purple;">**Test Proxy**</mark>
+4. 等待下方 <mark style="color:purple;">**Proxy check history**</mark> 表格显示结果
 
 ***
 
@@ -34,14 +34,14 @@ icon: vial
 
 ## 结果显示什么
 
-检查后<mark style="color:purple;">**History**</mark>表显示：
+检查完成后，<mark style="color:purple;">**Proxy check history**</mark> 表格会显示：
 
 | 字段 | 描述 |
 | ----------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **代理** |建立连接的 IP 地址 |
-| **响应时间** |响应时间以毫秒为单位。越低，代理速度越快 |
-| **状态代码** | HTTP 响应代码。 `200` 表示一切正常 |
-| **结果** |最终状态：<mark style="color:green;">**成功**</mark>（有效）或<mark style="color:red;">**失败**</mark>（无效）。如果代理是 SOCKS5，还显示连接类型 (HTTP/SOCKS5) 和 <mark style="color:purple;">UDP</mark> 支持。 |
+| **Proxy** | 建立连接的 IP 地址 |
+| **Response time** | 响应时间，以毫秒为单位。数值越低，代理速度越快 |
+| **Status code** | HTTP 响应代码。`200` 表示连接正常 |
+| **Result** | 最终状态为 <mark style="color:green;">**Success**</mark>（可用）或 <mark style="color:red;">**Failed**</mark>（不可用）。如果代理支持 UDP，状态旁会显示 <mark style="color:purple;">**UDP**</mark> 标记 |
 
 ***
 
