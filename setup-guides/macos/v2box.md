@@ -1,4 +1,4 @@
-#V2盒子
+# V2Box
 
 {% hint style="success" %}
 该解决方案支持 UDP 隧道！

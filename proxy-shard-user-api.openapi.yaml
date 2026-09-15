@@ -1,5 +1,5 @@
 # ============================================================================
-# ProxyShard User API — OpenAPI 3.0.3.
+# ProxyShard User API: OpenAPI 3.0.3.
 #
 # ИСТОЧНИК ПРАВДЫ по публичному API. Раньше спека жила только в GitBook
 # (docs.proxyshard.com/proxyshard-api/*), из-за чего расходилась с кодом
@@ -7,7 +7,7 @@
 # продолжала обещать старую форму.
 #
 # Правила:
-#   * добавил/изменил ручку в services/user-api — правь этот файл в ТОМ ЖЕ
+#   * добавил/изменил ручку в services/user-api - правь этот файл в ТОМ ЖЕ
 #     коммите;
 #   * теги = страницы в GitBook, менять их имена без нужды не стоит;
 #   * после мержа залить файл в GitBook (OpenAPI-спека проекта), иначе
@@ -32,7 +32,7 @@ tags:
   - name: Residential Proxies
     description: 住宅代理的操作
   - name: Service
-    description: Health probes (no authentication)
+    description: "健康探测（无身份验证）"
 components:
   securitySchemes:
     bearerAuth:
@@ -60,7 +60,7 @@ components:
         signature:
           type: string
           nullable: true
-          description: p0f signature assigned to the IP, null when not set
+          description: "p0f 分配给IP的签名，不设置时为空"
       required:
         - ip
         - username
@@ -81,7 +81,7 @@ components:
         - message
     AddonLine:
       type: object
-      description: A single add-on line stored on an order
+      description: "订单上存储的一条附加行"
       properties:
         addon_key:
           type: string
@@ -89,12 +89,12 @@ components:
           type: integer
         qty:
           type: integer
-          description: Active units for the current period
+          description: "当期活跃单位"
         price_per_unit:
           type: integer
-          description: Price per unit in cents at time of purchase
+          description: "购买时的单价（以美分为单位）"
         pending:
-          description: Scheduled change to apply on next renewal (null if none)
+          description: "更改计划下次续订，或 `null`"
           nullable: true
           type: object
           properties:
@@ -105,10 +105,10 @@ components:
                 - downgrade
             next_qty:
               type: integer
-              description: Target qty after downgrade (only present for downgrade action)
+              description: "降级后目标数量"
     PurchaseRequestDcIsp:
       type: object
-      description: 为数据中心/ISP 购买 — 需要位置字段。
+      description: "为数据中心/ISP 购买; 需要位置字段。"
       properties:
         product:
           type: string
@@ -132,7 +132,7 @@ components:
         addons:
           type: array
           nullable: true
-          description: Add-ons attached at purchase time (e.g. p0f_slots for DC/ISP)
+          description: "购买时附加的组件，例如 DC 或 ISP 的 `p0f_slots`"
           items:
             $ref: '#/components/schemas/CreateOrderAddonRequest'
       required:
@@ -141,7 +141,7 @@ components:
         - cycle
     PurchaseRequestResidentialStandard:
       type: object
-      description: 购买标准住宅代理 — 不需要位置；循环 是固定的（一生）。
+      description: "购买标准住宅代理；无需位置；计费周期固定为 lifetime。"
       properties:
         product:
           type: string
@@ -157,14 +157,14 @@ components:
         addons:
           type: array
           nullable: true
-          description: Add-ons attached at purchase time (e.g. p0f_slots for DC/ISP)
+          description: "购买时附加的附加组件，例如 DC 或 ISP 的 `p0f_slots`"
           items:
             $ref: '#/components/schemas/CreateOrderAddonRequest'
       required:
         - product
     PurchaseRequestResidentialPremium:
       type: object
-      description: 购买高级住宅代理 — 不需要位置；循环 是固定的（一生）。
+      description: "购买高级住宅代理；无需位置；计费周期固定为 lifetime。"
       properties:
         product:
           type: string
@@ -180,14 +180,14 @@ components:
         addons:
           type: array
           nullable: true
-          description: Add-ons attached at purchase time (e.g. p0f_slots for DC/ISP)
+          description: "购买时附加的附加组件，例如 DC 或 ISP 的 `p0f_slots`"
           items:
             $ref: '#/components/schemas/CreateOrderAddonRequest'
       required:
         - product
     PurchaseRequestResidentialUnmetered:
       type: object
-      description: 购买不限流量住宅代理 — 支持自动续订。
+      description: "购买不限流量住宅代理; 支持自动续订。"
       properties:
         product:
           type: string
@@ -204,7 +204,7 @@ components:
         addons:
           type: array
           nullable: true
-          description: Add-ons attached at purchase time (e.g. p0f_slots for DC/ISP)
+          description: "购买时附加的附加组件，例如 DC 或 ISP 的 `p0f_slots`"
           items:
             $ref: '#/components/schemas/CreateOrderAddonRequest'
       required:
@@ -233,7 +233,7 @@ components:
         addons:
           type: array
           nullable: true
-          description: Add-ons attached at purchase time (e.g. p0f_slots for DC/ISP)
+          description: "购买时附加的附加组件，例如 DC 或 ISP 的 `p0f_slots`"
           items:
             $ref: '#/components/schemas/CreateOrderAddonRequest'
       required:
@@ -477,10 +477,10 @@ components:
       properties:
         code:
           type: string
-          description: ISP code (slug)
+          description: "ISP 代码，通常是一个 slug"
         name:
           type: string
-          description: ISP name
+          description: "互联网服务提供商名称"
         country:
           $ref: '#/components/schemas/Country'
         region:
@@ -489,10 +489,10 @@ components:
           properties:
             code:
               type: string
-              description: Region code
+              description: "地区代码"
             name:
               type: string
-              description: Region name
+              description: "地区名称"
           required:
             - code
             - name
@@ -529,7 +529,7 @@ paths:
     get:
       tags:
         - Datacenter & ISP Proxies
-      summary: 获取订单的有效代理
+      summary: 获取订单中的活动代理
       parameters:
         - in: query
           name: order_id
@@ -566,10 +566,8 @@ paths:
     post:
       tags:
         - Datacenter & ISP Proxies
-      summary: Set del-np (per-IP deletion)
-      description: |
-        Only for Datacenter & ISP proxies.
-        After updating, the order `quantity` and `price_paid` are recalculated.
+      summary: "设置按 IP 删除 (del-np)"
+      description: "仅适用于数据中心和 ISP 代理。更新后，重新计算订单 `quantity` 和 `price_paid`。"
       parameters:
         - in: path
           name: order_id
@@ -599,7 +597,7 @@ paths:
                 - items
       responses:
         '200':
-          description: Success
+          description: "成功"
           content:
             application/json:
               schema:
@@ -610,7 +608,7 @@ paths:
                   message:
                     type: string
         '400':
-          description: Validation error / not DC-ISP / keep=0
+          description: "验证错误/不是 DC-ISP/keep=0"
           content:
             application/json:
               schema:
@@ -619,35 +617,8 @@ paths:
     post:
       tags:
         - Datacenter & ISP Proxies
-      summary: Set IP OS-fingerprint signature
-      description: "Sets the OS-fingerprint signature for one or more proxy IPs. \ 
-
-        Requires the `p0f_slots` add-on to be active on the order.
-
-
-        Each IP that receives a signature permanently occupies one slot.
-
-        Changing the OS value on an IP that already has a signature does not consume an extra slot.
-
-
-        **Available signature values:**
-
-
-        | Value | OS |
-
-        |-------|----|
-
-        | `ios` | iOS |
-
-        | `macos` | macOS |
-
-        | `android` | Android |
-
-        | `linux` | Linux |
-
-        | `win10` | Windows 10 |
-
-        | `win11` | Windows 11 |\n"
+      summary: "设置 IP 操作系统指纹"
+      description: "为一个或多个代理 IP 设置操作系统指纹签名。订单必须启用 `p0f_slots` 组件。每个设置了签名的 IP 会永久占用一个槽位。修改已有签名 IP 的操作系统值不会占用额外槽位。**可用的签名值：** | 值 | 操作系统 | | --- | --- | | `ios` | iOS | | `macos` | macOS | | `android` | Android | | `linux` | Linux | | `win10` | Windows 10 | | `win11` | Windows 11 |"
       parameters:
         - in: path
           name: order_id
@@ -675,7 +646,7 @@ paths:
                         type: string
                       signature:
                         type: string
-                        description: OS identifier to spoof.
+                        description: "要欺骗的操作系统标识符。"
                         enum:
                           - ios
                           - macos
@@ -685,7 +656,7 @@ paths:
                           - win11
       responses:
         '200':
-          description: Success
+          description: "成功"
           content:
             application/json:
               schema:
@@ -697,9 +668,9 @@ paths:
                     type: string
                   updated:
                     type: integer
-                    description: Number of IPs updated
+                    description: "更新的IP数量"
         '400':
-          description: Validation error or not enough slots
+          description: "验证错误或插槽不足"
           content:
             application/json:
               schema:
@@ -708,32 +679,31 @@ paths:
     get:
       tags:
         - Datacenter & ISP Proxies
-      summary: Calculate add-on price
-      description: |
-        Returns the price preview for purchasing additional units of a given add-on for an active datacenter/ISP order.   Currently the only supported add-on key is `p0f_slots` — OS-fingerprint signature slots.
+      summary: "计算附加成本"
+      description: "返回为活动数据中心/ISP 订单购买给定附加组件的额外单位的价格预览。目前唯一支持的附加密钥是 `p0f_slots`；操作系统指纹签名槽。"
       parameters:
         - in: path
           name: order_id
           required: true
-          description: Order ID
+          description: "订单号"
           schema:
             type: integer
         - in: query
           name: addon_key
           required: true
-          description: Add-on identifier (e.g. `p0f_slots`)
+          description: "附加标识符（例如 `p0f_slots`）"
           schema:
             type: string
         - in: query
           name: add_qty
           required: true
-          description: Number of units to add
+          description: "要添加的单位数量"
           schema:
             type: integer
             minimum: 1
       responses:
         '200':
-          description: Price preview
+          description: "价格预览"
           content:
             application/json:
               schema:
@@ -747,7 +717,7 @@ paths:
                     type: integer
                   price_per_unit:
                     type: integer
-                    description: Price per unit in cents
+                    description: "每单位价格（美分）"
                   current_qty:
                     type: integer
                   add_qty:
@@ -756,19 +726,18 @@ paths:
                     type: integer
                   add_total:
                     type: integer
-                    description: Total charge for this purchase in cents
+                    description: "本次购买的总费用（以美分为单位）"
   /user/api/orders/{order_id}/addons/purchase:
     post:
       tags:
         - Datacenter & ISP Proxies
-      summary: Purchase an add-on
-      description: |
-        Immediately charges the wallet and adds the requested number of add-on units to the order.  The order must be **active**.   The only currently available add-on key is `p0f_slots`.
+      summary: "购买附加组件"
+      description: "立即从钱包扣款，并将指定数量的组件添加到订单。订单状态必须为 **active**。目前只有 `p0f_slots` 可用。"
       parameters:
         - in: path
           name: order_id
           required: true
-          description: Order ID
+          description: "订单号"
           schema:
             type: integer
       requestBody:
@@ -788,7 +757,7 @@ paths:
                   minimum: 1
       responses:
         '200':
-          description: Add-on purchased
+          description: "已购买附加组件"
           content:
             application/json:
               schema:
@@ -800,24 +769,23 @@ paths:
                     type: string
                   addons_price_paid:
                     type: integer
-                    description: Cumulative add-on cost for this order (cents)
+                    description: "该订单的累计附加成本（分）"
                   addons:
                     type: array
-                    description: Updated add-on list stored on the order
+                    description: "订单中存储的更新附加列表"
                     items:
                       $ref: '#/components/schemas/AddonLine'
   /user/api/orders/{order_id}/addons/schedule:
     post:
       tags:
         - Datacenter & ISP Proxies
-      summary: Schedule add-on downgrade for next renewal
-      description: |
-        Schedules a **downgrade** of an add-on to take effect on the next renewal cycle.  The new quantity must be lower than the current one.  The change is stored as a `pending` marker and applied automatically when the order renews.
+      summary: "安排附加降级"
+      description: "安排组件在下一个续订周期 **降级**。新数量必须低于当前数量。更改保存为 `pending` 标记，并在订单续订时自动应用。"
       parameters:
         - in: path
           name: order_id
           required: true
-          description: Order ID
+          description: "订单号"
           schema:
             type: integer
       requestBody:
@@ -839,11 +807,11 @@ paths:
                     - downgrade
                 next_qty:
                   type: integer
-                  description: Target quantity after renewal. Must be less than current qty.
+                  description: "续订后的目标数量。必须小于当前数量。"
                   minimum: 1
       responses:
         '200':
-          description: Downgrade scheduled
+          description: "已安排降级"
           content:
             application/json:
               schema:
@@ -861,13 +829,13 @@ paths:
     post:
       tags:
         - Datacenter & ISP Proxies
-      summary: Cancel a scheduled downgrade
-      description: Removes the pending downgrade that was set via the schedule endpoint.
+      summary: "取消已安排的降级"
+      description: "取消通过 schedule 接口设置的待处理降级。"
       parameters:
         - in: path
           name: order_id
           required: true
-          description: Order ID
+          description: "订单号"
           schema:
             type: integer
       requestBody:
@@ -883,7 +851,7 @@ paths:
                   type: string
       responses:
         '200':
-          description: Pending downgrade cleared
+          description: "待降级已清除"
           content:
             application/json:
               schema:
@@ -940,10 +908,8 @@ paths:
     get:
       tags:
         - General
-      summary: Calculate order price
-      description: |
-        Calculates price by product name, cycle name and quantity.
-        Uses the same validation rules as purchase (allowed billing cycles, promo rules).
+      summary: "计算订单成本"
+      description: "按产品名称、周期名称和数量计算价格。使用与购买相同的验证规则（允许的计费周期、促销规则）。"
       parameters:
         - in: query
           name: product
@@ -977,13 +943,13 @@ paths:
         - in: query
           name: addons_json
           required: false
-          description: URL-encoded JSON array of add-ons, e.g. [{"addon_key":"p0f_slots","qty":5}]
+          description: "URL 编码的 JSON 组件数组，例如 [{\"addon_key\":\"p0f_slots\",\"qty\":5}]"
           schema:
             type: string
             nullable: true
       responses:
         '200':
-          description: Success
+          description: "成功"
           content:
             application/json:
               schema:
@@ -997,18 +963,18 @@ paths:
                     type: integer
                   addons_price:
                     type: integer
-                    description: Add-ons total, minor units
+                    description: "附加组件总数，次要单位"
                   total_with_addons:
                     type: integer
-                    description: final_price + addons_price
+                    description: "最终价格 + 插件价格"
         '400':
-          description: Validation error
+          description: "验证错误"
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ApiError'
         '401':
-          description: Unauthorized
+          description: "未经授权"
           content:
             application/json:
               schema:
@@ -1020,7 +986,7 @@ paths:
       summary: 更改订单结算周期
       description: |
         按周期名称更改计费周期。仅适用于数据中心和 ISP 代理。
-        如果促销代码在所选周期内不可用，则会自动 重置。
+        如果促销代码在所选周期内不可用，将自动重置。
       parameters:
         - in: path
           name: order_id
@@ -1145,7 +1111,7 @@ paths:
     get:
       tags:
         - General
-      summary: Get the available number of proxies
+      summary: "获取可用代理数量"
       description: 返回所有产品的总可用数量。
       responses:
         '200':
@@ -1284,24 +1250,24 @@ paths:
                         type: integer
                       price_paid:
                         type: integer
-                        description: Base subscription price in cents
+                        description: "基本订阅价格（以美分为单位）"
                       addons_price_paid:
                         type: integer
-                        description: Total add-on cost in cents
+                        description: "总附加成本（以美分为单位）"
                       addons:
                         type: array
-                        description: Add-on lines attached to this order
+                        description: "附加到此订单的附加行"
                         items:
                           $ref: '#/components/schemas/AddonLine'
                       p0f_slots_available:
                         type: integer
-                        description: Active p0f signature slots (from add-ons)
+                        description: "活跃的 p0f 签名槽（来自附加组件）"
                       p0f_slots_used:
                         type: integer
-                        description: Slots currently occupied by signed proxies
+                        description: "目前已被签名代理占用的槽位"
                       p0f_slots_next:
                         type: integer
-                        description: Slots that will be active after next renewal
+                        description: "下次更新后将激活的插槽"
                       status:
                         type: string
                       created_at:
@@ -1327,8 +1293,7 @@ paths:
       tags:
         - General
       summary: 续订订单
-      description: |
-        Renewal is available only when order status is `on-hold`.
+      description: "仅当订单状态为 `on-hold` 时才可以续订。"
       parameters:
         - in: path
           name: id
@@ -1432,19 +1397,18 @@ paths:
     get:
       tags:
         - Residential Proxies
-      summary: Parent (account owner) traffic
-      description: |
-        Returns the parent account's own total and remaining data for the given proxy type, aggregated across the parent's orders. Unlike the sub-user endpoints, this reflects the data of the account owner, not a sub-user.
+      summary: "账户所有者流量"
+      description: "返回给定代理类型的父账户自己的总数据和剩余数据，在父订单中聚合。与子用户端点不同，这反映了帐户所有者的数据，而不是子用户的数据。"
       parameters:
         - in: query
           name: proxy_type
           required: true
-          description: Proxy type (standart | premium)
+          description: "代理类型（标准 | 高级）"
           schema:
             type: string
       responses:
         '200':
-          description: Success
+          description: "成功"
           content:
             application/json:
               schema:
@@ -1454,16 +1418,16 @@ paths:
                     type: boolean
                   data:
                     type: integer
-                    description: Total allocated data in bytes
+                    description: "分配的数据总量（以字节为单位）"
                   data_remain:
                     type: integer
-                    description: Remaining data in bytes
+                    description: "剩余数据（以字节为单位）"
                   data_spent:
                     type: integer
-                    description: Consumed data in bytes
+                    description: "消耗的数据（以字节为单位）"
                   proxy_password:
                     type: string
-                    description: Parent account's proxy password
+                    description: "父帐户的代理密码"
                 required:
                   - success
                   - data
@@ -1471,13 +1435,13 @@ paths:
                   - data_spent
                   - proxy_password
         '400':
-          description: User resident not set / invalid proxy type
+          description: "用户驻留未设置/代理类型无效"
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ApiError'
         '401':
-          description: Unauthorized
+          description: "未经授权"
           content:
             application/json:
               schema:
@@ -1516,7 +1480,7 @@ paths:
                     type: boolean
                   count:
                     type: integer
-                    description: Total sub-users before pagination
+                    description: "分页前子用户总数"
                   data:
                     type: array
                     items:
@@ -1909,17 +1873,13 @@ paths:
     get:
       tags:
         - Residential Proxies
-      summary: List ISPs
-      description: |
-        Internet providers available inside a city — the fourth targeting level after country, region and city.
-        Unlike the other location endpoints this one needs the full chain: `country_code`, `region_code` AND `city_code` are all required, because upstream ISPs are bound to a city.
-        Premium package only: the ISP catalogue is not maintained for the standart and unlimited packages, and any other `proxy_type` is rejected with 400.
-        ISPs are listed for major cities only, so an empty `results` with `count: 0` is a normal answer for a smaller city.
+      summary: "列出 ISP"
+      description: "城市内可用的互联网提供商；继国家、地区、城市之后的第四个目标级别。与其他位置端点不同，这个端点需要完整的链：`country_code`、`region_code` 和 `city_code` 都是必需的，因为上游 ISP 与城市绑定。仅高级套餐：不为标准套餐和无限制套餐维护 ISP 目录，任何其他 `proxy_type` 都会被拒绝并返回 400。仅列出主要城市的 ISP，因此对于较小的城市，带有 `count: 0` 的空 `results` 是正常答案。"
       parameters:
         - in: query
           name: proxy_type
           required: true
-          description: Must be `premium` — ISP targeting is premium-only
+          description: "必须为 `premium`；ISP 定向仅适用于 premium 套餐。"
           schema:
             type: string
             enum:
@@ -1927,30 +1887,30 @@ paths:
         - in: query
           name: country_code
           required: true
-          description: ISO country code
+          description: "ISO国家代码"
           schema:
             type: string
         - in: query
           name: region_code
           required: true
-          description: Region code (state/province code)
+          description: "地区或州代码"
           schema:
             type: string
         - in: query
           name: city_code
           required: true
-          description: City code from GET /user/api/proxies/cities
+          description: "来自 GET /user/api/proxies/cities 的城市代码"
           schema:
             type: string
       responses:
         '200':
-          description: Success
+          description: "成功"
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/PagedIspsResponse'
         '400':
-          description: proxy_type is not `premium`, user resident is not set, or the user has no active order for the package
+          description: "proxy_type 不是 `premium`，未设置用户常驻，或者用户没有对该包的有效订单"
           content:
             application/json:
               schema:
@@ -1961,7 +1921,7 @@ paths:
                     success: false
                     message: ISP targeting is available for the premium package only
         '401':
-          description: Unauthorized
+          description: "未经授权"
           content:
             application/json:
               schema:
@@ -1970,21 +1930,19 @@ paths:
     get:
       tags:
         - Service
-      summary: Deep health check
-      description: |
-        Outside the /user/api/ prefix, so no API key is required.
+      summary: "健康检查"
+      description: "在 /user/api/ 前缀之外，因此不需要 API 密钥。"
       security: []
       responses:
         '200':
-          description: Service is up
+          description: "服务已启动"
   /health/live:
     get:
       tags:
         - Service
-      summary: Liveness probe
-      description: |
-        Outside the /user/api/ prefix, so no API key is required.
+      summary: "存活检查"
+      description: "在 /user/api/ 前缀之外，因此不需要 API 密钥。"
       security: []
       responses:
         '200':
-          description: Service is up
+          description: "服务已启动"

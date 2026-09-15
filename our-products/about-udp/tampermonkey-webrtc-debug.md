@@ -45,7 +45,7 @@ Tampermonkey 可以在浏览器中运行用户脚本。本指南介绍如何使�
 {% endstep %}
 
 {% step %}
-####粘贴脚本代码
+#### 粘贴脚本代码
 
 将复制的代码从 Gist 粘贴到 Tampermonkey 编辑器中。
 

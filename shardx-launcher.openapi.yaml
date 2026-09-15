@@ -1,92 +1,9 @@
 openapi: 3.0.3
 
 info:
-  title: ShardX Browser — Automation API
+  title: "ShardX Browser; Automation API"
   version: "0.1.0"
-  description: |
-    ShardX 反检测浏览器的本地 HTTP 自动化 API：
-    生成指纹、创建/启动/停止配置文件，获取
-    Chrome DevTools Protocol (CDP) WebSocket 端点，以便通过
-    Puppeteer / Playwright 控制已启动的配置文件。
-
-    ## 绑定与生命周期
-    服务器在启动器应用内部运行，仅监听 **127.0.0.1**，
-    端口由 *Settings → Automation API* 指定（默认 **40325**）。
-    外部主机**无法访问**。更改端口及启用/停用设置
-    在重启应用后生效。
-
-    ## 身份验证
-    除 `GET /health` 外，所有端点均需要 **Bearer JWT**（HS256，
-    由启动器密钥签名）：
-
-        Authorization: Bearer <token>
-
-    永久令牌显示于 *Settings → Automation API*（从那里复制）。
-    **Regenerate token** 按钮会立即轮换签名密钥：新令牌即刻生效，
-    所有旧令牌同时失效。没有单独的 API 密钥或令牌签发端点——
-    令牌本身即为凭据。
-
-    缺失/无效令牌 → 返回空响应体的 `401`。
-
-    ## 典型流程
-    1. `GET /fingerprint/new/{platform}` → 完全唯一化的指纹
-       （随机 platform_version、考虑主机的 CPU/RAM、裁剪后的屏幕、
-       各向量噪音），**不**保存。
-    2. 可选：编辑返回的 `fingerprint` 对象（例如启用
-       `noise.fonts.enabled`、设置 `webrtc`、调整 `navigator`）。
-    3. `POST /profiles`（或 `POST /folders/{folder}/profiles`），将该对象
-       作为 `fingerprint` → 启动器**原样**保存
-       （create 不会重新随机化）。
-    4. `POST /profiles/{id}/start` → 返回 CDP 端点；以
-       `browserWSEndpoint = cdp.web_socket_debugger_url` 方式连接。
-    5. 完成后执行 `POST /profiles/{id}/stop`。
-
-    ## 代理与 QUIC/WebRTC
-    **每次**启动（通过 UI 或 API）时，在浏览器启动之前，
-    绑定代理会实时探测 UDP-relay（SOCKS5 UDP_ASSOCIATE）的支持情况。
-    如果 UDP 可用——启用 QUIC，WebRTC 通过代理 UDP relay 通信；
-    如果不可用——禁用 QUIC，WebRTC 强制切换为 TCP-only 模式，
-    防止真实 IP 泄露。`auto` 模式下的时区、语言和地理位置字段
-    也会在启动时通过代理实时解析。若在创建永久配置文件时传入
-    `proxy`（字符串）——代理将被添加到存储并完成全量测试；
-    临时配置文件的代理以内联方式存储。
-
-    ## 临时配置文件
-    `POST /profiles/temporary` 创建带 `temporary` 标志的配置文件：
-    在 `GET /profiles` 和启动器界面中隐藏，浏览器关闭后**自动删除**
-    （配置 + 数据文件夹）。若应用在配置文件打开时崩溃——
-    将在下次启动时删除。
-
-    ## fingerprint 对象
-    `GET /fingerprint/new*` 返回、创建端点接受的 `fingerprint`
-    是启动器原生的 FingerprintConfig。该对象被原样传递，
-    因此下方 schema 记录了常见的子对象，但刻意保持开放
-    （`additionalProperties: true`）。
-
-    ## MCP 服务器
-    独立的 **MCP**（Model Context Protocol）服务器允许 AI 客户端
-    通过*此* API 控制启动器，并通过 CDP 控制配置文件的浏览器。
-    这是一个独立的 Node 进程——**不**是本 HTTP API 的组成部分，
-    也不由其托管。可直接从启动器下载
-    （**Settings → MCP server → Download MCP server** 或侧边栏"Download MCP"按钮）；
-    启动器会将源代码保存到所选文件夹。
-    也可从仓库获取：`rust/shardx-launcher/mcp/`。
-
-    其底层只是调用此 API：配置
-    `SHARDX_API`（基础 URL）和 `SHARDX_TOKEN`（来自
-    *Settings → Automation API* 的 Bearer 令牌）。MCP 服务器提供：
-    - **API 工具** — 对下方端点的轻量封装
-      （配置文件、指纹、代理、文件夹、cookies、启动/停止）。
-    - **浏览器工具**（基于 CDP 的 patchright）— `browser_navigate`、
-      `browser_evaluate`、`browser_screenshot`、`browser_click`、
-      `browser_fill`、标签页管理、等待操作等，作用于通过
-      `POST /profiles/{id}/start` 启动的配置文件（该端点返回
-      CDP 端点）。
-
-    启动方式：通过 **stdio**（由客户端启动）或通过 HTTP
-    在 `127.0.0.1:<port>/mcp`（若设置了 `MCP_HTTP_PORT`）。详情见
-    MCP 服务器的 README。（启动器仅负责下载，不负责运行。）
-
+  description: "ShardX 反检测浏览器的本地 HTTP 自动化 API：\n生成指纹、创建/启动/停止配置文件，获取\nChrome DevTools Protocol (CDP) WebSocket 端点，以便通过\nPuppeteer / Playwright 控制已启动的配置文件。\n\n## 绑定与生命周期\n服务器在启动器应用内部运行，仅监听 **127.0.0.1**，\n端口由 *Settings → Automation API* 指定（默认 **40325**）。\n外部主机**无法访问**。更改端口及启用/停用设置\n在重启应用后生效。\n\n## 身份验证\n除 `GET /health` 外，所有端点均需要 **Bearer JWT**（HS256，\n由启动器密钥签名）：\n\n    Authorization: Bearer <token>\n\n永久令牌显示于 *Settings → Automation API*（从那里复制）。\n**Regenerate token** 按钮会立即轮换签名密钥：新令牌即刻生效，\n所有旧令牌同时失效。没有单独的 API 密钥或令牌签发端点。\n令牌本身就是凭据。\n\n缺失/无效令牌 → 返回空响应体的 `401`。\n\n## 典型流程\n1. `GET /fingerprint/new/{platform}` → 完全唯一化的指纹\n   （随机 platform_version、考虑主机的 CPU/RAM、裁剪后的屏幕、\n   各向量噪音），**不**保存。\n2. 可选：编辑返回的 `fingerprint` 对象（例如启用\n   `noise.fonts.enabled`、设置 `webrtc`、调整 `navigator`）。\n3. `POST /profiles`（或 `POST /folders/{folder}/profiles`），将该对象\n   作为 `fingerprint` → 启动器**原样**保存\n   （create 不会重新随机化）。\n4. `POST /profiles/{id}/start` → 返回 CDP 端点；以\n   `browserWSEndpoint = cdp.web_socket_debugger_url` 方式连接。\n5. 完成后执行 `POST /profiles/{id}/stop`。\n\n## 代理与 QUIC/WebRTC\n**每次**启动（通过 UI 或 API）时，在浏览器启动之前，\n绑定代理会实时探测 UDP-relay（SOCKS5 UDP_ASSOCIATE）的支持情况。\n如果 UDP 可用，则启用 QUIC，WebRTC 通过代理 UDP relay 通信；\n如果不可用，则禁用 QUIC，WebRTC 强制切换为 TCP-only 模式，\n防止真实 IP 泄露。`auto` 模式下的时区、语言和地理位置字段\n也会在启动时通过代理实时解析。若在创建永久配置文件时传入\n`proxy`（字符串），代理将被添加到存储并完成全量测试；\n临时配置文件的代理以内联方式存储。\n\n## 临时配置文件\n`POST /profiles/temporary` 创建带 `temporary` 标志的配置文件：\n在 `GET /profiles` 和启动器界面中隐藏，浏览器关闭后**自动删除**\n（配置 + 数据文件夹）。若应用在配置文件打开时崩溃，\n将在下次启动时删除。\n\n## fingerprint 对象\n`GET /fingerprint/new*` 返回、创建端点接受的 `fingerprint`\n是启动器原生的 FingerprintConfig。该对象被原样传递，\n因此下方 schema 记录了常见的子对象，但刻意保持开放\n（`additionalProperties: true`）。\n\n## MCP 服务器\n独立的 **MCP**（Model Context Protocol）服务器允许 AI 客户端\n通过*此* API 控制启动器，并通过 CDP 控制配置文件的浏览器。\n这是一个独立的 Node 进程，**不**是本 HTTP API 的组成部分，\n也不由其托管。可直接从启动器下载\n（**Settings → MCP server → Download MCP server** 或侧边栏\"Download MCP\"按钮）；\n启动器会将源代码保存到所选文件夹。\n也可从仓库获取：`rust/shardx-launcher/mcp/`。\n\n其底层只是调用此 API：配置\n`SHARDX_API`（基础 URL）和 `SHARDX_TOKEN`（来自\n*Settings → Automation API* 的 Bearer 令牌）。MCP 服务器提供：\n- **API 工具，作为下方端点的轻量封装\n  （配置文件、指纹、代理、文件夹、cookies、启动/停止）。\n- **浏览器工具**（基于 CDP 的 patchright），`browser_navigate`、\n  `browser_evaluate`、`browser_screenshot`、`browser_click`、\n  `browser_fill`、标签页管理、等待操作等，作用于通过\n  `POST /profiles/{id}/start` 启动的配置文件（该端点返回\n  CDP 端点）。\n\n启动方式：通过 **stdio**（由客户端启动）或通过 HTTP\n在 `127.0.0.1:<port>/mcp`（若设置了 `MCP_HTTP_PORT`）。详情见\nMCP 服务器的 README。（启动器仅负责下载，不负责运行。）\n"
 servers:
   - url: http://127.0.0.1:40325
     description: 本地启动器（默认端口；可在 Settings 中修改）
@@ -149,12 +66,7 @@ paths:
     get:
       tags: [ Fingerprints ]
       summary: 为指定平台生成新指纹
-      description: |
-        从库中随机选取与 `platform` 匹配的指纹，然后进行唯一化：
-        生成新的 `platform_version`（用于 Sec-CH-UA），
-        `hardware_concurrency`/`device_memory` 受主机限制（不超过真实值），
-        屏幕裁剪至真实显示器尺寸。
-        返回时不保存——请作为 `fingerprint` 传入创建端点。
+      description: "从库中随机选取与 `platform` 匹配的指纹，然后进行唯一化：\n生成新的 `platform_version`（用于 Sec-CH-UA），\n`hardware_concurrency`/`device_memory` 受主机限制（不超过真实值），\n屏幕裁剪至真实显示器尺寸。\n返回时不保存; 请作为 `fingerprint` 传入创建端点。\n"
       parameters:
         - name: platform
           in: path
@@ -196,11 +108,7 @@ paths:
     post:
       tags: [ Profiles ]
       summary: 创建配置文件
-      description: |
-        将客户端传入的 `fingerprint` 对象**原样**保存为配置文件
-        （不进行重新随机化——唯一化已在 `/fingerprint/new` 完成）。
-        使用 `folder` 将配置文件放入文件夹；通过存储中的 `proxy_id`
-        或内联的 `proxy`（字符串，**不**保存到代理存储）绑定代理。
+      description: "将客户端传入的 `fingerprint` 对象**原样**保存为配置文件\n（不进行重新随机化; 唯一化已在 `/fingerprint/new` 完成）。\n使用 `folder` 将配置文件放入文件夹；通过存储中的 `proxy_id`\n或内联的 `proxy`（字符串，**不**保存到代理存储）绑定代理。\n"
       requestBody:
         required: true
         content:
@@ -252,7 +160,7 @@ paths:
                     type: boolean
                     description: 是否附加了内联代理。
         "400":
-          description: Unparseable proxy string, or an unknown noise vector.
+          description: "无法解析的代理字符串，或未知的噪声向量。"
           content:
             application/json:
               schema: { $ref: "#/components/schemas/Error" }
@@ -267,10 +175,7 @@ paths:
     get:
       tags: [ Profiles ]
       summary: 获取配置文件
-      description: |
-        返回完整的已保存配置文件：`_meta` 包装层加上
-        展开的 FingerprintConfig。若配置文件正在运行——
-        附带 `running` 和 `cdp`。
+      description: "返回完整的已保存配置文件：`_meta` 包装层加上\n展开的 FingerprintConfig。若配置文件正在运行; \n附带 `running` 和 `cdp`。\n"
       parameters:
         - $ref: "#/components/parameters/ProfileId"
       responses:
@@ -288,20 +193,12 @@ paths:
     delete:
       tags: [ Profiles ]
       summary: 删除配置文件
-      description: |
-        Moves the profile to the trash, where it stays restorable for 7 days
-        before it is swept. What is archived is the account — cookies, logins,
-        web data, preferences, Local Storage, IndexedDB — not the caches, so
-        the archive is a fraction of the user-data dir. The original config and
-        user-data dir are removed once the archive is written.
-
-        Temporary profiles are torn down by the process tracker when their
-        browser closes and never reach the trash.
+      description: "将配置文件移入回收站，可在 7 天内恢复，过期后自动清理。归档内容包括账户数据、cookies、登录信息、网页数据、偏好设置、Local Storage 和 IndexedDB，不包括缓存，因此归档仅占用户数据目录的一部分。创建归档后，原始配置和用户数据目录会被删除。\n\n临时配置文件在浏览器关闭时由进程跟踪器删除，不会进入回收站。"
       parameters:
         - $ref: "#/components/parameters/ProfileId"
       responses:
         "200":
-          description: Moved to the trash.
+          description: "配置文件已移至回收站。"
           content:
             application/json:
               schema:
@@ -312,7 +209,7 @@ paths:
                   trashed:
                     type: boolean
                     example: true
-                    description: Restorable from the launcher's Trash for 7 days.
+                    description: "可在 7 天内从回收站恢复。"
         "401": { $ref: "#/components/responses/Unauthorized" }
         "500":
           description: 删除时出错。
@@ -322,12 +219,7 @@ paths:
     patch:
       tags: [ Profiles ]
       summary: 编辑配置文件
-      description: |
-        仅更新传入的字段。若传入 `fingerprint`——它将**原样替换**
-        已保存的指纹（不重新随机化）。
-        `folder: ""` 将配置文件移出文件夹；`proxy_id: ""` 解绑代理；
-        代理 `proxy` 字符串保存（去重）+ 完整测试，然后绑定。
-        返回更新后的配置文件。
+      description: "仅更新传入的字段。若传入 `fingerprint`; 它将**原样替换**\n已保存的指纹（不重新随机化）。\n`folder: \"\"` 将配置文件移出文件夹；`proxy_id: \"\"` 解绑代理；\n代理 `proxy` 字符串保存（去重）+ 完整测试，然后绑定。\n返回更新后的配置文件。\n"
       parameters:
         - $ref: "#/components/parameters/ProfileId"
       requestBody:
@@ -357,14 +249,7 @@ paths:
     post:
       tags: [ Profiles ]
       summary: 启动配置文件（含 CDP）
-      description: |
-        为配置文件启动启用了 remote-debugging 的 ShardX 浏览器，
-        通过绑定代理填充 `auto` 字段（时区/语言/地理位置），
-        并在 Chrome 写入 DevToolsActivePort 后返回 CDP 端点。
-        CDP **仅**在通过 API 启动时启用（通过界面启动不开放调试端口——
-        反检测能力不受影响）。
-        若在超时内无法读取端点，`cdp` 返回 `null`。
-        适用于普通配置文件和临时配置文件。
+      description: "为配置文件启动启用了 remote-debugging 的 ShardX 浏览器，\n通过绑定代理填充 `auto` 字段（时区/语言/地理位置），\n并在 Chrome 写入 DevToolsActivePort 后返回 CDP 端点。\nCDP **仅**在通过 API 启动时启用（通过界面启动不开放调试端口; \n反检测能力不受影响）。\n若在超时内无法读取端点，`cdp` 返回 `null`。\n适用于普通配置文件和临时配置文件。\n"
       parameters:
         - $ref: "#/components/parameters/ProfileId"
       requestBody:
@@ -396,8 +281,7 @@ paths:
                   cdp_error:
                     type: string
                     nullable: true
-                    description: >
-                      Why `cdp` is null, when it is. Absent otherwise.
+                    description: "为什么 `cdp` 为空，当它是时。否则缺席。"
         "401": { $ref: "#/components/responses/Unauthorized" }
         "500":
           description: 未配置二进制文件 / 无法启动进程。
@@ -457,10 +341,7 @@ paths:
     post:
       tags: [ Profiles ]
       summary: 导入 cookies
-      description: |
-        将 cookies 写入配置文件存储（按 Chromium v10 方案重新加密）。
-        配置文件**必须已停止**——运行中的浏览器在退出时会覆盖存储，
-        导致导入内容丢失。
+      description: "将 cookies 写入配置文件存储（按 Chromium v10 方案重新加密）。\n配置文件**必须已停止**; 运行中的浏览器在退出时会覆盖存储，\n导致导入内容丢失。\n"
       parameters:
         - $ref: "#/components/parameters/ProfileId"
       requestBody:
@@ -485,7 +366,7 @@ paths:
                   imported: { type: integer, description: 已写入的 cookie 数量。 }
         "401": { $ref: "#/components/responses/Unauthorized" }
         "409":
-          description: 配置文件正在运行——请先停止它。
+          description: "配置文件正在运行; 请先停止它。"
           content:
             application/json:
               schema: { $ref: "#/components/schemas/Error" }
@@ -692,17 +573,11 @@ paths:
   /extensions:
     get:
       tags: [ Extensions ]
-      summary: List the extension library
-      description: |
-        Extensions available to profiles. The `id` of each is what
-        `POST /profiles` and `PATCH /profiles/{id}` take in `extensions`.
-
-        Icons are omitted here: a data URL runs to hundreds of kilobytes and a
-        listing of thirty would be mostly base64. `POST /extensions` returns
-        the icon for the one it just added.
+      summary: "列出扩展"
+      description: "返回配置文件可用的扩展。在 `POST /profiles` 或 `PATCH /profiles/{id}` 的 `extensions` 字段中使用扩展 `id`。由于数据 URL 可能很大，因此省略了图标。 `POST /extensions` 包含添加的扩展程序的图标。"
       responses:
         "200":
-          description: The library.
+          description: "扩展列表。"
           content:
             application/json:
               schema:
@@ -711,18 +586,8 @@ paths:
         "401": { $ref: "#/components/responses/Unauthorized" }
     post:
       tags: [ Extensions ]
-      summary: Add an extension
-      description: |
-        Give either `url` or `path`.
-
-        `url` takes a Chrome Web Store page, a bare 32-character extension id,
-        or a direct link to a `.crx` / `.zip`; the launcher resolves the store
-        page to the download itself. `path` takes a local `.crx`, `.zip`, or an
-        unpacked folder on the machine running the launcher.
-
-        Name, version, description and icon come out of the extension's own
-        `manifest.json` — including `__MSG_*__` placeholders, resolved against
-        its default locale.
+      summary: "添加扩展程序"
+      description: "请提供 `url` 或 `path` 之一。\n\n`url` 可以是 Chrome Web Store 页面、32 位扩展 ID，或指向 `.crx` 或 `.zip` 的直接链接。启动器会自行解析商店页面并下载文件。`path` 可以是启动器所在机器上的本地 `.crx`、`.zip` 或已解压目录。\n\n名称、版本、描述和图标均来自扩展自己的 `manifest.json`。其中的 `__MSG_*__` 占位符会根据默认语言环境解析。"
       requestBody:
         required: true
         content:
@@ -730,12 +595,12 @@ paths:
             schema: { $ref: "#/components/schemas/AddExtensionRequest" }
       responses:
         "200":
-          description: Added; `icon` is populated on this response.
+          description: "添加了扩展。响应包括 `icon`。"
           content:
             application/json:
               schema: { $ref: "#/components/schemas/Extension" }
         "400":
-          description: Neither `url` nor `path` given, the link is not an extension, or the store has no such id.
+          description: "既没有给出 `url` 也没有给出 `path`，链接不是扩展名，或者商店没有这样的 ID。"
           content:
             application/json:
               schema: { $ref: "#/components/schemas/Error" }
@@ -744,11 +609,8 @@ paths:
   /extensions/{id}:
     delete:
       tags: [ Extensions ]
-      summary: Remove an extension
-      description: |
-        Profiles hold ids, not copies, so any profile naming this extension
-        stops loading it from its next launch. Their stored list is left as it
-        is — re-adding the extension does not restore the binding.
+      summary: "删除扩展"
+      description: "配置文件保存 ID，而不是副本，因此任何命名此扩展的配置文件都会在下次启动时停止加载它。他们存储的列表保持原样；重新添加扩展不会恢复绑定。"
       parameters:
         - name: id
           in: path
@@ -756,7 +618,7 @@ paths:
           schema: { type: string }
       responses:
         "200":
-          description: Removed.
+          description: "已删除。"
           content:
             application/json:
               schema:
@@ -769,10 +631,10 @@ paths:
   /bookmarks:
     get:
       tags: [ Bookmarks ]
-      summary: List folder bookmarks
+      summary: "列出书签"
       responses:
         "200":
-          description: Every bookmark, across folders.
+          description: "每个书签，跨文件夹。"
           content:
             application/json:
               schema:
@@ -781,17 +643,8 @@ paths:
         "401": { $ref: "#/components/responses/Unauthorized" }
     post:
       tags: [ Bookmarks ]
-      summary: Add or update a bookmark
-      description: |
-        With `id` it updates that bookmark; without, it creates one.
-
-        A bookmark bound to a folder appears in the bookmarks bar of every
-        profile in that folder, inside a folder called **ShardX**; `folder: ""`
-        means every profile. Only that folder is managed, so bookmarks the
-        operator saved inside a profile are untouched.
-
-        Applied when a profile next launches — the file is written just before
-        the browser reads it, so a running profile does not see the change.
+      summary: "创建或更新书签"
+      description: "提供 `id` 时更新对应书签，否则创建新书签。\n\n绑定到文件夹的书签会显示在该文件夹中每个配置文件的书签栏里，位置为 **ShardX** 文件夹。`folder: \"\"` 表示所有配置文件。系统只管理这个文件夹，不会修改操作者在配置文件中保存的其他书签。\n\n更改会在配置文件下次启动时应用。文件会在浏览器读取前写入，因此正在运行的配置文件不会立即看到更改。"
       requestBody:
         required: true
         content:
@@ -799,12 +652,12 @@ paths:
             schema: { $ref: "#/components/schemas/BookmarkRequest" }
       responses:
         "200":
-          description: The saved bookmark.
+          description: "保存的书签。"
           content:
             application/json:
               schema: { $ref: "#/components/schemas/Bookmark" }
         "400":
-          description: No URL given.
+          description: "需要 `url`。"
           content:
             application/json:
               schema: { $ref: "#/components/schemas/Error" }
@@ -813,8 +666,8 @@ paths:
   /bookmarks/{id}:
     delete:
       tags: [ Bookmarks ]
-      summary: Delete a bookmark
-      description: It leaves its profiles on their next launch.
+      summary: "删除书签"
+      description: "它会在下次发布时留下其个人资料。"
       parameters:
         - name: id
           in: path
@@ -822,7 +675,7 @@ paths:
           schema: { type: string }
       responses:
         "200":
-          description: Deleted.
+          description: "已删除。"
           content:
             application/json:
               schema:
@@ -835,13 +688,11 @@ paths:
   /trash:
     get:
       tags: [ Trash ]
-      summary: List deleted profiles
-      description: |
-        Profiles `DELETE /profiles/{id}` archived, newest first, each with the
-        instant it stops being restorable. The sweep runs at launcher startup.
+      summary: "列出已删除的个人资料"
+      description: "返回由 `DELETE /profiles/{id}` 存档的配置文件（最新的在前）及其恢复到期时间。启动器启动时，过期的条目将被删除。"
       responses:
         "200":
-          description: The trash.
+          description: "回收站内容。"
           content:
             application/json:
               schema:
@@ -852,15 +703,8 @@ paths:
   /trash/{id}/restore:
     post:
       tags: [ Trash ]
-      summary: Restore a deleted profile
-      description: |
-        Puts the profile back under its **own id**, so a script, a bookmark
-        folder or a proxy binding that referenced it still points at it. The
-        archive is removed once the profile is back.
-
-        What returns is the account — cookies, logins, web data, preferences,
-        history, bookmarks, Local Storage, IndexedDB. Caches were never
-        archived and are rebuilt on the next launch.
+      summary: "恢复已删除的个人资料"
+      description: "使用配置文件的**原始 ID**恢复它，因此引用该配置文件的脚本、书签文件夹或代理绑定仍然有效。恢复后会删除归档。\n\n会恢复账户数据、cookies、登录信息、网页数据、偏好设置、历史记录、书签、Local Storage 和 IndexedDB。缓存不会被归档，会在下次启动时重新生成。"
       parameters:
         - name: id
           in: path
@@ -868,13 +712,13 @@ paths:
           schema: { type: string, format: uuid }
       responses:
         "200":
-          description: The restored profile.
+          description: "恢复的个人资料。"
           content:
             application/json:
               schema: { $ref: "#/components/schemas/ProfileMeta" }
         "401": { $ref: "#/components/responses/Unauthorized" }
         "404":
-          description: Nothing in the trash under that id.
+          description: "没有使用此 ID 的已删除配置文件。"
           content:
             application/json:
               schema: { $ref: "#/components/schemas/Error" }
@@ -882,8 +726,8 @@ paths:
   /trash/{id}:
     delete:
       tags: [ Trash ]
-      summary: Delete a trashed profile for good
-      description: Irreversible — the archive is the only remaining copy.
+      summary: "永久删除已废弃的个人资料"
+      description: "此操作不可逆，归档是唯一剩余副本。"
       parameters:
         - name: id
           in: path
@@ -891,7 +735,7 @@ paths:
           schema: { type: string, format: uuid }
       responses:
         "200":
-          description: Purged.
+          description: "净化了。"
           content:
             application/json:
               schema:
@@ -904,13 +748,11 @@ paths:
   /automation/projects:
     get:
       tags: [ Automation ]
-      summary: List automation projects
-      description: |
-        Every project saved in the launcher, with its blocks and run settings.
-        These are the same projects the desktop **Automation** section edits.
+      summary: "列出自动化项目"
+      description: "保存在启动器中的每个项目及其块和运行设置。这些与桌面 **Automation** 部分编辑的项目相同。"
       responses:
         "200":
-          description: The projects.
+          description: "项目清单。"
           content:
             application/json:
               schema:
@@ -919,7 +761,7 @@ paths:
         "401": { $ref: "#/components/responses/Unauthorized" }
     post:
       tags: [ Automation ]
-      summary: Create an empty project
+      summary: "创建项目"
       requestBody:
         required: false
         content:
@@ -927,10 +769,10 @@ paths:
             schema:
               type: object
               properties:
-                name: { type: string, description: "Empty gives \"Untitled\"." }
+                name: { type: string, description: "空时使用 `Untitled`。" }
       responses:
         "200":
-          description: The new project.
+          description: "创建项目。"
           content:
             application/json:
               schema: { $ref: "#/components/schemas/AutomationProject" }
@@ -939,7 +781,7 @@ paths:
   /automation/projects/{id}:
     get:
       tags: [ Automation ]
-      summary: Get one project
+      summary: "获取项目"
       parameters:
         - name: id
           in: path
@@ -947,24 +789,20 @@ paths:
           schema: { type: string, format: uuid }
       responses:
         "200":
-          description: The project.
+          description: "项目详情。"
           content:
             application/json:
               schema: { $ref: "#/components/schemas/AutomationProject" }
         "401": { $ref: "#/components/responses/Unauthorized" }
         "404":
-          description: No such project.
+          description: "未找到项目。"
           content:
             application/json:
               schema: { $ref: "#/components/schemas/Error" }
     put:
       tags: [ Automation ]
-      summary: Replace a project
-      description: |
-        Whole-project replace: send it back the way `GET` returned it. The id
-        in the path wins over the one in the body, and an id that does not
-        exist is a `404` rather than a silent create — use `POST
-        /automation/projects` to make one.
+      summary: "替换项目"
+      description: "完全替换项目。请发送 `GET` 返回的对象。路径中的 ID 优先于请求体中的 ID。项目不存在时返回 `404`；如需创建项目，请使用 `POST /automation/projects`。"
       parameters:
         - name: id
           in: path
@@ -977,24 +815,24 @@ paths:
             schema: { $ref: "#/components/schemas/AutomationProject" }
       responses:
         "200":
-          description: The saved project.
+          description: "已保存的项目。"
           content:
             application/json:
               schema: { $ref: "#/components/schemas/AutomationProject" }
         "400":
-          description: The body is not a project.
+          description: "项目对象无效。"
           content:
             application/json:
               schema: { $ref: "#/components/schemas/Error" }
         "401": { $ref: "#/components/responses/Unauthorized" }
         "404":
-          description: No such project.
+          description: "未找到项目。"
           content:
             application/json:
               schema: { $ref: "#/components/schemas/Error" }
     delete:
       tags: [ Automation ]
-      summary: Delete a project
+      summary: "删除项目"
       parameters:
         - name: id
           in: path
@@ -1002,7 +840,7 @@ paths:
           schema: { type: string, format: uuid }
       responses:
         "200":
-          description: Deleted.
+          description: "已删除。"
           content:
             application/json:
               schema:
@@ -1012,7 +850,7 @@ paths:
                   id: { type: string, format: uuid }
         "401": { $ref: "#/components/responses/Unauthorized" }
         "404":
-          description: No such project.
+          description: "未找到项目。"
           content:
             application/json:
               schema: { $ref: "#/components/schemas/Error" }
@@ -1020,7 +858,7 @@ paths:
   /automation/projects/{id}/duplicate:
     post:
       tags: [ Automation ]
-      summary: Copy a project
+      summary: "重复项目"
       parameters:
         - name: id
           in: path
@@ -1028,13 +866,13 @@ paths:
           schema: { type: string, format: uuid }
       responses:
         "200":
-          description: The copy.
+          description: "重复的项目。"
           content:
             application/json:
               schema: { $ref: "#/components/schemas/AutomationProject" }
         "401": { $ref: "#/components/responses/Unauthorized" }
         "404":
-          description: No such project.
+          description: "未找到项目。"
           content:
             application/json:
               schema: { $ref: "#/components/schemas/Error" }
@@ -1042,11 +880,8 @@ paths:
   /automation/projects/{id}/export:
     get:
       tags: [ Automation ]
-      summary: Export a project as a bundle
-      description: |
-        Parameters the project marked secret are emptied on the way out, so a
-        bundle can be handed on without taking a password with it. The import
-        side asks for them again.
+      summary: "导出项目包"
+      description: "标记为秘密的项目的参数在退出时被清空，因此可以在不带密码的情况下传递包。进口方再次索要。"
       parameters:
         - name: id
           in: path
@@ -1054,13 +889,13 @@ paths:
           schema: { type: string, format: uuid }
       responses:
         "200":
-          description: The bundle.
+          description: "导出捆绑。"
           content:
             application/json:
               schema: { $ref: "#/components/schemas/AutomationBundle" }
         "401": { $ref: "#/components/responses/Unauthorized" }
         "404":
-          description: No such project.
+          description: "未找到项目。"
           content:
             application/json:
               schema: { $ref: "#/components/schemas/Error" }
@@ -1068,8 +903,8 @@ paths:
   /automation/import:
     post:
       tags: [ Automation ]
-      summary: Import a project bundle
-      description: The bundle arrives as a new project with a new id.
+      summary: "导入项目包"
+      description: "该捆绑包作为具有新 ID 的新项目到达。"
       requestBody:
         required: true
         content:
@@ -1077,12 +912,12 @@ paths:
             schema: { $ref: "#/components/schemas/AutomationBundle" }
       responses:
         "200":
-          description: The imported project.
+          description: "导入的项目。"
           content:
             application/json:
               schema: { $ref: "#/components/schemas/AutomationProject" }
         "400":
-          description: Not a bundle, or a version this build does not read.
+          description: "捆绑包无效或格式版本不受支持。"
           content:
             application/json:
               schema: { $ref: "#/components/schemas/Error" }
@@ -1091,12 +926,8 @@ paths:
   /automation/projects/{id}/run:
     post:
       tags: [ Automation ]
-      summary: Start a project
-      description: |
-        Answers as soon as the run is under way — the browsers it needs are
-        started by the project's own blocks. Poll `/status` for progress.
-
-        A project already running is a `400`; so is one with no enabled steps.
+      summary: "启动项目"
+      description: "启动项目并立即返回。项目中的模块会启动所需的浏览器。使用 `/status` 查看进度。\n\n项目已在运行或没有启用的步骤时，返回 `400`。"
       parameters:
         - name: id
           in: path
@@ -1104,7 +935,7 @@ paths:
           schema: { type: string, format: uuid }
       responses:
         "200":
-          description: Started.
+          description: "项目开始了。"
           content:
             application/json:
               schema:
@@ -1113,18 +944,18 @@ paths:
                   project_id: { type: string, format: uuid }
                   running: { type: boolean, example: true }
         "400":
-          description: Already running, or nothing to run.
+          description: "项目已在运行或没有启用的步骤。"
           content:
             application/json:
               schema: { $ref: "#/components/schemas/Error" }
         "401": { $ref: "#/components/responses/Unauthorized" }
         "404":
-          description: No such project.
+          description: "未找到项目。"
           content:
             application/json:
               schema: { $ref: "#/components/schemas/Error" }
         "501":
-          description: This launcher was built without automation.
+          description: "此版本不支持自动化。"
           content:
             application/json:
               schema: { $ref: "#/components/schemas/Error" }
@@ -1132,11 +963,8 @@ paths:
   /automation/projects/{id}/stop:
     post:
       tags: [ Automation ]
-      summary: Stop a project
-      description: |
-        Asks the run to stop. Each browser finishes the step it is in and then
-        closes, so the run does not disappear the instant this answers — watch
-        `running` on `/status`.
+      summary: "停止项目"
+      description: "请求停止运行。每个浏览器会先完成当前步骤再关闭，因此接口返回后运行不会立即消失。请通过 `/status` 查看 `running` 字段。"
       parameters:
         - name: id
           in: path
@@ -1144,7 +972,7 @@ paths:
           schema: { type: string, format: uuid }
       responses:
         "200":
-          description: Stopping.
+          description: "要求停止。"
           content:
             application/json:
               schema:
@@ -1154,7 +982,7 @@ paths:
                   stopping: { type: boolean, example: true }
         "401": { $ref: "#/components/responses/Unauthorized" }
         "501":
-          description: This launcher was built without automation.
+          description: "此版本不支持自动化。"
           content:
             application/json:
               schema: { $ref: "#/components/schemas/Error" }
@@ -1162,11 +990,8 @@ paths:
   /automation/projects/{id}/status:
     get:
       tags: [ Automation ]
-      summary: How a run is going
-      description: |
-        `null` when the project is not running and has not run since the
-        launcher started. The log is the tail the fleet window shows; the whole
-        thing is on disk under `automation-runs/`.
+      summary: "获取项目运行状态"
+      description: "如果项目未运行且自启动程序启动后未运行，则返回 `null`。 `log` 包含队列窗口中显示的最近条目。完整日志存储在 `automation-runs/` 下。"
       parameters:
         - name: id
           in: path
@@ -1174,7 +999,7 @@ paths:
           schema: { type: string, format: uuid }
       responses:
         "200":
-          description: The run state, or null.
+          description: "运行状态或 `null`。"
           content:
             application/json:
               schema:
@@ -1183,7 +1008,7 @@ paths:
                   - type: "null"
         "401": { $ref: "#/components/responses/Unauthorized" }
         "501":
-          description: This launcher was built without automation.
+          description: "此版本不支持自动化。"
           content:
             application/json:
               schema: { $ref: "#/components/schemas/Error" }
@@ -1191,10 +1016,10 @@ paths:
   /automation/runs:
     get:
       tags: [ Automation ]
-      summary: Every run going right now
+      summary: "列出活动运行"
       responses:
         "200":
-          description: The runs.
+          description: "活动运行列表。"
           content:
             application/json:
               schema:
@@ -1202,7 +1027,7 @@ paths:
                 items: { $ref: "#/components/schemas/AutomationRun" }
         "401": { $ref: "#/components/responses/Unauthorized" }
         "501":
-          description: This launcher was built without automation.
+          description: "此版本不支持自动化。"
           content:
             application/json:
               schema: { $ref: "#/components/schemas/Error" }
@@ -1210,14 +1035,11 @@ paths:
   /automation/modules:
     get:
       tags: [ Automation ]
-      summary: List installed modules
-      description: |
-        Modules are WebAssembly an operator wrote themselves; each contributes
-        blocks under the kind `module:<module id>:<block>`. A module never
-        touches the page — it answers with actions the runner performs.
+      summary: "列出已安装的模块"
+      description: "返回操作者安装的 WebAssembly 模块。每个模块都会添加类型为 `module:<module id>:<block>` 的模块。模块返回由执行器执行的动作，不会直接访问页面。"
       responses:
         "200":
-          description: The modules.
+          description: "模块列表。"
           content:
             application/json:
               schema:
@@ -1225,16 +1047,14 @@ paths:
                 items: { $ref: "#/components/schemas/AutomationModule" }
         "401": { $ref: "#/components/responses/Unauthorized" }
         "501":
-          description: This launcher was built without automation.
+          description: "此版本不支持自动化。"
           content:
             application/json:
               schema: { $ref: "#/components/schemas/Error" }
     post:
       tags: [ Automation ]
-      summary: Install a module
-      description: |
-        `path` is a `.wasm` file **on this machine** — the API is local, and a
-        module is native code the operator built themselves.
+      summary: "安装模块"
+      description: "`path` 必须指向启动器所在机器上的本地 `.wasm` 文件。模块包含由操作者构建的原生代码。"
       requestBody:
         required: true
         content:
@@ -1246,18 +1066,18 @@ paths:
                 path: { type: string, example: "/home/me/module.wasm" }
       responses:
         "200":
-          description: The installed module.
+          description: "安装的模块。"
           content:
             application/json:
               schema: { $ref: "#/components/schemas/AutomationModule" }
         "400":
-          description: No path, or the file is not a module this build can load.
+          description: "缺少路径或不受支持的模块文件。"
           content:
             application/json:
               schema: { $ref: "#/components/schemas/Error" }
         "401": { $ref: "#/components/responses/Unauthorized" }
         "501":
-          description: This launcher was built without automation.
+          description: "此版本不支持自动化。"
           content:
             application/json:
               schema: { $ref: "#/components/schemas/Error" }
@@ -1265,8 +1085,8 @@ paths:
   /automation/modules/{id}:
     delete:
       tags: [ Automation ]
-      summary: Remove a module
-      description: Projects using its blocks stop working; nothing rewrites them.
+      summary: "移除模块"
+      description: "使用该模块的项目停止工作。现有项目定义不会被修改。"
       parameters:
         - name: id
           in: path
@@ -1274,7 +1094,7 @@ paths:
           schema: { type: string }
       responses:
         "200":
-          description: Removed.
+          description: "已删除。"
           content:
             application/json:
               schema:
@@ -1284,12 +1104,12 @@ paths:
                   id: { type: string }
         "401": { $ref: "#/components/responses/Unauthorized" }
         "404":
-          description: No such module.
+          description: "未找到模块。"
           content:
             application/json:
               schema: { $ref: "#/components/schemas/Error" }
         "501":
-          description: This launcher was built without automation.
+          description: "此版本不支持自动化。"
           content:
             application/json:
               schema: { $ref: "#/components/schemas/Error" }
@@ -1366,8 +1186,7 @@ components:
               minimum: 24
               maximum: 480
               example: 60
-              description: >
-                How often the claimed display refreshes. Absent means 60. See the refresh_rate field on the create/edit requests.
+              description: "所声明的显示刷新频率。缺席意味着 60。请参阅创建/编辑请求上的刷新率字段。"
         client_hints:
           type: object
           description: Sec-CH-UA 系列（在 browser.vision 中称为 `hints`）。
@@ -1402,7 +1221,7 @@ components:
               description: 局域网端口扫描防护（ports_protection）。
         timezone:
           type: string
-          description: IANA 名称或 "auto"——将在启动时通过绑定代理解析。
+          description: "IANA 名称或 \"auto\"; 将在启动时通过绑定代理解析。"
 
     NoisePrefs:
       type: object
@@ -1449,51 +1268,32 @@ components:
           description: 绑定存储中的代理（按 id）。
         proxy:
           type: string
-          description: |
-            以字符串方式绑定代理（`host:port:user:pass` 或
-            `scheme://user:pass@host:port`）。对于**永久**配置文件，代理
-            会被添加到存储（按端点去重）并完成全量测试（UDP + 地理位置），
-            然后按 id 绑定——显示在代理列表中，QUIC/WebRTC 结果被缓存。
-            对于**临时**配置文件，代理以内联方式附加（不保存）。
-            若已指定 `proxy_id` 则忽略。
+          description: "以字符串方式绑定代理（`host:port:user:pass` 或\n`scheme://user:pass@host:port`）。对于**永久**配置文件，代理\n会被添加到存储（按端点去重）并完成全量测试（UDP + 地理位置），\n然后按 id 绑定; 显示在代理列表中，QUIC/WebRTC 结果被缓存。\n对于**临时**配置文件，代理以内联方式附加（不保存）。\n若已指定 `proxy_id` 则忽略。\n"
           example: "socks5://user:pass@1.2.3.4:1080"
         folder:
           type: string
-          description: 文件夹标签（对于 /folders/{folder}/profiles 被忽略——路径优先）。
+          description: "文件夹标签（对于 /folders/{folder}/profiles 被忽略; 路径优先）。"
         color:
           type: string
-          description: |
-            Accent for the profile's window icon and for the pill carrying its
-            name in the omnibox. Omit it and the icon derives a colour from the
-            name while the pill keeps the browser's own toolbar colour.
+          description: "配置文件窗口图标和地址栏名称标签的强调色。省略时，图标颜色根据名称生成，标签保留浏览器工具栏的颜色。"
           example: "#2FCB80"
         extensions:
           type: array
           items: { type: string }
-          description: |
-            Extension-library ids (`GET /extensions`), loaded at launch. An id
-            the library does not hold is a 400 rather than a profile that
-            silently starts without it.
+          description: "扩展库 ID (`GET /extensions`)，在启动时加载。库不保存的 id 是 400，而不是在没有它的情况下静默启动的配置文件。"
         refresh_rate:
           type: integer
           minimum: 24
           maximum: 480
           example: 60
-          description: |
-            Claimed display refresh rate, written into `screen.refresh_rate`.
-            No web API reports it; a page measures it by timing
-            requestAnimationFrame, which is why leaving it out is not neutral —
-            absent means 60, what most machines report, rather than whatever
-            the host's own screen does. Frames can only be slowed, so the
-            effective rate is the closest whole division of the host's panel at
-            or under this.
+          description: "声称的显示刷新率，写入`screen.refresh_rate`。没有 Web API 报告它；页面通过计时 requestAnimationFrame 来衡量它，这就是为什么将其排除在外并不是中立的；缺席意味着 60，这是大多数机器报告的值，而不是主机自己的屏幕所做的任何内容。帧只能减慢，因此有效速率是主机面板在此或低于此的最接近的整个划分。"
         fingerprint:
           allOf: [ { $ref: "#/components/schemas/Fingerprint" } ]
           description: 原样保存。从 /fingerprint/new 获取后按需编辑。
 
     EditProfileRequest:
       type: object
-      description: 所有字段均为可选——仅更新传入的字段。
+      description: "所有字段均为可选; 仅更新传入的字段。"
       properties:
         name: { type: string }
         notes: { type: string }
@@ -1501,27 +1301,20 @@ components:
         proxy_id: { type: string, description: '""解绑代理。' }
         proxy:
           type: string
-          description: 代理字符串——保存（去重）+ 全量测试，然后绑定。
+          description: "代理字符串; 保存（去重）+ 全量测试，然后绑定。"
         color:
           type: string
-          description: '`#rrggbb`; "" goes back to the name-derived colour.'
+          description: "`#rrggbb`； “”回到源自名称的颜色。"
         extensions:
           type: array
           items: { type: string }
-          description: Replaces the whole list; `[]` loads none.
+          description: "替换整个列表； `[]` 不加载任何内容。"
         refresh_rate:
           type: integer
           minimum: 24
           maximum: 480
           example: 60
-          description: |
-            Claimed display refresh rate, applied AFTER `fingerprint` and written into `screen.refresh_rate`.
-            No web API reports it; a page measures it by timing
-            requestAnimationFrame, which is why leaving it out is not neutral —
-            absent means 60, what most machines report, rather than whatever
-            the host's own screen does. Frames can only be slowed, so the
-            effective rate is the closest whole division of the host's panel at
-            or under this.
+          description: "声明的显示刷新率，在 `fingerprint` 之后应用并写入 `screen.refresh_rate`。没有 Web API 报告它；页面通过计时 requestAnimationFrame 来衡量它，这就是为什么将其排除在外并不是中立的；缺席意味着 60，这是大多数机器报告的值，而不是主机自己的屏幕所做的任何内容。帧只能减慢，因此有效速率是主机面板在此或低于此的最接近的整个划分。"
         fingerprint:
           allOf: [ { $ref: "#/components/schemas/Fingerprint" } ]
           description: 若提供，则原样**替换**已保存的指纹。
@@ -1546,31 +1339,10 @@ components:
           minimum: 24
           maximum: 480
           example: 60
-          description: |
-            Claimed display refresh rate, written into `screen.refresh_rate`.
-            No web API reports it; a page measures it by timing
-            requestAnimationFrame, which is why leaving it out is not neutral —
-            absent means 60, what most machines report, rather than whatever
-            the host's own screen does. Frames can only be slowed, so the
-            effective rate is the closest whole division of the host's panel at
-            or under this.
+          description: "声称的显示刷新率，写入`screen.refresh_rate`。没有 Web API 报告它；页面通过计时 requestAnimationFrame 来衡量它，这就是为什么将其排除在外并不是中立的；缺席意味着 60，这是大多数机器报告的值，而不是主机自己的屏幕所做的任何内容。帧只能减慢，因此有效速率是主机面板在此或低于此的最接近的整个划分。"
         noise:
           type: object
-          description: |
-            Per-vector fingerprint noise. Vectors left out keep their default
-            (off). Two forms, mixable in one request:
-
-              * shorthand — `{"canvas": true, "webgl": true}`; turning `webgl`
-                or `client_rects` on this way also gives it the strength the UI
-                uses, since a vector enabled at zero strength does nothing
-              * full block — `{"canvas": {"enabled": true, "seed": 42}}`, the
-                same shape `GET /profiles/{id}` hands back
-
-            Fields are merged into the vector rather than replacing it, so
-            `{"webgl": {"intensity": 0.001}}` leaves `enabled` alone. A `seed`
-            of `0` (or omitted) still means "derive a stable one from the
-            profile id", which is what keeps two temporary profiles from
-            sharing a fingerprint.
+          description: "按向量设置指纹噪声。请求中省略的向量保留默认值（关闭）。\n\n同一个请求可以组合两种格式：\n\n  * 简写：`{\"canvas\": true, \"webgl\": true}`。这样启用 `webgl` 或 `client_rects` 时，也会使用界面中的默认强度；\n  * 完整对象：`{\"canvas\": {\"enabled\": true, \"seed\": 42}}`，格式与 `GET /profiles/{id}` 返回的对象相同。\n\n字段会与现有向量设置合并，而不是替换整个向量。例如 `{\"webgl\": {\"intensity\": 0.001}}` 不会修改 `enabled`。`seed` 为 0 或未提供时，系统会根据配置文件 ID 生成稳定值，避免两个临时配置文件使用相同的指纹。"
           additionalProperties:
             oneOf:
               - type: boolean
@@ -1578,8 +1350,8 @@ components:
                 properties:
                   enabled: { type: boolean }
                   seed: { type: integer, format: int64 }
-                  intensity: { type: number, description: "`webgl` only." }
-                  max_offset: { type: number, description: "`client_rects` only." }
+                  intensity: { type: number, description: "仅限 `webgl`。" }
+                  max_offset: { type: number, description: "仅限 `client_rects`。" }
           properties:
             canvas: {}
             webgl: {}
@@ -1595,32 +1367,27 @@ components:
     Extension:
       type: object
       properties:
-        id: { type: string, description: Pass this in a profile's `extensions`. }
+        id: { type: string, description: "将其传递到配置文件的 `extensions` 中。" }
         name: { type: string }
         version: { type: string }
         description: { type: string }
         size_bytes: { type: integer, format: int64 }
-        added_at: { type: string, description: "`@<unix_secs>`." }
+        added_at: { type: string, description: "`@<unix_secs>`。" }
         icon:
           type: string
           nullable: true
-          description: |
-            Largest icon the manifest declares, as a `data:` URL. Null on the
-            listing endpoint and on extensions that ship none.
-
+          description: "清单声明的最大图标，作为 `data:` URL。列表端点和不提供任何内容的扩展上为 Null。"
     AddExtensionRequest:
       type: object
-      description: Exactly one of `url` or `path`.
+      description: "恰好是 `url` 或 `path` 之一。"
       properties:
         url:
           type: string
-          description: |
-            A Chrome Web Store page, a bare 32-character extension id, or a
-            direct link to a `.crx` / `.zip`.
+          description: "Chrome 网上应用店页面、裸露的 32 个字符的扩展 ID 或指向 `.crx` / `.zip` 的直接链接。"
           example: https://chromewebstore.google.com/detail/rabby-wallet/acmacodkjbdgmoleebolmdjonilkdbch
         path:
           type: string
-          description: A local `.crx`, `.zip` or unpacked folder on the launcher's machine.
+          description: "启动器计算机上的本地 `.crx`、`.zip` 或解压文件夹。"
 
     Bookmark:
       type: object
@@ -1630,7 +1397,7 @@ components:
         url: { type: string }
         folder:
           type: string
-          description: Launcher folder; empty means every profile.
+          description: "启动器文件夹；空意味着每个配置文件。"
 
     BookmarkRequest:
       type: object
@@ -1638,17 +1405,17 @@ components:
       properties:
         id:
           type: string
-          description: Present updates that bookmark; absent creates one.
+          description: "显示该书签的更新；缺席创造一个。"
         url:
           type: string
-          description: A bare host is fine — `https://` is added.
+          description: "裸主机就可以了；添加了 `https://`。"
           example: facebook.com/ads/manager
         title:
           type: string
-          description: Blank uses the address itself.
+          description: "空白使用地址本身。"
         folder:
           type: string
-          description: Empty (or absent) means every profile.
+          description: "空（或不存在）意味着每个配置文件。"
 
     TrashEntry:
       type: object
@@ -1656,15 +1423,15 @@ components:
         id: { type: string, format: uuid }
         name: { type: string }
         folder: { type: string }
-        deleted_at: { type: integer, format: int64, description: Unix seconds. }
+        deleted_at: { type: integer, format: int64, description: "Unix 秒。" }
         expires_at:
           type: integer
           format: int64
-          description: Unix seconds; the startup sweep removes anything past it.
+          description: "Unix 秒；启动扫描会删除所有过去的内容。"
         size_bytes:
           type: integer
           format: int64
-          description: The archive, which holds the account and not the caches.
+          description: "存档，保存帐户而不是缓存。"
 
     ProfileMeta:
       type: object
@@ -1681,13 +1448,11 @@ components:
         color:
           type: string
           nullable: true
-          description: |
-            Icon accent as `#rrggbb`; `null` means it is derived from the name,
-            which is what the browser does when nothing is chosen.
+          description: "图标强调色，格式为 `#rrggbb`；`null` 表示根据名称自动生成颜色，这是浏览器在未选择颜色时的默认行为。"
         extensions:
           type: array
           items: { type: string }
-          description: Extension-library ids loaded at launch.
+          description: "启动时加载的扩展库 ID。"
 
     ProfileListItem:
       allOf:
@@ -1723,8 +1488,7 @@ components:
             temporary: { type: boolean }
             rev:
               type: integer
-              description: >
-                Bumped by every write. The desktop editor sends back the number it opened the profile at, so a save that would land on top of a change made through this API is refused rather than silently reverting it. API edits are never refused; they read the profile and write it back in one step.
+              description: "每次写入都会递增。桌面编辑器会回传打开配置文件时的版本号；如果配置文件已通过此 API 修改，桌面保存会被拒绝，以免覆盖修改。API 修改不会被拒绝，而是读取并一次性写回配置文件。"
         running: { type: boolean }
         cdp:
           nullable: true
@@ -1792,9 +1556,7 @@ components:
 
     Cookie:
       type: object
-      description: |
-        工具友好格式的 cookie（兼容 EditThisCookie / Puppeteer 格式——
-        导入时接受 `httpOnly`/`sameSite` 作为别名）。
+      description: "工具友好格式的 cookie（兼容 EditThisCookie / Puppeteer 格式; \n导入时接受 `httpOnly`/`sameSite` 作为别名）。\n"
       required: [ domain, name, value ]
       properties:
         domain:
@@ -1829,77 +1591,56 @@ components:
         notes: { type: string }
 
     AutomationBranch:
-      description: |
-        Where the run goes after a step. A plain string for the simple cases,
-        an object for the ones carrying a value.
+      description: "步骤执行后的分支目标。简单情况使用字符串，需要传值时使用对象。"
       oneOf:
         - type: string
           enum: [ next, stop, endpass ]
-          description: |
-            `next` — the step below. `stop` — end this profile's whole run.
-            `endpass` — end this pass; the next one starts from the top.
+          description: "`next`；下面的步骤。 `stop`；结束此配置文件的整个运行。 `endpass`；结束本次传递；下一个从顶部开始。"
         - type: object
           properties:
-            goto: { type: string, description: "Block id to jump to; one that no longer exists behaves as next." }
+            goto: { type: string, description: "要跳转到的块 id；不再存在的行为与下一个一样。" }
         - type: object
           properties:
-            retry: { type: integer, description: "Try this same step again, that many more times, then take next." }
+            retry: { type: integer, description: "再次尝试同样的步骤，多次，然后进行下一步。" }
 
     AutomationBlock:
       type: object
-      description: One step. `kind` and `params` are open — a module can add a kind this build has never heard of.
+      description: "一步。 `kind` 和 `params` 已开放；模块可以添加此构建从未听说过的类型。"
       properties:
         id: { type: string }
         kind:
           type: string
-          description: |
-            A palette kind (`goto`, `click`, `type`, `profile.create`,
-            `var.set`, …) or `module:<module id>:<block>`.
-
-            **On a phone profile** the ordinary steps already become touches —
-            `click` taps, `rightClick` long-presses, `scroll` and `swipe` use a
-            finger — and `hover` is refused, because a phone has no cursor.
-            These are the ones with no desktop twin, and they are refused on a
-            desktop profile for the same reason:
-
-            | kind | params | what it does |
-            | --- | --- | --- |
-            | `touch.tap` | `selector` or `x`+`y`, `tapCount` (1–3), `timeout` | A tap, with the contact drifting the way a fingertip does. |
-            | `touch.longPress` | `selector` or `x`+`y`, `timeout` | Press and hold — the phone's context menu. |
-            | `touch.swipe` | `selector` or `x`+`y`, `dx`, `dy`, `timeout` | A swipe. The browser makes the scroll and the fling out of the touch stream. |
-            | `touch.drag` | `selector`, `to`, `holdMs`, `timeout` | Press, wait for the item to be picked up, carry it, set it down. The wait is what makes it a drag and not a scroll. |
-            | `touch.pinch` | `scale`, `selector` or `x`+`y` | Two fingers, to zoom. Above 1 spreads. |
-            | `screen.rotate` | `angle` (0/90/180/270), `turnMs`, `into` | Turns the handset: the sensors move first, the picture commits at the end. `into` saves the new `screen.orientation.type`. |
+          description: "内置调色板类型（`goto`、`click`、`type`、`profile.create`、`var.set` 等）或 `module:<module id>:<block>`。\n\n**在移动配置文件中**，普通步骤会转换为触摸操作：`click` 执行点按，`rightClick` 执行长按，`scroll` 和 `swipe` 使用触摸手势。移动设备没有指针，因此不支持 `hover`。以下步骤仅适用于移动配置文件，在桌面配置文件中会被拒绝：\n\n| 类型 | 参数 | 操作 | | --- | --- | --- | | `touch.tap` | `selector` 或 `x`+`y`、`tapCount`（1-3）、`timeout` | 点按目标。 | | `touch.longPress` | `selector` 或 `x`+`y`、`timeout` | 按住不放。 | | `touch.swipe` | `selector` 或 `x`+`y`、`dx`、`dy`、`timeout` | 滑动。 | | `touch.drag` | `selector`、`to`、`holdMs`、`timeout` | 拖动元素。 | | `touch.pinch` | `scale`、`selector` 或 `x`+`y` | 双指缩放。值大于 1 时缩小。 | | `screen.rotate` | `angle`（0/90/180/270）、`turnMs`、`into` | 旋转设备。`into` 保存新的 `screen.orientation.type`。 |"
           example: click
         label: { type: string }
         params:
           type: object
           additionalProperties: true
-          description: The step's own fields, as the palette defines them.
+          description: "步骤自己的字段，如调色板定义的那样。"
         enabled: { type: boolean, default: true }
-        x: { type: number, description: "Canvas position. Layout only — the run follows the branches." }
+        x: { type: number, description: "画布位置。仅用于布局，执行顺序由分支决定。" }
         y: { type: number }
         on_done: { $ref: "#/components/schemas/AutomationBranch" }
         on_fail:
           allOf:
             - $ref: "#/components/schemas/AutomationBranch"
-          description: Defaults to `stop` — carrying on after a click that found nothing is how a run types into the wrong page.
+          description: "默认为 `stop`；单击后什么也没找到，这就是运行输入错误页面的原因。"
         secrets:
           type: array
           items: { type: string }
-          description: Parameter names emptied on export.
+          description: "导出时参数名称被清空。"
 
     AutomationRunSettings:
       type: object
       properties:
-        threads: { type: integer, default: 1, description: "Browsers running at once; clamped to 1–64." }
-        loops: { type: integer, default: 1, description: "Passes over the blocks. 0 means run until `hours` is up." }
-        hours: { type: number, description: "Only meaningful when `loops` is 0." }
-        start: { type: string, description: "Block id to start at; empty means the first." }
+        threads: { type: integer, default: 1, description: "浏览器同时运行；限制为 1-64。" }
+        loops: { type: integer, default: 1, description: "越过街区。 0 表示运行直到 `hours` 启动。" }
+        hours: { type: number, description: "仅当 `loops` 为 0 时才有意义。" }
+        start: { type: string, description: "块 ID 开始；空的意思是第一个。" }
         profiles:
           type: array
           items: { type: string }
-          description: Kept for projects saved before profiles became blocks; one thread each when set.
+          description: "保留在配置文件成为块之前保存的项目；设置时各一根线。"
 
     AutomationProject:
       type: object
@@ -1911,36 +1652,31 @@ components:
           type: array
           items: { $ref: "#/components/schemas/AutomationBlock" }
         run: { $ref: "#/components/schemas/AutomationRunSettings" }
-        created_at: { type: integer, description: "Unix seconds." }
-        updated_at: { type: integer, description: "Unix seconds." }
+        created_at: { type: integer, description: "Unix 秒。" }
+        updated_at: { type: integer, description: "Unix 秒。" }
 
     AutomationBundle:
       type: object
-      description: A project on its way to another machine.
+      description: "一个项目正在转移到另一台机器上。"
       properties:
-        format: { type: integer, example: 1, description: "An import refuses a number it does not know." }
-        exported_at: { type: integer, description: "Unix seconds." }
+        format: { type: integer, example: 1, description: "导入拒绝它不知道的号码。" }
+        exported_at: { type: integer, description: "Unix 秒。" }
         project: { $ref: "#/components/schemas/AutomationProject" }
         modules:
           type: array
           items: { type: string }
-          description: Module ids the steps need.
+          description: "模块 ID 需要的步骤。"
         module_files:
           type: array
-          description: |
-            Those modules' files, carried inside the bundle so an imported
-            project can run where it lands. A module missing from disk at
-            export time is left out here but still named in `modules`. On
-            import, a module already installed under the same id is kept as it
-            is rather than overwritten.
+          description: "这些模块的文件位于捆绑包内，以便导入的项目可以在其所在的位置运行。导出时磁盘中丢失的模块在此处被忽略，但仍以 `modules` 命名。导入时，已安装在同一 ID 下的模块将保持原样，而不是被覆盖。"
           items:
             type: object
             properties:
               id: { type: string }
-              wasm: { type: string, description: "The .wasm, gzipped then base64." }
+              wasm: { type: string, description: ".wasm 经过 gzip 压缩，然后进行 Base64 处理。" }
         needs:
           type: array
-          description: What export blanked, so an import can ask for exactly that.
+          description: "导出的内容被清空，因此导入可以准确地要求该内容。"
           items:
             type: object
             properties:
@@ -1952,11 +1688,11 @@ components:
 
     AutomationWorker:
       type: object
-      description: One browser inside a run.
+      description: "运行一个浏览器。"
       properties:
         profile_id: { type: string }
         profile_name: { type: string }
-        pass: { type: integer, description: "1-based; 0 before the first pass starts." }
+        pass: { type: integer, description: "1 为基础； 0 在第一遍开始之前。" }
         step: { type: integer }
         steps_total: { type: integer }
         status: { type: string, enum: [ queued, starting, running, done, failed, stopped ] }
@@ -1967,7 +1703,7 @@ components:
       properties:
         project_id: { type: string, format: uuid }
         project_name: { type: string }
-        started_at: { type: integer, description: "Unix seconds." }
+        started_at: { type: integer, description: "Unix 秒。" }
         running: { type: boolean }
         workers:
           type: array
@@ -1975,16 +1711,16 @@ components:
         log:
           type: array
           items: { type: string }
-          description: The tail the fleet window shows; the whole log is on disk under `automation-runs/`.
+          description: "机队窗口显示的尾部；整个日志位于磁盘上的 `automation-runs/` 下。"
 
     AutomationModule:
       type: object
       properties:
-        id: { type: string, description: "File stem; also the prefix every one of its block kinds carries." }
+        id: { type: string, description: "文件茎；还有其每个块类型所携带的前缀。" }
         name: { type: string }
         path: { type: string }
         blocks:
           type: array
           items: { type: object, additionalProperties: true }
-          description: Block descriptors, in the same shape as the built-in palette.
-        error: { type: string, description: "Empty when the module loaded; otherwise why it did not." }
+          description: "块描述符，形状与内置调色板相同。"
+        error: { type: string, description: "模块加载成功时为空，否则为错误原因。" }
