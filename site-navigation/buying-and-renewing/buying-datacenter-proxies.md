@@ -6,38 +6,64 @@ icon: '1'
 
 ## 购买代理
 
-购买 [<mark style="color:purple;">Datacenter</mark>](https://dashboard.proxyshard.com/datacenter-proxy) 代理时，请指定：
+购买[数据中心代理](https://dashboard.proxyshard.com/datacenter-proxy)时：
 
-* 代理国家
-* 租赁周期（周\月\半年\年）
-* 代理数量
-* 自动续订切换（启用后，将在每个租赁周期自动收取资金；可以在订单内禁用）
-* 促销代码（如果有）。
+1. 打开 `Datacenter Proxy`。
+2. 在 `Proxy region` 中选择代理所在国家/地区。
+3. 在 `Billing cycle` 中选择付费周期。
+4. 在 `Number of proxies` 中填写代理数量。
+5. 如需自动续订订单，请启用 `Auto renew`。
+6. 如有需要，请启用 `Enable p0f settings`。
+7. 在 `Total slots` 中填写 p0f 插槽数量。
+8. 如有优惠码，请将其填入 `Promocode`，然后点击 `Apply`。
+9. 确认订单金额，然后点击 `Buy now`。
 
-<figure><img src="../../.gitbook/assets/image (49).png" alt=""><figcaption></figcaption></figure>
+<figure>
+  <picture>
+    <source srcset="../../.gitbook/assets/datacenter-purchase-form_black.png" media="(prefers-color-scheme: dark)">
+    <img src="../../.gitbook/assets/datacenter-purchase-form_white.png" alt="数据中心代理购买表单">
+  </picture>
+</figure>
 
-购买后，订单将自动打开，并可在“<mark style="color:purple;">活跃产品</mark>”面板或“[<mark style="color:purple;">我的订单</mark>](https://dashboard.proxyshard.com/products)”中查看
+## 支付订单
 
-<figure><img src="../../.gitbook/assets/image (50).png" alt=""><figcaption></figcaption></figure>
+点击 `Buy now` 后，系统会打开状态为 `Unpaid` 的账单。请核对 `Total amount`，然后点击 `Pay with Wallet`。
+
+<figure>
+  <picture>
+    <source srcset="../../.gitbook/assets/datacenter-invoice-payment_black.png" media="(prefers-color-scheme: dark)">
+    <img src="../../.gitbook/assets/datacenter-invoice-payment_white.png" alt="使用 ProxyShard 余额支付账单">
+  </picture>
+</figure>
+
+支付后，订单会显示在 `Active products` 和 [`My orders`](https://dashboard.proxyshard.com/products) 中。已付款的订单状态为 `Active`。
+
+<figure>
+  <picture>
+    <source srcset="../../.gitbook/assets/datacenter-active-products_black.png" media="(prefers-color-scheme: dark)">
+    <img src="../../.gitbook/assets/datacenter-active-products_white.png" alt="有效的数据中心代理订单">
+  </picture>
+</figure>
 
 {% hint style="warning" %}
-代理将在 1-2 分钟内开始工作；这个时间是订单同步所需要的
+订单同步需要 1-2 分钟。同步完成后，代理即可使用。
 {% endhint %}
 
-## 更新数据中心代理
+## 续订数据中心代理
 
-该产品可以自动或手动续订\
-\
-使用自动付款时，订单将在到期前 1-2 小时尝试自动续订。 \
-如果有足够的资金用于续订，代理会自动续订。如果资金不足，代理将停止工作，并等待<mark style="color:purple;">三天</mark>的余额补充。\
-\
-禁用自动续订后，代理将等待手动付款（状态 <mark style="color:$warning;">On-Hold</mark>）。为此，请在订单中单击 ![](<../../.gitbook/assets/image (55).png>)
+订单支持自动续订和手动续订。
 
-<figure><img src="../../.gitbook/assets/image (52).png" alt=""><figcaption></figcaption></figure>
+启用 `Auto renew` 后，系统会在付费周期结束前 1-2 小时尝试续订。余额充足时，系统会自动扣款，代理将继续运行。
+
+如果自动续订已关闭或余额不足，订单状态会变为 `On-hold`。如需手动续订，请打开订单，点击 ![](<../../.gitbook/assets/datacenter-renew-button.png>)，然后支付新账单。
+
+<figure>
+  <picture>
+    <source srcset="../../.gitbook/assets/datacenter-order-details_black.png" media="(prefers-color-scheme: dark)">
+    <img src="../../.gitbook/assets/datacenter-order-details_white.png" alt="手动续订数据中心代理">
+  </picture>
+</figure>
 
 {% hint style="danger" %}
-状态为“<mark style="color:$danger;">Cancelled</mark>”的代理无法续订。此状态会在订单未付款三天后分配。
+状态为 `Canceled` 的订单无法续订。订单逾期未支付三天后会进入此状态。
 {% endhint %}
-
-
-
