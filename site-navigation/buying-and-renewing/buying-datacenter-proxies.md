@@ -2,13 +2,13 @@
 icon: '1'
 ---
 
-# 数据中心代理购买示例
+# 购买 ISP / 数据中心代理
 
 ## 购买代理
 
-购买[数据中心代理](https://dashboard.proxyshard.com/datacenter-proxy)时：
+购买[数据中心代理](https://dashboard.proxyshard.com/datacenter-proxy)或 [ISP 代理](https://dashboard.proxyshard.com/isp-proxy)时：
 
-1. 打开 `Datacenter Proxy`。
+1. 根据所需的代理类型打开 `Datacenter Proxy` 或 `ISP Proxy`。
 2. 在 `Proxy region` 中选择代理所在国家/地区。
 3. 在 `Billing cycle` 中选择付费周期。
 4. 在 `Number of proxies` 中填写代理数量。
@@ -21,7 +21,7 @@ icon: '1'
 <figure>
   <picture>
     <source srcset="../../.gitbook/assets/datacenter-purchase-form_black.png" media="(prefers-color-scheme: dark)">
-    <img src="../../.gitbook/assets/datacenter-purchase-form_white.png" alt="数据中心代理购买表单">
+    <img src="../../.gitbook/assets/datacenter-purchase-form_white.png" alt="代理购买表单">
   </picture>
 </figure>
 
@@ -41,7 +41,7 @@ icon: '1'
 <figure>
   <picture>
     <source srcset="../../.gitbook/assets/datacenter-active-products_black.png" media="(prefers-color-scheme: dark)">
-    <img src="../../.gitbook/assets/datacenter-active-products_white.png" alt="有效的数据中心代理订单">
+    <img src="../../.gitbook/assets/datacenter-active-products_white.png" alt="有效的代理订单">
   </picture>
 </figure>
 
@@ -49,7 +49,7 @@ icon: '1'
 订单同步需要 1-2 分钟。同步完成后，代理即可使用。
 {% endhint %}
 
-## 续订数据中心代理
+## 续订订单
 
 订单支持自动续订和手动续订。
 
@@ -60,7 +60,7 @@ icon: '1'
 <figure>
   <picture>
     <source srcset="../../.gitbook/assets/datacenter-order-details_black.png" media="(prefers-color-scheme: dark)">
-    <img src="../../.gitbook/assets/datacenter-order-details_white.png" alt="手动续订数据中心代理">
+    <img src="../../.gitbook/assets/datacenter-order-details_white.png" alt="手动续订订单">
   </picture>
 </figure>
 

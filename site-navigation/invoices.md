@@ -4,18 +4,23 @@ icon: file-lines
 
 # 发票
 
-“<mark style="color:purple;">Invoices</mark>”选项卡显示购买、付款时间和付款状态。\
-在此页面上，您可以跟踪资金的使用情况。
+`Invoices` 页面会显示每张发票的金额、日期和状态。点击 `Open` 可查看对应发票。
 
-发票清单示例：
+<figure>
+  <picture>
+    <source srcset="../.gitbook/assets/invoice-list_black.png" media="(prefers-color-scheme: dark)">
+    <img src="../.gitbook/assets/invoice-list_white.png" alt="发票列表">
+  </picture>
+</figure>
 
-<figure><img src="../.gitbook/assets/image (264).png" alt=""><figcaption></figcaption></figure>
+发票详情包含付款人信息、付款方式、状态和订单内容。点击 `Download invoice PDF` 可下载 PDF 文件。
 
-发票示例：
-
-<figure><img src="../.gitbook/assets/image (251).png" alt=""><figcaption></figcaption></figure>
-
-发票内有一个用于以 PDF 格式导出发票的按钮。
+<figure>
+  <picture>
+    <source srcset="../.gitbook/assets/invoice-details_black.png" media="(prefers-color-scheme: dark)">
+    <img src="../.gitbook/assets/invoice-details_white.png" alt="发票详情和 PDF 下载">
+  </picture>
+</figure>
 
 
 

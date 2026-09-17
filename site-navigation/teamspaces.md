@@ -4,38 +4,76 @@ icon: people-group
 
 # 团队空间
 
-Teamspaces 可让您与其他用户协作，共享代理访问权限，分配角色并在统一工作区中管理订单。
+团队功能可用于共享代理和订单访问权限、分配权限并在同一工作区中协作。一个账户最多可以创建 10 个团队。
 
-## 打开团队空间
+## 打开 Teams
 
-1. 点击控制面板左下角的个人资料图标。
-2. 选择 **Settings**，然后在顶部导航中打开 **Teams** 标签页。
+1. 点击左下角的个人资料图标。
+2. 选择 `Settings`。
+3. 打开 `Teams` 标签页。
 
-<figure><img src="../.gitbook/assets/navigation-to-teams.png" alt="打开 Teams 页面"><figcaption></figcaption></figure>
+<figure>
+  <picture>
+    <source srcset="../.gitbook/assets/teams-navigation_black.png" media="(prefers-color-scheme: dark)">
+    <img src="../.gitbook/assets/teams-navigation_white.png" alt="打开 Teams 页面">
+  </picture>
+</figure>
 
-## 管理团队
+## 创建团队
 
-**Teams** 标签页会显示您创建的团队以及您加入的团队。您最多可以创建 10 个团队。
+1. 点击 `Create team`。
+2. 在 `Team name` 中输入团队名称。
+3. 在创建窗口中点击 `Create team`。
 
-在您加入的团队中，可使用相应按钮切换当前团队或退出团队。
+<figure>
+  <picture>
+    <source srcset="../.gitbook/assets/team-create_black.png" media="(prefers-color-scheme: dark)">
+    <img src="../.gitbook/assets/team-create_white.png" alt="创建团队">
+  </picture>
+</figure>
 
-<figure><img src="../.gitbook/assets/switch-between-teams.png" alt="切换团队"><figcaption></figcaption></figure>
+## 切换团队
 
-在您创建的团队中，可以管理成员并配置团队设置。
+打开左下角的账户菜单，选择 `Team`，然后选择目标团队。切换后，界面会显示该团队可访问的订单和功能。
 
-<figure><img src="../.gitbook/assets/teams-review.png" alt="团队列表"><figcaption></figcaption></figure>
+<figure>
+  <picture>
+    <source srcset="../.gitbook/assets/team-switch_black.png" media="(prefers-color-scheme: dark)">
+    <img src="../.gitbook/assets/team-switch_white.png" alt="切换当前团队">
+  </picture>
+</figure>
 
-如果您是团队所有者，请在团队卡片上选择 **Settings** 来配置工作区设置：
+您加入的团队会显示在 `Teams you belong to` 中。当前团队标记为 `Active`。如需退出团队，请点击 `Leave team`。
 
-<figure><img src="../.gitbook/assets/teams-settings.png" alt="团队设置"><figcaption></figcaption></figure>
+<figure>
+  <picture>
+    <source srcset="../.gitbook/assets/team-membership_black.png" media="(prefers-color-scheme: dark)">
+    <img src="../.gitbook/assets/team-membership_white.png" alt="用户已加入的团队">
+  </picture>
+</figure>
+
+## 团队设置
+
+团队所有者可以在团队卡片中打开 `Settings`，修改 `Team name`、启用 `Log order views` 或删除团队。更改设置后点击 `Save changes`。
+
+<figure>
+  <picture>
+    <source srcset="../.gitbook/assets/team-settings_black.png" media="(prefers-color-scheme: dark)">
+    <img src="../.gitbook/assets/team-settings_white.png" alt="团队设置">
+  </picture>
+</figure>
 
 ## 添加成员
 
-1. 打开团队并选择 **Members**。
-2. 点击 **+ Add member**，然后输入用户的电子邮件地址。
+在自己的团队卡片中打开 `Members`，然后点击 `Add member`。接着：
 
-<figure><img src="../.gitbook/assets/members-menu.png" alt="成员菜单"><figcaption></figcaption></figure>
+1. 在 `Member email` 中输入电子邮件地址。
+2. 设置订单访问权限和所需操作权限。
+3. 点击 `Add member`。
 
-3. 为成员配置所需的权限。
-
-<figure><img src="../.gitbook/assets/add-new-member.png" alt="添加团队成员"><figcaption></figcaption></figure>
+<figure>
+  <picture>
+    <source srcset="../.gitbook/assets/team-add-member_black.png" media="(prefers-color-scheme: dark)">
+    <img src="../.gitbook/assets/team-add-member_white.png" alt="添加成员并设置权限">
+  </picture>
+</figure>

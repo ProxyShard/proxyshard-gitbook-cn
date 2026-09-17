@@ -2,31 +2,53 @@
 icon: '2'
 ---
 
-# 住宅代理购买示例
+# 购买住宅代理
 
 ## 购买代理
 
-由于 <mark style="color:purple;">Residential</mark> 代理以 GB 为单位计费，因此您需要指定要购买的流量以及促销代码（如果有）
+购买前请选择适合的套餐：`Standard`、`Residential Premium` 或 `Unlimited`。各套餐的区别请参阅[对比表](../../our-products/residential-proxies/)。
+
+下单步骤：
+
+1. 在 `Residential Proxy` 下选择套餐。
+2. 如果套餐按流量计费，请输入需要购买的 GB 数量。
+3. 如有优惠码，请在 `Promocode` 中输入并点击 `Apply`。
+4. 确认价格后点击 `Buy now`。
 
 {% hint style="info" %}
-未使用的流量不会在月底失效；它会保留在订单中，直到全部用完。
+未使用的流量不会在月底失效。流量会保留在订单中，直到全部用完。
 {% endhint %}
 
-<figure><img src="../../.gitbook/assets/image (51).png" alt="" width="537"><figcaption></figcaption></figure>
+<figure>
+  <picture>
+    <source srcset="../../.gitbook/assets/residential-purchase-form_black.png" media="(prefers-color-scheme: dark)">
+    <img src="../../.gitbook/assets/residential-purchase-form_white.png" alt="购买住宅代理">
+  </picture>
+</figure>
 
-购买后，代理设置和生成面板可用
+## 支付订单
 
-<figure><img src="../../.gitbook/assets/image (56).png" alt=""><figcaption></figcaption></figure>
+点击 `Buy now` 后会打开状态为 `Unpaid` 的账单。确认 `Total amount` 中的金额，然后点击 `Pay with Wallet`。
 
-{% hint style="info" %}
-订单参数字段说明可在[此处](../../our-products/residential-proxies/#she-zhi-zi-duan-shuo-ming)
-{% endhint %}
+<figure>
+  <picture>
+    <source srcset="../../.gitbook/assets/residential-invoice-payment_black.png" media="(prefers-color-scheme: dark)">
+    <img src="../../.gitbook/assets/residential-invoice-payment_white.png" alt="使用余额支付住宅代理订单">
+  </picture>
+</figure>
+
+付款后会打开代理配置和生成页面。订单设置说明请参阅[住宅代理文档](../../our-products/residential-proxies/#she-zhi-zi-duan-shuo-ming)。
 
 ## 为订单添加流量
 
-可以使用订单右上角的![](<../../.gitbook/assets/image (248).png>)按钮添加流量
+打开订单，点击剩余流量旁边的 `Add Traffic`。选择所需流量并使用余额支付新账单。
 
-<figure><img src="../../.gitbook/assets/image (249).png" alt="" width="563"><figcaption></figcaption></figure>
+<figure>
+  <picture>
+    <source srcset="../../.gitbook/assets/residential-add-traffic_black.png" media="(prefers-color-scheme: dark)">
+    <img src="../../.gitbook/assets/residential-add-traffic_white.png" alt="为订单添加流量">
+  </picture>
+</figure>
 
-购买额外流量后，代理将重新开始工作
+付款后，额外流量会添加到订单中。如果代理因流量耗尽而停止，添加流量后即可恢复使用。
 

@@ -4,25 +4,31 @@ icon: dollar-sign
 
 # 余额充值
 
-添加资金是使用网站时最重要的一步。\
-余额用于购买网站上的所有产品以及续订订单。\
-\
-目前支持以下充值方式：\
-\- <mark style="color:purple;">加密货币</mark>，通过 Now payments\
-\- <mark style="color:purple;">银行卡</mark>，通过Stripe\
-\
-如需充值您的钱包余额，请点击“[钱包](https://dashboard.proxyshard.com/en/wallet)”
+余额可用于购买产品、续订订单以及支付额外流量。您可以通过 Stripe 使用银行卡或 Google Pay 充值，也可以通过 Cryptomus 使用加密货币充值。
 
-在充值页面，您可以指定金额和付款方式。
+充值步骤：
 
-<figure><img src="../.gitbook/assets/image (43).png" alt=""><figcaption></figcaption></figure>
+1. 打开 [`Wallet`](https://dashboard.proxyshard.com/en/wallet)。
+2. 在 `Top up balance amount` 中输入充值金额。
+3. 在 `Payment method` 中选择付款方式。
+4. 点击 `Top up your balance` 并完成付款。
 
-选择付款方式：
+<figure>
+  <picture>
+    <source srcset="../.gitbook/assets/wallet-top-up-form_black.png" media="(prefers-color-scheme: dark)">
+    <img src="../.gitbook/assets/wallet-top-up-form_white.png" alt="为 ProxyShard 余额充值">
+  </picture>
+</figure>
 
-<figure><img src="../.gitbook/assets/wallet_up.png" alt=""><figcaption></figcaption></figure>
+`Payment method` 列表提供 `Credit Card / Google Pay` 和 `Cryptomus (Crypto)`。
 
-充值页面还包含充值历史记录，您可以在其中查看已付款发票并导出每张发票的 PDF 文件。
+<figure>
+  <picture>
+    <source srcset="../.gitbook/assets/wallet-payment-methods_black.png" media="(prefers-color-scheme: dark)">
+    <img src="../.gitbook/assets/wallet-payment-methods_white.png" alt="选择付款方式">
+  </picture>
+</figure>
 
-<figure><img src="../.gitbook/assets/image (44).png" alt=""><figcaption></figcaption></figure>
+`History` 区域会显示每次充值的金额、状态和日期。点击 `Open` 可查看账单，并按需下载 PDF 文件。
 
 

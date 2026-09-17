@@ -2,44 +2,74 @@
 icon: '4'
 ---
 
-# 移动代理购买示例
+# 购买移动代理
 
 ## 购买代理
 
-购买<mark style="color:purple;">移动代理</mark>时，选择适合您的资费（您可以使用国家过滤器对列表进行排序）并指定租赁期限，如下图所示
+下单步骤：
 
-<figure><img src="../../.gitbook/assets/image (9) (1).png" alt="" width="563"><figcaption></figcaption></figure>
+1. 打开 `Mobile Proxy`。
+2. 使用 `Country filter` 选择国家或地区。
+3. 在所需运营商的卡片中选择租用周期。
+4. 点击 `Buy`。
 
-购买后，订单将自动打开，并可在“<mark style="color:purple;">活跃产品</mark>”面板或“[<mark style="color:purple;">我的订单</mark>](https://dashboard.proxyshard.com/products)”中查看
+<figure>
+  <picture>
+    <source srcset="../../.gitbook/assets/mobile-purchase-form_black.png" media="(prefers-color-scheme: dark)">
+    <img src="../../.gitbook/assets/mobile-purchase-form_white.png" alt="购买移动代理">
+  </picture>
+</figure>
 
-<figure><img src="../../.gitbook/assets/image (15) (1).png" alt=""><figcaption></figcaption></figure>
+## 支付订单
 
-## 入门
+确认账单金额后点击 `Pay with Wallet`。
 
-<figure><img src="../../.gitbook/assets/mobile_order.png" alt=""><figcaption></figcaption></figure>
+<figure>
+  <picture>
+    <source srcset="../../.gitbook/assets/mobile-invoice-payment_black.png" media="(prefers-color-scheme: dark)">
+    <img src="../../.gitbook/assets/mobile-invoice-payment_white.png" alt="使用余额支付移动代理订单">
+  </picture>
+</figure>
 
-{% hint style="danger" %}
-**要使代理在购买后开始工作，请打开 **<mark style="color:purple;">**重置 URL**</mark>** 链接或单击按钮** ![](<../../.gitbook/assets/image (13) (1).png>)**.**\
-\
-_此外，如果代理超过三个小时没有活动，它们将被禁用，需要再次激活。_
+付款后，订单会显示在 `Active products` 和 [`My orders`](https://dashboard.proxyshard.com/products) 中。点击 `Open` 可打开订单设置。
+
+<figure>
+  <picture>
+    <source srcset="../../.gitbook/assets/mobile-active-products_black.png" media="(prefers-color-scheme: dark)">
+    <img src="../../.gitbook/assets/mobile-active-products_white.png" alt="已激活的移动代理订单">
+  </picture>
+</figure>
+
+## 开始使用
+
+购买后，复制并打开 `Reset URL`，或点击 `Restart` 来激活代理。
+
+<figure>
+  <picture>
+    <source srcset="../../.gitbook/assets/mobile-order-restart_black.png" media="(prefers-color-scheme: dark)">
+    <img src="../../.gitbook/assets/mobile-order-restart_white.png" alt="激活移动代理">
+  </picture>
+</figure>
+
+{% hint style="warning" %}
+代理连续三小时没有活动后会变为非活动状态。再次打开 `Reset URL` 或点击 `Restart` 即可恢复使用。
 {% endhint %}
 
-<figure><img src="../../.gitbook/assets/mobile_pred.png" alt="" width="492"><figcaption></figcaption></figure>
+有关订单设置和字段说明，请参阅[移动代理文档](../../our-products/mobile-proxies.md)。
 
-{% hint style="info" %}
-您可以在此[链接](../../our-products/mobile-proxies.md)阅读有关设置和字段说明的信息
-{% endhint %}
+## 续订订单
 
-## 更新移动代理
+启用 `Auto renew` 后，只要余额充足，订单就会自动续订。如果关闭自动续订，付费周期结束后订单会变为 `On-hold`。打开订单并点击 `Renew` 可手动续订。
 
-该产品只能手动续订。\
-\
-禁用自动续订后，代理将等待手动付款（状态 <mark style="color:$warning;">On-Hold</mark>）。为此，请在订单中单击 ![](<../../.gitbook/assets/image (55).png>)
-
-<figure><img src="../../.gitbook/assets/image (21) (1).png" alt="" width="463"><figcaption></figcaption></figure>
+<figure>
+  <picture>
+    <source srcset="../../.gitbook/assets/mobile-order-renewal_black.png" media="(prefers-color-scheme: dark)">
+    <img src="../../.gitbook/assets/mobile-order-renewal_white.png" alt="续订移动代理订单">
+  </picture>
+</figure>
 
 {% hint style="danger" %}
-状态为“<mark style="color:$danger;">Cancelled</mark>”的代理无法续订。此状态会在订单未付款三天后分配。
+状态为 `Canceled` 的订单无法续订。订单未付款三天后会变为此状态。
 {% endhint %}
 
 

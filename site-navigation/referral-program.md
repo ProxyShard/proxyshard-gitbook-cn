@@ -5,23 +5,21 @@ icon: user-group
 
 # 推荐计划
 
-每个客户都可以通过推荐计划赚取收入。
+`Affiliate` 页面包含您的专属推荐链接。点击 `Copy link` 后，即可将链接发送给要邀请的用户。
 
-“<mark style="color:purple;">Affiliate</mark>”选项卡包含推荐链接。您可以使用它邀请朋友和熟人访问该网站。
+您邀请的用户产生购买时，您可获得 10% 的一级佣金。如果该用户继续邀请新客户，您还可从新客户的购买中获得 10% 的二级佣金。
 
-推荐奖励制度的运作方式如下：
+如需自定义推荐链接末尾的内容，请点击链接旁边的铅笔图标并保存新值。此页面还会显示收益、未支付佣金以及各级推荐人数。
 
-<figure><img src="../.gitbook/assets/image (253).png" alt=""><figcaption></figcaption></figure>
-
-对于推荐人在网站上进行的每次购买，您都会收到 <mark style="color:purple;">**10%**</mark>。
-
-您还可以指定自定义推荐链接。 \
-为此，请单击链接旁边的“<mark style="color:purple;">Edit</mark>”并将其更改为您的值。<br>
-
-<figure><img src="../.gitbook/assets/image (254).png" alt=""><figcaption></figcaption></figure>
+<figure>
+  <picture>
+    <source srcset="../.gitbook/assets/affiliate-program_black.png" media="(prefers-color-scheme: dark)">
+    <img src="../.gitbook/assets/affiliate-program_white.png" alt="ProxyShard 推荐计划">
+  </picture>
+</figure>
 
 {% hint style="info" %}
-有关链接点击和存入资金的信息不会根据技术支持的要求而披露
+技术支持不会提供有关推荐链接访问记录或佣金计算的额外明细。
 {% endhint %}
 
 

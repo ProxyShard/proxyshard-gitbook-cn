@@ -21,7 +21,12 @@ icon: wave-square
 
 <br>
 
-<figure><img src="../../.gitbook/assets/webrtc-leak (1).svg" alt=""><figcaption></figcaption></figure>
+<figure>
+  <picture>
+    <source srcset="../../.gitbook/assets/webrtc-leak_black.svg" media="(prefers-color-scheme: dark)">
+    <img src="../../.gitbook/assets/webrtc-leak_white.svg" alt="WebRTC 通过代理时的工作场景">
+  </picture>
+</figure>
 
 ### 场景 1：代理转发 UDP，两个地址一致
 

@@ -41,10 +41,9 @@
 
 * [余额充值](site-navigation/top-up-balance.md)
 * [购买和续费代理](site-navigation/buying-and-renewing/README.md)
-  * [购买数据中心代理示例](site-navigation/buying-and-renewing/buying-datacenter-proxies.md)
-  * [购买住宅代理示例](site-navigation/buying-and-renewing/buying-residential-proxies.md)
-  * [购买 ISP 代理示例](site-navigation/buying-and-renewing/buying-isp-proxies.md)
-  * [购买移动代理示例](site-navigation/buying-and-renewing/buying-mobile-proxies.md)
+  * [购买 ISP / 数据中心代理](site-navigation/buying-and-renewing/buying-datacenter-proxies.md)
+  * [购买住宅代理](site-navigation/buying-and-renewing/buying-residential-proxies.md)
+  * [购买移动代理](site-navigation/buying-and-renewing/buying-mobile-proxies.md)
 * [订单搜索 (Product tag)](site-navigation/order-search-product-tag.md)
 * [账单](site-navigation/invoices.md)
 * [我的订单](site-navigation/my-orders.md)
