@@ -125,7 +125,7 @@ Datacenter 和 ISP 代理仅可在租用期结束后的 **3 天内**续费。
 * <mark style="color:purple;">**TTL**</mark>（Time-To-Live）- 会话的「生命周期」秒数。TTL 到期后，代理链路将被重建，您会获得新的 IP。取值范围为 60 至 86400 秒。
 * <mark style="color:purple;">**Sticky / Random**</mark> - 会话模式。<mark style="color:purple;">Sticky</mark> 会尽量在 TTL 内保持相同的 IP，<mark style="color:purple;">Random</mark> 在每次新连接时分配随机 IP。
 
-住宅代理订单所有参数的完整说明：[如何使用住宅代理](../../our-products/residential-proxies/how-to-use-residential-proxies.md)。
+住宅代理订单参数的完整说明请参阅[住宅代理设置](../../our-products/residential-proxies/#dai-li-she-zhi)。
 
 ***
 

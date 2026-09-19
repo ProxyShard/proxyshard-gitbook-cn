@@ -8,6 +8,8 @@ icon: house-signal
 
 {% embed url="https://dashboard.proxyshard.com/en/residential-main" %}
 
+购买和付款的分步说明：[购买住宅代理](../../site-navigation/buying-and-renewing/buying-residential-proxies.md)。
+
 ## 特性
 
 | 参数              | 值                              |
@@ -15,8 +17,8 @@ icon: house-signal
 | 池大小            | 300,000 - 400,000 台设备        |
 | 最大连接数         | 35,000                         |
 | 每个订单最大速度     | 75 Mbps                        |
-| UDP 支持          | ✓（美国位置不可用）               |
-| [Device OS 筛选 (p0f)](README.md#she-zhi-zi-duan-shuo-ming) | ✗ |
+| [UDP 支持](../about-udp/) | ✓（美国除外；受端口限制） |
+| [Device OS 筛选](../p0f-spoofing.md) | ✗ |
 | 计费方式           | 按 GB（按量付费）                |
 | 价格              | **$2 / GB**                    |
 

@@ -12,7 +12,6 @@
   * [Unlimited Residential](our-products/residential-proxies/unlimited-residential-proxy.md)
   * [Standard 和 Unlimited 可用国家](our-products/residential-proxies/available-countries.md)
   * [Premium 可用国家](our-products/residential-proxies/premium-available-countries.md)
-  * [如何将住宅代理添加到应用程序](our-products/residential-proxies/how-to-use-residential-proxies.md)
 * [数据中心代理](our-products/datacenter-proxies.md)
 * [移动代理](our-products/mobile-proxies.md)
 * [ISP 代理](our-products/isp-proxies.md)

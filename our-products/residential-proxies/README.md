@@ -17,6 +17,8 @@ IP 地址来自真实的家庭宽带。如果池中的设备退出流量共享�
 
 {% embed url="https://dashboard.proxyshard.com/en/residential-main" %}
 
+购买和付款的分步说明：[购买住宅代理](../../site-navigation/buying-and-renewing/buying-residential-proxies.md)。
+
 ## 套餐
 
 | 参数              | [Standard](standard-residential.md) | [Unlimited](unlimited-residential-proxy.md) | [Premium](premium-residential.md) |
@@ -24,8 +26,8 @@ IP 地址来自真实的家庭宽带。如果池中的设备退出流量共享�
 | 池大小            | 300k - 400k                          | 300k - 400k (= Standard)                    | 3.8M - 4.6M                       |
 | 最大连接数         | 35,000                               | 5,000                                       | -                                 |
 | 最大速度           | 75 Mbps                              | 75 Mbps                                     | 75 Mbps                           |
-| [UDP 支持](../about-udp/) | ✓（美国除外）                          | ✓（美国除外）                                | ✗                                 |
-| [Device OS 筛选 (p0f)](README.md#she-zhi-zi-duan-shuo-ming) | ✗ | ✗ | ✓ |
+| [UDP 支持](../about-udp/) | ✓（美国除外；受端口限制） | ✓（美国除外；受端口限制） | ✓（部分城市及 macOS/iOS 设备除外） |
+| [Device OS 筛选](../p0f-spoofing.md) | ✗ | ✗ | ✓ |
 | 无限套餐           | ✗                                    | ✓                                           | ✗                                 |
 | 计费方式           | 按 GB（按量付费）                      | 日 / 半月 / 月                               | 按 GB（按量付费）                    |
 | 价格              | **$2 / GB**                          | **$30** / 天 · **$399** / 半月 · **$699** / 月 | **$3 / GB**                  |
@@ -48,93 +50,92 @@ IP 地址来自真实的家庭宽带。如果池中的设备退出流量共享�
 [premium-available-countries.md](premium-available-countries.md)
 {% endcontent-ref %}
 
-## **如何开始使用它们？**
+## 如何购买
 
-住宅代理的费用是根据订单购买的千兆字节数计算的。要访问国家/地区选择和其他参数，您需要[**购买**](https://dashboard.proxyshard.com/en/residential-main)订单。为此，请转到页面 ![](<../../.gitbook/assets/image (70).png>) 并指定千兆字节数。<br>
+1. 在 `Residential Proxy` 中选择 `Standard`、`Residential Premium` 或 `Unlimited`。
+2. 对于按流量计费的套餐，请输入所需的流量大小。
+3. 如果有优惠码，请在 `Promocode` 中输入并点击 `Apply`。
+4. 确认金额后点击 `Buy now`。
 
-<figure><img src="../../.gitbook/assets/image (71).png" alt=""><figcaption></figcaption></figure>
+<figure>
+  <picture>
+    <source srcset="../../.gitbook/assets/residential-purchase-form_black.png" media="(prefers-color-scheme: dark)">
+    <img src="../../.gitbook/assets/residential-purchase-form_white.png" alt="购买住宅代理">
+  </picture>
+</figure>
 
-## 设置字段说明
+订单付款和流量充值流程请参阅[购买住宅代理](../../site-navigation/buying-and-renewing/buying-residential-proxies.md)。
 
-在订单中，您可以找到几个重要的项目和选项。让我们回顾一下它们。
+## 代理设置
 
-<figure><img src="../../.gitbook/assets/residential-proxy-settings.png" alt="包含 Device OS 和 Session mode 参数的 Residential Proxy 设置"><figcaption></figcaption></figure>
+一般情况下，只需选择 `Country` 并点击 `Generate proxy`。需要更精确的定位或会话控制时，再配置其他参数。
 
-<mark style="color:purple;">**已使用流量**</mark> - 已使用多少\已购买多少
+<figure>
+  <picture>
+    <source srcset="../../.gitbook/assets/residential-settings_black.png" media="(prefers-color-scheme: dark)">
+    <img src="../../.gitbook/assets/residential-settings_white.png" alt="住宅代理设置">
+  </picture>
+</figure>
 
-<mark style="color:purple;">**国家**</mark> - 国家/地区选择
+1. `Country` 用于选择国家。
+2. `Region` 用于选择国家内的地区。
+3. `City` 用于选择城市。
+4. `ISP` 按运营商筛选地址。该字段仅适用于 [Premium Residential](premium-residential.md)。
+5. `Session` 用于设置轮换方式。`Sticky` 在 `TTL` 范围内保持同一 IP，`Rotate` 则在每次请求时更换 IP。
+6. `Protocol` 用于选择 `HTTP` 或 `SOCKS5`。
+7. `Relay` 用于更换连接服务器。仅在出现连接问题时使用。
+8. `TTL` 设置 `Sticky` 会话的 IP 有效时间，最小值为 60 秒。
+9. `Device OS` 按设备操作系统筛选 [Premium Residential](premium-residential.md) 地址池。
+10. `Amount` 设置每次生成的连接字符串数量。
+11. `Session mode` 控制 Premium Residential 会话。`Default(after 5sec)` 会在设备超过五秒未响应时切换会话。`Static` 会在 `TTL` 范围内等待同一设备重新上线。
+12. `Generate proxy` 根据所选参数生成连接字符串。
+13. `Proxy List` 显示已生成的连接字符串。可通过 `Format` 选择格式，并通过 `Copy all` 复制完整列表。
 
-<mark style="color:purple;">**地区**</mark> - 国家/地区选择
-
-<mark style="color:purple;">**城市**</mark> - 区域城市选择
-
-<mark style="color:purple;">**ISP**</mark> - 服务商类型选择。仅适用于 [Premium Residential](premium-residential.md)。
-
-[**Device OS**](../p0f-spoofing.md) - 按设备操作系统筛选 [Premium Residential](premium-residential.md) 池。选择所需的操作系统，即可获取来自对应操作系统设备的代理。仅适用于 Premium Residential。
+`Presets` 用于保存可重复使用的设置组合。配置各字段后点击 `Save preset`，下次生成代理时即可直接选择已保存的预设。
 
 {% hint style="warning" %}
-此设置会显著减少可用设备池。建议仅在定位人口超过 100 万的城市，或使用国家/地区级定位时启用。
-{% endhint %}
-
-<mark style="color:purple;">**会话**</mark> - 会话类型选择。可用选项有 <mark style="color:purple;">Sticky</mark> 和 <mark style="color:purple;">Rotate</mark>。
-
-* <mark style="color:purple;">Sticky</mark> 允许您保留一个 IP 地址，具体取决于所选的 TTL 参数。
-* <mark style="color:purple;">Rotate</mark> 在每次请求时都会更改 IP。 <mark style="color:purple;">Sticky</mark> 的 IP 范围池小于 <mark style="color:purple;">Rotate</mark> 的 IP 范围池。
-
-<mark style="color:purple;">**Session mode**</mark> - 会话管理参数，仅适用于 [Premium Residential](premium-residential.md)。
-
-* <mark style="color:purple;">Default (5 sec)</mark>：设备超过 5 秒未响应时切换会话。
-* <mark style="color:purple;">Static</mark>：不会切换会话，并会在 TTL 指定的时间内等待设备重新接入网络。如果未设置 TTL，会话将固定一天。
-
-<mark style="color:purple;">**协议**</mark> - HTTP/SOCKS。这些是连接代理服务器的主要协议。
-
-<mark style="color:purple;">**TTL**</mark> - 选择 <mark style="color:purple;">Session - Sticky</mark> 时出现，并控制 IP 地址生命周期 (<mark style="color:purple;"> 生存时间 </mark>)。 <mark style="color:purple;">TTL</mark> 的最短时间为 60 秒（1 分钟）。
-
-<mark style="color:purple;">**继电器**</mark> **-** 仅在存在连接问题时设置。
-
-<mark style="color:purple;">**用户名\密码\主机\端口**</mark> - 连接数据。它还在代理列表中生成并支持条件格式。
-
-{% hint style="info" %}
-代理端口不会影响您收到的最终地址。它们只是远程代理服务器的端口号，仅此而已！
-{% endhint %}
-
-<mark style="color:purple;">**流量统计**</mark> - 每分钟使用流量统计。显示可能会延迟 10-20 分钟。
-
-<figure><img src="../../.gitbook/assets/image (78).png" alt=""><figcaption></figcaption></figure>
-
-在订单末尾，您可以找到住宅流量的请求统计信息。在极少数情况下，可能会出现长达 20 分钟的显示延迟。
-
-## **设置指南**
-
-1. 指定设置：<mark style="color:purple;">Country</mark>、<mark style="color:purple;">Region</mark> 以及其他参数（如果需要）。
-
-<figure><img src="../../.gitbook/assets/image (4) (1) (1).png" alt=""><figcaption></figcaption></figure>
-
-2. <mark style="color:purple;">HTTP</mark> 或 <mark style="color:purple;">SOCKS5</mark> 协议由您自行设置 <mark style="color:$info;">（一般情况下，SOCKS5 用于 UDP）</mark>。
-
-<figure><img src="../../.gitbook/assets/image (7) (1).png" alt=""><figcaption></figcaption></figure>
-
-3. 仅当存在连接问题时才指定服务器 (<mark style="color:purple;">Relay</mark>)。
-
-<figure><img src="../../.gitbook/assets/image (5) (1) (1).png" alt=""><figcaption></figcaption></figure>
-
-4. 根据需要设置其他参数。
-
-<figure><img src="../../.gitbook/assets/image (6) (1).png" alt=""><figcaption></figcaption></figure>
-
-5. 单击 <img src="../../.gitbook/assets/image (76).png" alt="" data-size="line"> 按钮并从 <mark style="color:purple;"> 代理列表 </mark> 复制代理。
-
-<figure><img src="../../.gitbook/assets/image (75).png" alt=""><figcaption></figcaption></figure>
-
-稍后，如果您需要其他国家/地区，请指定新设置，单击 <img src="../../.gitbook/assets/image (76).png" alt="" data-size="line">，然后在建立连接的应用程序中重新安装新代理。
-
-{% hint style="info" %}
-有关连接格式的更多信息，请访问此[链接](how-to-use-residential-proxies.md)。
+同时使用 `Device OS`、城市和运营商筛选会大幅缩小可用地址池。在 Tier 2 和 Tier 3 国家，可能找不到符合条件的 macOS 或 iOS 设备。
 {% endhint %}
 
 {% hint style="warning" %}
-“代理列表”中的代理不会保存，因为这是一个动态字段。您可以为不同位置生成许多代理：生成新代理时旧代理不会停止工作。
+使用非默认 `Session mode` 时，如果所选设备离线，连接字符串可能不再响应。遇到这种情况，请通过 `Generate proxy` 生成新的连接字符串。
 {% endhint %}
+
+{% hint style="danger" %}
+`Regenerate password` 会更改订单密码，并立即使之前生成的所有连接字符串失效。仅在身份验证信息可能泄露时使用。要按用户查看流量，请使用 `Users` 选项卡。
+{% endhint %}
+
+`Proxy List` 是动态字段，不是存储空间。之前生成的连接字符串仍可继续使用，因为所选参数已写入 `Username`。如需保存设置，请使用 `Presets`。
+
+## 连接字符串格式
+
+标准格式如下：
+
+```text
+host:port:username:password
+```
+
+* `host` 指定连接服务器，例如 `relay-eu.proxyshard.com`。
+* `port` 用于连接服务器，本身不会决定最终 IP。
+* `username` 包含定位参数和会话标识符 `sid`。
+* `password` 用于身份验证。
+
+完整的连接字符串可添加到浏览器、应用程序或其他客户端。具体步骤请参阅[设置指南](../../setup-guides/getting-started.md)。
+
+## 统计信息
+
+<figure>
+  <picture>
+    <source srcset="../../.gitbook/assets/residential-statistics_black.png" media="(prefers-color-scheme: dark)">
+    <img src="../../.gitbook/assets/residential-statistics_white.png" alt="住宅代理统计信息">
+  </picture>
+</figure>
+
+1. 打开 `Statistics` 选项卡。
+2. 为 `Traffic Statistics` 图表选择时间范围。
+3. 单独为 `Requests Statistics` 表格选择时间范围。
+
+新数据可能会延迟 10-20 分钟显示。统计数据保留一个月。
 
 ## 适用于哪些任务
 
@@ -148,19 +149,19 @@ IP 地址来自真实的家庭宽带。如果池中的设备退出流量共享�
 * **更换 IP** - 按需或按计时器（TTL）轮换地址
 * **广泛的地理定位** - 可选择国家、地区、城市和运营商
 * **家庭来源地址** - IP 注册在家庭宽带运营商名下
-* **UDP 支持** - Standard 和 Unlimited 可用（美国位置除外）
+* **UDP 支持** - Standard、Unlimited 和 Premium 均可用，但需遵守各产品的限制
 
 #### <mark style="color:red;">缺点：</mark>
 
 * **可能出现速度下降** - 取决于终端设备的网络质量，这是该产品的特性
 * **动态 IP** - 地址可能随时被切换；如需静态 IP，请参阅 [ISP](../isp-proxies.md) 或 [Datacenter](../datacenter-proxies.md)
-* **不支持 p0f 伪装** - Premium Residential 仅提供 [Device OS 筛选](README.md#she-zhi-zi-duan-shuo-ming)
-* **美国位置不支持 UDP** - 在 Standard 和 Unlimited 上
+* **不支持 p0f 伪装** - Premium Residential 仅提供 [Device OS 筛选](../p0f-spoofing.md)
+* **UDP 限制** - Standard 和 Unlimited 在美国不支持 UDP；Premium 的部分城市及 macOS/iOS 设备不支持 UDP。此外还需遵守通用的[端口限制](../restrictions.md)
 
 {% hint style="success" %}
-没有 UDP 或需要静态地址？[ISP 代理](../isp-proxies.md)同时满足这两点。
+需要支持 UDP 的静态地址？请选择 [ISP 代理](../isp-proxies.md)。
 {% endhint %}
 
 {% hint style="info" %}
-您可以在我们的[设置指南](../../setup-guides/getting-started.md)部分了解如何配置代理。
+代理配置说明请参阅[设置指南](../../setup-guides/getting-started.md)。
 {% endhint %}

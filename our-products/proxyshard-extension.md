@@ -17,7 +17,13 @@ icon: puzzle-piece
 * 旁路列表与高级域名路由
 * 已本地化为**英语、俄语、乌克兰语和中文**
 
-<div align="center"><figure><img src="../.gitbook/assets/ext-promo.png" alt="ProxyShard 扩展程序界面" width="283"><figcaption><p>ProxyShard 扩展程序界面</p></figcaption></figure></div>
+<figure>
+  <picture>
+    <source srcset="../.gitbook/assets/extension-overview_black.png" media="(prefers-color-scheme: dark)">
+    <img src="../.gitbook/assets/extension-overview_white.png" alt="ProxyShard 扩展程序界面">
+  </picture>
+  <figcaption><p>ProxyShard 扩展程序界面</p></figcaption>
+</figure>
 
 ## 安装扩展程序
 
@@ -33,7 +39,13 @@ icon: puzzle-piece
 
 安装完成后，打开扩展菜单（地址栏右侧的拼图图标），点击 ProxyShard 名称旁的「图钉」图标，将其**固定**到工具栏以便快速访问。
 
-<div align="center"><figure><img src="../.gitbook/assets/ext-pinextension.png" alt="将扩展程序固定到浏览器"><figcaption><p>1) 打开扩展菜单 2) 固定 ProxyShard</p></figcaption></figure></div>
+<figure>
+  <picture>
+    <source srcset="../.gitbook/assets/extension-pin_black.png" media="(prefers-color-scheme: dark)">
+    <img src="../.gitbook/assets/extension-pin_white.png" alt="将扩展程序固定到浏览器">
+  </picture>
+  <figcaption><p>1) 打开扩展菜单。2) 固定 ProxyShard。</p></figcaption>
+</figure>
 
 {% hint style="danger" %}
 **Chromium 浏览器中 SOCKS5 的限制**
@@ -61,30 +73,66 @@ ProxyShard Extension 的 Mozilla Firefox 版本可通过扩展程序使用 SOCKS
 3. 使用 <mark style="color:purple;">**Copy all**</mark> 按钮复制连接字符串。
 4. 打开 ProxyShard 扩展程序（地址栏右侧已固定的图标）。
 
-<figure><img src="../.gitbook/assets/ext-resiadd.png" alt="在控制面板生成住宅代理"><figcaption><p>步骤 1-4：在控制面板配置并复制代理</p></figcaption></figure>
+<figure>
+  <picture>
+    <source srcset="../.gitbook/assets/extension-residential-copy_black.png" media="(prefers-color-scheme: dark)">
+    <img src="../.gitbook/assets/extension-residential-copy_white.png" alt="在控制面板生成住宅代理">
+  </picture>
+  <figcaption><p>步骤 1-4：在控制面板配置并复制代理</p></figcaption>
+</figure>
 
 5. 在扩展程序底部的输入框中，按 `ip:port:login:password` 格式**粘贴已复制的字符串**，然后点击 <mark style="color:purple;">**Add**</mark>。
 
-<div align="center"><figure><img src="../.gitbook/assets/ext-resiadd2.png" alt="在扩展程序中添加代理" width="332"><figcaption><p>步骤 5：粘贴代理并添加配置文件</p></figcaption></figure></div>
+<figure>
+  <picture>
+    <source srcset="../.gitbook/assets/extension-residential-add_black.png" media="(prefers-color-scheme: dark)">
+    <img src="../.gitbook/assets/extension-residential-add_white.png" alt="在扩展程序中添加代理">
+  </picture>
+  <figcaption><p>步骤 5：粘贴代理并添加配置文件</p></figcaption>
+</figure>
 
 6. 配置文件将出现在列表中。点击 <mark style="color:purple;">**Test**</mark> 验证可用性，然后点击 <mark style="color:purple;">**Play**</mark> 按钮以激活代理。
 
-<div align="center"><figure><img src="../.gitbook/assets/ext-resiadd4.png" alt="在扩展程序中激活代理" width="282"><figcaption><p>步骤 6：测试并启动配置文件</p></figcaption></figure></div>
+<figure>
+  <picture>
+    <source srcset="../.gitbook/assets/extension-residential-run_black.png" media="(prefers-color-scheme: dark)">
+    <img src="../.gitbook/assets/extension-residential-run_white.png" alt="在扩展程序中激活代理">
+  </picture>
+  <figcaption><p>步骤 6：测试并启动配置文件</p></figcaption>
+</figure>
 
 ## 配置 Datacenter / ISP 代理
 
 1. 在控制面板打开您的 <mark style="color:purple;">Datacenter</mark> 或 <mark style="color:purple;">ISP proxy</mark> 订单，从 <mark style="color:purple;">Proxy List</mark> 区块**复制**连接字符串。
 2. 打开已固定的 **ProxyShard** 扩展程序。
 
-<figure><img src="../.gitbook/assets/ext-dcispadd.png" alt="从 DC/ISP 订单复制代理"><figcaption><p>步骤 1-2：从订单复制代理并打开扩展程序</p></figcaption></figure>
+<figure>
+  <picture>
+    <source srcset="../.gitbook/assets/extension-dcisp-copy_black.png" media="(prefers-color-scheme: dark)">
+    <img src="../.gitbook/assets/extension-dcisp-copy_white.png" alt="从 DC/ISP 订单复制代理">
+  </picture>
+  <figcaption><p>步骤 1-2：从订单复制代理并打开扩展程序</p></figcaption>
+</figure>
 
 3. 在扩展程序底部的输入框中**粘贴代理**（`ip:port:login:password`），然后点击 <mark style="color:purple;">**Add**</mark>。
 
-<div align="center"><figure><img src="../.gitbook/assets/ext-dcispadd2.png" alt="将代理粘贴到扩展程序" width="404"><figcaption><p>步骤 3：将代理粘贴到扩展程序</p></figcaption></figure></div>
+<figure>
+  <picture>
+    <source srcset="../.gitbook/assets/extension-dcisp-add_black.png" media="(prefers-color-scheme: dark)">
+    <img src="../.gitbook/assets/extension-dcisp-add_white.png" alt="将代理粘贴到扩展程序">
+  </picture>
+  <figcaption><p>步骤 3：将代理粘贴到扩展程序</p></figcaption>
+</figure>
 
 4. 点击 <mark style="color:purple;">**Test**</mark> 验证，然后通过 <mark style="color:purple;">**Play**</mark> 按钮激活配置文件。
 
-<div align="center"><figure><img src="../.gitbook/assets/ext-dcispadd3.png" alt="激活 DC/ISP 配置文件" width="284"><figcaption><p>步骤 4：测试并启动配置文件</p></figcaption></figure></div>
+<figure>
+  <picture>
+    <source srcset="../.gitbook/assets/extension-dcisp-run_black.png" media="(prefers-color-scheme: dark)">
+    <img src="../.gitbook/assets/extension-dcisp-run_white.png" alt="激活 DC/ISP 配置文件">
+  </picture>
+  <figcaption><p>步骤 4：测试并启动配置文件</p></figcaption>
+</figure>
 
 {% hint style="info" %}
 **移动代理：按计时器或热键进行 IP 轮换**
@@ -96,7 +144,12 @@ ProxyShard Extension 的 Mozilla Firefox 版本可通过扩展程序使用 SOCKS
 * **Trigger: Hotkey** - 设置组合键（例如 `Shift+F2`）来即时切换 IP。
 * **Track IP history** - 重复检测功能：如果在会话期间出现相同的 IP 地址，扩展程序将通知您。
 
-<img src="../.gitbook/assets/ext-iprotate.png" alt="IP Rotation 设置" data-size="original">
+<figure>
+  <picture>
+    <source srcset="../.gitbook/assets/extension-ip-rotation_black.png" media="(prefers-color-scheme: dark)">
+    <img src="../.gitbook/assets/extension-ip-rotation_white.png" alt="IP Rotation 设置">
+  </picture>
+</figure>
 {% endhint %}
 
 ## 手动添加配置文件
@@ -114,7 +167,13 @@ ProxyShard Extension 的 Mozilla Firefox 版本可通过扩展程序使用 SOCKS
    * <mark style="color:purple;">**Username**</mark> / <mark style="color:purple;">**Password**</mark> - 身份验证信息
 4. 点击 <mark style="color:purple;">**Save Profile**</mark>。
 
-<figure><img src="../.gitbook/assets/ext-manual_add.png" alt="手动添加配置文件"><figcaption><p>完整的配置文件创建表单</p></figcaption></figure>
+<figure>
+  <picture>
+    <source srcset="../.gitbook/assets/extension-manual-profile_black.png" media="(prefers-color-scheme: dark)">
+    <img src="../.gitbook/assets/extension-manual-profile_white.png" alt="手动添加配置文件">
+  </picture>
+  <figcaption><p>完整的配置文件创建表单</p></figcaption>
+</figure>
 
 {% hint style="success" %}
 **完成！** ProxyShard 扩展程序已完全配置并可立即使用。您可以在任何受支持的浏览器中一键切换代理。

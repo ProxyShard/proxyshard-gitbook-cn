@@ -37,7 +37,7 @@ icon: '2'
   </picture>
 </figure>
 
-付款后会打开代理配置和生成页面。订单设置说明请参阅[住宅代理文档](../../our-products/residential-proxies/#she-zhi-zi-duan-shuo-ming)。
+付款后会打开代理配置和生成页面。订单设置说明请参阅[住宅代理文档](../../our-products/residential-proxies/#dai-li-she-zhi)。
 
 ## 为订单添加流量
 

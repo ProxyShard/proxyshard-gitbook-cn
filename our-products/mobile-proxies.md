@@ -22,6 +22,8 @@ icon: signal
 
 {% embed url="https://dashboard.proxyshard.com/en/mobile-proxy" %}
 
+购买和激活的分步说明：[购买移动代理](../site-navigation/buying-and-renewing/buying-mobile-proxies.md)。
+
 ## 特性
 
 | 参数              | 值                                     |
@@ -29,8 +31,8 @@ icon: signal
 | IP 类型           | 移动 IPv4                              |
 | 共享              | 否 - 一个端口对应一个用户               |
 | 流量              | 无限                                   |
-| UDP 支持          | ✓                                     |
-| p0f 支持          | ✓（并非所有位置可用，见上文）            |
+| [UDP 支持](about-udp/) | ✓                               |
+| [p0f 支持](p0f-spoofing.md) | ✓（并非所有位置可用，见上文）  |
 | 价格              | 从 **$4** / 天 · 从 **$55** / 月        |
 
 ## 可用位置
@@ -56,56 +58,50 @@ icon: signal
 列表会定期扩充。最新位置与价格请见 [Mobile proxy](https://dashboard.proxyshard.com/en/mobile-proxy) 购买页面。
 {% endhint %}
 
-## **它们如何工作？**
+## 如何购买
 
-首先，您需要[**购买**](https://dashboard.proxyshard.com/en/mobile-proxy)一个订单。进入页面![](<../.gitbook/assets/image (58).png>)并选择合适的国家和运营商。
+1. 打开 `Mobile Proxy`。
+2. 通过 `Country filter` 选择国家。
+3. 在所需运营商的卡片中选择租用期限。
+4. 点击 `Buy`。
 
-<figure><img src="../.gitbook/assets/image (59).png" alt=""><figcaption></figcaption></figure>
+<figure>
+  <picture>
+    <source srcset="../.gitbook/assets/mobile-purchase-form_black.png" media="(prefers-color-scheme: dark)">
+    <img src="../.gitbook/assets/mobile-purchase-form_white.png" alt="购买移动代理">
+  </picture>
+</figure>
+
+付款、首次激活和续费流程请参阅[购买移动代理](../site-navigation/buying-and-renewing/buying-mobile-proxies.md)。
+
+## 订单字段与管理
+
+<figure>
+  <picture>
+    <source srcset="../.gitbook/assets/mobile-order-settings_black.png" media="(prefers-color-scheme: dark)">
+    <img src="../.gitbook/assets/mobile-order-settings_white.png" alt="移动代理订单字段">
+  </picture>
+</figure>
+
+1. `Signature` 用于选择网络签名。可选值包括 `w`、`w10`、`w7`、`linux`、`android`、`macos` 和 `ios`。更改签名后，请务必点击 `Restart`。
+2. `Auto-reset` 按所选时间间隔自动重启连接。
+3. `Restart` 用于激活端口或更换 IP。也可以通过专属 `Reset URL` 执行相同操作。
+4. `Auto renew` 在余额充足时自动续费订单。
+5. `Re-generate credentials` 用于生成新的身份验证信息。执行后，旧的代理连接字符串将失效。
+
+其他字段：
+
+* `Product tag` 用于添加标签，方便在列表中查找订单。
+* `Proxy info` 显示国家、运营商和套餐类型。
+* `Order status` 显示订单状态：`Active`、`On-hold` 或 `Canceled`。
+* `Proxy status` 显示端口状态：`Active` 或 `Disconnected`。
+* `Username` 和 `Password` 为身份验证信息。
+* `Billing cycle`、`Next due date` 和 `Price` 显示租用期限和下次付款信息。
+* 在 `Proxy List` 中，可以选择连接字符串格式，通过 `Copy all` 复制列表，或通过 `Export All` 下载列表。
 
 {% hint style="warning" %}
-购买后，请激活端口：在订单中点击 <mark style="color:purple;">**Restart**</mark>，或访问您的专属 <mark style="color:purple;">**Reset URL**</mark>。端口激活前，代理无法工作。
+购买后以及端口连续三小时无活动后，需要通过 `Restart` 或 `Reset URL` 激活端口。当 `Proxy status` 显示 `Disconnected` 时，代理无法使用。
 {% endhint %}
-
-<figure><img src="../.gitbook/assets/mobile_pred.png" alt="移动代理端口激活提示" width="492"><figcaption></figcaption></figure>
-
-## 订单字段说明
-
-让我们回顾一下 <mark style="color:purple;">order</mark> 字段：
-
-<figure><img src="../.gitbook/assets/mobile_order2.png" alt="移动代理订单字段"><figcaption></figcaption></figure>
-
-<mark style="color:purple;">代理信息</mark> - 产品名称
-
-<mark style="color:purple;">Reset URL</mark> - 用于更改连接上的 IP 地址的链接
-
-<mark style="color:purple;">Login</mark> - 代理登录
-
-<mark style="color:purple;">Password</mark> - 代理密码
-
-<mark style="color:purple;">订单状态</mark> - 订单状态。可能的状态：
-
-* <mark style="color:green;">**有效**</mark> - 有效订单
-* <mark style="color:orange;">**保留**</mark> - 租赁期满后等待付款
-* <mark style="color:red;">**已取消**</mark> - 已取消订单
-
-<mark style="color:purple;">代理状态</mark> - 代理状态。可能的状态：
-
-* <mark style="color:green;">**有效**</mark> - 有效订单
-* <mark style="color:$danger;">Disconnected</mark> - 断开连接，非活动端口
-
-{% hint style="danger" %}
-**购买后或端口没有活动后，必须是**<mark style="color:$success;">**已激活**</mark>**。如果代理状态为**<mark style="color:$danger;">**已断开**</mark>**，则在您激活代理之前，代理将无法工作！**
-
-**您可以通过 **<mark style="color:purple;">**重置 URL**</mark>** 或 **<mark style="color:purple;">**重新启动代理**</mark>** 按钮激活代理。**
-{% endhint %}
-
-<mark style="color:purple;">下一个到期日</mark> - 下一个收费日期
-
-<mark style="color:purple;">复制代理</mark> - 用于将代理复制到剪贴板的按钮
-
-<mark style="color:purple;">重新生成</mark> - 更改代理密码
-
-<mark style="color:purple;">Restart</mark>--启动或更改IP；相当于 <mark style="color:purple;">Reset URL</mark> 地址
 
 ## 适用于哪些任务
 
@@ -131,6 +127,6 @@ icon: signal
 * **同时只能一个会话** - 一个端口保持一个 IP。如果需要_同时_连接多个设备（不是轮流，而是在同一时刻），请购买单独的端口或考虑[住宅代理](residential-proxies/README.md)
 
 {% hint style="info" %}
-您可以在我们的[设置指南](../setup-guides/getting-started.md)部分了解如何配置代理。
+代理配置说明请参阅[设置指南](../setup-guides/getting-started.md)。
 {% endhint %}
 

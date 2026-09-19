@@ -8,7 +8,12 @@ icon: magnifying-glass
 
 {% embed url="https://proxyshard.com/ip-checker" %}
 
-<figure><img src="../.gitbook/assets/ip-checker-overview.png" alt=""><figcaption></figcaption></figure>
+<figure>
+  <picture>
+    <source srcset="../.gitbook/assets/ip-checker-overview_black.png" media="(prefers-color-scheme: dark)">
+    <img src="../.gitbook/assets/ip-checker-overview_white.png" alt="IP Checker 概览">
+  </picture>
+</figure>
 
 ***
 
@@ -68,7 +73,12 @@ icon: magnifying-glass
 
 ## 浏览器状态报告
 
-<figure><img src="../.gitbook/assets/ip-checker-diagnostics.png" alt=""><figcaption></figcaption></figure>
+<figure>
+  <picture>
+    <source srcset="../.gitbook/assets/ip-checker-diagnostics_black.png" media="(prefers-color-scheme: dark)">
+    <img src="../.gitbook/assets/ip-checker-diagnostics_white.png" alt="IP Checker 详细诊断">
+  </picture>
+</figure>
 
 详细诊断页面按严重程度显示浏览器和网络分析结果。要查看检测到的问题详情，请点击对应卡片上的 **View troubles**。
 

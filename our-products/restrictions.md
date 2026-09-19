@@ -30,15 +30,17 @@ Stripe 和 PayPal 可在数据中心和 ISP 代理上使用。
 
 ***
 
-## 住宅代理上的 UDP（美国）
+## 住宅代理上的 UDP
 
 {% hint style="danger" %}
-UDP 不适用于 **美国** 位置的 [住宅代理](residential-proxies/)（**包括无限**）:flag\_us:
+UDP 不适用于 **美国** 位置的 [Standard Residential](residential-proxies/standard-residential.md) 和 [Unlimited Residential](residential-proxies/unlimited-residential-proxy.md) :flag\_us:
 {% endhint %}
 
 这不是我们的限制。 2026 年初，美国提供商禁止未经网络内部事先启动的传入 UDP 连接。因此，代理上的 UDP 关联停止在此区域中工作。
 
-UDP 在所有其他位置都可以正常工作。
+Standard 和 Unlimited 在其他位置支持 UDP，但仍需遵守通用端口限制。
+
+[Premium Residential](residential-proxies/premium-residential.md) 在所有位置支持 UDP，但部分城市及运行 macOS 或 iOS 的设备除外。
 
 ***
 

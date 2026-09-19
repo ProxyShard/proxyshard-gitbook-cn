@@ -4,11 +4,13 @@ icon: server
 
 # 数据中心代理
 
-<mark style="color:purple;">数据中心代理</mark> 是高负载场​​景和任务的代理。它们通常托管在数据中心并提供最高的速度和稳定性。
+<mark style="color:purple;">数据中心代理</mark>适合高负载任务。代理部署在数据中心，可提供出色的速度和稳定性。
 
-<mark style="color:purple;">数据中心代理</mark>与<mark style="color:purple;">ISP</mark>代理一样，仅发布给一名用户：不共享，意味着每个地址不超过一个用户，并且没有隐藏共享。地址为 <mark style="color:purple;">IPv4</mark>，还支持 <mark style="color:purple;">UDP</mark>。
+<mark style="color:purple;">数据中心代理</mark>与 <mark style="color:purple;">ISP</mark> 代理一样，每个地址仅分配给一名用户，不存在隐藏共享。这些地址均为 <mark style="color:purple;">IPv4</mark>，并支持 <mark style="color:purple;">UDP</mark>。
 
 {% embed url="https://dashboard.proxyshard.com/en/datacenter-proxy" %}
+
+购买和付款的分步说明：[购买 ISP / 数据中心代理](../site-navigation/buying-and-renewing/buying-datacenter-proxies.md)。
 
 ## 特性
 
@@ -17,8 +19,8 @@ icon: server
 | IP 类型           | IPv4                                                                      |
 | 共享              | 否 - 一个 IP 对应一个用户                                                   |
 | 连接数限制         | 每个 IP 2,500                                                              |
-| UDP 支持          | ✓                                                                         |
-| p0f 支持          | ✓（按月起租时，+$0.3 / IP）                                                 |
+| [UDP 支持](about-udp/) | ✓                                                                    |
+| [p0f 支持](p0f-spoofing.md) | ✓（按月起租时，+$0.3 / IP）                                       |
 | 价格              | **$0.3** / 3 天 · **$0.4** / 周 · **$0.7** / 半月 · **$1.2** / 月          |
 
 ## 可用位置
@@ -32,51 +34,54 @@ icon: server
 * 🇺🇦 乌克兰
 * 🇪🇸 西班牙
 
-## **它们如何工作？**
+## 如何购买
 
-在订单中，您可以找到几个重要的项目和选项。让我们回顾一下它们：
+1. 打开 `Datacenter Proxy`。
+2. 在 `Proxy region` 中选择国家或地区。
+3. 在 `Billing cycle` 中选择租用周期。
+4. 在 `Number of proxies` 中输入代理数量。
+5. 如需自动续订订单，请启用 `Auto renew`。
+6. 如有需要，请启用 `Enable p0f settings`。
+7. 在 `Total slots` 中输入需要使用 p0f 伪装的代理数量。
+8. 如有优惠码，请在 `Promocode` 中输入并点击 `Apply`。
+9. 确认金额后点击 `Buy now`。
 
-您可以在[数据中心代理](https://dashboard.proxyshard.com/en/datacenter-proxy)页面购买。在那里，您需要指定 <mark style="color:purple;">Country</mark>、<mark style="color:purple;">Rental period</mark> 和 <mark style="color:purple;">Quantity</mark>。如果需要，您可以开启<mark style="color:purple;">自动续费</mark>进行自动续费。
+<figure>
+  <picture>
+    <source srcset="../.gitbook/assets/datacenter-purchase-form_black.png" media="(prefers-color-scheme: dark)">
+    <img src="../.gitbook/assets/datacenter-purchase-form_white.png" alt="购买数据中心代理">
+  </picture>
+</figure>
 
-<figure><img src="../.gitbook/assets/image (66).png" alt=""><figcaption></figcaption></figure>
+付款和续订步骤请参阅[购买 ISP / 数据中心代理](../site-navigation/buying-and-renewing/buying-datacenter-proxies.md)。
 
 {% hint style="info" %}
-购买后，代理会在 1-2 分钟内开始工作，因为数据库需要与代理服务器同步。
+付款后请等待 1-2 分钟，订单同步完成后代理即可使用。
 {% endhint %}
 
-## 订单字段说明
+## 订单字段
 
-让我们回顾一下 <mark style="color:purple;">Order</mark> 字段：
+<figure>
+  <picture>
+    <source srcset="../.gitbook/assets/datacenter-order-details_black.png" media="(prefers-color-scheme: dark)">
+    <img src="../.gitbook/assets/datacenter-order-details_white.png" alt="数据中心代理订单字段">
+  </picture>
+</figure>
 
-<figure><img src="../.gitbook/assets/image (67).png" alt=""><figcaption></figcaption></figure>
-
-<mark style="color:purple;">用户 ID</mark> - 该用户 ID 用于内部订单识别。有时，当您联系技术支持时，我们会要求您提供此信息。
-
-<mark style="color:purple;">Status</mark> - 订单状态。可能的状态：
-
-* <mark style="color:green;">**有效**</mark> - 有效订单
-* <mark style="color:orange;">**保留**</mark> - 租赁期满后等待付款
-* <mark style="color:red;">**已取消**</mark> - 已取消订单
+* `Status` 显示订单状态：`Active`、`On-hold` 或 `Canceled`。
+* `Product tag` 用于添加标签，方便在产品列表中查找订单。
+* `User ID` 用于系统内部识别订单，联系支持时可能需要提供。
+* `Proxy Region` 显示所选国家或地区。
+* `p0f slots` 显示当前启用的 p0f 槽位数量，以及下一计费周期的变更。
+* `Username` 和 `Password` 是代理凭据。点击 `Regenerate` 会生成新密码，已有代理连接字符串将失效。
+* `Billing cycle`、`Next due date`、`Price` 和 `Next charge` 显示租用周期及下次付款信息。
+* `Auto-renew proxy` 用于控制自动续订，也可以通过 `Manage renewal` 调整相同设置。
+* `p0f` 和 `Buy p0f slots` 分别用于打开指纹伪装设置和购买额外槽位。
+* 在 `Proxy List` 中可以选择 `HTTP` 或 `SOCKS5`、更改连接字符串格式、使用 `Copy all` 复制列表，或通过 `Export All` 下载列表。
 
 {% hint style="danger" %}
-状态为“<mark style="color:$danger;">**已取消**</mark>”的订单**在租赁期结束三天后**无法恢复**。
+状态为 `Canceled` 的订单无法恢复。订单欠费三天后会进入该状态。
 {% endhint %}
-
-<mark style="color:purple;">Price</mark> - 每月产品价格
-
-<mark style="color:purple;">用户名</mark> - 代理登录
-
-<mark style="color:purple;">Password</mark> - 代理密码
-
-<mark style="color:purple;">下一个到期日</mark> - 下一个收费日期
-
-<mark style="color:purple;">复制代理</mark> - 用于将代理复制到剪贴板的按钮
-
-<mark style="color:purple;">HTTP/SOCKS</mark> - 代理协议类型选择
-
-<mark style="color:purple;">重新生成</mark> - 更改代理密码
-
-<mark style="color:purple;">自动续订</mark> - 启用/禁用每月产品续订的切换 <mark style="color:purple;">（资金在购买时指定的日期从帐户余额中扣除）</mark>
 
 ## 适用于哪些任务
 
@@ -103,6 +108,6 @@ icon: server
 {% endhint %}
 
 {% hint style="info" %}
-您可以在我们的[设置指南](../setup-guides/getting-started.md)部分了解如何配置代理。
+代理配置说明请参阅[设置指南](../setup-guides/getting-started.md)。
 {% endhint %}
 

@@ -32,15 +32,15 @@ icon: fingerprint
 | **iOS** | iOS指纹|
 | **安卓** |安卓指纹|
 
-### 具有 p0f 支持的 ISP 代理仪表板
+### 支持 p0f 的 ISP 和数据中心代理控制面板
 
-<figure><img src="../.gitbook/assets/p0f-dashboard.png" alt=""><figcaption><p>p0f tab in ISP proxy settings</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/p0f-dashboard.png" alt=""><figcaption><p>ISP 和数据中心代理设置中的 p0f 选项卡</p></figcaption></figure>
 
 ### 指纹选择面板
 
-下面是来自 ISP 代理订单的 p0f 设置示例的屏幕截图。
+截图中展示的是 ISP 代理订单。数据中心代理订单也提供相同的 p0f 设置面板。
 
-<figure><img src="../.gitbook/assets/p0f-panel.png" alt=""><figcaption><p>OS selection for network fingerprint spoofing</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/p0f-panel.png" alt=""><figcaption><p>选择用于网络指纹伪装的操作系统</p></figcaption></figure>
 
 {% hint style="warning" %}
 在更改 p0f 之前，请确保关闭所有通过代理的连接。在旧连接关闭之前，代理将无法工作。更改 p0f 后，等待 2-3 分钟再连接。
@@ -72,7 +72,7 @@ p0f 伪装和设备筛选适用于以下产品：
 * [数据中心代理](datacenter-proxies.md)
 * [ISP 代理](isp-proxies.md)
 * [移动代理](mobile-proxies.md)
-* [Premium Residential](residential-proxies/premium-residential.md) - 通过 [Device OS](residential-proxies/#she-zhi-zi-duan-shuo-ming) 参数筛选设备，不提供 p0f 伪装
+* [Premium Residential](residential-proxies/premium-residential.md) - 通过 [Device OS](residential-proxies/#dai-li-she-zhi) 参数筛选设备，不提供 p0f 伪装
 
 {% hint style="warning" %}
 p0f 伪装在某些[移动代理](mobile-proxies.md)上不可用。请参阅[限制](restrictions.md)页面上的完整限制列表。

@@ -10,4 +10,4 @@ icon: arrow-down-right
 
 正确的处理方式是保持 WebRTC 启用，并通过代理转发其 UDP 流量。客户端程序和代理都必须支持 `UDP ASSOCIATE`。
 
-所有 ProxyShard 产品都支持通过 SOCKS5 连接传输 UDP。可用程序请参阅[启用 WebRTC 的软件方案](webrtc-software-solutions.md)。
+ProxyShard 的所有产品线均提供 UDP 支持，但部分产品、位置和设备存在限制。最新汇总请参阅[关于 UDP 协议](README.md#ge-chan-pin-de-udp-zhi-chi-qing-kuang)，兼容程序请参阅[启用 WebRTC 的软件方案](webrtc-software-solutions.md)。
