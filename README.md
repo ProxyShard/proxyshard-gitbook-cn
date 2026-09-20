@@ -4,6 +4,13 @@ icon: hand-wave
 
 # ProxyShard GitBook
 
+<figure>
+  <picture>
+    <source srcset=".gitbook/assets/docs-cover_black.svg" media="(prefers-color-scheme: dark)">
+    <img src=".gitbook/assets/docs-cover_white.svg" alt="ProxyShard 文档">
+  </picture>
+</figure>
+
 这里汇总了使用 ProxyShard 代理所需的内容：产品说明、配置指南、常见问题和 API 文档。
 
 {% hint style="info" %}
