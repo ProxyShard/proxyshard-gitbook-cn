@@ -5,6 +5,13 @@ icon: browser
 
 # ShardX Launcher
 
+<figure>
+  <picture>
+    <source srcset="../.gitbook/assets/shardx-cover_black.svg" media="(prefers-color-scheme: dark)">
+    <img src="../.gitbook/assets/shardx-cover_white.svg" alt="ShardX Launcher 徽标">
+  </picture>
+</figure>
+
 {% hint style="info" %}
 ShardX Launcher 以 MIT 许可证发布，是面向个人使用的免费工具。软件按「原样」提供。我们会定期发布更新，但不提供实时聊天支持--如遇严重问题，请在 [GitHub](https://github.com/ProxyShard/ShardBrowser/issues) 上提交 Bug 报告。
 {% endhint %}

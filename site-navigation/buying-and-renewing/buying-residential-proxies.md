@@ -1,5 +1,5 @@
 ---
-icon: '2'
+icon: house-signal
 ---
 
 # 购买住宅代理

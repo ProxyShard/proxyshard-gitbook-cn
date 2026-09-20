@@ -30,9 +30,9 @@ icon: shield-exclamation
 | [Datacenter](../datacenter-proxies.md) | ✓ 所有位置 |
 | [ISP](../isp-proxies.md) | ✓ 所有位置 |
 | [Mobile](../mobile-proxies.md) | ✓ |
-| [Standard Residential](../residential-proxies/standard-residential.md) | ✓ 美国除外；受端口限制 |
-| [Unlimited Residential](../residential-proxies/unlimited-residential-proxy.md) | ✓ 美国除外；受端口限制 |
-| [Premium Residential](../residential-proxies/premium-residential.md) | ✓ 所有位置，但部分城市及 macOS/iOS 设备除外 |
+| [Standard Residential](../residential-proxies/standard-residential.md) | ✓ 美国除外；受[端口限制](../restrictions.md) |
+| [Unlimited Residential](../residential-proxies/unlimited-residential-proxy.md) | ✓ 美国除外；受[端口限制](../restrictions.md) |
+| [Premium Residential](../residential-proxies/premium-residential.md) | ✓ 所有位置，但[部分城市及 macOS/iOS 设备除外](../restrictions.md) |
 
 如需传输 UDP，请使用 SOCKS5 以及支持 `UDP ASSOCIATE` 的客户端程序。兼容方案请参阅[启用 WebRTC 的软件方案](webrtc-software-solutions.md)。
 

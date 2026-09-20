@@ -1,5 +1,5 @@
 ---
-icon: '4'
+icon: sim-card
 ---
 
 # 购买移动代理

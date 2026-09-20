@@ -6,6 +6,13 @@ icon: fingerprint
 
 # ShardX Launcher
 
+<figure>
+  <picture>
+    <source srcset="../.gitbook/assets/shardx-cover_black.svg" media="(prefers-color-scheme: dark)">
+    <img src="../.gitbook/assets/shardx-cover_white.svg" alt="ShardX Launcher 徽标">
+  </picture>
+</figure>
+
 <mark style="color:purple;">**ShardX Browser**</mark> 是我们的反检测浏览器：
 
 ## 下载与安装

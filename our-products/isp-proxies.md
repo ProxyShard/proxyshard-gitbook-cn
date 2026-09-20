@@ -16,6 +16,8 @@ ISP 代理支持 <mark style="color:purple;">p0f</mark> 网络指纹伪装。
 
 购买和付款的分步说明：[购买 ISP / 数据中心代理](../site-navigation/buying-and-renewing/buying-datacenter-proxies.md)。
 
+当前产品限制请参阅[限制](restrictions.md)页面。
+
 ## 特性
 
 | 参数              | 值                                   |

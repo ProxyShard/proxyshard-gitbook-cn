@@ -1,5 +1,5 @@
 ---
-icon: '3'
+icon: server
 ---
 
 # 购买 ISP 代理

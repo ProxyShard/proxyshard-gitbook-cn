@@ -42,6 +42,22 @@ Standard 和 Unlimited 在其他位置支持 UDP，但仍需遵守通用端口�
 
 [Premium Residential](residential-proxies/premium-residential.md) 在所有位置支持 UDP，但部分城市及运行 macOS 或 iOS 的设备除外。
 
+### Standard 和 Unlimited 的 UDP 端口限制
+
+Standard 和 Unlimited 目前仅允许将 UDP 流量发送到目标端口 `8443`、`8080`、`3478` 和 `19302`，其他 UDP 端口范围均被阻止。美国位置仍然完全不支持 UDP。
+
+Premium Residential 不受此端口限制影响，仅保留部分城市及 macOS/iOS 设备的现有例外情况。
+
+Standard 和 Unlimited 的此项限制预计于 2026 年 10 月初解除。
+
+### `static_mode2` 与 macOS/iOS 设备
+
+`static_mode2` 对应 Premium Residential 的 `Session mode` 字段中的 `Static`。在此模式下，代理会保留选定的设备。当该设备暂时离线时，会话不会切换到其他设备。
+
+如果选定的设备不可用，代理连接字符串可能会停止响应，直到设备重新上线或 `TTL` 到期。如需立即获取其他设备，请使用 `Generate proxy` 创建新的连接字符串。
+
+使用 `Device OS: macOS` 或 `iOS` 筛选会显著缩小可用设备池。如果同时选择城市和运营商，可能找不到符合条件的设备，尤其是在 Tier 2 和 Tier 3 国家。部分 macOS/iOS 设备和某些城市也不支持 UDP。
+
 ***
 
 ## p0f 开启移动代理

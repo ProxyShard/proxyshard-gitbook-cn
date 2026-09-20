@@ -17,7 +17,7 @@ icon: house-signal
 | 池大小            | 300,000 - 400,000 台设备        |
 | 最大连接数         | 35,000                         |
 | 每个订单最大速度     | 75 Mbps                        |
-| [UDP 支持](../about-udp/) | ✓（美国除外；受端口限制） |
+| [UDP 支持](../about-udp/) | ✓（美国除外；受[端口限制](../restrictions.md)） |
 | [Device OS 筛选](../p0f-spoofing.md) | ✗ |
 | 计费方式           | 按 GB（按量付费）                |
 | 价格              | **$2 / GB**                    |

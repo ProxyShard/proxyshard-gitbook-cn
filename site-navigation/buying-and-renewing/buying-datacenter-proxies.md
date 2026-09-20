@@ -1,5 +1,5 @@
 ---
-icon: '1'
+icon: server
 ---
 
 # 购买 ISP / 数据中心代理

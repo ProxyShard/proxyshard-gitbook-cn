@@ -26,7 +26,7 @@ IP 地址来自真实的家庭宽带。如果池中的设备退出流量共享�
 | 池大小            | 300k - 400k                          | 300k - 400k (= Standard)                    | 3.8M - 4.6M                       |
 | 最大连接数         | 35,000                               | 5,000                                       | -                                 |
 | 最大速度           | 75 Mbps                              | 75 Mbps                                     | 75 Mbps                           |
-| [UDP 支持](../about-udp/) | ✓（美国除外；受端口限制） | ✓（美国除外；受端口限制） | ✓（部分城市及 macOS/iOS 设备除外） |
+| [UDP 支持](../about-udp/) | ✓（美国除外；受[端口限制](../restrictions.md)） | ✓（美国除外；受[端口限制](../restrictions.md)） | ✓（[部分城市及 macOS/iOS 设备除外](../restrictions.md)） |
 | [Device OS 筛选](../p0f-spoofing.md) | ✗ | ✗ | ✓ |
 | 无限套餐           | ✗                                    | ✓                                           | ✗                                 |
 | 计费方式           | 按 GB（按量付费）                      | 日 / 半月 / 月                               | 按 GB（按量付费）                    |
