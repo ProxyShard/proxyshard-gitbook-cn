@@ -30,14 +30,12 @@ icon: circle-question
 
 ## 2. 哪些产品支持 UDP？
 
-UDP 在**所有**产品上都受支持，但以下情况除外：
+Datacenter、ISP、Mobile、Standard Residential、Unlimited Residential 和 Premium Residential 均支持 UDP，但存在以下限制：
 
-* 位于 <mark style="color:purple;">**美国**</mark> :flag\_us: 的**住宅代理**和**无限住宅代理**（自 2026 年初起，美国运营商方面的限制）
-* **所有地区**的**高级住宅代理**
+* **Standard Residential** 和 **Unlimited Residential** 在<mark style="color:purple;">**美国**</mark> :flag\_us: 位置完全不支持 UDP。在其他位置，目前仅允许将 UDP 流量发送到目标端口 `8443`、`8080`、`3478` 和 `19302`。
+* **Premium Residential** 支持 UDP，但部分城市和部分 macOS/iOS 设备除外。Standard 和 Unlimited 的端口限制不适用于 Premium。
 
-在 Datacenter、ISP、Mobile 以及非美国住宅代理上，UDP 正常工作。
-
-详情：[关于 UDP 协议](../../our-products/about-udp/)。
+当前例外情况请参阅[关于 UDP 协议](../../our-products/about-udp/)和[限制](../../our-products/restrictions.md)页面。
 
 ***
 

@@ -13,7 +13,7 @@ icon: fingerprint
   </picture>
 </figure>
 
-<mark style="color:purple;">**ShardX Browser**</mark> 是我们的反检测浏览器：
+<mark style="color:purple;">**ShardX Browser**</mark> 是我们的反检测浏览器。您可以创建具有独立指纹（fingerprint）的配置文件，为每个配置文件分配专用代理，并以不同设备上的不同用户身份管理数十个账号。本地**自动化 API**还支持通过 Puppeteer / Playwright 创建、启动和控制配置文件。
 
 ## 下载与安装
 
@@ -21,7 +21,7 @@ icon: fingerprint
 
 {% content-ref url="../setup-guides/shardx-browser.md" %}
 [ShardX Launcher - 安装与配置指南](../setup-guides/shardx-browser.md)
-{% endcontent-ref %}为每个配置文件创建独立的唯一指纹（fingerprint），为每个配置文件绑定专属代理，像不同设备上的不同用户一样同时管理数十个账号。在手动模式之上，还提供本地**自动化 API**，可通过 Puppeteer / Playwright 机器人创建、启动和操控配置文件。
+{% endcontent-ref %}
 
 #### ShardX 的功能：
 
