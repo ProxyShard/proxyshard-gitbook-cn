@@ -19,9 +19,11 @@ icon: coin-vertical
   </picture>
 </figure>
 
-#### [**购买 ISP / 数据中心代理**](buying-datacenter-proxies.md)
+#### [**购买数据中心代理**](buying-datacenter-proxies.md)
 
 #### [**购买住宅代理**](buying-residential-proxies.md)
+
+#### [**购买 ISP 代理**](buying-isp-proxies.md)
 
 #### [**购买移动代理**](buying-mobile-proxies.md)
 

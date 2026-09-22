@@ -10,7 +10,7 @@ icon: server
 
 {% embed url="https://dashboard.proxyshard.com/en/datacenter-proxy" %}
 
-购买和付款的分步说明：[购买 ISP / 数据中心代理](../site-navigation/buying-and-renewing/buying-datacenter-proxies.md)。
+购买和付款的分步说明：[购买数据中心代理](../site-navigation/buying-and-renewing/buying-datacenter-proxies.md)。
 
 当前产品限制请参阅[限制](restrictions.md)页面。
 
@@ -55,7 +55,7 @@ icon: server
   </picture>
 </figure>
 
-付款和续订步骤请参阅[购买 ISP / 数据中心代理](../site-navigation/buying-and-renewing/buying-datacenter-proxies.md)。
+付款和续订步骤请参阅[购买数据中心代理](../site-navigation/buying-and-renewing/buying-datacenter-proxies.md)。
 
 {% hint style="info" %}
 付款后请等待 1-2 分钟，订单同步完成后代理即可使用。

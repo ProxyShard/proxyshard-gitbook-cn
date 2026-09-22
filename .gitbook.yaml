@@ -18,7 +18,7 @@ redirects:
   instrukciya-po-ispolzovaniyu/brauzery/chrome/zeroomega: setup-guides/browsers/chrome/zeroomega
   nashi-produkty/o-protokole-udp: our-products/about-udp
   nashi-produkty/mobilnye-proksi: our-products/mobile-proxies
-  nashi-produkty/rezidentskie-proksi/kak-ispolzovat-residential-proksi: our-products/residential-proxies/how-to-use-residential-proxies
+  nashi-produkty/rezidentskie-proksi/kak-ispolzovat-residential-proksi: our-products/residential-proxies#dai-li-she-zhi
   nashi-produkty/rezidentskie-proksi/spisok-dostupnykh-stran: our-products/residential-proxies/available-countries
   nashi-produkty/ogranicheniya: our-products/restrictions
   nashi-produkty/datacentr-proksi: our-products/datacenter-proxies
@@ -147,7 +147,7 @@ redirects:
   chan-pin/residential-proxies/unlimited-residential-proxy: our-products/residential-proxies/unlimited-residential-proxy
   chan-pin/residential-proxies/available-countries: our-products/residential-proxies/available-countries
   chan-pin/residential-proxies/premium-available-countries: our-products/residential-proxies/premium-available-countries
-  chan-pin/residential-proxies/how-to-use-residential-proxies: our-products/residential-proxies/how-to-use-residential-proxies
+  chan-pin/residential-proxies/how-to-use-residential-proxies: our-products/residential-proxies#dai-li-she-zhi
   chan-pin/datacenter-proxies: our-products/datacenter-proxies
   chan-pin/mobile-proxies: our-products/mobile-proxies
   chan-pin/isp-proxies: our-products/isp-proxies

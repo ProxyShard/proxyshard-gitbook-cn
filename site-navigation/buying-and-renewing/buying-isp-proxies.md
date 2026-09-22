@@ -4,40 +4,55 @@ icon: server
 
 # 购买 ISP 代理
 
+{% hint style="info" %}
+余额中需要有足够的[资金](../top-up-balance.md)才能支付订单。
+{% endhint %}
+
 ## 购买代理
 
-购买 [<mark style="color:purple;">ISP</mark>](https://dashboard.proxyshard.com/isp-proxy) 代理时，请指定：
+购买 [ISP 代理](https://dashboard.proxyshard.com/isp-proxy)时：
 
-* 代理国家
-* 租赁周期（周\月\半年\年）
-* 代理数量
-* 自动续订切换（启用后，将在每个租赁周期自动收取资金；可以在订单内禁用）
-* 促销代码（如果有）。
+1. 打开 `ISP Proxy`。
+2. 在 `Proxy region` 中选择代理所在国家或地区。
+3. 在 `Billing cycle` 中选择付费周期。
+4. 在 `Number of proxies` 中填写代理数量。
+5. 如需自动续订订单，请启用 `Auto renew`。
+6. 如有需要，请启用 `Enable p0f settings`，并在 `Total slots` 中填写插槽数量。
+7. 如有优惠码，请将其填入 `Promocode`，然后点击 `Apply`。
+8. 确认订单金额，然后点击 `Buy now`。
 
-<figure><img src="../../.gitbook/assets/image (49).png" alt="" width="563"><figcaption></figcaption></figure>
+<figure>
+  <picture>
+    <source srcset="../../.gitbook/assets/isp-purchase-form_black.png" media="(prefers-color-scheme: dark)">
+    <img src="../../.gitbook/assets/isp-purchase-form_white.png" alt="ISP 代理购买表单">
+  </picture>
+</figure>
 
-购买后，订单将自动打开，并可在“<mark style="color:purple;">活跃产品</mark>”面板或“[<mark style="color:purple;">我的订单</mark>](https://dashboard.proxyshard.com/products)”中查看
+## 付款和激活
 
-<figure><img src="../../.gitbook/assets/image (50).png" alt="" width="563"><figcaption></figcaption></figure>
+点击 `Buy now` 后，将打开状态为 `Unpaid` 的账单。确认 `Total amount`，然后点击 `Pay with Wallet`。付款流程与[数据中心代理说明](buying-datacenter-proxies.md#zhi-fu-ding-dan)相同。
+
+付款后，订单会显示在 `Active products` 和 [`My orders`](https://dashboard.proxyshard.com/products) 中。
 
 {% hint style="warning" %}
-代理将在 1-2 分钟内开始工作；这个时间是订单同步所需要的
+代理将在 1-2 分钟内开始工作。此时间用于同步订单。
 {% endhint %}
 
-## 更新 ISP 代理
+## 管理和续订订单
 
-该产品可以自动或手动续订\
-\
-使用自动付款时，订单将在到期前 1-2 小时尝试自动续订。 \
-如果有足够的资金用于续订，代理会自动续订。如果资金不足，代理将停止工作，并等待<mark style="color:purple;">三天</mark>的余额补充。\
-\
-禁用自动续订后，代理将等待手动付款（状态 <mark style="color:$warning;">On-Hold</mark>）。为此，请在订单中单击 ![](<../../.gitbook/assets/image (55).png>)
+<figure>
+  <picture>
+    <source srcset="../../.gitbook/assets/isp-order-details_black.png" media="(prefers-color-scheme: dark)">
+    <img src="../../.gitbook/assets/isp-order-details_white.png" alt="管理 ISP 代理订单">
+  </picture>
+</figure>
 
-<figure><img src="../../.gitbook/assets/image (52).png" alt="" width="521"><figcaption></figcaption></figure>
+启用 `Auto renew` 后，系统会在已付费周期结束前 1-2 小时尝试续订订单。余额充足时，系统会自动扣款。
+
+如果关闭自动续订或余额不足，订单状态将变为 `On-hold`。如需手动续订，请打开订单，点击 `Renew`，然后支付账单。
+
+有关 `Status`、`Product tag`、访问凭据、p0f 设置和其他字段的说明，请参阅[订单字段](../../our-products/isp-proxies.md#ding-dan-zi-duan)。
 
 {% hint style="danger" %}
-状态为“<mark style="color:$danger;">Cancelled</mark>”的代理无法续订。此状态会在订单未付款三天后分配。
+状态为 `Canceled` 的订单无法续订。订单未付款三天后会进入此状态。
 {% endhint %}
-
-
-

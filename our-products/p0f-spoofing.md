@@ -32,15 +32,42 @@ icon: fingerprint
 | **iOS** | iOS指纹|
 | **安卓** |安卓指纹|
 
-### 支持 p0f 的 ISP 和数据中心代理控制面板
+### ISP 和数据中心代理
 
-<figure><img src="../.gitbook/assets/p0f-dashboard.png" alt=""><figcaption><p>ISP 和数据中心代理设置中的 p0f 选项卡</p></figcaption></figure>
+打开订单，点击 `p0f`，然后为每个 IP 选择所需的操作系统。ISP 和数据中心代理的设置方式相同。
 
-### 指纹选择面板
+<figure>
+  <picture>
+    <source srcset="../.gitbook/assets/p0f-datacenter-isp_black.png" media="(prefers-color-scheme: dark)">
+    <img src="../.gitbook/assets/p0f-datacenter-isp_white.png" alt="ISP 和数据中心代理的 p0f 设置">
+  </picture>
+</figure>
 
-截图中展示的是 ISP 代理订单。数据中心代理订单也提供相同的 p0f 设置面板。
+### 移动代理
 
-<figure><img src="../.gitbook/assets/p0f-panel.png" alt=""><figcaption><p>选择用于网络指纹伪装的操作系统</p></figcaption></figure>
+在 `Signature` 字段中选择代理应使用的操作系统指纹。更改设置后，点击 `Restart` 重启代理。
+
+<figure>
+  <picture>
+    <source srcset="../.gitbook/assets/p0f-mobile_black.png" media="(prefers-color-scheme: dark)">
+    <img src="../.gitbook/assets/p0f-mobile_white.png" alt="为移动代理选择网络指纹">
+  </picture>
+</figure>
+
+并非所有移动代理地区都支持 p0f 伪装。当前列表请参阅[限制](restrictions.md)。
+
+### Premium Residential
+
+在 Premium Residential 中，`Device OS` 参数会按设备操作系统筛选代理池。该功能用于筛选代理池，不会伪装网络指纹。
+
+<figure>
+  <picture>
+    <source srcset="../.gitbook/assets/p0f-premium-residential_black.png" media="(prefers-color-scheme: dark)">
+    <img src="../.gitbook/assets/p0f-premium-residential_white.png" alt="按 Device OS 筛选 Premium Residential 代理">
+  </picture>
+</figure>
+
+`Device OS` 的可用性取决于地区。详情请参阅[限制](restrictions.md)。
 
 {% hint style="warning" %}
 在更改 p0f 之前，请确保关闭所有通过代理的连接。在旧连接关闭之前，代理将无法工作。更改 p0f 后，等待 2-3 分钟再连接。

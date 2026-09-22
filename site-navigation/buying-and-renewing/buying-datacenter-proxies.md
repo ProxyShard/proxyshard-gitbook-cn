@@ -2,13 +2,13 @@
 icon: server
 ---
 
-# 购买 ISP / 数据中心代理
+# 购买数据中心代理
 
 ## 购买代理
 
-购买[数据中心代理](https://dashboard.proxyshard.com/datacenter-proxy)或 [ISP 代理](https://dashboard.proxyshard.com/isp-proxy)时：
+购买[数据中心代理](https://dashboard.proxyshard.com/datacenter-proxy)时：
 
-1. 根据所需的代理类型打开 `Datacenter Proxy` 或 `ISP Proxy`。
+1. 打开 `Datacenter Proxy`。
 2. 在 `Proxy region` 中选择代理所在国家/地区。
 3. 在 `Billing cycle` 中选择付费周期。
 4. 在 `Number of proxies` 中填写代理数量。
