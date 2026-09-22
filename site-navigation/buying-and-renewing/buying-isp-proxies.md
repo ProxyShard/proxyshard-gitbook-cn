@@ -35,7 +35,7 @@ icon: server
 付款后，订单会显示在 `Active products` 和 [`My orders`](https://dashboard.proxyshard.com/products) 中。
 
 {% hint style="warning" %}
-代理将在 1-2 分钟内开始工作。此时间用于同步订单。
+订单同步通常需要 1-2 分钟，完成后代理即可使用。
 {% endhint %}
 
 ## 管理和续订订单
@@ -47,12 +47,12 @@ icon: server
   </picture>
 </figure>
 
-启用 `Auto renew` 后，系统会在已付费周期结束前 1-2 小时尝试续订订单。余额充足时，系统会自动扣款。
+启用 `Auto renew` 后，系统会在当前计费周期结束前 1-2 小时尝试续订订单。余额充足时，系统会自动扣款。
 
 如果关闭自动续订或余额不足，订单状态将变为 `On-hold`。如需手动续订，请打开订单，点击 `Renew`，然后支付账单。
 
 有关 `Status`、`Product tag`、访问凭据、p0f 设置和其他字段的说明，请参阅[订单字段](../../our-products/isp-proxies.md#ding-dan-zi-duan)。
 
 {% hint style="danger" %}
-状态为 `Canceled` 的订单无法续订。订单未付款三天后会进入此状态。
+状态为 `Canceled` 的订单无法续订。订单连续三天未付款后会进入此状态。
 {% endhint %}

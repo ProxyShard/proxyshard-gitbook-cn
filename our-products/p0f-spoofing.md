@@ -2,35 +2,35 @@
 icon: fingerprint
 ---
 
-# 网络指纹伪装(p0f)
+# 网络指纹伪装 (p0f)
 
 ## p0f 是什么以及它为何重要
 
-网络上的每个设备在 <mark style="color:$primary;">TCP/IP</mark> 级别都有自己的数字指纹，称为 <mark style="color:$primary;">**p0f**</mark>。它由网络堆栈参数组成：MSS、TSval、TTL、TCP 选项、窗口大小、TOS 等。这些参数在 Windows、macOS、Linux、iOS 和 Android 中有所不同，反欺诈系统知道这一点。
+网络中的每台设备在 <mark style="color:$primary;">TCP/IP</mark> 层面都有自己的数字指纹，称为 <mark style="color:$primary;">**p0f**</mark> 指纹。它由网络协议栈参数构成，包括 MSS、TSval、TTL、TCP options、Window size 和 TOS 等。Windows、macOS、Linux、iOS 和 Android 的这些参数并不相同，反欺诈系统可以利用这种差异识别设备环境。
 
-网站端检查的工作原理：
+网站通常会进行以下检查：
 
-1. 网站查看<mark style="color:$primary;">**用户代理**</mark>、<mark style="color:$primary;">**TLS 指纹**</mark>和其他客户端参数来确定用户来自哪个操作系统。
-2. 同时，分析连接的<mark style="color:$primary;">**网络层**</mark>，即代理服务器与您的流量一起发送的 <mark style="color:$primary;">TCP/IP 指纹</mark>。
-3. 如果浏览器显示“我是Windows 11”，但TCP/IP指纹显示<mark style="color:$primary;">Linux</mark>，则反欺诈系统会记录不匹配。
+1. 网站会检查 <mark style="color:$primary;">**User-Agent**</mark>、<mark style="color:$primary;">**TLS 指纹**</mark>和其他客户端参数，以判断用户使用的操作系统。
+2. 同时，网站还会分析连接的<mark style="color:$primary;">**网络层**</mark>信息，也就是代理服务器随流量发送的 <mark style="color:$primary;">TCP/IP 指纹</mark>。
+3. 如果浏览器显示 Windows 11，而 TCP/IP 指纹却对应 <mark style="color:$primary;">Linux</mark>，反欺诈系统就可能发现两者不一致。
 
-**所有代理服务的问题是**所有数据中心和 ISP 代理都在 Linux 服务器上运行。这意味着在 99% 的情况下，即使您从 Windows 或 macOS 进行访问，您的网络指纹也将是 Linux。对于反欺诈系统，这是正在使用代理的直接信号。
+**常见问题：** Datacenter 和 ISP 代理通常运行在 Linux 服务器上。如果不修改网络指纹，即使用户使用 Windows 或 macOS，TCP/IP 指纹仍可能显示为 Linux。反欺诈系统可能将这种不一致视为使用代理的迹象。
 
 ## ProxyShard 如何解决这个问题
 
-我们添加了直接从仪表板**伪装 p0f 指纹**的功能。您选择所需的操作系统，代理服务器开始发送带有相应 TCP/IP 指纹的网络数据包。
+ProxyShard 支持直接在控制面板中修改 p0f 指纹。选择目标操作系统后，代理服务器会使用与该系统相符的 TCP/IP 参数发送数据包。
 
 可用的伪装选项：
 
 | 值 | 描述 |
-| -------------- | --------------------------- |
-| **Unset**      |默认指纹（Linux）|
+| --- | --- |
+| **Unset** | 默认指纹（Linux） |
 | **Windows 10** | Windows 10 指纹 |
 | **Windows 11** | Windows 11 指纹 |
-| **Mac 操作系统** | macOS 指纹 |
+| **Mac OS** | macOS 指纹 |
 | **Linux** | Linux 指纹 |
-| **iOS** | iOS指纹|
-| **安卓** |安卓指纹|
+| **iOS** | iOS 指纹 |
+| **Android** | Android 指纹 |
 
 ### ISP 和数据中心代理
 
@@ -54,7 +54,7 @@ icon: fingerprint
   </picture>
 </figure>
 
-并非所有移动代理地区都支持 p0f 伪装。当前列表请参阅[限制](restrictions.md)。
+部分移动代理地区暂不支持 p0f 伪装。当前列表请参阅[限制](restrictions.md)。
 
 ### Premium Residential
 
@@ -70,18 +70,18 @@ icon: fingerprint
 `Device OS` 的可用性取决于地区。详情请参阅[限制](restrictions.md)。
 
 {% hint style="warning" %}
-在更改 p0f 之前，请确保关闭所有通过代理的连接。在旧连接关闭之前，代理将无法工作。更改 p0f 后，等待 2-3 分钟再连接。
+更改 p0f 前，请关闭所有通过该代理建立的连接。旧连接仍会使用原来的指纹，并可能影响新设置生效。修改后请等待 2-3 分钟，再重新连接。
 {% endhint %}
 
 ## 真实结果
 
-中期测试显示，在通过反欺诈检查方面取得了显着进步。确诊病例1例：
+初步测试表明，p0f 伪装可以提高反欺诈检查的通过率。以下是一个已经验证的场景：
 
 {% hint style="success" %}
-**谷歌账户：**我们与[Vision Browser](../setup-guides/antidetect-browsers/vision-browser.md)的开发者一起，在不修改浏览器指纹的情况下测试了谷歌注册。在没有 p0f 伪装的干净配置文件上，系统会立即提供二维码（QR 码）验证。通过 p0f 伪装 Windows 10/11 后，二维码验证不再出现，Google 转而要求电话号码验证--这确认了不存在代理检测。
+**Google 账号：** 我们与 [Vision Browser](../setup-guides/antidetect-browsers/vision-browser.md) 开发者测试了在不修改浏览器指纹的情况下注册 Google 账号。使用全新配置文件且未启用 p0f 伪装时，系统会立即要求通过二维码验证。将 p0f 指纹设置为 Windows 10 或 Windows 11 后，二维码验证不再出现，Google 改为要求手机号验证。这表明浏览器环境与网络指纹之间的不一致已被消除。
 {% endhint %}
 
-从事谷歌注册工作的人都知道，如果不“破坏”桌面上的指纹，就不可能获得电话号码验证：系统将始终要求提供二维码。 p0f 伪装在网络层面解决了这个问题。
+注册 Google 账号时，如果浏览器环境与网络指纹不一致，桌面端通常会触发二维码验证。p0f 伪装可以让网络指纹与所选操作系统保持一致。
 
 ## 推荐堆栈
 
@@ -90,7 +90,7 @@ icon: fingerprint
 * [**Vision Browser**](../setup-guides/antidetect-browsers/vision-browser.md)，一款支持 UDP 的反检测浏览器
 * **启用 p0f 伪装的 ProxyShard ISP 代理**
 
-该堆栈涵盖了所有检查层：浏览器指纹（Vision）+网络指纹（p0f）+来自家庭提供商（ISP）的干净IP。
+在这种组合中，Vision Browser 负责浏览器指纹，p0f 负责网络层指纹，ISP 代理则提供住宅网络运营商的 IP 地址。
 
 ## 支持情况
 
