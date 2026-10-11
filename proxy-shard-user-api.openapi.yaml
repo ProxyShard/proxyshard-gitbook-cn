@@ -618,7 +618,7 @@ paths:
       tags:
         - Datacenter & ISP Proxies
       summary: "设置 IP 操作系统指纹"
-      description: "为一个或多个代理 IP 设置操作系统指纹签名。订单必须启用 `p0f_slots` 组件。每个设置了签名的 IP 会永久占用一个槽位。修改已有签名 IP 的操作系统值不会占用额外槽位。**可用的签名值：** | 值 | 操作系统 | | --- | --- | | `ios` | iOS | | `macos` | macOS | | `android` | Android | | `linux` | Linux | | `win10` | Windows 10 | | `win11` | Windows 11 |"
+      description: "为一个或多个代理 IP 设置操作系统指纹签名。  \n订单必须启用 `p0f_slots` 组件。\n\n每个设置了签名的 IP 会永久占用一个槽位。修改已有签名 IP 的操作系统值不会占用额外槽位。\n\n**可用的签名值：**\n\n| 值 | 操作系统 |\n| --- | --- |\n| `ios` | iOS |\n| `macos` | macOS |\n| `android` | Android |\n| `linux` | Linux |\n| `win10` | Windows 10 |\n| `win11` | Windows 11 |"
       parameters:
         - in: path
           name: order_id

@@ -574,7 +574,7 @@ paths:
     get:
       tags: [ Extensions ]
       summary: "列出扩展"
-      description: "返回配置文件可用的扩展。在 `POST /profiles` 或 `PATCH /profiles/{id}` 的 `extensions` 字段中使用扩展 `id`。由于数据 URL 可能很大，因此省略了图标。 `POST /extensions` 包含添加的扩展程序的图标。"
+      description: "返回配置文件可用的扩展。在 `POST /profiles` 或 `PATCH /profiles/{id}` 的 `extensions` 字段中使用扩展 `id`。\n\n由于数据 URL 可能很大，因此省略了图标。 `POST /extensions` 包含添加的扩展程序的图标。"
       responses:
         "200":
           description: "扩展列表。"
@@ -1610,7 +1610,7 @@ components:
         id: { type: string }
         kind:
           type: string
-          description: "内置调色板类型（`goto`、`click`、`type`、`profile.create`、`var.set` 等）或 `module:<module id>:<block>`。\n\n**在移动配置文件中**，普通步骤会转换为触摸操作：`click` 执行点按，`rightClick` 执行长按，`scroll` 和 `swipe` 使用触摸手势。移动设备没有指针，因此不支持 `hover`。以下步骤仅适用于移动配置文件，在桌面配置文件中会被拒绝：\n\n| 类型 | 参数 | 操作 | | --- | --- | --- | | `touch.tap` | `selector` 或 `x`+`y`、`tapCount`（1-3）、`timeout` | 点按目标。 | | `touch.longPress` | `selector` 或 `x`+`y`、`timeout` | 按住不放。 | | `touch.swipe` | `selector` 或 `x`+`y`、`dx`、`dy`、`timeout` | 滑动。 | | `touch.drag` | `selector`、`to`、`holdMs`、`timeout` | 拖动元素。 | | `touch.pinch` | `scale`、`selector` 或 `x`+`y` | 双指缩放。值大于 1 时缩小。 | | `screen.rotate` | `angle`（0/90/180/270）、`turnMs`、`into` | 旋转设备。`into` 保存新的 `screen.orientation.type`。 |"
+          description: "内置调色板类型（`goto`、`click`、`type`、`profile.create`、`var.set` 等）或 `module:<module id>:<block>`。\n\n**在移动配置文件中**，普通步骤会转换为触摸操作：`click` 执行点按，`rightClick` 执行长按，`scroll` 和 `swipe` 使用触摸手势。移动设备没有指针，因此不支持 `hover`。以下步骤仅适用于移动配置文件，在桌面配置文件中会被拒绝：\n\n| 类型 | 参数 | 操作 |\n| --- | --- | --- |\n| `touch.tap` | `selector` 或 `x`+`y`、`tapCount`（1-3）、`timeout` | 点按目标。 |\n| `touch.longPress` | `selector` 或 `x`+`y`、`timeout` | 按住不放。 |\n| `touch.swipe` | `selector` 或 `x`+`y`、`dx`、`dy`、`timeout` | 滑动。 |\n| `touch.drag` | `selector`、`to`、`holdMs`、`timeout` | 拖动元素。 |\n| `touch.pinch` | `scale`、`selector` 或 `x`+`y` | 双指缩放。值大于 1 时缩小。 |\n| `screen.rotate` | `angle`（0/90/180/270）、`turnMs`、`into` | 旋转设备。`into` 保存新的 `screen.orientation.type`。 |"
           example: click
         label: { type: string }
         params:
