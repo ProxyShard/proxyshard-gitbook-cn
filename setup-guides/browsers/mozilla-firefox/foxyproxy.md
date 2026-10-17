@@ -1,50 +1,68 @@
 ---
-description: Mozilla Firefox 代理
+description: 在 Mozilla Firefox 中配置代理
 ---
 
 # FoxyProxy
 
-## 安装 FoxyProxy 扩展
+## 安装 FoxyProxy
 
 {% hint style="warning" %}
-此解决方案不支持 UDP 隧道！
+FoxyProxy 仅支持 TCP 流量。
 {% endhint %}
 
-点击[链接](https://addons.mozilla.org/en-US/firefox/addon/foxyproxy-standard/?utm_source=addons.mozilla.org\&utm_medium=referral\&utm_content=search)下载“<mark style="color:purple;">FoxyProxy</mark>”扩展。
+从 Firefox Add-ons 安装 [FoxyProxy Standard](https://addons.mozilla.org/firefox/addon/foxyproxy-standard/)。
 
-{% embed url="https://addons.mozilla.org/en-US/firefox/addon/foxyproxy-standard/?utm_source=addons.mozilla.org&utm_medium=referral&utm_content=search" %}
+{% embed url="https://addons.mozilla.org/firefox/addon/foxyproxy-standard/" %}
 
-<figure><img src="../../../.gitbook/assets/image (93).png" alt=""><figcaption></figcaption></figure>
+<figure>
+  <picture>
+    <source srcset="../../../.gitbook/assets/foxyproxy-addon-page_black.png" media="(prefers-color-scheme: dark)">
+    <img src="../../../.gitbook/assets/foxyproxy-addon-page_white.png" alt="Firefox Add-ons 中的 FoxyProxy Standard">
+  </picture>
+</figure>
 
-安装它，然后打开扩展设置。
+安装完成后，打开 FoxyProxy 并进入扩展程序设置。
 
-<figure><img src="../../../.gitbook/assets/Image00001 (2).PNG" alt=""><figcaption></figcaption></figure>
+<figure>
+  <picture>
+    <source srcset="../../../.gitbook/assets/foxyproxy-options-popup-disable_black.png" media="(prefers-color-scheme: dark)">
+    <img src="../../../.gitbook/assets/foxyproxy-options-popup-disable_white.png" alt="打开 FoxyProxy 设置">
+  </picture>
+</figure>
 
+## 配置代理
 
+打开 `Proxies`，然后点击 `Add`。
 
-## **扩展设置**
-
-转到“<mark style="color:purple;">Proxies</mark>”选项卡，然后使用“<mark style="color:purple;">Add</mark>”按钮添加新的代理连接。
-
-<figure><img src="../../../.gitbook/assets/Image00002 (2).PNG" alt=""><figcaption></figcaption></figure>
+<figure>
+  <picture>
+    <source srcset="../../../.gitbook/assets/foxyproxy-add-proxy-form_black.png" media="(prefers-color-scheme: dark)">
+    <img src="../../../.gitbook/assets/foxyproxy-add-proxy-form_white.png" alt="在 FoxyProxy 中添加代理">
+  </picture>
+</figure>
 
 {% hint style="info" %}
-**您可以在[设置指南](../../getting-started.md)部分找到代理设置示例**
+数据格式和订单示例请参阅[开始使用](../../getting-started.md)。
 {% endhint %}
 
-## **设置代理连接**
+在 `Title` 中输入配置文件名称。选择代理类型，然后使用订单 `Proxy List` 中的数据填写 `Hostname`、`Port`、`Username` 和 `Password`。点击 `Save`。
 
-将订单中的代理输入相应字段（IP/主机名:端口:用户名:密码）、标题和协议类型。然后单击“<mark style="color:purple;">保存</mark>”。
+<figure>
+  <picture>
+    <source srcset="../../../.gitbook/assets/foxyproxy-proxy-config-filled_black.png" media="(prefers-color-scheme: dark)">
+    <img src="../../../.gitbook/assets/foxyproxy-proxy-config-filled_white.png" alt="FoxyProxy 中已填写的代理配置文件">
+  </picture>
+</figure>
 
-<figure><img src="../../../.gitbook/assets/image (30).png" alt=""><figcaption></figcaption></figure>
+## 连接代理
 
-## **完成设置和连接**
+打开 FoxyProxy，然后选择刚才创建的配置文件。
 
-再次打开扩展程序并选择您之前创建的连接。
+<figure>
+  <picture>
+    <source srcset="../../../.gitbook/assets/foxyproxy-options-popup-proxyshard_black.png" media="(prefers-color-scheme: dark)">
+    <img src="../../../.gitbook/assets/foxyproxy-options-popup-proxyshard_white.png" alt="在 FoxyProxy 中选择代理配置文件">
+  </picture>
+</figure>
 
-<figure><img src="../../../.gitbook/assets/Image00004 (2).PNG" alt=""><figcaption></figcaption></figure>
-
-**现在一切都准备好了。您可以开始使用代理。**
-
-
-
+代理现已连接，可以在 Mozilla Firefox 中使用。

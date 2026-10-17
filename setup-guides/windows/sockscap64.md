@@ -1,38 +1,61 @@
 # SocksCap64
 
 {% hint style="success" %}
-该解决方案支持 UDP 隧道！
+SocksCap64 支持 TCP 和 UDP 代理。
 {% endhint %}
 
-## 安装 SocksCap64
+## 安装
 
-点击[链接](https://github.com/bobo2334/sockscap64/releases/tag/4.7)下载SocksCap64。
+从[发布页面](https://github.com/bobo2334/sockscap64/releases/tag/4.7)下载 `SocksCap64-setup-4.7.exe`，完成安装后以管理员身份运行 SocksCap64。
 
-{% embed url="https://github.com/bobo2334/sockscap64/releases/tag/4.7" %}
+<figure>
+  <picture>
+    <source srcset="../../.gitbook/assets/sockscap64-github-download_black.png" media="(prefers-color-scheme: dark)">
+    <img src="../../.gitbook/assets/sockscap64-github-download_white.png" alt="从 GitHub 下载 SocksCap64">
+  </picture>
+</figure>
 
-<figure><img src="../../.gitbook/assets/Image00004 (8).PNG" alt=""><figcaption></figcaption></figure>
+## 添加代理
 
-下载后，安装并启动应用程序。
+1. 点击顶部工具栏中的 `Proxy`。
+2. 在 `Proxy Manager` 窗口中点击 `+`。
+3. 填写连接信息：
+   - `Proxy Address`：服务器 IP 地址或域名；
+   - `Port`：连接端口；
+   - `Account`：用户名；
+   - `Password`：密码；
+   - `SOCKS Type`：选择 `SOCKS 5`。
+4. 点击 `Save`。
 
-## **SocksCap64 设置**
-
-首先，添加代理服务器。为此，请打开 <mark style="color:purple;">Proxy</mark> 选项卡，然后使用程序底部的 <img src="../../.gitbook/assets/image (26) (1).png" alt="" data-size="line"> 添加新连接。
-
-<figure><img src="../../.gitbook/assets/Image00005 (2).PNG" alt=""><figcaption></figcaption></figure>
+<figure>
+  <picture>
+    <source srcset="../../.gitbook/assets/sockscap64-proxy-manager-config_black.png" media="(prefers-color-scheme: dark)">
+    <img src="../../.gitbook/assets/sockscap64-proxy-manager-config_white.png" alt="SocksCap64 代理设置">
+  </picture>
+</figure>
 
 {% hint style="info" %}
-**您可以在[设置指南](../getting-started.md)部分找到代理设置示例**
+如需了解连接信息的位置，请参阅[通用配置说明](../getting-started.md)。
 {% endhint %}
 
-## 应用程序代理设置
+## 添加应用
 
-将应用程序添加到应用程序并重新启动它。
+点击 `Apps`，在 `Programs selector` 中选择需要的应用，然后点击 `OK`。
 
-<figure><img src="../../.gitbook/assets/Image00002 (9).PNG" alt=""><figcaption></figcaption></figure>
+<figure>
+  <picture>
+    <source srcset="../../.gitbook/assets/sockscap64-programs-selector-add_black.png" media="(prefers-color-scheme: dark)">
+    <img src="../../.gitbook/assets/sockscap64-programs-selector-add_white.png" alt="在 SocksCap64 中添加应用">
+  </picture>
+</figure>
 
-或者通过代理面板添加应用程序。
+## 通过代理运行
 
-<figure><img src="../../.gitbook/assets/Image00001 (7).PNG" alt=""><figcaption></figcaption></figure>
+右键单击已添加的应用，选择 `Run selected program in tunnel`。应用将通过配置的 SOCKS5 代理启动。
 
-
-
+<figure>
+  <picture>
+    <source srcset="../../.gitbook/assets/sockscap64-run-program-in-tunnel_black.png" media="(prefers-color-scheme: dark)">
+    <img src="../../.gitbook/assets/sockscap64-run-program-in-tunnel_white.png" alt="通过代理隧道运行应用">
+  </picture>
+</figure>

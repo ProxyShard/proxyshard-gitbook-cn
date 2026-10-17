@@ -25,8 +25,8 @@ ISP 代理支持 <mark style="color:purple;">p0f</mark> 网络指纹伪装。
 | IP 类型           | IPv4（家庭宽带运营商）                |
 | 共享              | 否 - 一个 IP 对应一个用户             |
 | 连接数限制         | 每个 IP 2,500                       |
-| [UDP 支持](about-udp/) | ✓                              |
-| [p0f 支持](p0f-spoofing.md) | ✓（+$0.6 / IP 每月）          |
+| [UDP 支持](about-udp/) | 支持                           |
+| [p0f 支持](p0f-spoofing.md) | 支持（+$0.6 / IP 每月）     |
 | 价格              | **$2** / IP 每月                      |
 
 ## 可用位置
@@ -46,12 +46,13 @@ ISP 代理支持 <mark style="color:purple;">p0f</mark> 网络指纹伪装。
 
 1. 打开 `ISP Proxy`。
 2. 在 `Proxy region` 中选择国家或地区。
-3. 在 `Number of proxies` 中输入代理数量。
-4. 如需自动续订订单，请启用 `Auto renew`。
-5. 如有需要，请启用 `Enable p0f settings`。
-6. 在 `Total slots` 中输入需要使用 p0f 伪装的代理数量。
-7. 如有优惠码，请在 `Promocode` 中输入并点击 `Apply`。
-8. 确认金额后点击 `Buy now`。
+3. 在 `Billing cycle` 中选择计费周期。
+4. 在 `Number of proxies` 中输入代理数量。
+5. 如需自动续订订单，请启用 `Auto renew`。
+6. 如有需要，请启用 `Enable p0f settings`。
+7. 在 `Total slots` 中输入需要使用 p0f 伪装的代理数量。
+8. 如有优惠码，请在 `Promocode` 中输入并点击 `Apply`。
+9. 确认金额后点击 `Buy now`。
 
 <figure>
   <picture>

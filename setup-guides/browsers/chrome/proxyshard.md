@@ -7,7 +7,7 @@ icon: puzzle-piece
 
 我们官方的 <mark style="color:purple;">**ProxyShard – Smart Proxy Manager**</mark> 扩展程序可直接在浏览器中管理代理。可从 **Chrome Web Store** 直接安装。
 
-{% embed url="https://chromewebstore.google.com/detail/proxyshard-%E2%80%93-smart-proxy/ohlcikccaeapbfpmejhckfjjddkcflbe" %}
+{% embed url="https://chromewebstore.google.com/detail/ohlcikccaeapbfpmejhckfjjddkcflbe" %}
 
 ## 详细说明
 

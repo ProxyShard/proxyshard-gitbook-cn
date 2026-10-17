@@ -17,13 +17,13 @@ icon: triple-chevrons-up
 | 池大小            | 300,000 - 400,000 台设备（= Standard）       |
 | 最大连接数         | 5,000                                       |
 | 每个订单最大速度     | 75 Mbps                                     |
-| [UDP 支持](../about-udp/) | ✓（美国除外；受[端口限制](../restrictions.md)） |
-| [Device OS 筛选](../p0f-spoofing.md) | ✗ |
+| [UDP 支持](../about-udp/) | 支持（美国除外；受[端口限制](../restrictions.md)） |
+| [Device OS 筛选](../p0f-spoofing.md) | 不支持 |
 | 计费方式           | 日 / 半月 / 月                               |
 | 价格              | **$30** / 天 · **$199** / 周 · **$399** / 半月 · **$699** / 月 |
 
 {% hint style="warning" %}
-5,000 个连接的限制适用于所有类型（ESTAB、FIN\_WAIT 等）。月套餐可申请提高上限 - 请联系 [Support](../../contact-us.md)。
+Unlimited 套餐最多支持 5,000 个并发连接。该限制涵盖 `ESTAB`、`FIN_WAIT` 等所有连接状态，目前无法提高。专属套餐仍在开发中，暂未开放。
 {% endhint %}
 
 ## 适用于哪些任务

@@ -1,60 +1,88 @@
 ---
-description: Telegram 的代理设置
+description: 在 Telegram 中配置代理
 icon: telegram
 ---
 
 # Telegram
 
-### 桌面版 Telegram 的代理设置
+## Telegram Desktop
 
-要在 <mark style="color:purple;">Telegram</mark> 中设置代理，请转至“设置”。
+打开 `Settings`。
 
-<figure><img src="../.gitbook/assets/image (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure>
+  <picture>
+    <source srcset="../.gitbook/assets/telegram-desktop-menu-settings_black.png" media="(prefers-color-scheme: dark)">
+    <img src="../.gitbook/assets/telegram-desktop-menu-settings_white.png" alt="打开 Telegram Desktop 设置">
+  </picture>
+</figure>
 
-然后打开“高级”设置。
+进入 `Advanced`。
 
-<figure><img src="../.gitbook/assets/image (29).png" alt=""><figcaption></figcaption></figure>
+<figure>
+  <picture>
+    <source srcset="../.gitbook/assets/telegram-desktop-settings-advanced_black.png" media="(prefers-color-scheme: dark)">
+    <img src="../.gitbook/assets/telegram-desktop-settings-advanced_white.png" alt="Telegram Desktop 的 Advanced 设置">
+  </picture>
+</figure>
 
-选择“TCP”连接类型。
+在 `Network and proxy` 中打开 `Connection type`。
 
-<figure><img src="../.gitbook/assets/image (2) (1).png" alt=""><figcaption></figcaption></figure>
+<figure>
+  <picture>
+    <source srcset="../.gitbook/assets/telegram-desktop-connection-type_black.png" media="(prefers-color-scheme: dark)">
+    <img src="../.gitbook/assets/telegram-desktop-connection-type_white.png" alt="Telegram Desktop 的连接类型">
+  </picture>
+</figure>
 
-接下来，指定代理连接。
-
-选择适合您的连接协议。默认使用 HTTP。
+选择 `Use custom proxy`，点击 `Add proxy`，然后选择协议。使用订单 `Proxy List` 中的数据填写地址、端口、用户名和密码。
 
 {% hint style="info" %}
-**您可以在[设置指南](getting-started.md)部分找到代理设置示例**
+数据格式和订单示例请参阅[开始使用](getting-started.md)。
 {% endhint %}
 
-<figure><img src="../.gitbook/assets/image (4) (1).png" alt=""><figcaption></figcaption></figure>
+<figure>
+  <picture>
+    <source srcset="../.gitbook/assets/telegram-desktop-use-custom-proxy_black.png" media="(prefers-color-scheme: dark)">
+    <img src="../.gitbook/assets/telegram-desktop-use-custom-proxy_white.png" alt="在 Telegram Desktop 中配置代理">
+  </picture>
+</figure>
 
-然后检查连接并保存。
+保存设置，并确认代理旁显示 `Connected` 状态。
 
-<figure><img src="../.gitbook/assets/image (225).png" alt=""><figcaption></figcaption></figure>
+<figure>
+  <picture>
+    <source srcset="../.gitbook/assets/telegram-desktop-proxy-connected_black.png" media="(prefers-color-scheme: dark)">
+    <img src="../.gitbook/assets/telegram-desktop-proxy-connected_white.png" alt="Telegram Desktop 中已连接的代理">
+  </picture>
+</figure>
 
-**完毕！您现在可以通过我们的代理使用 Telegram。**
+## iOS 版 Telegram
 
-### 移动版 Telegram 的代理设置
+打开 `Settings`，选择 `Data and Storage`。
 
-要在手机上设置代理，请打开设置并选择“数据和存储”。
+<figure>
+  <picture>
+    <source srcset="../.gitbook/assets/telegram-ios-settings-data-storage_black.png" media="(prefers-color-scheme: dark)">
+    <img src="../.gitbook/assets/telegram-ios-settings-data-storage_white.png" alt="iOS 版 Telegram 中的 Data and Storage">
+  </picture>
+</figure>
 
-<figure><img src="../.gitbook/assets/photo_2026-04-11_02-42-22.jpg" alt="" width="375"><figcaption></figcaption></figure>
+打开 `Proxy`，然后点击 `Add Proxy`。
 
-然后选择“代理”。
+<figure>
+  <picture>
+    <source srcset="../.gitbook/assets/telegram-ios-connection-proxy_black.png" media="(prefers-color-scheme: dark)">
+    <img src="../.gitbook/assets/telegram-ios-connection-proxy_white.png" alt="iOS 版 Telegram 的代理设置">
+  </picture>
+</figure>
 
-<figure><img src="../.gitbook/assets/photo_2026-04-11_02-42-30.jpg" alt="" width="375"><figcaption></figcaption></figure>
+选择 `SOCKS5`，并使用订单 `Proxy List` 中的数据填写 `Server`、`Port`、`Username` 和 `Password`。
 
+<figure>
+  <picture>
+    <source srcset="../.gitbook/assets/telegram-ios-proxy-socks5-form_black.png" media="(prefers-color-scheme: dark)">
+    <img src="../.gitbook/assets/telegram-ios-proxy-socks5-form_white.png" alt="在 iOS 版 Telegram 中配置 SOCKS5 代理">
+  </picture>
+</figure>
 
-
-选择 SOCKS5 协议并输入代理连接详细信息。
-
-
-
-<figure><img src="../.gitbook/assets/photo_2026-04-11_02-40-30.jpg" alt="" width="375"><figcaption></figcaption></figure>
-
-确保保存设置，然后就可以在_Telegram._中使用代理了。
-
-
-
-
+保存设置，然后启用刚才创建的代理。

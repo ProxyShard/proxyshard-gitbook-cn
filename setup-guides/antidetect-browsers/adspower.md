@@ -1,41 +1,60 @@
 # AdsPower
 
-## **AdsPower 浏览器设置**
-
 {% hint style="warning" %}
-此解决方案不支持 UDP 隧道！为此，我们强烈建议考虑 [<mark style="color:green;">Vision</mark>](vision-browser.md)
+AdsPower 不支持 UDP 代理。如需使用 UDP，请选择 [Vision Browser](vision-browser.md)。
 {% endhint %}
 
-要将代理批量添加到<mark style="color:blue;">AdsPower</mark>，您需要：
+## 添加代理
 
-打开**“**<mark style="color:purple;">**代理**</mark>**”**选项卡。
+打开 `Proxies`，点击 `Add Proxy`。
 
-从订单中的**“**<mark style="color:purple;">**代理列表**</mark>**”**部分复制代理字符串并将其粘贴到空白字段中，如下面的屏幕截图所示。
+<figure>
+  <picture>
+    <source srcset="../../.gitbook/assets/adspower-proxies-add-proxy_black.png" media="(prefers-color-scheme: dark)">
+    <img src="../../.gitbook/assets/adspower-proxies-add-proxy_white.png" alt="在 AdsPower 中添加代理">
+  </picture>
+</figure>
 
-<figure><img src="../../.gitbook/assets/image (27).png" alt=""><figcaption></figcaption></figure>
+1. 从对应订单的 `Proxy List` 中复制连接字符串，并粘贴到表单中。
+2. 点击 `Check proxy`。
+3. 检查成功后点击 `OK`。
+
+<figure>
+  <picture>
+    <source srcset="../../.gitbook/assets/adspower-add-proxy-form_black.png" media="(prefers-color-scheme: dark)">
+    <img src="../../.gitbook/assets/adspower-add-proxy-form_white.png" alt="AdsPower 代理表单">
+  </picture>
+</figure>
 
 {% hint style="info" %}
-**您可以在[设置指南](../getting-started.md)部分找到代理设置示例**
+如需了解连接信息的位置，请参阅[通用配置说明](../getting-started.md)。
 {% endhint %}
 
-<figure><img src="../../.gitbook/assets/image (22).png" alt=""><figcaption></figcaption></figure>
+如果检查失败，请核对用户名、密码和协议。还可以使用 [Proxy Tester](../../our-products/proxy-tester.md) 检测连接。
 
-单击检查按钮。如果检查成功，则保存代理。
+<figure>
+  <picture>
+    <source srcset="../../.gitbook/assets/adspower-proxy-tester-result_black.png" media="(prefers-color-scheme: dark)">
+    <img src="../../.gitbook/assets/adspower-proxy-tester-result_white.png" alt="使用 Proxy Tester 检测代理">
+  </picture>
+</figure>
 
-如果检查失败，请确保您输入的代理登录名和密码正确。否则，请通过我们的 [Proxy Tester](../../our-products/proxy-tester.md) 检查代理。
+## 将代理分配给配置
 
-<figure><img src="../../.gitbook/assets/image (24).png" alt=""><figcaption></figcaption></figure>
+打开 `Profiles`，点击 `New Profile`。
 
-添加代理后，转到**“**<mark style="color:purple;">**配置文件**</mark>**”**选项卡。
+<figure>
+  <picture>
+    <source srcset="../../.gitbook/assets/adspower-profiles-new-profile_black.png" media="(prefers-color-scheme: dark)">
+    <img src="../../.gitbook/assets/adspower-profiles-new-profile_white.png" alt="创建 AdsPower 配置">
+  </picture>
+</figure>
 
-<figure><img src="../../.gitbook/assets/image (25).png" alt=""><figcaption></figcaption></figure>
+在配置设置中，从 `Saved Proxies` 选择已添加的服务器，完成检测并保存配置。
 
-然后选择您之前添加的所需代理。
-
-<figure><img src="../../.gitbook/assets/image (26).png" alt=""><figcaption></figcaption></figure>
-
-之后，您可以启动配置文件并检查代理是否正常工作\
-完毕！
-
-
-
+<figure>
+  <picture>
+    <source srcset="../../.gitbook/assets/adspower-new-profile-saved-proxy_black.png" media="(prefers-color-scheme: dark)">
+    <img src="../../.gitbook/assets/adspower-new-profile-saved-proxy_white.png" alt="为 AdsPower 配置选择已保存的代理">
+  </picture>
+</figure>

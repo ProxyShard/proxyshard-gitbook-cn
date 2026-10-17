@@ -1,112 +1,140 @@
 ---
-description: 支持 UDP 代理的最佳浏览器
+description: 支持 UDP 代理的反检测浏览器
 ---
 
 # Vision Browser
 
 {% hint style="success" %}
-该解决方案支持 UDP 隧道！
+Vision Browser 支持通过 SOCKS5 代理传输 TCP 和 UDP 流量。
 {% endhint %}
 
-## **安装并下载 **<mark style="color:$success;">**Vision**</mark>** 浏览器。**
+## 安装和注册
 
-点击[链接](https://browser.vision/r/ecf2408f-02de-4e4f-bc24-be368ac32325)下载浏览器并完成注册。登录反检测浏览器本身需要注册详细信息。
+打开 [Vision Browser 网站](https://browser.vision/r/ecf2408f-02de-4e4f-bc24-be368ac32325)，下载并安装应用。
 
-{% embed url="https://browser.vision/r/ecf2408f-02de-4e4f-bc24-be368ac32325" %}
+<figure>
+  <picture>
+    <source srcset="../../.gitbook/assets/vision-website-download_black.png" media="(prefers-color-scheme: dark)">
+    <img src="../../.gitbook/assets/vision-website-download_white.png" alt="下载 Vision Browser">
+  </picture>
+</figure>
 
-<figure><img src="../../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+创建账号。登录应用时需要使用这些信息。
 
-账户注册：
+<figure>
+  <picture>
+    <source srcset="../../.gitbook/assets/vision-sign-up_black.png" media="(prefers-color-scheme: dark)">
+    <img src="../../.gitbook/assets/vision-sign-up_white.png" alt="注册 Vision Browser 账号">
+  </picture>
+</figure>
 
-<figure><img src="../../.gitbook/assets/image (111).png" alt=""><figcaption></figcaption></figure>
+购买套餐时，可使用优惠码 `PROXYSHARD` 享受 20% 折扣。
 
-在网站上，您可以链接您的 <mark style="color:blue;">Telegram</mark> 帐户以获得 4 天的免费试用。\
-为此，请转到您的[个人资料](https://my.browser.vision/) 并关联您的帐户。
+<figure>
+  <picture>
+    <source srcset="../../.gitbook/assets/vision-plan-promo-code_black.png" media="(prefers-color-scheme: dark)">
+    <img src="../../.gitbook/assets/vision-plan-promo-code_white.png" alt="Vision Browser 中的 PROXYSHARD 优惠码">
+  </picture>
+</figure>
 
-{% embed url="https://my.browser.vision/" %}
+## 创建第一个配置
 
+1. 打开 `Profiles`。
+2. 进入 `Folders`，点击 `Create folder`。
 
+<figure>
+  <picture>
+    <source srcset="../../.gitbook/assets/vision-folders-create_black.png" media="(prefers-color-scheme: dark)">
+    <img src="../../.gitbook/assets/vision-folders-create_white.png" alt="在 Vision Browser 中创建配置文件夹">
+  </picture>
+</figure>
 
-稍后，在购买订阅时，您可以使用我们的促销代码享受 20% 的折扣：_<mark style="color:purple;">**PROXYSHARD**</mark>_
+输入文件夹名称并保存。
 
-<figure><img src="../../.gitbook/assets/image (114).png" alt=""><figcaption><p>Account subscription renewal</p></figcaption></figure>
+<figure>
+  <picture>
+    <source srcset="../../.gitbook/assets/vision-folder-create-form_black.png" media="(prefers-color-scheme: dark)">
+    <img src="../../.gitbook/assets/vision-folder-create-form_white.png" alt="设置配置文件夹名称">
+  </picture>
+</figure>
 
-## **设置第一个浏览器配置文件**
+在新文件夹中点击 `Create profile`。
 
-下载并安装浏览器后，使用您之前创建的帐户登录。
+<figure>
+  <picture>
+    <source srcset="../../.gitbook/assets/vision-profiles-create-profile_black.png" media="(prefers-color-scheme: dark)">
+    <img src="../../.gitbook/assets/vision-profiles-create-profile_white.png" alt="创建 Vision Browser 配置">
+  </picture>
+</figure>
 
-接下来，创建一个用于存储浏览器配置文件、代理和其他工作环境设置的文件夹：
+在 ProxyShard 面板中生成一个 SOCKS5 代理，并复制连接信息。
 
-<figure><img src="../../.gitbook/assets/image (7).png" alt="" width="563"><figcaption></figcaption></figure>
+<figure>
+  <picture>
+    <source srcset="../../.gitbook/assets/vision-residential-generate-single_black.png" media="(prefers-color-scheme: dark)">
+    <img src="../../.gitbook/assets/vision-residential-generate-single_white.png" alt="在 ProxyShard 中生成一个 SOCKS5 代理">
+  </picture>
+</figure>
 
-为配置文件创建一个文件夹
+在 Vision 配置设置中打开 `SOCKS` 选项卡，填写代理信息，检测连接，然后点击 `Save`。
 
-<figure><img src="../../.gitbook/assets/image (8).png" alt=""><figcaption></figcaption></figure>
+<figure>
+  <picture>
+    <source srcset="../../.gitbook/assets/vision-create-profile-socks_black.png" media="(prefers-color-scheme: dark)">
+    <img src="../../.gitbook/assets/vision-create-profile-socks_white.png" alt="Vision 配置中的 SOCKS5 代理设置">
+  </picture>
+</figure>
 
-然后通过“<mark style="color:purple;">Create profile</mark>”创建一个新的浏览器配置文件：
+<figure><img src="../../.gitbook/assets/vision-folder-profile-created.png" alt="已创建的 Vision Browser 配置"><figcaption></figcaption></figure>
 
-<figure><img src="../../.gitbook/assets/image (9).png" alt=""><figcaption></figcaption></figure>
+## 添加代理列表
 
-指定配置文件名称和其他设置，然后单击“<mark style="color:purple;">New</mark> <mark style="color:purple;">profile</mark>”。设置配置文件时，您可以将代理直接添加到配置文件。
+打开 `Proxies` 选项卡，点击 `Add proxy`。
 
-<figure><img src="../../.gitbook/assets/image (11).png" alt=""><figcaption></figcaption></figure>
+<figure>
+  <picture>
+    <source srcset="../../.gitbook/assets/vision-proxies-add-proxy_black.png" media="(prefers-color-scheme: dark)">
+    <img src="../../.gitbook/assets/vision-proxies-add-proxy_white.png" alt="在 Vision Browser 中添加代理">
+  </picture>
+</figure>
 
-特别添加代理为 <mark style="color:purple;">SOCKS5</mark>，因为 UDP ASSOC 在那里工作。
+在 ProxyShard 面板中生成 SOCKS5 代理列表并复制。
 
-<figure><img src="../../.gitbook/assets/image (12).png" alt=""><figcaption></figcaption></figure>
+<figure>
+  <picture>
+    <source srcset="../../.gitbook/assets/vision-residential-generate-list_black.png" media="(prefers-color-scheme: dark)">
+    <img src="../../.gitbook/assets/vision-residential-generate-list_white.png" alt="生成 SOCKS5 代理列表">
+  </picture>
+</figure>
 
-{% hint style="danger" %}
-我们强烈建议使用 ISP 代理，因为它们最灵活且适合所有任务。
-{% endhint %}
+将列表粘贴到添加字段中。导入后，请确认各连接显示 `Online`。
 
-{% embed url="https://dashboard.proxyshard.com/en/isp-proxy" %}
+<figure>
+  <picture>
+    <source srcset="../../.gitbook/assets/vision-proxies-imported-list_black.png" media="(prefers-color-scheme: dark)">
+    <img src="../../.gitbook/assets/vision-proxies-imported-list_white.png" alt="Vision Browser 中已导入的代理">
+  </picture>
+</figure>
 
-完毕！您的个人资料已创建，您可以开始工作。
+要为现有配置分配代理，请点击 `Proxy` 列中的图标。
 
-<figure><img src="../../.gitbook/assets/image (120).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/vision-profiles-proxy-column.png" alt="配置列表中的 Proxy 列"><figcaption></figcaption></figure>
 
-## **将订单中的代理列表添加到程序中。**
+选择 `Select proxy`，指定连接并执行检测。
 
-{% hint style="info" %}
-**您可以在** [**设置指南**](../getting-started.md) **中查看代理设置示例。**
-{% endhint %}
+<figure><img src="../../.gitbook/assets/vision-edit-profile-select-proxy.png" alt="为 Vision 配置选择代理"><figcaption></figcaption></figure>
 
-接下来，转到<mark style="color:$success;">Vision</mark>，打开“<mark style="color:purple;">Proxies</mark>”选项卡，然后单击“<mark style="color:purple;">创建代理</mark>”。
+保存后，代理会显示在配置所在行。
 
-<figure><img src="../../.gitbook/assets/image (13).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/vision-profile-proxy-assigned.png" alt="代理已分配给 Vision 配置"><figcaption></figcaption></figure>
 
-在添加代理之前，我们建议在订单面板中选择代理格式类型和 SOCKS5 连接协议。
+## 检查 WebRTC
 
-<figure><img src="../../.gitbook/assets/image (14).png" alt=""><figcaption></figcaption></figure>
+启动配置并打开 [ProxyShard IP Checker](https://proxyshard.com/ip-checker)。TCP 和 WebRTC 地址应保持一致。
 
-在代理添加窗口中，单击“<mark style="color:purple;">批量代理创建</mark>”选项卡，上传之前复制的代理，然后单击“<mark style="color:purple;">Create</mark>”：
-
-<figure><img src="../../.gitbook/assets/image (16).png" alt=""><figcaption></figcaption></figure>
-
-添加代理后，进入“配置文件”选项卡，在代理栏中单击您需要的配置文件旁边的“<mark style="color:purple;">+</mark>”：
-
-<figure><img src="../../.gitbook/assets/image (28).png" alt=""><figcaption></figcaption></figure>
-
-转到“<mark style="color:purple;">选择代理</mark>”并选择您之前添加的代理：
-
-<figure><img src="../../.gitbook/assets/image (18).png" alt=""><figcaption></figcaption></figure>
-
-现在您可以使用代理启动您的个人资料：
-
-<figure><img src="../../.gitbook/assets/image (19).png" alt=""><figcaption></figcaption></figure>
-
-## 检查WebRTC操作
-
-通过我们的[检查器](../../our-products/ip-checker.md) 检查 WebRTC 泄漏和配置文件质量分数。
-
-{% embed url="https://proxyshard.com/ip-checker" %}
-
-<figure><img src="../../.gitbook/assets/image (20).png" alt=""><figcaption></figcaption></figure>
-
-WebRTC 地址显示正确，浏览器得分 = 0。
-
-#### 完毕！您现在可以开始工作了。
-
-<mark style="color:$success;">Vision</mark><mark style="color:yellow;">&</mark><mark style="color:purple;">Shard</mark>
-
-
+<figure>
+  <picture>
+    <source srcset="../../.gitbook/assets/vision-webrtc-check_black.png" media="(prefers-color-scheme: dark)">
+    <img src="../../.gitbook/assets/vision-webrtc-check_white.png" alt="检查 Vision Browser 的 TCP 和 WebRTC 地址">
+  </picture>
+</figure>

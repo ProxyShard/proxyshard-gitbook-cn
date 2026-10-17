@@ -15,9 +15,9 @@ icon: crown
 | 参数              | 值                                   |
 | --------------- | ------------------------------------ |
 | 池大小            | 3,800,000 - 4,600,000 台设备         |
-| [UDP 支持](../about-udp/) | ✓（[部分城市及 macOS/iOS 设备除外](../restrictions.md)） |
-| [Device OS 筛选](../p0f-spoofing.md) | ✓ |
-| 无限套餐           | ✗                                    |
+| [UDP 支持](../about-udp/) | 支持（[部分城市及 macOS/iOS 设备除外](../restrictions.md)） |
+| [Device OS 筛选](../p0f-spoofing.md) | 支持 |
+| 无限套餐           | 无                                   |
 | 计费方式           | 按 GB（按量付费）                     |
 | 定位              | 国家 / 地区 / 城市 / 运营商            |
 | 价格              | **$3 / GB**                          |

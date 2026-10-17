@@ -1,43 +1,59 @@
 # v2rayN
 
 {% hint style="success" %}
-该解决方案支持 UDP 隧道！
+v2rayN 可在 TUN 模式下代理 TCP 和 UDP 流量。
 {% endhint %}
 
-## v2rayN 设置**.**
+## 下载并启动
 
-按照[链接](https://github.com/2dust/v2rayN/releases/latest)下载<mark style="color:purple;">v2rayN</mark>并将存档解压到桌面上。
+打开 [v2rayN 最新版本页面](https://github.com/2dust/v2rayN/releases/latest)，下载 `v2rayN-windows-64.zip`，解压后以管理员身份运行 `v2rayN.exe`。
 
-{% embed url="https://github.com/2dust/v2rayN/releases/latest" %}
+<figure>
+  <picture>
+    <source srcset="../../.gitbook/assets/v2rayn-github-download_black.png" media="(prefers-color-scheme: dark)">
+    <img src="../../.gitbook/assets/v2rayn-github-download_white.png" alt="从 GitHub 下载 v2rayN">
+  </picture>
+</figure>
 
-<figure><img src="../../.gitbook/assets/Image00001 (5).PNG" alt=""><figcaption></figcaption></figure>
+## 添加 SOCKS 服务器
 
+打开 `Configuration` 菜单，然后选择 `Add [SOCKS]`。
 
+<figure>
+  <picture>
+    <source srcset="../../.gitbook/assets/v2rayn-menu-add-socks_black.png" media="(prefers-color-scheme: dark)">
+    <img src="../../.gitbook/assets/v2rayn-menu-add-socks_white.png" alt="在 v2rayN 中添加 SOCKS 服务器">
+  </picture>
+</figure>
 
-## **创建个人资料**
+填写连接信息：
 
-创建新配置并指定 <mark style="color:purple;">SOCKS / HTTP</mark> 作为连接协议。
+- `Alias (remarks)`：便于识别的名称；
+- `Address`：代理 IP 地址或域名；
+- `Port`：连接端口；
+- `User(Optional)`：用户名；
+- `Password(Optional)`：密码。
 
-<figure><img src="../../.gitbook/assets/Image00002 (7).PNG" alt=""><figcaption></figcaption></figure>
+点击 `Confirm` 保存配置。
 
-
-
-## 连接配置文件设置
-
-将从订单复制的代理粘贴到相应字段中，确保指定配置核心（Xray/SingBox），然后保存设置。
-
-<figure><img src="../../.gitbook/assets/Image00003 (6).PNG" alt=""><figcaption></figcaption></figure>
+<figure>
+  <picture>
+    <source srcset="../../.gitbook/assets/v2rayn-socks-config-dialog_black.png" media="(prefers-color-scheme: dark)">
+    <img src="../../.gitbook/assets/v2rayn-socks-config-dialog_white.png" alt="v2rayN 的 SOCKS 代理设置">
+  </picture>
+</figure>
 
 {% hint style="info" %}
-**您可以在** [**设置指南**](../getting-started.md) **中查看代理设置示例。**
+如需了解连接信息的位置，请参阅[通用配置说明](../getting-started.md)。
 {% endhint %}
 
-## 启动客户端
+## 连接
 
-通过启用 <mark style="color:purple;">Tun</mark> 模式来启动客户端。
+选择已创建的服务器并测试延迟，然后在底部工具栏中启用 `Enable Tun`，使系统流量通过代理传输。
 
-<figure><img src="../../.gitbook/assets/Image00004 (7).PNG" alt=""><figcaption></figcaption></figure>
-
-**完毕！您现在可以通过隧道传输所有流量来充分使用代理。**
-
-
+<figure>
+  <picture>
+    <source srcset="../../.gitbook/assets/v2rayn-enable-tun-mode_black.png" media="(prefers-color-scheme: dark)">
+    <img src="../../.gitbook/assets/v2rayn-enable-tun-mode_white.png" alt="在 v2rayN 中启用 Enable Tun">
+  </picture>
+</figure>

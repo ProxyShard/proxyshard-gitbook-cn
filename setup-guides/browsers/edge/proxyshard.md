@@ -11,7 +11,7 @@ icon: puzzle-piece
 首次从 Chrome Web Store 安装扩展时，Edge 可能会提示「**允许来自其他商店的扩展程序**」，请确认此权限。
 {% endhint %}
 
-{% embed url="https://chromewebstore.google.com/detail/proxyshard-%E2%80%93-smart-proxy/ohlcikccaeapbfpmejhckfjjddkcflbe" %}
+{% embed url="https://chromewebstore.google.com/detail/ohlcikccaeapbfpmejhckfjjddkcflbe" %}
 
 ## 详细说明
 

@@ -189,7 +189,7 @@ icon: magnifying-glass
 {% endhint %}
 
 {% hint style="warning" %}
-**数据中心/ISP 代理正常：** ISP 类型 = `datacenter/hosting`。这是预期的，对于大多数任务来说不是问题。
+**数据中心代理正常：** ISP 类型 = `datacenter/hosting`。这是预期的，对于大多数任务来说不是问题。
 {% endhint %}
 
 {% hint style="danger" %}

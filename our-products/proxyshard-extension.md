@@ -31,7 +31,7 @@ icon: puzzle-piece
 
 ### Chrome、Edge、Opera、Brave、Yandex 及其他 Chromium 浏览器
 
-{% embed url="https://chromewebstore.google.com/detail/proxyshard-%E2%80%93-smart-proxy/ohlcikccaeapbfpmejhckfjjddkcflbe" %}
+{% embed url="https://chromewebstore.google.com/detail/ohlcikccaeapbfpmejhckfjjddkcflbe" %}
 
 ### Mozilla Firefox
 

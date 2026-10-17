@@ -5,14 +5,13 @@ icon: puzzle-piece
 
 # ProxyShard Extension
 
-我们官方的 <mark style="color:purple;">**ProxyShard – Smart Proxy Manager**</mark> 扩展程序可在 Opera 中使用，但从 Chrome Web Store 安装扩展程序需要额外一步。
+我们官方的 <mark style="color:purple;">**ProxyShard – Smart Proxy Manager**</mark> 扩展程序可直接从 **Chrome Web Store** 安装到 Opera。
 
-## 在 Opera 中从 Chrome Web Store 安装
+## 安装
 
-1. 打开 Opera Add-ons，安装 [**Install Chrome Extensions**](https://addons.opera.com/extensions/details/install-chrome-extensions/) 扩展程序。
-2. 安装完成后，打开 Chrome Web Store，照常安装 ProxyShard。
+打开扩展程序页面并点击安装按钮。如果 Opera 要求确认从 Chrome Web Store 安装，请允许该操作。
 
-{% embed url="https://chromewebstore.google.com/detail/proxyshard-%E2%80%93-smart-proxy/ohlcikccaeapbfpmejhckfjjddkcflbe" %}
+{% embed url="https://chromewebstore.google.com/detail/ohlcikccaeapbfpmejhckfjjddkcflbe" %}
 
 ## 详细说明
 

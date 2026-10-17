@@ -1,51 +1,69 @@
-# 🔥 V2Box
+# V2Box
 
 {% hint style="success" %}
-该解决方案支持 UDP 隧道！
+V2Box 支持 UDP 流量。
 {% endhint %}
 
-## 安装V2Box
+## 安装 V2Box
 
-前往 App Store/Google Play 并下载 V2BOX 应用程序。
+从设备对应的应用商店安装 V2Box。
 
 #### <mark style="color:green;">Android</mark>
 
-{% embed url="https://play.google.com/store/apps/details?id=dev.hexasoftware.v2box&hl=ru" %}
+{% embed url="https://play.google.com/store/apps/details?id=dev.hexasoftware.v2box" %}
 
 #### <mark style="color:blue;">**iOS**</mark>
 
 {% embed url="https://apps.apple.com/app/v2box-v2ray-client/id6446814690" %}
 
-## V2Box 设置
+## 配置 V2Box
 
-打开应用程序，转到“<mark style="color:purple;">Configs</mark>”选项卡，然后使用“➕”创建新配置。
+1. 打开 `Configs`。
+2. 点击 `+` 创建配置。
 
+<figure>
+  <picture>
+    <source srcset="../../.gitbook/assets/v2box-ios-configs-add_black.png" media="(prefers-color-scheme: dark)">
+    <img src="../../.gitbook/assets/v2box-ios-configs-add_white.png" alt="在 V2Box 中添加配置">
+  </picture>
+</figure>
 
+<figure>
+  <picture>
+    <source srcset="../../.gitbook/assets/v2box-ios-add-manual-config_black.png" media="(prefers-color-scheme: dark)">
+    <img src="../../.gitbook/assets/v2box-ios-add-manual-config_white.png" alt="在 V2Box 中手动配置">
+  </picture>
+</figure>
 
-<figure><img src="../../.gitbook/assets/photo_2026-04-11_02-42-34.png" alt="" width="375"><figcaption></figcaption></figure>
+在 `Protocol` 中选择 `SOCKS`。
 
+<figure>
+  <picture>
+    <source srcset="../../.gitbook/assets/v2box-ios-protocol-socks_black.png" media="(prefers-color-scheme: dark)">
+    <img src="../../.gitbook/assets/v2box-ios-protocol-socks_white.png" alt="在 V2Box 中选择 SOCKS 协议">
+  </picture>
+</figure>
 
+在 `Remarks` 中输入配置名称。使用订单 `Proxy List` 中的数据填写 `Address`、`Port`、`Username` 和 `ID/Password/Key`，然后点击 `Save`。
 
-<figure><img src="../../.gitbook/assets/photo_2026-04-11_02-42-38.png" alt="" width="373"><figcaption></figcaption></figure>
-
-指定 <mark style="color:purple;">SOCKS</mark> 连接类型。
-
-<figure><img src="../../.gitbook/assets/photo_2026-04-11_02-42-42.png" alt="" width="367"><figcaption></figcaption></figure>
-
-将订单中的代理输入到程序字段中。
-
-<figure><img src="../../.gitbook/assets/photo_2026-04-11_02-42-49.png" alt="" width="375"><figcaption></figcaption></figure>
+<figure>
+  <picture>
+    <source srcset="../../.gitbook/assets/v2box-ios-server-form_black.png" media="(prefers-color-scheme: dark)">
+    <img src="../../.gitbook/assets/v2box-ios-server-form_white.png" alt="在 V2Box 中配置代理">
+  </picture>
+</figure>
 
 {% hint style="info" %}
-**您可以在[设置指南](../getting-started.md)部分找到代理设置示例**
+数据格式和订单示例请参阅[开始使用](../getting-started.md)。
 {% endhint %}
 
-保存您的配置并返回“<mark style="color:purple;">Configs</mark>”。您必须在此处单击您的配置才能连接。<br>
+返回 `Configs`，选择刚才创建的配置，然后使用 `Slide to Connect` 建立连接。
 
-<figure><img src="../../.gitbook/assets/photo_2026-04-11_02-42-52.png" alt="" width="375"><figcaption></figcaption></figure>
+<figure>
+  <picture>
+    <source srcset="../../.gitbook/assets/v2box-ios-connected_black.png" media="(prefers-color-scheme: dark)">
+    <img src="../../.gitbook/assets/v2box-ios-connected_white.png" alt="在 V2Box 中连接代理">
+  </picture>
+</figure>
 
-\
-**完毕！您现在可以使用我们的** [**检查器**](https://proxyshard.com/proxy-tester) 检查代理
-
-
-
+使用 [Proxy Tester](../../our-products/proxy-tester.md) 检查连接。

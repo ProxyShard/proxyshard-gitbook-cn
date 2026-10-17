@@ -7,7 +7,7 @@ icon: puzzle-piece
 
 我们官方的 <mark style="color:purple;">**ProxyShard – Smart Proxy Manager**</mark> 扩展程序可在 Yandex Browser 中直接从 **Chrome Web Store** 安装，无需额外步骤。
 
-{% embed url="https://chromewebstore.google.com/detail/proxyshard-%E2%80%93-smart-proxy/ohlcikccaeapbfpmejhckfjjddkcflbe" %}
+{% embed url="https://chromewebstore.google.com/detail/ohlcikccaeapbfpmejhckfjjddkcflbe" %}
 
 ## 详细说明
 

@@ -2,55 +2,76 @@
 icon: clipboard-list
 ---
 
-# 设置指南
+# 配置说明
 
-## **将订单中的代理列表添加到程序**
+开始配置应用前，请打开对应的[订单](https://dashboard.proxyshard.com/products)并准备好连接信息。
 
-要将代理添加到不同的程序，请在网站上打开您的[订单](https://dashboard.proxyshard.com/products)并复制代理：
-
-{% hint style="warning" %}
-**请注意，在所有示例中，连接都是通过 **<mark style="color:purple;">**SOCKS5**</mark>** 进行的。** \
-\
-**找到连接端口：**\
-\
-<mark style="color:purple;">**Datacenter\ISP**</mark> - 在 <mark style="color:purple;">Proxy list</mark> 字段中将开关设置为 <mark style="color:purple;">SOCKS5</mark>
-
-<p align="center"><img src="../.gitbook/assets/image (40).png" alt=""></p>
-
-<mark style="color:purple;">**住宅代理**</mark> - 在订单设置中，将“<mark style="color:purple;">Protocol</mark>”设置为 <mark style="color:purple;">SOCKS5</mark>
-
-<p align="center"><img src="../.gitbook/assets/image (42).png" alt="" data-size="original"></p>
-
-<mark style="color:purple;">**移动代理**</mark> - 订单中无需额外操作；端口连接通过 <mark style="color:purple;">HTTP</mark> 和 <mark style="color:purple;">SOCKS5</mark> 进行
+{% hint style="info" %}
+以下示例使用 `SOCKS5`。如果应用仅支持 HTTP，请在订单设置中选择 `HTTP`，并使用对应端口。
 {% endhint %}
 
-## <mark style="color:purple;">Datacenter/ISP</mark> 代理示例
+## 住宅代理
 
-打开[订单](https://dashboard.proxyshard.com/products)并从<mark style="color:purple;">代理列表</mark>复制代理。
+1. 在 `Proxy settings` 中选择国家，并设置 `Session`、`Relay` 和 `Protocol`。
+2. 点击 `Generate proxy`。
+3. 从 `Proxy List` 中复制生成的连接字符串。
 
-<figure><img src="../.gitbook/assets/image (35).png" alt=""><figcaption></figcaption></figure>
+<figure>
+  <picture>
+    <source srcset="../.gitbook/assets/residential-proxy-setup_black.png" media="(prefers-color-scheme: dark)">
+    <img src="../.gitbook/assets/residential-proxy-setup_white.png" alt="生成住宅代理">
+  </picture>
+</figure>
 
-212.14.123.184 - 代理连接IP地址
+## 数据中心和 ISP 代理
 
-22334 - 代理连接端口
+打开订单，从 `Proxy List` 中复制连接字符串。
 
-KDKKKEI - 代理连接登录
+<figure>
+  <picture>
+    <source srcset="../.gitbook/assets/static-proxy-setup_black.png" media="(prefers-color-scheme: dark)">
+    <img src="../.gitbook/assets/static-proxy-setup_white.png" alt="数据中心和 ISP 代理的连接信息">
+  </picture>
+</figure>
 
-KDKKEIID3 - 代理密码
+## 连接字符串格式
 
+标准格式为 `server:port:login:password`。
 
+<figure>
+  <picture>
+    <source srcset="../.gitbook/assets/proxy-format-breakdown_black.png" media="(prefers-color-scheme: dark)">
+    <img src="../.gitbook/assets/proxy-format-breakdown_white.png" alt="代理连接字符串结构">
+  </picture>
+</figure>
 
-## <mark style="color:purple;">住宅代理</mark>的示例：
+| 字段 | 说明 |
+|---|---|
+| `Server / Host` | 代理服务器的 IP 地址或域名 |
+| `Port` | 连接端口 |
+| `Login` | 用户名。对于住宅代理，其中还可能包含定位参数 |
+| `Password` | 访问密码 |
 
-指定所需的代理参数，例如国家/地区/协议，然后单击“<mark style="color:purple;">生成代理</mark>”。
+如果应用不支持粘贴完整连接字符串，请分别填写这些字段。
 
-<figure><img src="../.gitbook/assets/image (260).png" alt=""><figcaption></figcaption></figure>
+## 选择协议
 
-从 <mark style="color:purple;">Proxy List</mark> 复制生成的代理，或者如果程序不支持粘贴整行，则复制各个连接字段。
+对于数据中心和 ISP 代理，请在 `Proxy List` 中切换格式。
 
-下面的屏幕截图显示了哪些字段对应于“服务器”：“端口”：“登录”：“密码”。
+<figure>
+  <picture>
+    <source srcset="../.gitbook/assets/proxy-protocol-toggle_black.png" media="(prefers-color-scheme: dark)">
+    <img src="../.gitbook/assets/proxy-protocol-toggle_white.png" alt="在 Proxy List 中切换协议">
+  </picture>
+</figure>
 
-<figure><img src="../.gitbook/assets/image (36).png" alt=""><figcaption></figcaption></figure>
+对于住宅代理，请在生成连接字符串前，在 `Protocol` 字段中选择协议。
 
+<figure>
+  <picture>
+    <source srcset="../.gitbook/assets/proxy-protocol-select_black.png" media="(prefers-color-scheme: dark)">
+    <img src="../.gitbook/assets/proxy-protocol-select_white.png" alt="选择住宅代理协议">
+  </picture>
+</figure>
 
-
+移动代理可在分配的端口上接受 HTTP 和 SOCKS5 连接，无需在订单中额外切换格式。

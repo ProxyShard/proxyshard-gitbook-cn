@@ -9,7 +9,7 @@ noRobotsIndex: true
 
 主要问题是反检测浏览器和 Web 服务使用不同的数据库来确定 IP 地址位置，或者需要很长时间才能获取更新。其中一些，尤其是 Whoer.net，**不是中立来源**，因为他们自己出售代理，并可能出于营销目的故意扭曲数据。
 
-我们完全依赖经过验证的 T**ier-1（最大）地理定位数据库**：
+我们完全依赖经过验证的 **Tier-1（最大型）地理定位数据库**：
 
 * **MaxMind** ([链接](https://www.maxmind.com/en/locate-my-ip-address))
 * **DB-IP** ([链接](https://db-ip.com/api/))

@@ -1,50 +1,69 @@
-# ProxyCap
+# ProxyCap (NetDetour)
 
 {% hint style="success" %}
-该解决方案支持 UDP 隧道！
+NetDetour 支持 TCP 和 UDP 代理。
 {% endhint %}
 
 {% hint style="info" %}
-该程序已过时且已付费；其试用期为30天。
+NetDetour 是 ProxyCap 的后续版本。该软件为付费软件，提供 30 天试用期。
 {% endhint %}
 
-## 安装 ProxyCap**.**
+## 安装
 
-点击[链接](https://www.proxycap.com/download.html)下载ProxyCap。
+打开[下载页面](https://www.proxycap.com/download.html)，点击 `Download NetDetour` 并完成安装。
 
-安装它，然后启动程序。<br>
+<figure>
+  <picture>
+    <source srcset="../../.gitbook/assets/proxycap-netdetour-website-download_black.png" media="(prefers-color-scheme: dark)">
+    <img src="../../.gitbook/assets/proxycap-netdetour-website-download_white.png" alt="下载 NetDetour">
+  </picture>
+</figure>
 
-<figure><img src="../../.gitbook/assets/image (99).png" alt=""><figcaption></figcaption></figure>
+## 添加代理
 
-## **ProxyCap 设置**
+1. 点击顶部工具栏中的 `Proxifying Settings` 图标。
+2. 打开 `Proxies` 选项卡。
+3. 选择 `SOCKS5`，然后点击 `Add...`。
 
-接下来，转到 <mark style="color:purple;">Proxies</mark> 选项卡并使用图标 ![](<../../.gitbook/assets/image (98).png>) 添加新连接
+<figure>
+  <picture>
+    <source srcset="../../.gitbook/assets/proxycap-netdetour-settings-add-proxy_black.png" media="(prefers-color-scheme: dark)">
+    <img src="../../.gitbook/assets/proxycap-netdetour-settings-add-proxy_white.png" alt="在 NetDetour 中添加 SOCKS5 代理">
+  </picture>
+</figure>
 
-<figure><img src="../../.gitbook/assets/image (97).png" alt=""><figcaption></figcaption></figure>
+填写 `New SOCKS5 Proxy Server` 表单：
 
+- `Name`：便于识别的名称；
+- `Host`：代理 IP 地址或域名；
+- `Port`：连接端口；
+- `Proxy requires authentication`：启用此选项；
+- `Use Username/Password authentication`：填写用户名和密码。
 
+点击 `OK` 保存服务器。
 
-## **连接配置文件设置**
-
-在相应字段中指定订单中的代理。
-
-<figure><img src="../../.gitbook/assets/Image00001 (4).PNG" alt=""><figcaption></figcaption></figure>
+<figure>
+  <picture>
+    <source srcset="../../.gitbook/assets/proxycap-netdetour-proxy-server-config_black.png" media="(prefers-color-scheme: dark)">
+    <img src="../../.gitbook/assets/proxycap-netdetour-proxy-server-config_white.png" alt="NetDetour 的 SOCKS5 代理设置">
+  </picture>
+</figure>
 
 {% hint style="info" %}
-**您可以在[设置指南](../getting-started.md)部分找到代理设置示例**
+如需了解连接信息的位置，请参阅[通用配置说明](../getting-started.md)。
 {% endhint %}
 
-## **路由规则设置**
+## 创建规则
 
-为了使代理工作，需要添加路由规则。
+1. 在 `Proxifying Settings` 中打开 `Rules` 选项卡。
+2. 点击 `New...`。
+3. 在 `Rule Action` 步骤中选择 `Tunnel through proxy`。
+4. 在 `Proxy` 列表中选择已添加的连接。
+5. 点击 `Next >`，选择所需应用，或将规则应用于所有程序，然后保存。
 
-要添加规则，请打开“<mark style="color:purple;">Rules</mark>”选项卡并指定屏幕截图中所示的设置，确保根据需要设置 <mark style="color:purple;">Rule Action</mark>、<mark style="color:purple;">Proxy</mark> 和其他参数。
-
-您可以通过在 <mark style="color:purple;">Program</mark> 字段中指定程序路径来为进程设置单独的代理。
-
-<figure><img src="../../.gitbook/assets/Image00003 (4).PNG" alt=""><figcaption></figcaption></figure>
-
-**完毕！您现在可以开始使用它！**
-
-
-
+<figure>
+  <picture>
+    <source srcset="../../.gitbook/assets/proxycap-netdetour-rule-action-wizard_black.png" media="(prefers-color-scheme: dark)">
+    <img src="../../.gitbook/assets/proxycap-netdetour-rule-action-wizard_white.png" alt="配置 Tunnel through proxy 规则">
+  </picture>
+</figure>

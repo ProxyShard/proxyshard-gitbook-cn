@@ -1,44 +1,66 @@
 # NekoRay
 
 {% hint style="success" %}
-该解决方案支持 UDP 隧道！
+NekoRay 可在 TUN 模式下代理 TCP 和 UDP 流量。
 {% endhint %}
 
-## **NekoRay** 设置。
+## 下载并启动
 
-点击[链接](https://github.com/MatsuriDayo/nekoray/releases)下载该程序。
+从 [NekoRay 发布页面](https://github.com/MatsuriDayo/nekoray/releases)下载 Windows 压缩包，解压后运行 `nekoray.exe` 或 `nekobox.exe`。首次启动时选择 `sing-box` 内核。
 
-{% embed url="https://github.com/MatsuriDayo/nekoray/releases" %}
+<figure>
+  <picture>
+    <source srcset="../../.gitbook/assets/nekoray-github-download_black.png" media="(prefers-color-scheme: dark)">
+    <img src="../../.gitbook/assets/nekoray-github-download_white.png" alt="从 GitHub 下载 NekoRay">
+  </picture>
+</figure>
 
-<figure><img src="../../.gitbook/assets/Image00001 (5).PNG" alt=""><figcaption></figcaption></figure>
+## 创建配置
 
-## **添加 NekoRay 配置文件**
+在服务器列表的空白区域单击右键，然后选择 `New profile`。
 
-右键单击程序中的空白区域以打开上下文菜单并创建新的配置文件。
+<figure>
+  <picture>
+    <source srcset="../../.gitbook/assets/nekoray-main-new-profile_black.png" media="(prefers-color-scheme: dark)">
+    <img src="../../.gitbook/assets/nekoray-main-new-profile_white.png" alt="新建 NekoRay 配置">
+  </picture>
+</figure>
 
-<figure><img src="../../.gitbook/assets/Image00002 (6).PNG" alt=""><figcaption></figcaption></figure>
+在 `Type` 列表中选择 `Socks`。
 
-## 在 NekoRay 配置文件中设置代理服务器
+<figure>
+  <picture>
+    <source srcset="../../.gitbook/assets/nekoray-profile-type-socks_black.png" media="(prefers-color-scheme: dark)">
+    <img src="../../.gitbook/assets/nekoray-profile-type-socks_white.png" alt="在 NekoRay 中选择 Socks 类型">
+  </picture>
+</figure>
 
-在连接配置文件创建窗口中，指定“<mark style="color:purple;">Socks</mark>”或“<mark style="color:purple;">HTTP</mark>”连接协议。
+填写连接信息：
 
-<figure><img src="../../.gitbook/assets/image (23) (1).png" alt=""><figcaption></figcaption></figure>
+1. 在 `Name` 中输入便于识别的名称。
+2. 在 `Address` 和 `Port` 中输入代理地址和端口。
+3. 在 `Socks` 部分选择 `Version: 5`。
+4. 填写 `Username` 和 `Password`。
+5. 点击 `OK`。
 
-根据您的[订单](https://dashboard.proxyshard.com/products)设置代理连接参数。
+<figure>
+  <picture>
+    <source srcset="../../.gitbook/assets/nekoray-profile-config_black.png" media="(prefers-color-scheme: dark)">
+    <img src="../../.gitbook/assets/nekoray-profile-config_white.png" alt="NekoRay 的 SOCKS5 代理设置">
+  </picture>
+</figure>
 
 {% hint style="info" %}
-**您可以在[设置指南](../getting-started.md)部分找到代理设置示例**
+如需了解连接信息的位置，请参阅[通用配置说明](../getting-started.md)。
 {% endhint %}
 
-<figure><img src="../../.gitbook/assets/image (24) (1).png" alt=""><figcaption></figcaption></figure>
+## 连接
 
-## 入门
+选择已创建的配置，并在顶部工具栏中启用 `Tun Mode`。连接后，系统流量将通过该代理传输。
 
-启用“<mark style="color:purple;">TUN Mode</mark>”并通过右键单击它并单击“<mark style="color:purple;">Start</mark>”来启动创建的配置文件。
-
-<figure><img src="../../.gitbook/assets/Image00004 (6).PNG" alt=""><figcaption></figcaption></figure>
-
-**完毕！您现在可以通过隧道传输所有流量来充分使用代理。**
-
-
-
+<figure>
+  <picture>
+    <source srcset="../../.gitbook/assets/nekoray-tun-mode-enable_black.png" media="(prefers-color-scheme: dark)">
+    <img src="../../.gitbook/assets/nekoray-tun-mode-enable_white.png" alt="在 NekoRay 中启用 Tun Mode">
+  </picture>
+</figure>

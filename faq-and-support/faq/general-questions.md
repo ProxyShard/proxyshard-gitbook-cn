@@ -6,7 +6,7 @@ icon: circle-question
 # 常见问题
 
 {% hint style="warning" %}
-**信息截至 2026 年 6 月有效。** 产品、地区、运营商和价格的列表可能发生变化，购买前请在[控制面板](https://dashboard.proxyshard.com/)上确认最新信息。
+产品、地区、运营商和价格可能发生变化。购买前请在[控制面板](https://dashboard.proxyshard.com/)中确认最新信息。
 {% endhint %}
 
 ***
@@ -230,7 +230,7 @@ Google 和 Cloudflare 验证码通常**不是由代理本身**造成的，而是
 
 ## 20. ISP 代理可用哪些国家？
 
-截至 2026 年 6 月，ISP 代理在以下地区可用：
+ISP 代理在以下地区可用：
 
 | 国家 |
 | ---- |
@@ -243,7 +243,7 @@ Google 和 Cloudflare 验证码通常**不是由代理本身**造成的，而是
 
 ## 21. Datacenter 代理可用哪些国家？
 
-截至 2026 年 6 月：
+可用地区：
 
 * 🇲🇩 摩尔多瓦
 * 🇺🇦 乌克兰

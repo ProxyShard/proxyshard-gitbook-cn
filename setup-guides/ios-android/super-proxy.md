@@ -4,37 +4,43 @@ icon: android
 
 # Super Proxy
 
-## Super Proxy设置
+## 配置 Super Proxy
 
-通过以下链接下载应用程序：
+从 Google Play 安装 Super Proxy。
 
-{% embed url="https://play.google.com/store/apps/details?id=com.scheler.superproxy&hl" %}
+{% embed url="https://play.google.com/store/apps/details?id=com.scheler.superproxy" %}
 
-## 创建个人资料
+## 创建配置文件
 
-然后打开应用程序，通过“<mark style="color:purple;">Add proxy</mark>”添加代理。
+打开应用，然后点击 `Add proxy`。
 
-<figure><img src="../../.gitbook/assets/photo_2025-08-12_00-16-57.png" alt="" width="321"><figcaption></figcaption></figure>
+<figure>
+  <picture>
+    <source srcset="../../.gitbook/assets/super-proxy-android-add-proxy_black.png" media="(prefers-color-scheme: dark)">
+    <img src="../../.gitbook/assets/super-proxy-android-add-proxy_white.png" alt="在 Super Proxy 中添加代理">
+  </picture>
+</figure>
 
-在相应字段中输入订单中的代理并指定连接协议类型。
+在 `Profile name` 中输入配置文件名称，选择协议，并使用订单 `Proxy List` 中的数据填写 `Server`、`Port`、`Username` 和 `Password`。然后保存配置文件。
 
-<figure><img src="../../.gitbook/assets/photo_2025-08-12_00-16-52.png" alt="" width="321"><figcaption></figcaption></figure>
+<figure>
+  <picture>
+    <source srcset="../../.gitbook/assets/super-proxy-android-proxy-form_black.png" media="(prefers-color-scheme: dark)">
+    <img src="../../.gitbook/assets/super-proxy-android-proxy-form_white.png" alt="在 Super Proxy 中配置代理">
+  </picture>
+</figure>
 
 {% hint style="info" %}
-**您可以在[设置指南](../getting-started.md)部分找到代理设置示例**
+数据格式和订单示例请参阅[开始使用](../getting-started.md)。
 {% endhint %}
 
-保存设置并启动程序。
+选择刚才创建的配置文件，然后启动连接。
 
-<figure><img src="../../.gitbook/assets/photo_2025-08-12_00-16-34.png" alt="" width="321"><figcaption></figcaption></figure>
+<figure>
+  <picture>
+    <source srcset="../../.gitbook/assets/super-proxy-android-start_black.png" media="(prefers-color-scheme: dark)">
+    <img src="../../.gitbook/assets/super-proxy-android-start_white.png" alt="在 Super Proxy 中启动代理">
+  </picture>
+</figure>
 
-
-
-**完毕！您已通过“超级代理”应用程序完成代理设置。**\
-**您现在可以开始使用我们的代理。**
-
-
-
-
-
-
+代理现已连接，可以在 Super Proxy 中使用。
