@@ -5,29 +5,31 @@ icon: puzzle-piece
 
 # ProxyShard Extension
 
-<mark style="color:purple;">**ProxyShard – Smart Proxy Manager**</mark> 是我们的官方浏览器扩展程序，适用于 <mark style="color:purple;">Chrome</mark>、<mark style="color:purple;">Mozilla Firefox</mark> 以及其他基于 Chromium 内核的浏览器（<mark style="color:purple;">Edge</mark>、<mark style="color:purple;">Opera</mark>、<mark style="color:purple;">Brave</mark>、<mark style="color:purple;">Yandex</mark> 等），让您只需点击几下即可直接在浏览器中添加、切换和测试代理，无需任何第三方软件。
+<mark style="color:purple;">**ProxyShard – Smart Proxy Manager**</mark> 是 ProxyShard 官方浏览器扩展，支持 Chrome、Mozilla Firefox 以及 Edge、Opera、Brave、Yandex 等 Chromium 浏览器。您可以直接在浏览器中添加、测试和切换代理。
 
-#### 扩展程序的功能：
+#### 扩展功能
 
-* 保存无限数量的代理配置文件
-* 在所有受支持的浏览器中支持 <mark style="color:purple;">HTTP / HTTPS</mark> 连接
-* 在 Mozilla Firefox 版本中支持 <mark style="color:purple;">SOCKS5</mark>
-* 一键测试每个配置文件（延迟、国家/地区、IP）
-* <mark style="color:purple;">**按计时器或热键进行 IP 轮换**</mark>，适用于移动代理
-* 旁路列表与高级域名路由
-* 已本地化为**英语、俄语、乌克兰语和中文**
+* 可保存不限数量的代理配置
+* 所有受支持的浏览器均可使用 HTTP / HTTPS
+* Mozilla Firefox 支持 SOCKS5
+* 检查连接状态、IP 地址、国家/地区和延迟
+* 按时间间隔或快捷键轮换移动代理 IP
+* 按域名设置路由规则并自动切换配置
+* WebRTC 泄漏防护和 p0f TCP 指纹检查
+* 导入和导出配置
+* 提供英语、俄语、乌克兰语和中文界面
 
 <figure>
   <picture>
-    <source srcset="../.gitbook/assets/extension-overview_black.png" media="(prefers-color-scheme: dark)">
-    <img src="../.gitbook/assets/extension-overview_white.png" alt="ProxyShard 扩展程序界面">
+    <source srcset="../.gitbook/assets/proxyshard-extension-popup-overview_black.png" media="(prefers-color-scheme: dark)">
+    <img src="../.gitbook/assets/proxyshard-extension-popup-overview_white.png" alt="ProxyShard Extension 主窗口">
   </picture>
-  <figcaption><p>ProxyShard 扩展程序界面</p></figcaption>
+  <figcaption><p>主窗口和已保存的代理配置</p></figcaption>
 </figure>
 
 ## 安装扩展程序
 
-该扩展程序可在官方 **Chrome Web Store** 和 **Firefox Add-ons** 中获取。Chrome Web Store 版本也可以毫无问题地安装到 Edge、Opera、Brave 以及其他基于 Chromium 的浏览器中。
+该扩展可从官方 Chrome Web Store 和 Firefox Add-ons 安装。Chrome Web Store 版本也适用于 Edge、Opera、Brave 及其他 Chromium 浏览器。
 
 ### Chrome、Edge、Opera、Brave、Yandex 及其他 Chromium 浏览器
 
@@ -37,144 +39,214 @@ icon: puzzle-piece
 
 {% embed url="https://addons.mozilla.org/en-US/firefox/addon/proxyshard-smart-proxy-manager/" %}
 
-安装完成后，打开扩展菜单（地址栏右侧的拼图图标），点击 ProxyShard 名称旁的「图钉」图标，将其**固定**到工具栏以便快速访问。
+安装后，打开地址栏右侧的 `Extensions` 菜单，点击图钉图标固定 `ProxyShard – Smart Proxy Manager`。
 
 <figure>
   <picture>
-    <source srcset="../.gitbook/assets/extension-pin_black.png" media="(prefers-color-scheme: dark)">
-    <img src="../.gitbook/assets/extension-pin_white.png" alt="将扩展程序固定到浏览器">
+    <source srcset="../.gitbook/assets/proxyshard-extension-pin_black.png" media="(prefers-color-scheme: dark)">
+    <img src="../.gitbook/assets/proxyshard-extension-pin_white.png" alt="在浏览器中固定 ProxyShard Extension">
   </picture>
-  <figcaption><p>1) 打开扩展菜单。2) 固定 ProxyShard。</p></figcaption>
+  <figcaption><p>打开 Extensions 菜单并固定扩展</p></figcaption>
 </figure>
 
 {% hint style="danger" %}
-**Chromium 浏览器中 SOCKS5 的限制**
+**Chromium 浏览器中的 SOCKS5 限制**
 
-Google Chrome（以及其他基于 Chromium 的浏览器）默认不支持通过用户名/密码对 SOCKS5 代理进行身份验证。对于基于 **Manifest V3** 的扩展程序，该限制依然存在。
+Chrome 及其他 Chromium 浏览器不支持 Manifest V3 扩展通过用户名和密码验证 SOCKS5 代理。
 
-通过扩展程序使用 SOCKS5 只能：
-
-* **不带凭据**（匿名代理）使用，或
-* **通过 IP 白名单**进行绑定
-
-对于需要身份验证的代理，请使用 <mark style="color:purple;">**HTTP / HTTPS**</mark> 协议，该协议完全受支持。
+SOCKS5 只能在无需凭据或通过 IP 白名单验证时使用。代理需要用户名和密码时，请选择 HTTP / HTTPS。
 {% endhint %}
 
 {% hint style="success" %}
 **Mozilla Firefox 中的 SOCKS5**
 
-ProxyShard Extension 的 Mozilla Firefox 版本可通过扩展程序使用 SOCKS5，因此您可以在 Firefox 中直接使用 SOCKS5 配置文件。
+Mozilla Firefox 版 ProxyShard Extension 支持带验证的 SOCKS5，因此可以直接使用这类配置。
 {% endhint %}
 
-## 配置住宅代理
+## 设置住宅代理
 
-1. 在 [**Residential proxy**](https://dashboard.proxyshard.com/en/residential-main) 页面打开您的订单，设置代理参数（国家、地区、协议、TTL、端口等）。
-2. 点击 <mark style="color:purple;">**Generate proxy**</mark>，生成的代理将显示在右侧的 <mark style="color:purple;">Proxy List</mark> 区块中。
-3. 使用 <mark style="color:purple;">**Copy all**</mark> 按钮复制连接字符串。
-4. 打开 ProxyShard 扩展程序（地址栏右侧已固定的图标）。
-
-<figure>
-  <picture>
-    <source srcset="../.gitbook/assets/extension-residential-copy_black.png" media="(prefers-color-scheme: dark)">
-    <img src="../.gitbook/assets/extension-residential-copy_white.png" alt="在控制面板生成住宅代理">
-  </picture>
-  <figcaption><p>步骤 1-4：在控制面板配置并复制代理</p></figcaption>
-</figure>
-
-5. 在扩展程序底部的输入框中，按 `ip:port:login:password` 格式**粘贴已复制的字符串**，然后点击 <mark style="color:purple;">**Add**</mark>。
+1. 在 [Residential proxy](https://dashboard.proxyshard.com/en/residential-main) 页面打开订单。
+2. 选择国家/地区、区域、会话类型、协议及其他参数，然后点击 `Generate proxy`。
+3. 在 `Proxy List` 中选择所需格式，然后点击 `Copy all`。
 
 <figure>
   <picture>
-    <source srcset="../.gitbook/assets/extension-residential-add_black.png" media="(prefers-color-scheme: dark)">
-    <img src="../.gitbook/assets/extension-residential-add_white.png" alt="在扩展程序中添加代理">
+    <source srcset="../.gitbook/assets/proxyshard-extension-residential-generate_black.png" media="(prefers-color-scheme: dark)">
+    <img src="../.gitbook/assets/proxyshard-extension-residential-generate_white.png" alt="生成并复制住宅代理">
   </picture>
-  <figcaption><p>步骤 5：粘贴代理并添加配置文件</p></figcaption>
+  <figcaption><p>住宅代理设置和 Proxy List</p></figcaption>
 </figure>
 
-6. 配置文件将出现在列表中。点击 <mark style="color:purple;">**Test**</mark> 验证可用性，然后点击 <mark style="color:purple;">**Play**</mark> 按钮以激活代理。
+4. 打开已固定的 ProxyShard 扩展。
+5. 将 `ip:port:login:password` 格式的代理字符串粘贴到底部输入框，然后点击 `Add`。
 
 <figure>
   <picture>
-    <source srcset="../.gitbook/assets/extension-residential-run_black.png" media="(prefers-color-scheme: dark)">
-    <img src="../.gitbook/assets/extension-residential-run_white.png" alt="在扩展程序中激活代理">
+    <source srcset="../.gitbook/assets/proxyshard-extension-add-proxy-string_black.png" media="(prefers-color-scheme: dark)">
+    <img src="../.gitbook/assets/proxyshard-extension-add-proxy-string_white.png" alt="在扩展中添加住宅代理">
   </picture>
-  <figcaption><p>步骤 6：测试并启动配置文件</p></figcaption>
+  <figcaption><p>粘贴连接字符串并点击 Add</p></figcaption>
 </figure>
 
-## 配置 Datacenter / ISP 代理
-
-1. 在控制面板打开您的 <mark style="color:purple;">Datacenter</mark> 或 <mark style="color:purple;">ISP proxy</mark> 订单，从 <mark style="color:purple;">Proxy List</mark> 区块**复制**连接字符串。
-2. 打开已固定的 **ProxyShard** 扩展程序。
+6. 新配置会显示在列表中。打开其 `...` 菜单，选择 `Test connection`，测试成功后点击 `Enable`。
 
 <figure>
   <picture>
-    <source srcset="../.gitbook/assets/extension-dcisp-copy_black.png" media="(prefers-color-scheme: dark)">
-    <img src="../.gitbook/assets/extension-dcisp-copy_white.png" alt="从 DC/ISP 订单复制代理">
+    <source srcset="../.gitbook/assets/proxyshard-extension-profile-actions_black.png" media="(prefers-color-scheme: dark)">
+    <img src="../.gitbook/assets/proxyshard-extension-profile-actions_white.png" alt="测试并启用代理配置">
   </picture>
-  <figcaption><p>步骤 1-2：从订单复制代理并打开扩展程序</p></figcaption>
+  <figcaption><p>测试、编辑和删除配置的操作菜单</p></figcaption>
 </figure>
 
-3. 在扩展程序底部的输入框中**粘贴代理**（`ip:port:login:password`），然后点击 <mark style="color:purple;">**Add**</mark>。
+## 设置数据中心或 ISP 代理
+
+1. 在控制面板中打开数据中心或 ISP 代理订单。
+2. 在 `Proxy List` 中选择协议和格式，然后点击 `Copy all`。
 
 <figure>
   <picture>
-    <source srcset="../.gitbook/assets/extension-dcisp-add_black.png" media="(prefers-color-scheme: dark)">
-    <img src="../.gitbook/assets/extension-dcisp-add_white.png" alt="将代理粘贴到扩展程序">
+    <source srcset="../.gitbook/assets/proxyshard-extension-datacenter-proxy-list_black.png" media="(prefers-color-scheme: dark)">
+    <img src="../.gitbook/assets/proxyshard-extension-datacenter-proxy-list_white.png" alt="从订单复制数据中心代理">
   </picture>
-  <figcaption><p>步骤 3：将代理粘贴到扩展程序</p></figcaption>
+  <figcaption><p>从 Proxy List 复制连接字符串</p></figcaption>
 </figure>
 
-4. 点击 <mark style="color:purple;">**Test**</mark> 验证，然后通过 <mark style="color:purple;">**Play**</mark> 按钮激活配置文件。
+3. 打开扩展，将代理字符串粘贴到底部输入框，然后点击 `Add`。
 
 <figure>
   <picture>
-    <source srcset="../.gitbook/assets/extension-dcisp-run_black.png" media="(prefers-color-scheme: dark)">
-    <img src="../.gitbook/assets/extension-dcisp-run_white.png" alt="激活 DC/ISP 配置文件">
+    <source srcset="../.gitbook/assets/proxyshard-extension-add-datacenter-proxy_black.png" media="(prefers-color-scheme: dark)">
+    <img src="../.gitbook/assets/proxyshard-extension-add-datacenter-proxy_white.png" alt="在扩展中添加数据中心代理">
   </picture>
-  <figcaption><p>步骤 4：测试并启动配置文件</p></figcaption>
+  <figcaption><p>添加数据中心或 ISP 代理</p></figcaption>
 </figure>
 
-{% hint style="info" %}
-**移动代理：按计时器或热键进行 IP 轮换**
-
-编辑配置文件时，可以使用 <mark style="color:purple;">**IP Rotation**</mark> 区块，该功能对<mark style="color:purple;">移动代理</mark>特别有用：
-
-* **Rotation URL** - 粘贴来自您移动代理订单的 IP 切换链接，扩展程序将自动调用它。
-* **Trigger: Interval** - 按设定的时间间隔进行轮换。
-* **Trigger: Hotkey** - 设置组合键（例如 `Shift+F2`）来即时切换 IP。
-* **Track IP history** - 重复检测功能：如果在会话期间出现相同的 IP 地址，扩展程序将通知您。
+4. 打开新配置的 `...` 菜单并选择 `Test connection`。
+5. 测试成功后，点击 `Enable`。启用其他配置时，当前连接会自动切换。
 
 <figure>
   <picture>
-    <source srcset="../.gitbook/assets/extension-ip-rotation_black.png" media="(prefers-color-scheme: dark)">
-    <img src="../.gitbook/assets/extension-ip-rotation_white.png" alt="IP Rotation 设置">
+    <source srcset="../.gitbook/assets/proxyshard-extension-profile-switch_black.png" media="(prefers-color-scheme: dark)">
+    <img src="../.gitbook/assets/proxyshard-extension-profile-switch_white.png" alt="切换代理配置">
   </picture>
+  <figcaption><p>测试并启用新配置</p></figcaption>
 </figure>
+
+## 移动代理 IP 轮换
+
+打开配置的 `...` 菜单，点击 `Edit`，然后展开 `IP rotation`。
+
+* `Enable IP rotation` 用于开启自动 IP 轮换。
+* 在 `Rotation URL` 中粘贴移动代理订单内的 IP 更换链接。
+* 在 `Trigger` 中选择 `Hotkey` 或 `Interval`。
+* 使用 `Hotkey` 时，请设置快捷键，例如 `Shift+F2`。如需在 `chrome://` 内部页面中使用，请在 `chrome://extensions/shortcuts` 页面单独设置。
+* 使用 `Interval` 时，请设置两次 IP 更换请求之间的时间间隔。
+* `Track IP history (detects duplicate IPs)` 用于检测是否再次分配了相同的 IP 地址。
+
+点击 `Save profile` 保存设置。
+
+<figure>
+  <picture>
+    <source srcset="../.gitbook/assets/proxyshard-extension-edit-profile-ip-rotation_black.png" media="(prefers-color-scheme: dark)">
+    <img src="../.gitbook/assets/proxyshard-extension-edit-profile-ip-rotation_white.png" alt="IP rotation 设置">
+  </picture>
+  <figcaption><p>通过快捷键或时间间隔轮换 IP</p></figcaption>
+</figure>
+
+## 域名路由和自动切换
+
+配置编辑窗口包含 `Domain routing` 和 `Auto-switch` 两个部分。
+
+### Domain routing
+
+此部分用于设置特定域名的代理路由规则。
+
+* `Enable routing rules` 用于开启域名路由规则。
+* `Whitelist` 仅让指定域名通过代理连接。
+* `Blacklist` 排除指定域名，不让其通过代理连接。
+* 在 `Domains` 中每行输入一个域名。需要包含子域名时，请在域名前添加 `*.` 通配符，例如 `*.google.com`。
+
+### Auto-switch
+
+打开指定网站时，此功能会自动启用所选配置。
+
+* `Enable auto-switch` 用于开启自动切换。
+* 在 `Activate on these domains` 中每行输入一个域名，例如 `example.com` 或 `*.work-site.com`。
+
+点击 `Save profile` 保存更改，或点击 `Cancel` 关闭窗口且不保存。
+
+<figure>
+  <picture>
+    <source srcset="../.gitbook/assets/proxyshard-extension-edit-profile-routing_black.png" media="(prefers-color-scheme: dark)">
+    <img src="../.gitbook/assets/proxyshard-extension-edit-profile-routing_white.png" alt="Domain routing 和 Auto-switch 设置">
+  </picture>
+  <figcaption><p>域名路由和配置自动切换</p></figcaption>
+</figure>
+
+## 手动添加配置
+
+1. 点击扩展主窗口中的齿轮图标，然后打开 `Profiles`。
+2. 点击 `+ Add profile`，再选择 `Manual` 选项卡。
+3. 填写以下字段：
+   * `Name` - 配置名称；
+   * `Type` - 连接类型；
+   * `Host` 和 `Port` - 代理服务器地址和端口；
+   * `Bypass list` - 需要直连的地址，每行一个；
+   * `Username` 和 `Password` - 验证凭据。
+4. 如有需要，可设置 `IP rotation`、`Domain routing` 和 `Auto-switch domains`。
+5. 点击 `Save profile`。
+
+如需快速添加完整的代理字符串，请使用 `Quick paste` 选项卡。
+
+<figure>
+  <picture>
+    <source srcset="../.gitbook/assets/proxyshard-extension-options-add-profile_black.png" media="(prefers-color-scheme: dark)">
+    <img src="../.gitbook/assets/proxyshard-extension-options-add-profile_white.png" alt="手动添加代理配置">
+  </picture>
+  <figcaption><p>Manual 选项卡中的 Add profile 表单</p></figcaption>
+</figure>
+
+## 导入和导出配置
+
+通过 `Import and export` 可以备份配置，并在需要时恢复。
+
+* `Export profiles` 将所有配置保存到 JSON 文件。点击 `Export JSON`，然后将文件保存在安全位置。
+* `Import from JSON` 从之前导出的文件恢复配置。点击 `Import JSON` 并选择备份文件。
+
+{% hint style="warning" %}
+备份文件可能包含代理地址和验证凭据。请勿将其提供给不受信任的人员。
 {% endhint %}
 
-## 手动添加配置文件
+<figure>
+  <picture>
+    <source srcset="../.gitbook/assets/proxyshard-extension-options-import-export_black.png" media="(prefers-color-scheme: dark)">
+    <img src="../.gitbook/assets/proxyshard-extension-options-import-export_white.png" alt="导入和导出 ProxyShard Extension 配置">
+  </picture>
+  <figcaption><p>备份和恢复代理配置</p></figcaption>
+</figure>
 
-如果您希望手动创建配置文件，而不是粘贴现成的字符串，请使用完整的 <mark style="color:purple;">**+ Add Profile**</mark> 表单。
+## 其他设置
 
-1. 在扩展程序中打开 <mark style="color:purple;">**Profiles**</mark> 部分（通过齿轮 / 设置图标）。
-2. 点击右上角的 <mark style="color:purple;">**+ Add Profile**</mark> 按钮。
-3. 填写配置文件参数：
-   * <mark style="color:purple;">**Name**</mark> - 任意配置文件名称
-   * <mark style="color:purple;">**Color**</mark> - 用于方便识别的颜色标签
-   * <mark style="color:purple;">**Type**</mark> - 协议（推荐 `HTTP / HTTPS`）
-   * <mark style="color:purple;">**Host**</mark> 与 <mark style="color:purple;">**Port**</mark> - 代理服务器地址和端口
-   * <mark style="color:purple;">**Bypass List**</mark> - 需要**直接**绕过代理的 IP / 域名列表（每行一条）
-   * <mark style="color:purple;">**Username**</mark> / <mark style="color:purple;">**Password**</mark> - 身份验证信息
-4. 点击 <mark style="color:purple;">**Save Profile**</mark>。
+`Preferences` 中包含以下设置：
+
+* `Show IP widget in popup` 在扩展弹窗顶部显示当前 IP 地址和位置。
+* `Show badge on the toolbar icon` 在扩展图标上显示连接状态标记。
+* `Context menu` 将代理配置切换功能添加到浏览器右键菜单。
+* `Auto-switch by domain` 允许扩展为已配置的域名自动启用相应配置。
+* `WebRTC leak protection` 有助于防止 WebRTC 暴露真实 IP 地址。启用后，部分依赖 WebRTC 的服务可能无法正常工作。详情请参阅 [UDP 与 WebRTC](about-udp/README.md)。
+* `Proxy fingerprint check (p0f)` 将 User-Agent 中的操作系统与 TCP 指纹进行比较。两者不一致时，网站可能会识别出您正在使用代理。详情请参阅[使用 p0f 修改操作系统指纹](p0f-spoofing.md)。
+* `IP checker` 用于选择检测 IP 地址和位置的服务。在 `Auto (fallback)` 模式下，扩展会依次尝试可用服务，直到其中一个成功响应。
+
+更改设置后，点击 `Save preferences`。
 
 <figure>
   <picture>
-    <source srcset="../.gitbook/assets/extension-manual-profile_black.png" media="(prefers-color-scheme: dark)">
-    <img src="../.gitbook/assets/extension-manual-profile_white.png" alt="手动添加配置文件">
+    <source srcset="../.gitbook/assets/proxyshard-extension-options-preferences_black.png" media="(prefers-color-scheme: dark)">
+    <img src="../.gitbook/assets/proxyshard-extension-options-preferences_white.png" alt="ProxyShard Extension Preferences 设置">
   </picture>
-  <figcaption><p>完整的配置文件创建表单</p></figcaption>
+  <figcaption><p>扩展程序的其他设置</p></figcaption>
 </figure>
 
 {% hint style="success" %}
-**完成！** ProxyShard 扩展程序已完全配置并可立即使用。您可以在任何受支持的浏览器中一键切换代理。
+ProxyShard Extension 已可使用。您可以从扩展主窗口启用和切换已保存的配置。
 {% endhint %}
