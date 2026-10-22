@@ -198,16 +198,14 @@ Google 和 Cloudflare 验证码通常**不是由代理本身**造成的，而是
 
 ## 17. 支持哪些支付系统？
 
-我们支持以下方式付款：
+我们支持以下付款方式：
 
-* <mark style="color:purple;">**Stripe**</mark> - 银行卡，最低付款金额 **$5**。
-* <mark style="color:purple;">**Cryptomus**</mark> - 加密货币（BTC、LTC、USDT 等）。
+* `Credit Card / Google Pay` - 通过 Stripe 使用银行卡或 Google Pay 付款，最低付款金额为 **$5**。
+* `Nowpayments (Crypto)` - 使用加密货币付款，最低付款金额为 **$5**。
+* `USDT TRC20` - 通过 TRC20 (TRON) 网络支付 USDT。
 
-{% hint style="info" %}
-**关于通过 Cryptomus 的加密货币付款：**
-
-* 通过 **BTC** 或 **LTC** 付款最长可能需要 **1 小时**处理，这取决于网络确认，而非我们的系统。
-* 通过 **USDT** 付款需要最低金额 **$15**，且客户需承担手续费。这是 Cryptomus 平台自身的要求，我们对这些条款没有影响。
+{% hint style="warning" %}
+通过 TRC20 网络支付 USDT 时，请选择独立的 `USDT TRC20` 选项。支付服务商会按比例收取手续费，因此最低付款金额为 **$21**。
 {% endhint %}
 
 ***
