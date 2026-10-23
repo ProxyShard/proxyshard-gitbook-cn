@@ -25,10 +25,10 @@ servers:
 security:
   - bearerAuth: []
 tags:
-  - name: Datacenter & ISP Proxies
-    description: 数据中心和 ISP 代理的操作
   - name: General
     description: 一般操作（简介、订单、参考数据）
+  - name: Datacenter & ISP Proxies
+    description: 数据中心和 ISP 代理的操作
   - name: Residential Proxies
     description: 住宅代理的操作
   - name: Service

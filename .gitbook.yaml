@@ -108,14 +108,14 @@ redirects:
   setup-guides/checker-proxy: our-products/proxy-tester
 
   # ProxyShard API group migration (2026-07-14)
-  yong-hu-api: proxyshard-api/datacenter-and-isp-proxies
+  yong-hu-api: proxyshard-api/getting-started
   yong-hu-api/datacenter-and-isp-proxies: proxyshard-api/datacenter-and-isp-proxies
   yong-hu-api/residential-proxies: proxyshard-api/residential-proxies
   yong-hu-api/general: proxyshard-api/general
   yong-hu-api/models: proxyshard-api/models
 
   # Temporary combined API group split (2026-07-14)
-  api-specifications: proxyshard-api/datacenter-and-isp-proxies
+  api-specifications: proxyshard-api/getting-started
   api-specifications/datacenter-and-isp-proxies: proxyshard-api/datacenter-and-isp-proxies
   api-specifications/residential-proxies: proxyshard-api/residential-proxies
   api-specifications/general: proxyshard-api/general
