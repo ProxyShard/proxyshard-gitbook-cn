@@ -29,9 +29,3 @@ API 基础地址：`https://user-api.proxyshard.com`。
 ```http
 Authorization: Bearer <API_KEY>
 ```
-
-## OpenAPI 规范
-
-{% file src="../proxy-shard-user-api.openapi.yaml" %}
-下载 ProxyShard OpenAPI 规范
-{% endfile %}
