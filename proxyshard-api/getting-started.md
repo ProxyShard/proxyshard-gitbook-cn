@@ -4,6 +4,8 @@ ProxyShard API 可用于获取个人资料和订单信息、管理代理，以�
 
 ## 获取 API 密钥
 
+您可以通过[直达链接](https://dashboard.proxyshard.com/en/profile?tab=api-key)打开 API 密钥页面。如需从控制面板菜单进入：
+
 1. 点击左下角个人资料旁的三点按钮。
 2. 选择 `Settings`。
 3. 打开 `API` 选项卡。
