@@ -54,5 +54,5 @@ icon: server
 有关 `Status`、`Product tag`、访问凭据、p0f 设置和其他字段的说明，请参阅[订单字段](../../our-products/isp-proxies.md#ding-dan-zi-duan)。
 
 {% hint style="danger" %}
-状态为 `Canceled` 的订单无法续订。订单连续三天未付款后会进入此状态。
+状态为 `Canceled` 的订单无法续订。付费周期结束后，月付订单可在 3 天内续订；租期不足一个月的订单可在 3 小时内续订。超过对应期限后，订单会被删除，且无法恢复该订单或原 IP 地址。
 {% endhint %}

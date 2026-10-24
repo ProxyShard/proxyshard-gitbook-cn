@@ -82,7 +82,7 @@ icon: server
 * 在 `Proxy List` 中可以选择 `HTTP` 或 `SOCKS5`、更改连接字符串格式、使用 `Copy all` 复制列表，或通过 `Export All` 下载列表。
 
 {% hint style="danger" %}
-状态为 `Canceled` 的订单无法恢复。订单欠费三天后会进入该状态。
+状态为 `Canceled` 的订单无法恢复。付费周期结束后，月付订单可在 3 天内续订；租期不足一个月的订单可在 3 小时内续订。超过对应期限后，订单会被删除，且无法恢复该订单或原 IP 地址。
 {% endhint %}
 
 ## 适用于哪些任务

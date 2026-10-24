@@ -120,9 +120,12 @@
 * [IP Checker](https://proxyshard.com/ip-checker)
 * [Proxy Tester](https://proxyshard.com/proxy-tester)
 
-## ProxyShard API
+## API 与集成 <a href="#api-and-integrations" id="api-and-integrations"></a>
 
 * [开始使用](proxyshard-api/getting-started.md)
+
+## ProxyShard API <a href="#proxyshard-api" id="proxyshard-api"></a>
+
 * ```yaml
   props:
     models: true
@@ -135,7 +138,7 @@
         spec: proxysharddoc-api
   ```
 
-## ShardX Launcher API
+## ShardX Launcher API <a href="#shardx-launcher-api" id="shardx-launcher-api"></a>
 
 * ```yaml
   props:

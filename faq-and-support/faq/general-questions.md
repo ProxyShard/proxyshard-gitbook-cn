@@ -78,10 +78,10 @@ Datacenter、ISP、Mobile、Standard Residential、Unlimited Residential 和 Pre
 
 ## 7. Datacenter / ISP 代理的续费窗口是多久？
 
-Datacenter 和 ISP 代理仅可在租用期结束后的 **3 天内**续费。
+Datacenter 和 ISP 代理的续费期限取决于租期。月付订单可在付费周期结束后的 **3 天内**续费；租期不足一个月的订单可在 **3 小时内**续费。
 
 {% hint style="danger" %}
-如果 3 天内未续费，**订单将被永久删除**。之后将无法恢复同一 IP 地址或订单。
+超过对应的续费期限后，**订单将被永久删除**。之后将无法恢复同一 IP 地址或订单。
 {% endhint %}
 
 我们建议在订单设置中启用 <mark style="color:purple;">**Auto renew**</mark> 选项，让续费自动从您的余额中扣除。
