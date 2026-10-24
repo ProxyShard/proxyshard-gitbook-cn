@@ -27,7 +27,7 @@ ISP 代理支持 <mark style="color:purple;">p0f</mark> 网络指纹伪装。
 | 连接数限制         | 每个 IP 2,500                       |
 | [UDP 支持](about-udp/) | 支持                           |
 | [p0f 支持](p0f-spoofing.md) | 支持（+$0.6 / IP 每月）     |
-| 价格              | **$2** / IP 每月                      |
+| 价格              | **$2 起** / IP 每月                   |
 
 ## 可用位置
 
@@ -37,6 +37,7 @@ ISP 代理支持 <mark style="color:purple;">p0f</mark> 网络指纹伪装。
 | 🇺🇸 美国 |
 | 🇨🇿 捷克 |
 | 🇺🇦 乌克兰 |
+| 🇲🇩 摩尔多瓦 |
 
 {% hint style="info" %}
 位置列表正在不断扩充。
