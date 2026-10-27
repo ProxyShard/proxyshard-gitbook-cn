@@ -1,193 +1,224 @@
 ---
-description: 安装 ShardX Launcher、配置代理并启动第一个配置文件
+description: 安装 ShardBrowser、添加代理并启动第一个配置文件
 icon: browser
 ---
 
-# ShardX Launcher
+# ShardBrowser
 
 <figure>
   <picture>
     <source srcset="../.gitbook/assets/shardx-cover_black.svg" media="(prefers-color-scheme: dark)">
-    <img src="../.gitbook/assets/shardx-cover_white.svg" alt="ShardX Launcher 徽标">
+    <img src="../.gitbook/assets/shardx-cover_white.svg" alt="ShardBrowser 标志">
   </picture>
 </figure>
 
 {% hint style="info" %}
-ShardX Launcher 以 MIT 许可证发布，是面向个人使用的免费工具。软件按「原样」提供。我们会定期发布更新，但不提供实时聊天支持--如遇严重问题，请在 [GitHub](https://github.com/ProxyShard/ShardBrowser/issues) 上提交 Bug 报告。
+ShardBrowser 是 ProxyShard 团队基于 Chromium 打造的反检测浏览器。每个配置文件都拥有真实设备的独立指纹（fingerprint）和独立代理，因此网站会把各个配置文件识别为不同的电脑。本程序免费提供，按原样交付。如遇严重问题，请在 [GitHub](https://github.com/ProxyShard/ShardBrowser/issues) 提交错误报告。
 {% endhint %}
 
-## 系统要求
+## Windows 系统要求
 
-### Windows
-
-| 组件         | 最低要求                                          | 推荐配置                                            |
-| ------------ | ------------------------------------------------- | --------------------------------------------------- |
-| 操作系统     | Windows 10 22H2 或 Windows 11，64 位              | Windows 11 64 位                                    |
-| 架构         | x64 / x86\_64                                     | x64                                                 |
-| 处理器       | 双核 64 位，支持 SSE3                             | 四核及以上                                          |
-| 内存         | 4 GB                                              | 8 GB（多配置文件并行运行建议 16 GB）                |
-| 磁盘空间     | 1 GB                                              | 5 GB+                                               |
-| 运行环境     | Microsoft Edge WebView2                           | -                                                   |
-
-### macOS
-
-| 组件     | 最低要求                        | 推荐配置             |
-| -------- | ------------------------------- | -------------------- |
-| 操作系统 | macOS 11 Big Sur 或更高版本     | 最新稳定版           |
-| 处理器   | Apple Silicon M1 或更新         | Apple M2 或更新      |
-| 内存     | 4 GB                            | 8 GB 及以上          |
-| 磁盘空间 | 1 GB                            | 5 GB+                |
-
-{% hint style="warning" %}
-当前版本编译目标为 `aarch64-apple-darwin`，不支持搭载 Intel 处理器的 Mac。
-{% endhint %}
+| 组件       | 最低配置                               | 推荐配置                          |
+| ---------- | -------------------------------------- | --------------------------------- |
+| 操作系统   | Windows 10 22H2 或 Windows 11，64 位   | Windows 11 64 位                  |
+| 架构       | x64 / x86\_64                          | x64                               |
+| 处理器     | 双核 64 位，支持 SSE3                  | 四核及以上                        |
+| 内存       | 4 GB                                   | 8 GB（大量配置文件时 16 GB）      |
+| 磁盘空间   | 1 GB                                   | 5 GB 以上                         |
+| 运行环境   | Microsoft Edge WebView2                | 最新版本                          |
 
 ---
 
-## Windows 安装
+## 在 Windows 上安装
 
 下载最新版本：
 
 {% embed url="https://github.com/ProxyShard/ShardBrowser/releases/latest" %}
 
-在 <mark style="color:purple;">**Assets**</mark> 部分选择 <mark style="color:purple;">`.exe`</mark> 或 <mark style="color:purple;">`.msi`</mark> 文件。
+在 <mark style="color:purple;">**Assets**</mark> 中选择安装程序 <mark style="color:purple;">`ShardBrowser.Launcher_<版本>_x64-setup.exe`</mark>。如果需要免安装版，请下载 <mark style="color:purple;">`ShardBrowser-Launcher-portable-win-x64.exe`</mark>。
 
-<figure><img src="../.gitbook/assets/shardx-win-download.png" alt=""><figcaption>在 Assets 中选择 .exe 或 .msi</figcaption></figure>
+<figure>
+  <picture>
+    <source srcset="../.gitbook/assets/shardbrowser-github-release-assets_black.png" media="(prefers-color-scheme: dark)">
+    <img src="../.gitbook/assets/shardbrowser-github-release-assets_white.png" alt="在 Assets 中选择 x64-setup.exe">
+  </picture>
+  <figcaption>在 Assets 中选择 x64-setup.exe</figcaption>
+</figure>
 
-运行下载的文件。<mark style="color:purple;">Windows SmartScreen</mark> 可能会弹出警告--点击 <mark style="color:purple;">**更多信息**</mark>，然后点击 <mark style="color:purple;">**仍然运行**</mark>。
+运行下载的文件。<mark style="color:purple;">Windows SmartScreen</mark> 可能会显示警告。点击 <mark style="color:purple;">**More info**</mark>，然后点击 <mark style="color:purple;">**Run anyway**</mark>。
 
-<figure><img src="../.gitbook/assets/shardx-win-smartscreen.png" alt=""><figcaption>SmartScreen - 点击「Run anyway」</figcaption></figure>
+<figure>
+  <picture>
+    <source srcset="../.gitbook/assets/shardbrowser-windows-smartscreen_black.png" media="(prefers-color-scheme: dark)">
+    <img src="../.gitbook/assets/shardbrowser-windows-smartscreen_white.png" alt="SmartScreen：点击 Run anyway">
+  </picture>
+  <figcaption>SmartScreen：点击 Run anyway</figcaption>
+</figure>
 
-安装程序将在几秒钟内完成。
+## 在 macOS 上安装
 
-<figure><img src="../.gitbook/assets/shardx-win-install-done.png" alt=""><figcaption>安装完成</figcaption></figure>
+在 <mark style="color:purple;">**Assets**</mark> 中下载 <mark style="color:purple;">`ShardBrowser.Launcher_<版本>_aarch64.dmg`</mark>。此版本适用于配备 Apple Silicon 处理器的 Mac。
 
----
-
-## macOS 安装
-
-下载最新版本：
-
-{% embed url="https://github.com/ProxyShard/ShardBrowser/releases/latest" %}
-
-在 <mark style="color:purple;">**Assets**</mark> 部分选择 <mark style="color:purple;">`aarch64.dmg`</mark> 文件。
-
-<figure><img src="../.gitbook/assets/shardx-mac-download.png" alt=""><figcaption>在 Assets 中选择 aarch64.dmg</figcaption></figure>
-
-打开下载的 `.dmg`，将 <mark style="color:purple;">**ShardX Launcher**</mark> 拖入 <mark style="color:purple;">**应用程序（Applications）**</mark> 文件夹。
-
-<figure><img src="../.gitbook/assets/shardx-mac-install-dmg.png" alt=""><figcaption>将图标拖入 Applications 文件夹</figcaption></figure>
-
-### 解除 Gatekeeper 限制
-
-{% hint style="warning" %}
-此步骤为必要操作。macOS 会阻止所有未经签名的应用--跳过此步骤将无法打开程序。
-{% endhint %}
-
-通过以下两种方式之一打开 <mark style="color:purple;">**终端（Terminal）**</mark>：
-
-- <mark style="color:purple;">**Spotlight：**</mark> 按 `⌘ + 空格`，输入 `terminal`，选择应用
-
-<figure><img src="../.gitbook/assets/shardx-mac-find-terminal.png" alt=""><figcaption>通过 Spotlight 查找终端</figcaption></figure>
-
-- <mark style="color:purple;">**Finder：**</mark> 应用程序（Applications）-> 实用工具（Utilities）-> 终端（Terminal）
-
-粘贴以下命令并按 <mark style="color:purple;">**Enter：**</mark>
+打开 `.dmg` 文件，将 <mark style="color:purple;">**ShardBrowser Launcher**</mark> 拖入 <mark style="color:purple;">**Applications**</mark>。由于此版本尚未经过公证，macOS 可能会阻止首次启动。请在 Terminal 中运行：
 
 ```bash
-xattr -dr com.apple.quarantine "/Applications/ShardX Launcher.app"
+xattr -dr com.apple.quarantine "/Applications/ShardBrowser Launcher.app"
 ```
 
-<figure><img src="../.gitbook/assets/shardx-mac-xattr-command.png" alt=""><figcaption>命令执行时无任何输出--这是正常的</figcaption></figure>
+也可以前往 <mark style="color:purple;">**System Settings**</mark> → <mark style="color:purple;">**Privacy & Security**</mark> → <mark style="color:purple;">**Open Anyway**</mark> 允许应用运行。
 
-完成后，通过 <mark style="color:purple;">Spotlight</mark>（`⌘ + 空格` → `shardx`）或从 <mark style="color:purple;">应用程序（Applications）</mark> 文件夹启动应用。
+## 在 Linux 上安装
 
-<figure><img src="../.gitbook/assets/shardx-mac-open-spotlight.png" alt=""><figcaption>通过 Spotlight 启动 ShardX</figcaption></figure>
+<mark style="color:purple;">**Assets**</mark> 中提供 `.AppImage`、`.deb` 和 `.rpm` 安装包。运行 AppImage 前，请先授予执行权限：
 
----
+```bash
+chmod +x ShardBrowser.Launcher_<版本>_amd64.AppImage
+./ShardBrowser.Launcher_<版本>_amd64.AppImage
+```
+
+使用以下命令安装 `.deb` 包：
+
+```bash
+sudo apt install ./ShardBrowser.Launcher_<版本>_amd64.deb
+```
 
 ## 首次启动
 
-首次启动时，ShardX 将从 CDN 下载浏览器引擎（约 198 MB，仅需一次）。请等待下载完成。
+安装并启动后会打开主界面 <mark style="color:purple;">**All profiles**</mark>。左侧是功能菜单：配置文件、代理、指纹、扩展、书签、自动化以及 ProxyShard 账户。
 
-<figure><img src="../.gitbook/assets/shardx-win-first-run.png" alt=""><figcaption>首次启动时下载引擎</figcaption></figure>
-
-下载完成后，将打开主界面 <mark style="color:purple;">**Browsers**</mark>。
-
-<figure><img src="../.gitbook/assets/shardx-win-ready.png" alt=""><figcaption>ShardX Launcher 主界面</figcaption></figure>
+<figure>
+  <picture>
+    <source srcset="../.gitbook/assets/shardbrowser-profiles-empty_black.png" media="(prefers-color-scheme: dark)">
+    <img src="../.gitbook/assets/shardbrowser-profiles-empty_white.png" alt="ShardBrowser 主界面">
+  </picture>
+  <figcaption>ShardBrowser 主界面</figcaption>
+</figure>
 
 ---
 
 ## 添加代理
 
-进入 <mark style="color:purple;">**Proxies**</mark> 部分，点击 <mark style="color:purple;">**+ New proxy**</mark>。
+进入 <mark style="color:purple;">**Proxies**</mark>，点击 <mark style="color:purple;">**+ Add proxies**</mark>。
 
-<figure><img src="../.gitbook/assets/shardx-setup-proxy-empty.png" alt=""><figcaption>Proxies 部分</figcaption></figure>
+<figure>
+  <picture>
+    <source srcset="../.gitbook/assets/shardbrowser-proxies-empty_black.png" media="(prefers-color-scheme: dark)">
+    <img src="../.gitbook/assets/shardbrowser-proxies-empty_white.png" alt="Proxies 页面">
+  </picture>
+  <figcaption>Proxies 页面</figcaption>
+</figure>
 
-在 <mark style="color:purple;">**Bulk import proxies**</mark> 窗口中，每行粘贴一条代理。支持的格式：
+在 <mark style="color:purple;">**Add proxies**</mark> 窗口中，在 <mark style="color:purple;">**Type for lines without one**</mark> 中选择类型（默认 <mark style="color:purple;">SOCKS5</mark>），然后每行粘贴一个代理。支持的格式：
 
 ```
 host:port
 host:port:user:pass
-scheme://host:port
-scheme://user:pass@host:port
+user:pass@host:port
+socks5://user:pass@host:port
 ```
 
-<figure><img src="../.gitbook/assets/shardx-setup-add-proxy.png" alt=""><figcaption>每行粘贴一条代理</figcaption></figure>
+以 `#` 开头的行会被忽略。列表中已存在的代理（类型、主机、端口、用户名和密码均相同）会被跳过。
 
-点击 <mark style="color:purple;">**Test all**</mark>，在导入前检测代理可用性。
+<figure>
+  <picture>
+    <source srcset="../.gitbook/assets/shardbrowser-add-proxies-paste_black.png" media="(prefers-color-scheme: dark)">
+    <img src="../.gitbook/assets/shardbrowser-add-proxies-paste_white.png" alt="每行粘贴一个代理，然后点击 Preview">
+  </picture>
+  <figcaption>每行粘贴一个代理，然后点击 Preview</figcaption>
+</figure>
 
-<figure><img src="../.gitbook/assets/shardx-setup-check-proxy.png" alt=""><figcaption>点击「Test all」检测，然后点击「Import」</figcaption></figure>
+点击 <mark style="color:purple;">**Preview**</mark>。在预览窗口中点击 <mark style="color:purple;">**Test all**</mark>，在添加前检测代理。检测完成后，每个代理都会显示状态和国家。
 
-检测完成后，每条代理将显示状态。带有 <mark style="color:purple;">**UDP**</mark> 标记的代理支持 <mark style="color:purple;">SOCKS5 UDP</mark>，同时也支持 <mark style="color:purple;">WebRTC</mark>--这在对抗严格反欺诈系统时非常有用。如果没有 <mark style="color:purple;">**UDP**</mark> 标记，浏览器配置文件将自动切换为 <mark style="color:purple;">**TCP-only**</mark> 模式：IP 不会泄露，但流量可能会被高级反欺诈系统判定为可疑。我们强烈建议使用[支持 UDP 的代理](../our-products/about-udp/)。
+<figure>
+  <picture>
+    <source srcset="../.gitbook/assets/shardbrowser-add-proxies-preview_black.png" media="(prefers-color-scheme: dark)">
+    <img src="../.gitbook/assets/shardbrowser-add-proxies-preview_white.png" alt="点击 Test all，然后点击 Add 1 proxy">
+  </picture>
+  <figcaption>点击 Test all，然后点击 Add 1 proxy</figcaption>
+</figure>
 
-点击 <mark style="color:purple;">**Import**</mark>--代理将出现在列表中，状态为 <mark style="color:purple;">**Active**</mark>。
+带有 <mark style="color:purple;">**UDP**</mark> 标记的代理支持 <mark style="color:purple;">SOCKS5 UDP</mark>，因此也支持 <mark style="color:purple;">WebRTC</mark>，这在应对严格的反欺诈系统时非常有用。如果没有 <mark style="color:purple;">**UDP**</mark> 标记，配置文件会切换到 <mark style="color:purple;">**TCP-only**</mark> 模式：IP 不会泄露，但流量在高级反欺诈系统看来可能可疑。我们强烈建议使用[支持 UDP 的代理](../our-products/about-udp/)。
 
-<figure><img src="../.gitbook/assets/shardx-setup-proxy-done.png" alt=""><figcaption>代理已添加</figcaption></figure>
+<mark style="color:purple;">**Select working only**</mark> 只保留可用的代理处于选中状态。点击 <mark style="color:purple;">**Add 1 proxy**</mark>，代理就会出现在列表中。
 
 ---
 
 ## 创建第一个配置文件
 
-进入 <mark style="color:purple;">**Browsers**</mark> 部分，点击 <mark style="color:purple;">**+ New profile**</mark>。
+进入 <mark style="color:purple;">**All profiles**</mark>，点击 <mark style="color:purple;">**+ New profile**</mark>。也可以通过 <mark style="color:purple;">**Import from clipboard**</mark> 从剪贴板导入配置文件。
 
-<figure><img src="../.gitbook/assets/shardx-setup-profiles-empty.png" alt=""><figcaption>Browsers 部分</figcaption></figure>
+<figure>
+  <picture>
+    <source srcset="../.gitbook/assets/shardbrowser-new-profile-button_black.png" media="(prefers-color-scheme: dark)">
+    <img src="../.gitbook/assets/shardbrowser-new-profile-button_white.png" alt="All profiles 页面">
+  </picture>
+  <figcaption>All profiles 页面</figcaption>
+</figure>
 
-无需更改默认参数--ShardX 会自动生成唯一的<mark style="color:purple;">浏览器指纹（fingerprint）</mark>。请务必在表单底部的 <mark style="color:purple;">**Proxy**</mark> 字段中选择代理。
+此时会打开 <mark style="color:purple;">**New profile**</mark> 窗口，包含 <mark style="color:purple;">**Basics**</mark>、<mark style="color:purple;">**Proxy**</mark>、<mark style="color:purple;">**Fingerprint**</mark> 和 <mark style="color:purple;">**Extensions**</mark> 选项卡。在 <mark style="color:purple;">**Basics**</mark> 中输入配置文件名称。这里还可以选择文件夹、标签、颜色，添加备注并载入 cookies 文件。
 
-<figure><img src="../.gitbook/assets/shardx-setup-new-profile.png" alt=""><figcaption>选择代理并点击「Create profile」</figcaption></figure>
+<figure>
+  <picture>
+    <source srcset="../.gitbook/assets/shardbrowser-new-profile-basics_black.png" media="(prefers-color-scheme: dark)">
+    <img src="../.gitbook/assets/shardbrowser-new-profile-basics_white.png" alt="输入配置文件名称">
+  </picture>
+  <figcaption>输入配置文件名称</figcaption>
+</figure>
+
+在 <mark style="color:purple;">**Proxy**</mark> 选项卡中，从列表里选择已保存的代理。也可以通过 <mark style="color:purple;">**+ Add a new proxy**</mark> 直接添加新代理。
+
+<figure>
+  <picture>
+    <source srcset="../.gitbook/assets/shardbrowser-new-profile-proxy_black.png" media="(prefers-color-scheme: dark)">
+    <img src="../.gitbook/assets/shardbrowser-new-profile-proxy_white.png" alt="为配置文件选择代理">
+  </picture>
+  <figcaption>为配置文件选择代理</figcaption>
+</figure>
+
+<mark style="color:purple;">**Fingerprint**</mark> 选项卡中的参数无需修改，ShardBrowser 会根据所选系统自动匹配指纹。如有需要，可以选择<mark style="color:purple;">操作系统</mark>（macOS、Windows、Linux、Android）、具体指纹、显卡、CPU 核心数、内存、刷新率和屏幕分辨率。
+
+<figure>
+  <picture>
+    <source srcset="../.gitbook/assets/shardbrowser-new-profile-fingerprint_black.png" media="(prefers-color-scheme: dark)">
+    <img src="../.gitbook/assets/shardbrowser-new-profile-fingerprint_white.png" alt="配置文件的指纹设置">
+  </picture>
+  <figcaption>配置文件的指纹设置</figcaption>
+</figure>
 
 点击 <mark style="color:purple;">**Create profile**</mark>。
-
-<figure><img src="../.gitbook/assets/shardx-setup-profile-proxy-check.png" alt=""><figcaption>配置文件已创建</figcaption></figure>
 
 ---
 
 ## 启动配置文件
 
-点击 <mark style="color:purple;">**Start**</mark>--浏览器将以独立指纹和代理启动。
+配置文件会出现在列表中。右侧会打开配置文件卡片：代理、扩展、备注、指纹参数、时区和语言（默认根据代理确定）。点击 <mark style="color:purple;">**Start**</mark>。
 
-<figure><img src="../.gitbook/assets/shardx-setup-done.png" alt=""><figcaption>配置文件已启动</figcaption></figure>
+<figure>
+  <picture>
+    <source srcset="../.gitbook/assets/shardbrowser-profile-start_black.png" media="(prefers-color-scheme: dark)">
+    <img src="../.gitbook/assets/shardbrowser-profile-start_white.png" alt="点击 Start 启动配置文件">
+  </picture>
+  <figcaption>点击 Start 启动配置文件</figcaption>
+</figure>
+
+浏览器会以隔离的指纹和代理启动。起始页 `chrome://shardx` 列出了该配置文件的各项防护。
+
+<figure>
+  <picture>
+    <source srcset="../.gitbook/assets/shardbrowser-profile-browser-started_black.png" media="(prefers-color-scheme: dark)">
+    <img src="../.gitbook/assets/shardbrowser-profile-browser-started_white.png" alt="配置文件已启动">
+  </picture>
+  <figcaption>配置文件已启动</figcaption>
+</figure>
 
 ---
 
 ## 常见问题
 
-### Windows：程序无法启动
+### 应用无法启动
 
-很可能是未安装 <mark style="color:purple;">Microsoft Edge WebView2 Runtime</mark>。请下载并安装：
+很可能没有安装 <mark style="color:purple;">Microsoft Edge WebView2 Runtime</mark>。请下载并安装：
 
 {% embed url="https://developer.microsoft.com/en-us/microsoft-edge/webview2/consumer" %}
 
-原版 Windows 10/11 已内置 WebView2。精简版系统中可能已被删除。
-
-### macOS：「ShardX Launcher 已损坏，无法打开」
-
-这是 <mark style="color:purple;">Gatekeeper</mark> 的标准拦截行为。请按照[解除 Gatekeeper 限制](#jie-chu-gatekeeper-xian-zhi)部分的步骤操作--其中包含打开终端的两种方式以及解除隔离的命令。
-
----
-
-## 下一步
-
-- **自动化：** 通过 `127.0.0.1:40325` 上的[本地 HTTP API](../our-products/shardx-launcher.md) 管理配置文件
-- **MCP 服务器：** 从设置中下载（<mark style="color:purple;">Settings -> MCP server</mark>）以通过 AI 代理控制配置文件
+原版 Windows 10/11 镜像已自带 WebView2。精简版系统中可能已被移除。

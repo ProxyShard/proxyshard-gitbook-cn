@@ -1,29 +1,29 @@
 ---
 description: >-
-  ShardX 反检测浏览器，具备独特指纹，并提供本地 API 通过 Puppeteer / Playwright 自动化配置文件
+  ShardBrowser 反检测浏览器，具备独特指纹，并提供本地 API 通过 Puppeteer / Playwright 自动化配置文件
 icon: fingerprint
 ---
 
-# ShardX Launcher
+# ShardBrowser
 
 <figure>
   <picture>
     <source srcset="../.gitbook/assets/shardx-cover_black.svg" media="(prefers-color-scheme: dark)">
-    <img src="../.gitbook/assets/shardx-cover_white.svg" alt="ShardX Launcher 徽标">
+    <img src="../.gitbook/assets/shardx-cover_white.svg" alt="ShardBrowser 徽标">
   </picture>
 </figure>
 
-<mark style="color:purple;">**ShardX Browser**</mark> 是我们的反检测浏览器。您可以创建具有独立指纹（fingerprint）的配置文件，为每个配置文件分配专用代理，并以不同设备上的不同用户身份管理数十个账号。本地**自动化 API**还支持通过 Puppeteer / Playwright 创建、启动和控制配置文件。
+<mark style="color:purple;">**ShardBrowser**</mark> 是我们的反检测浏览器。您可以创建具有独立指纹（fingerprint）的配置文件，为每个配置文件分配专用代理，并以不同设备上的不同用户身份管理数十个账号。本地**自动化 API**还支持通过 Puppeteer / Playwright 创建、启动和控制配置文件。
 
 ## 下载与安装
 
 <mark style="color:violet;">**包含安装步骤、代理配置和创建首个配置文件的完整指南：**</mark>
 
 {% content-ref url="../setup-guides/shardx-browser.md" %}
-[ShardX Launcher - 安装与配置指南](../setup-guides/shardx-browser.md)
+[ShardBrowser 安装与配置指南](../setup-guides/shardx-browser.md)
 {% endcontent-ref %}
 
-#### ShardX 的功能：
+#### ShardBrowser 的功能：
 
 * 为 <mark style="color:purple;">Windows</mark>、<mark style="color:purple;">macOS</mark> 和 <mark style="color:purple;">Linux</mark> 生成独特指纹（navigator、screen、client hints、WebGL / WebGPU 等）
 * 各向量独立噪音：<mark style="color:purple;">canvas、WebGL、audio、client rects、字体、传感器</mark>
@@ -36,7 +36,7 @@ icon: fingerprint
 
 ## 指纹与反检测
 
-ShardX 为每个配置文件注入一套一致的参数：User-Agent、平台、CPU 核心数和内存大小（永远不超过真实机器），屏幕分辨率、Sec-CH-UA 等。在此基础上，各向量分别施加**噪音** - canvas、WebGL、audio、client rects、字体、传感器。每个噪音块独立开关，因此配置文件的指纹在会话内保持稳定，但与其他配置文件及您的真实设备各不相同。
+ShardBrowser 为每个配置文件注入一套一致的参数：User-Agent、平台、CPU 核心数和内存大小（永远不超过真实机器），屏幕分辨率、Sec-CH-UA 等。在此基础上，各向量分别施加**噪音** - canvas、WebGL、audio、client rects、字体、传感器。每个噪音块独立开关，因此配置文件的指纹在会话内保持稳定，但与其他配置文件及您的真实设备各不相同。
 
 {% hint style="info" %}
 指纹经过独特化处理，不与硬件绑定：CPU 核心数和内存大小根据宿主机调整，不会虚报；屏幕裁剪为真实显示器尺寸。这降低了因参数不一致被识别的风险。
@@ -44,7 +44,7 @@ ShardX 为每个配置文件注入一套一致的参数：User-Agent、平台、
 
 ## 代理、QUIC 与 WebRTC
 
-ShardX 与我们的代理配合尤为出色。**每次**启动配置文件时，在浏览器启动之前，系统会实时探测绑定代理对 UDP-relay（SOCKS5 UDP\_ASSOCIATE）的支持情况：
+ShardBrowser 与我们的代理配合尤为出色。**每次**启动配置文件时，在浏览器启动之前，系统会实时探测绑定代理对 UDP-relay（SOCKS5 UDP\_ASSOCIATE）的支持情况：
 
 * 如果 UDP 可用 - 启用 <mark style="color:purple;">QUIC</mark>，WebRTC 通过代理的 UDP relay 进行通信；
 * 如果 UDP 不可用 - 禁用 QUIC，WebRTC 强制切换为 **TCP-only** 模式，防止真实 IP 泄露。
@@ -52,7 +52,7 @@ ShardX 与我们的代理配合尤为出色。**每次**启动配置文件时，
 启动时，设置为 `auto` 的时区、语言和地理位置字段也会通过代理实时解析。
 
 {% hint style="success" %}
-ShardX + 我们的 [**UDP 代理**](about-udp/) 组合在浏览器层面彻底消除 WebRTC 泄露：UDP 流量经过代理，不会直接暴露您的 IP。关于该问题的详细说明，请参阅 [**关于 UDP 协议**](about-udp/) 章节。
+ShardBrowser 与我们的 [**UDP 代理**](about-udp/) 配合使用，可在浏览器层面消除 WebRTC 泄露：UDP 流量经过代理，不会直接暴露您的 IP。关于该问题的详细说明，请参阅 [**关于 UDP 协议**](about-udp/) 章节。
 {% endhint %}
 
 ## 自动化：本地 API

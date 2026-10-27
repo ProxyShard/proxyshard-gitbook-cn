@@ -39,7 +39,7 @@ icon: question
 
 适用于 Chrome、Firefox 和 Chromium 浏览器的扩展。可保存代理配置、切换并测试连接，还能通过定时器或快捷键轮换移动代理 IP。
 
-### [<mark style="color:purple;">ShardX Launcher</mark>](our-products/shardx-launcher.md)
+### [<mark style="color:purple;">ShardBrowser</mark>](our-products/shardx-launcher.md)
 
 用于隔离浏览器配置的现代防关联浏览器，可为每个配置使用一致的指纹和独立代理。支持 Windows、macOS 和 Linux，并提供本地 HTTP API、CDP、Puppeteer、Playwright 以及用于自动化的 MCP 服务器。
 
