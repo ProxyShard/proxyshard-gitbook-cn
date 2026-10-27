@@ -15,6 +15,8 @@ icon: fingerprint
 
 <mark style="color:purple;">**ShardBrowser**</mark> 是我们的反检测浏览器。您可以创建具有独立指纹（fingerprint）的配置文件，为每个配置文件分配专用代理，并以不同设备上的不同用户身份管理数十个账号。本地**自动化 API**还支持通过 Puppeteer / Playwright 创建、启动和控制配置文件。
 
+官方网站：[shardbrowser.com](https://shardbrowser.com/)。
+
 ## 下载与安装
 
 <mark style="color:violet;">**包含安装步骤、代理配置和创建首个配置文件的完整指南：**</mark>
