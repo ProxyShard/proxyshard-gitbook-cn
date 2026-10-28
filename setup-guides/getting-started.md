@@ -7,7 +7,7 @@ icon: clipboard-list
 开始配置应用前，请打开对应的[订单](https://dashboard.shardx.com/products)并准备好连接信息。
 
 {% hint style="info" %}
-以下示例使用 `SOCKS5`。如果应用仅支持 HTTP，请在订单设置中选择 `HTTP`，并使用对应端口。
+以下示例使用 `SOCKS5`。数据中心代理和 ISP 代理的 HTTP 与 SOCKS5 共用同一个端口。订单中的 HTTP / SOCKS5 切换器只会改变代理字符串的显示格式，并为兼容旧配置而保留。请在应用中选择所需协议，并使用订单中显示的端口。
 {% endhint %}
 
 ## 住宅代理

@@ -7,7 +7,7 @@ icon: firefox-browser
 
 Mozilla Firefox 的扩展
 
-* [🔥 ShardX Extension](proxyshard.md)
+* [🔥 ShardX Extension](shardx.md)
 * [FoxyProxy](foxyproxy.md)
 
 

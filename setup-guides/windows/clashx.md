@@ -114,7 +114,7 @@ rules:
 
 ## 验证连接
 
-打开 [ShardX IP Checker](https://proxyshard.com/tools/ip-checker)，确认页面显示代理 IP 地址。
+打开 [ShardX IP Checker](https://proxyshard.com/ip-checker)，确认页面显示代理 IP 地址。
 
 <figure>
   <picture>

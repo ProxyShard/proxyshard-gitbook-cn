@@ -42,9 +42,9 @@ icon: check-to-slot
 
 各字段的详细说明请参阅 [IP Checker](../ip-checker.md)。
 
-## 2. Ipbinding
+## 2. BrowserLeaks
 
-[Ipbinding](https://ipbinding.online/) 也会显示 WebRTC 候选地址。判断方式相同，WebRTC 地址应与代理地址一致。
+[BrowserLeaks WebRTC Leak Test](https://browserleaks.com/webrtc) 也会显示 WebRTC 候选地址。判断方式相同，WebRTC 地址应与代理地址一致。
 
-{% embed url="https://ipbinding.online/" %}
+{% embed url="https://browserleaks.com/webrtc" %}
 

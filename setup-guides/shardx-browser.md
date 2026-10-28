@@ -7,14 +7,18 @@ icon: browser
 
 <figure>
   <picture>
-    <source srcset="../.gitbook/assets/shardx-cover_black.svg" media="(prefers-color-scheme: dark)">
-    <img src="../.gitbook/assets/shardx-cover_white.svg" alt="ShardBrowser 标志">
+    <source srcset="../.gitbook/assets/shardbrowser-cover_black.svg" media="(prefers-color-scheme: dark)">
+    <img src="../.gitbook/assets/shardbrowser-cover_white.svg" alt="ShardBrowser 标志">
   </picture>
 </figure>
 
 {% hint style="info" %}
 ShardBrowser 是 ShardX 团队基于 Chromium 打造的反检测浏览器。每个配置文件都拥有真实设备的独立指纹（fingerprint）和独立代理，因此网站会把各个配置文件识别为不同的电脑。本程序免费提供，按原样交付。如遇严重问题，请在 [GitHub](https://github.com/ProxyShard/ShardBrowser/issues) 提交错误报告。
 {% endhint %}
+
+ShardBrowser 官方网站：[shardbrowser.com](https://shardbrowser.com/)。
+
+<figure><img src="../.gitbook/assets/shardbrowser-website.png" alt="ShardBrowser 官方网站"><figcaption>ShardBrowser 官方网站</figcaption></figure>
 
 ## Windows 系统要求
 

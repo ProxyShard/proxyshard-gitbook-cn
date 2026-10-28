@@ -9,8 +9,8 @@ icon: question
 
 <figure>
   <picture>
-    <source srcset=".gitbook/assets/proxyshard-products_black.svg" media="(prefers-color-scheme: dark)">
-    <img src=".gitbook/assets/proxyshard-products_white.svg" alt="ShardX 产品与工具">
+    <source srcset=".gitbook/assets/shardx-products_black.svg" media="(prefers-color-scheme: dark)">
+    <img src=".gitbook/assets/shardx-products_white.svg" alt="ShardX 产品与工具">
   </picture>
   <figcaption><p>ShardX 的代理服务、浏览器工具和检测服务</p></figcaption>
 </figure>

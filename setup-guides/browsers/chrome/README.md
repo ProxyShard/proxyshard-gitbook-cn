@@ -7,7 +7,7 @@ icon: chrome
 
 Chrome 浏览器的扩展程序
 
-* [🔥 ShardX Extension](proxyshard.md)
+* [🔥 ShardX Extension](shardx.md)
 * [ZeroOmega](zeroomega.md)
 
 

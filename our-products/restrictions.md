@@ -16,7 +16,7 @@ icon: hand
 * 政府门户网站和网站，以及 `.gov` 和 `.edu` 域名的网站
 * 支付处理器：<mark style="color:purple;">Stripe</mark>、<mark style="color:purple;">PayPal</mark>（包括 <mark style="color:purple;">Yahoo</mark>）
 
-这是旨在防止欺诈活动的监管要求。此限制**不适用于**加密服务和支付系统，例如交易所。
+这是旨在防止欺诈活动的监管要求。通常，此限制**不适用于**交易所等加密服务。Premium Residential 的特定例外情况如下。
 
 {% hint style="warning" %}
 适用于除[移动代理](mobile-proxies.md)之外的所有产品。
@@ -27,6 +27,7 @@ Stripe 和 PayPal 可在数据中心和 ISP 代理上使用。
 住宅代理的其他限制：
 
 * [Standard Residential](residential-proxies/standard-residential.md) / [Unlimited Residential](residential-proxies/unlimited-residential-proxy.md) / [Premium Residential](residential-proxies/premium-residential.md) 无法使用 Microsoft 和 Apple 服务。
+* Premium Residential 还无法访问 Coinbase、CoinGate 和 DeBank。
 
 ***
 

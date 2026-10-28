@@ -86,7 +86,7 @@ ISP 代理支持 <mark style="color:purple;">p0f</mark> 网络指纹伪装。
 * `Billing cycle`、`Next due date`、`Price` 和 `Next charge` 显示租用周期及下次付款信息。
 * `Auto-renew proxy` 用于控制自动续订，也可以通过 `Manage renewal` 调整相同设置。
 * `p0f` 和 `Buy p0f slots` 分别用于打开指纹伪装设置和购买额外槽位。
-* 在 `Proxy List` 中可以选择 `HTTP` 或 `SOCKS5`、更改连接字符串格式、使用 `Copy all` 复制列表，或通过 `Export All` 下载列表。
+* 在 `Proxy List` 中，`HTTP` / `SOCKS5` 切换器只会改变代理字符串的显示格式。两种协议使用同一个端口，此切换器为兼容旧配置而保留。您可以使用 `Copy all` 复制列表，或通过 `Export All` 下载列表。
 
 {% hint style="danger" %}
 状态为 `Canceled` 的订单无法恢复。付费周期结束后，月付订单可在 3 天内续订；租期不足一个月的订单可在 3 小时内续订。超过对应期限后，订单会被删除，且无法恢复该订单或原 IP 地址。

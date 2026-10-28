@@ -8,8 +8,8 @@ icon: fingerprint
 
 <figure>
   <picture>
-    <source srcset="../.gitbook/assets/shardx-cover_black.svg" media="(prefers-color-scheme: dark)">
-    <img src="../.gitbook/assets/shardx-cover_white.svg" alt="ShardBrowser 徽标">
+    <source srcset="../.gitbook/assets/shardbrowser-cover_black.svg" media="(prefers-color-scheme: dark)">
+    <img src="../.gitbook/assets/shardbrowser-cover_white.svg" alt="ShardBrowser 徽标">
   </picture>
 </figure>
 

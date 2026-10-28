@@ -191,6 +191,7 @@ Google 和 Cloudflare 验证码通常**不是由代理本身**造成的，而是
 
 * 经常被用于暴力破解攻击的服务端口：**22 (SSH)、23 (Telnet)、25 (SMTP)** 以及其他若干端口。
 * 银行和政府机构的网站，以及 **Stripe** 和 **PayPal** 支付处理服务（这是监管要求）。
+* Premium Residential 还无法访问 **Coinbase**、**CoinGate** 和 **DeBank**。
 
 按端口、网站、按产品例外的完整限制列表，以及无限住宅代理的限制，请参阅[限制](../../our-products/restrictions.md)章节。
 

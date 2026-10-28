@@ -1,8 +1,6 @@
 ---
 description: MikroTik 上的代理设置
 icon: router
-cover: https://mikrotik.ru/image/catalog/routeros7/mikrotik.png
-coverY: 0
 ---
 
 # MikroTik 代理
@@ -151,7 +149,7 @@ add key=SOCKS5_USERNAME list=proxy1 value=username_proxy
 {% endhint %}
 
 {% hint style="info" %}
-请注意，测试连接是通过 SOCKS5 进行的！要查找 SOCKS 连接端口，请单击订单内的_**显示袜子5**_。
+测试连接使用 SOCKS5。数据中心代理和 ISP 代理的 HTTP 与 SOCKS5 使用同一个端口。请将 `Proxy List` 中显示的端口填入 `SOCKS5_PORT`，无需切换订单格式。
 {% endhint %}
 
 ## **添加容器**

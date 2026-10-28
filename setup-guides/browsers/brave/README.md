@@ -7,4 +7,4 @@ icon: shield-halved
 
 适用于 Brave 浏览器的扩展程序。Brave 基于 Chromium 内核构建，**直接支持**从 Chrome Web Store 安装扩展程序。
 
-* [🔥 ShardX Extension](proxyshard.md)
+* [🔥 ShardX Extension](shardx.md)
