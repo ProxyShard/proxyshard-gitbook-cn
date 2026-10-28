@@ -6,7 +6,7 @@ icon: crown
 
 <mark style="color:purple;">Premium Residential</mark> 是采用更严格设备筛选标准的代理池。池规模约为 Standard 的 10–15 倍：从 380 万到 460 万个 IP 地址。提供更广泛的地理定位，直至运营商级别。
 
-{% embed url="https://dashboard.proxyshard.com/en/residential-premium" %}
+{% embed url="https://dashboard.shardx.com/en/residential-premium" %}
 
 购买和付款的分步说明：[购买住宅代理](../../site-navigation/buying-and-renewing/buying-residential-proxies.md)。
 

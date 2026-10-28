@@ -82,7 +82,7 @@ Authorization: Bearer <token>
 **临时配置文件。** `POST /profiles/temporary` 创建带 `temporary` 标志的配置文件：在通用列表和界面中隐藏，浏览器关闭后自动删除（连同数据文件夹）。适合一次性任务。
 {% endhint %}
 
-所有方法（配置文件、指纹、代理、文件夹、cookies、启动/停止）的完整参考文档，包含数据模型和示例，请查阅 [ShardX Launcher API 规范](https://docs.proxyshard.com/cn/shardx-launcher-api/binding-and-lifecycle)。
+所有方法（配置文件、指纹、代理、文件夹、cookies、启动/停止）的完整参考文档，包含数据模型和示例，请查阅 [ShardX Launcher API 规范](https://docs.shardx.com/cn/shardx-launcher-api/binding-and-lifecycle)。
 
 ## 面向 AI 智能体的 MCP 服务器
 

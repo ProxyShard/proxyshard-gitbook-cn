@@ -25,14 +25,14 @@ icon: arrows-rotate
 假设您生成了德国代理：
 
 ```
-relay-eu.proxyshard.com:8080:plan-limited-country-de-sid-aaaaaaaaa:xxxxxxxxx
+relay-eu.shardx.com:8080:plan-limited-country-de-sid-aaaaaaaaa:xxxxxxxxx
 ```
 
 让我们分解一下连接字符串：
 
 | 部分 | 值 |
 | ------------------------- | ---------------------------------------------------------------------------------- |
-| `relay-eu.proxyshard.com` |负载均衡服务器（中继）|
+| `relay-eu.shardx.com` |负载均衡服务器（中继）|
 | `8080` |服务器端口 |
 | `plan-limited` |代理关税（`limited` - 常规，`unlimited` - 无限制，`premium` - 高级）|
 | `country-de` |连接国家： 德国 (`de`) |

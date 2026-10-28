@@ -8,7 +8,7 @@ icon: server
 
 <mark style="color:purple;">数据中心代理</mark>与 <mark style="color:purple;">ISP</mark> 代理一样，每个地址仅分配给一名用户，不存在隐藏共享。这些地址均为 <mark style="color:purple;">IPv4</mark>，并支持 <mark style="color:purple;">UDP</mark>。
 
-{% embed url="https://dashboard.proxyshard.com/en/datacenter-proxy" %}
+{% embed url="https://dashboard.shardx.com/en/datacenter-proxy" %}
 
 购买和付款的分步说明：[购买数据中心代理](../site-navigation/buying-and-renewing/buying-datacenter-proxies.md)。
 

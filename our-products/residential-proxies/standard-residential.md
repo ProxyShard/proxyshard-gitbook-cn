@@ -4,9 +4,9 @@ icon: house-signal
 
 # Standard Residential
 
-<mark style="color:purple;">Standard Residential</mark> 是 ProxyShard 的基础住宅代理池。这些代理托管在通过标准筛选的真实家庭设备上。支持 <mark style="color:purple;">UDP</mark>，因此是 <mark style="color:purple;">WebRTC</mark> 相关任务的理想选择。
+<mark style="color:purple;">Standard Residential</mark> 是 ShardX 的基础住宅代理池。这些代理托管在通过标准筛选的真实家庭设备上。支持 <mark style="color:purple;">UDP</mark>，因此是 <mark style="color:purple;">WebRTC</mark> 相关任务的理想选择。
 
-{% embed url="https://dashboard.proxyshard.com/en/residential-main" %}
+{% embed url="https://dashboard.shardx.com/en/residential-main" %}
 
 购买和付款的分步说明：[购买住宅代理](../../site-navigation/buying-and-renewing/buying-residential-proxies.md)。
 

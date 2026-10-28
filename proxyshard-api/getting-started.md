@@ -1,10 +1,10 @@
 # 开始使用
 
-ProxyShard API 可用于获取个人资料和订单信息、管理代理，以及通过应用程序或脚本执行其他操作。
+ShardX API 可用于获取个人资料和订单信息、管理代理，以及通过应用程序或脚本执行其他操作。
 
 ## 获取 API 密钥
 
-您可以通过[直达链接](https://dashboard.proxyshard.com/en/profile?tab=api-key)打开 API 密钥页面。如需从控制面板菜单进入：
+您可以通过[直达链接](https://dashboard.shardx.com/en/profile?tab=api-key)打开 API 密钥页面。如需从控制面板菜单进入：
 
 1. 点击左下角个人资料旁的三点按钮。
 2. 选择 `Settings`。
@@ -14,7 +14,7 @@ ProxyShard API 可用于获取个人资料和订单信息、管理代理，以�
 <figure>
   <picture>
     <source srcset="../.gitbook/assets/proxyshard-api-key_black.png" media="(prefers-color-scheme: dark)">
-    <img src="../.gitbook/assets/proxyshard-api-key_white.png" alt="在 ProxyShard 控制面板中获取 API 密钥">
+    <img src="../.gitbook/assets/proxyshard-api-key_white.png" alt="在 ShardX 控制面板中获取 API 密钥">
   </picture>
 </figure>
 
@@ -24,7 +24,7 @@ ProxyShard API 可用于获取个人资料和订单信息、管理代理，以�
 
 ## 身份验证
 
-API 基础地址：`https://user-api.proxyshard.com`。
+API 基础地址：`https://user-api.shardx.com`。
 
 调用需要身份验证的方法时，请在请求标头中传递 API 密钥：
 

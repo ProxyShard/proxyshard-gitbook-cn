@@ -13,7 +13,7 @@ icon: browser
 </figure>
 
 {% hint style="info" %}
-ShardBrowser 是 ProxyShard 团队基于 Chromium 打造的反检测浏览器。每个配置文件都拥有真实设备的独立指纹（fingerprint）和独立代理，因此网站会把各个配置文件识别为不同的电脑。本程序免费提供，按原样交付。如遇严重问题，请在 [GitHub](https://github.com/ProxyShard/ShardBrowser/issues) 提交错误报告。
+ShardBrowser 是 ShardX 团队基于 Chromium 打造的反检测浏览器。每个配置文件都拥有真实设备的独立指纹（fingerprint）和独立代理，因此网站会把各个配置文件识别为不同的电脑。本程序免费提供，按原样交付。如遇严重问题，请在 [GitHub](https://github.com/ProxyShard/ShardBrowser/issues) 提交错误报告。
 {% endhint %}
 
 ## Windows 系统要求
@@ -84,7 +84,7 @@ sudo apt install ./ShardBrowser.Launcher_<版本>_amd64.deb
 
 ## 首次启动
 
-安装并启动后会打开主界面 <mark style="color:purple;">**All profiles**</mark>。左侧是功能菜单：配置文件、代理、指纹、扩展、书签、自动化以及 ProxyShard 账户。
+安装并启动后会打开主界面 <mark style="color:purple;">**All profiles**</mark>。左侧是功能菜单：配置文件、代理、指纹、扩展、书签、自动化以及 ShardX 账户。
 
 <figure>
   <picture>

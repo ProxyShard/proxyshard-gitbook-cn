@@ -36,7 +36,7 @@ Stripe 和 PayPal 可在数据中心和 ISP 代理上使用。
 在 **美国** 地区，[Standard Residential](residential-proxies/standard-residential.md) 和 [Unlimited Residential](residential-proxies/unlimited-residential-proxy.md) 不支持 UDP :flag\_us:
 {% endhint %}
 
-这并非 ProxyShard 主动设置的限制。2026 年初，美国运营商禁止未由内网预先发起的入站 UDP 连接，因此该地区的代理无法再使用 UDP ASSOCIATE。
+这并非 ShardX 主动设置的限制。2026 年初，美国运营商禁止未由内网预先发起的入站 UDP 连接，因此该地区的代理无法再使用 UDP ASSOCIATE。
 
 Standard 和 Unlimited 在其他位置支持 UDP，但仍需遵守通用端口限制。
 

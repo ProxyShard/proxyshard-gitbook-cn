@@ -16,7 +16,7 @@ icon: user-group
 <figure>
   <picture>
     <source srcset="../.gitbook/assets/affiliate-program_black.png" media="(prefers-color-scheme: dark)">
-    <img src="../.gitbook/assets/affiliate-program_white.png" alt="ProxyShard 推荐计划">
+    <img src="../.gitbook/assets/affiliate-program_white.png" alt="ShardX 推荐计划">
   </picture>
 </figure>
 

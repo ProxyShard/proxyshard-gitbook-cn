@@ -7,7 +7,7 @@ icon: edge
 
 Edge 浏览器的扩展
 
-* [🔥 ProxyShard Extension](proxyshard.md)
+* [🔥 ShardX Extension](proxyshard.md)
 * [ZeroOmega](zeroomega.md)
 
 

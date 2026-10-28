@@ -8,7 +8,7 @@ icon: dollar-sign
 
 充值步骤：
 
-1. 打开 [`Wallet`](https://dashboard.proxyshard.com/en/wallet)。
+1. 打开 [`Wallet`](https://dashboard.shardx.com/en/wallet)。
 2. 在 `Top up balance amount` 中输入充值金额。
 3. 在 `Payment method` 中选择付款方式。
 4. 点击 `Top up your balance` 并完成付款。
@@ -16,7 +16,7 @@ icon: dollar-sign
 <figure>
   <picture>
     <source srcset="../.gitbook/assets/wallet-top-up-form_black.png" media="(prefers-color-scheme: dark)">
-    <img src="../.gitbook/assets/wallet-top-up-form_white.png" alt="为 ProxyShard 余额充值">
+    <img src="../.gitbook/assets/wallet-top-up-form_white.png" alt="为 ShardX 余额充值">
   </picture>
 </figure>
 

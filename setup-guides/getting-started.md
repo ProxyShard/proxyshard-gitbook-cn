@@ -4,7 +4,7 @@ icon: clipboard-list
 
 # 配置说明
 
-开始配置应用前，请打开对应的[订单](https://dashboard.proxyshard.com/products)并准备好连接信息。
+开始配置应用前，请打开对应的[订单](https://dashboard.shardx.com/products)并准备好连接信息。
 
 {% hint style="info" %}
 以下示例使用 `SOCKS5`。如果应用仅支持 HTTP，请在订单设置中选择 `HTTP`，并使用对应端口。

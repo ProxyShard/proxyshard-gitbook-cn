@@ -39,7 +39,7 @@ Clash for Windows 可在 TUN 模式下代理 TCP 和 UDP 流量。
 
 ```yaml
 proxies:
-  - name: "ProxyShard-Germany"
+  - name: "ShardX-Germany"
     type: socks5
     server: 123.123.123.123
     port: 41733
@@ -48,13 +48,13 @@ proxies:
     udp: true
 
 proxy-groups:
-  - name: "ProxyShard"
+  - name: "ShardX"
     type: select
     proxies:
-      - ProxyShard-Germany
+      - ShardX-Germany
 
 rules:
-  - PROCESS-NAME,chrome.exe,ProxyShard
+  - PROCESS-NAME,chrome.exe,ShardX
   - MATCH,DIRECT
 ```
 
@@ -75,7 +75,7 @@ rules:
 
 1. 打开 `Proxies`。
 2. 选择 `Global` 模式。
-3. 点击 ProxyShard 服务器旁边的 `Check`。
+3. 点击 ShardX 服务器旁边的 `Check`。
 
 <figure>
   <picture>
@@ -90,7 +90,7 @@ rules:
 
 ## 添加多个代理
 
-在 `proxies:` 中将每个服务器添加为独立项目，并在 `ProxyShard` 组中列出其名称。保存后，可在 `Proxies` 中切换服务器。
+在 `proxies:` 中将每个服务器添加为独立项目，并在 `ShardX` 组中列出其名称。保存后，可在 `Proxies` 中切换服务器。
 
 <figure>
   <picture>
@@ -114,7 +114,7 @@ rules:
 
 ## 验证连接
 
-打开 [ProxyShard IP Checker](https://proxyshard.com/tools/ip-checker)，确认页面显示代理 IP 地址。
+打开 [ShardX IP Checker](https://proxyshard.com/tools/ip-checker)，确认页面显示代理 IP 地址。
 
 <figure>
   <picture>

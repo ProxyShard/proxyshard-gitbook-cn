@@ -6,7 +6,7 @@ icon: server
 
 ## 购买代理
 
-购买[数据中心代理](https://dashboard.proxyshard.com/datacenter-proxy)时：
+购买[数据中心代理](https://dashboard.shardx.com/datacenter-proxy)时：
 
 1. 打开 `Datacenter Proxy`。
 2. 在 `Proxy region` 中选择代理所在国家/地区。
@@ -32,11 +32,11 @@ icon: server
 <figure>
   <picture>
     <source srcset="../../.gitbook/assets/datacenter-invoice-payment_black.png" media="(prefers-color-scheme: dark)">
-    <img src="../../.gitbook/assets/datacenter-invoice-payment_white.png" alt="使用 ProxyShard 余额支付账单">
+    <img src="../../.gitbook/assets/datacenter-invoice-payment_white.png" alt="使用 ShardX 余额支付账单">
   </picture>
 </figure>
 
-支付后，订单会显示在 `Active products` 和 [`My orders`](https://dashboard.proxyshard.com/products) 中。已付款的订单状态为 `Active`。
+支付后，订单会显示在 `Active products` 和 [`My orders`](https://dashboard.shardx.com/products) 中。已付款的订单状态为 `Active`。
 
 <figure>
   <picture>

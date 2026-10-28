@@ -20,7 +20,7 @@ icon: signal
 2\) 不使用 VPN 的俄罗斯用户不可用。
 {% endhint %}
 
-{% embed url="https://dashboard.proxyshard.com/en/mobile-proxy" %}
+{% embed url="https://dashboard.shardx.com/en/mobile-proxy" %}
 
 购买和激活的分步说明：[购买移动代理](../site-navigation/buying-and-renewing/buying-mobile-proxies.md)。
 
@@ -55,7 +55,7 @@ icon: signal
 | 🇮🇩 印度尼西亚 | Telkomsel |
 
 {% hint style="info" %}
-列表会定期扩充。最新位置与价格请见 [Mobile proxy](https://dashboard.proxyshard.com/en/mobile-proxy) 购买页面。
+列表会定期扩充。最新位置与价格请见 [Mobile proxy](https://dashboard.shardx.com/en/mobile-proxy) 购买页面。
 {% endhint %}
 
 ## 如何购买

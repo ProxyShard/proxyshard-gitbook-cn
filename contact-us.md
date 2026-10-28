@@ -17,7 +17,7 @@ icon: at
 <figure>
   <picture>
     <source srcset=".gitbook/assets/contact-page_black.png" media="(prefers-color-scheme: dark)">
-    <img src=".gitbook/assets/contact-page_white.png" alt="ProxyShard 网站联系表单">
+    <img src=".gitbook/assets/contact-page_white.png" alt="ShardX 网站联系表单">
   </picture>
 </figure>
 

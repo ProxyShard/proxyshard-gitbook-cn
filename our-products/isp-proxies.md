@@ -12,7 +12,7 @@ icon: fire
 
 ISP 代理支持 <mark style="color:purple;">p0f</mark> 网络指纹伪装。
 
-{% embed url="https://dashboard.proxyshard.com/en/isp-proxy" %}
+{% embed url="https://dashboard.shardx.com/en/isp-proxy" %}
 
 购买和付款的分步说明：[购买 ISP 代理](../site-navigation/buying-and-renewing/buying-isp-proxies.md)。
 

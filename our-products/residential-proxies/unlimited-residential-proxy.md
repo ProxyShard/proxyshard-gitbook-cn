@@ -6,7 +6,7 @@ icon: triple-chevrons-up
 
 <mark style="color:purple;">Unlimited Residential</mark> 基于 [Standard Residential](standard-residential.md) 池 - 相同的设备、相同的国家、相同的 IP 范围。主要区别在于：**没有流量限制**。当按 GB 计费的 Standard 变得昂贵时，该套餐更具优势。
 
-{% embed url="https://dashboard.proxyshard.com/en/residential-unlimited" %}
+{% embed url="https://dashboard.shardx.com/en/residential-unlimited" %}
 
 购买和付款的分步说明：[购买住宅代理](../../site-navigation/buying-and-renewing/buying-residential-proxies.md)。
 

@@ -6,7 +6,7 @@ icon: circle-question
 # 常见问题
 
 {% hint style="warning" %}
-产品、地区、运营商和价格可能发生变化。购买前请在[控制面板](https://dashboard.proxyshard.com/)中确认最新信息。
+产品、地区、运营商和价格可能发生变化。购买前请在[控制面板](https://dashboard.shardx.com/)中确认最新信息。
 {% endhint %}
 
 ***
@@ -114,7 +114,7 @@ Datacenter 和 ISP 代理的续费期限取决于租期。月付订单可在付�
 * 平均而言，运营商**每天**更新一次地址。
 * 运营商可能在任何时刻启动池切换，地址会更早变化。
 
-这是移动互联网的固有特性，**不在我们的控制范围内**。如果需要按计时器或热键进行轮换，请使用[我们扩展程序中的 IP Rotation](../../our-products/proxyshard-extension.md) 功能。
+这是移动互联网的固有特性，**不在我们的控制范围内**。如果需要按计时器或热键进行轮换，请使用[我们扩展程序中的 IP Rotation](../../our-products/shardx-extension.md) 功能。
 
 ***
 
@@ -163,7 +163,7 @@ Relay 的选择**不会影响**最终 IP 的国家/地区，它仅为负载均�
 **方法 2.** 在连接字符串中手动更改 <mark style="color:purple;">**SID**</mark>。例如，在如下字符串中：
 
 ```
-relay-eu.proxyshard.com:8080:plan-limited-country-any-sid-8dbryym0a32i:7nnrpl63344545gx
+relay-eu.shardx.com:8080:plan-limited-country-any-sid-8dbryym0a32i:7nnrpl63344545gx
 ```
 
 登录名中包含 `sid-8dbryym0a32i` 片段。如果您将其中的一个字符更改为例如 `sid-8dbryym0a324`，IP 地址就会发生变化。点击 <mark style="color:purple;">Generate proxy</mark> 时，「底层」也是这样工作的。
@@ -271,7 +271,7 @@ ISP 代理在以下地区可用：
 | 🇨🇦 加拿大 | Rogers |
 | 🇮🇩 印度尼西亚 | Telkomsel |
 
-该列表持续扩展。最新地区与价格可在 [Mobile proxy](https://dashboard.proxyshard.com/en/mobile-proxy) 购买页面查看。
+该列表持续扩展。最新地区与价格可在 [Mobile proxy](https://dashboard.shardx.com/en/mobile-proxy) 购买页面查看。
 
 ***
 
@@ -287,7 +287,7 @@ ISP 代理在以下地区可用：
 | **Mobile** | **$4 / 天起，$55 / 月** | 取决于国家和运营商 |
 
 {% hint style="info" %}
-每个套餐的确切价格和可用周期会直接显示在[控制面板](https://dashboard.proxyshard.com/)的购买页面。
+每个套餐的确切价格和可用周期会直接显示在[控制面板](https://dashboard.shardx.com/)的购买页面。
 {% endhint %}
 
 ***
@@ -299,13 +299,13 @@ ISP 代理在以下地区可用：
 连接字符串示例：
 
 ```
-mobile.eu.proxyshard.com:1234:aabbbcc:password
-resident.eu.proxyshard.com:8080:plan-limited-country-NL-sid-ABXdedq:AAAbbbbCC
+mobile.proxy-eu.shardx.com:1234:aabbbcc:password
+relay-eu.shardx.com:8080:plan-limited-country-NL-sid-ABXdedq:AAAbbbbCC
 ```
 
 如果您的软件必须使用 IPv4，可以**解析（resolve）**该域名，并用得到的地址替换域名。
 
-**方法 1. 通过网站。** 打开 [www.nslookup.io](https://www.nslookup.io)，输入连接字符串中的域名，即可获得一组 IPv4 地址。例如，如果查询返回 `172.67.72.239`，那么就可以用这个 IP 替换 `mobile.eu.proxyshard.com`：
+**方法 1. 通过网站。** 打开 [www.nslookup.io](https://www.nslookup.io)，输入连接字符串中的域名，即可获得一组 IPv4 地址。例如，如果查询返回 `172.67.72.239`，那么就可以用这个 IP 替换 `mobile.proxy-eu.shardx.com`：
 
 ```
 172.67.72.239:1234:aabbbcc:password
@@ -314,7 +314,7 @@ resident.eu.proxyshard.com:8080:plan-limited-country-NL-sid-ABXdedq:AAAbbbbCC
 **方法 2. 在终端手动查询。** 在 Windows 或 Linux 中执行：
 
 ```
-nslookup mobile.eu.proxyshard.com
+nslookup mobile.proxy-eu.shardx.com
 ```
 
 响应中的 **Addresses** 部分会列出 IPv4 地址 - 任选其一替换域名即可。

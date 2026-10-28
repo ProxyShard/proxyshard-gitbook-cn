@@ -31,7 +31,7 @@ icon: sim-card
   </picture>
 </figure>
 
-付款后，订单会显示在 `Active products` 和 [`My orders`](https://dashboard.proxyshard.com/products) 中。点击 `Open` 可打开订单设置。
+付款后，订单会显示在 `Active products` 和 [`My orders`](https://dashboard.shardx.com/products) 中。点击 `Open` 可打开订单设置。
 
 <figure>
   <picture>

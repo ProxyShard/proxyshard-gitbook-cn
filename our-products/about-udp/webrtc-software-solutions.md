@@ -13,7 +13,7 @@ icon: git-alt
 * [<mark style="color:$success;">Vision</mark>](../../setup-guides/antidetect-browsers/vision-browser.md)：一款价格合理且可靠的付费浏览器，支持 UDP、QUIC、Smart Fingerprint 及其他实用功能。我们网站上超过 60% 的团队选择使用它。
 
 {% hint style="success" %}
-将我们的 [ISP Proxy](https://dashboard.proxyshard.com/en/isp-proxy) 与 [Vision](../../setup-guides/antidetect-browsers/vision-browser.md) 浏览器配合使用，是通过代理传输 UDP 的推荐方案之一。ISP Proxy 还支持更改 [p0f](../p0f-spoofing.md) 网络指纹。
+将我们的 [ISP Proxy](https://dashboard.shardx.com/en/isp-proxy) 与 [Vision](../../setup-guides/antidetect-browsers/vision-browser.md) 浏览器配合使用，是通过代理传输 UDP 的推荐方案之一。ISP Proxy 还支持更改 [p0f](../p0f-spoofing.md) 网络指纹。
 {% endhint %}
 
 * [<mark style="color:$tint;">ShardBrowser</mark>](../shardx-launcher.md)：我们的开源解决方案，提供丰富的配置文件，并正确支持 UDP 和 QUIC。

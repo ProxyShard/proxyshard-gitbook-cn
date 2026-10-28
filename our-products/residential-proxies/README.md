@@ -15,7 +15,7 @@ icon: house-signal
 IP 地址来自真实的家庭宽带。如果池中的设备退出流量共享网络，会话可能随时切换。如果您需要**静态 IP**，请参阅 [Datacenter](../datacenter-proxies.md) 或 [ISP 代理](../isp-proxies.md)。
 {% endhint %}
 
-{% embed url="https://dashboard.proxyshard.com/en/residential-main" %}
+{% embed url="https://dashboard.shardx.com/en/residential-main" %}
 
 购买和付款的分步说明：[购买住宅代理](../../site-navigation/buying-and-renewing/buying-residential-proxies.md)。
 
@@ -115,7 +115,7 @@ IP 地址来自真实的家庭宽带。如果池中的设备退出流量共享�
 host:port:username:password
 ```
 
-* `host` 指定连接服务器，例如 `relay-eu.proxyshard.com`。
+* `host` 指定连接服务器，例如 `relay-eu.shardx.com`。
 * `port` 用于连接服务器，本身不会决定最终 IP。
 * `username` 包含定位参数和会话标识符 `sid`。
 * `password` 用于身份验证。

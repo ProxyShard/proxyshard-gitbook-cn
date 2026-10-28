@@ -1,18 +1,18 @@
 ---
-description: ProxyShard 服务与产品简介
+description: ShardX 服务与产品简介
 icon: question
 ---
 
-# 什么是 ProxyShard
+# 什么是 ShardX
 
-<mark style="color:purple;">**ProxyShard**</mark> 提供住宅、数据中心、ISP 和移动代理，并配套浏览器操作、检测与自动化工具。数据中心和 ISP 地址只分配给一个客户，不与其他用户共享。UDP、p0f 修改及其他功能的可用性取决于具体产品和地区。
+<mark style="color:purple;">**ShardX**</mark>（原 ProxyShard）提供住宅、数据中心、ISP 和移动代理，并配套浏览器操作、检测与自动化工具。数据中心和 ISP 地址只分配给一个客户，不与其他用户共享。UDP、p0f 修改及其他功能的可用性取决于具体产品和地区。
 
 <figure>
   <picture>
     <source srcset=".gitbook/assets/proxyshard-products_black.svg" media="(prefers-color-scheme: dark)">
-    <img src=".gitbook/assets/proxyshard-products_white.svg" alt="ProxyShard 产品与工具">
+    <img src=".gitbook/assets/proxyshard-products_white.svg" alt="ShardX 产品与工具">
   </picture>
-  <figcaption><p>ProxyShard 的代理服务、浏览器工具和检测服务</p></figcaption>
+  <figcaption><p>ShardX 的代理服务、浏览器工具和检测服务</p></figcaption>
 </figure>
 
 ***
@@ -35,7 +35,7 @@ icon: question
 
 支持选择国家和运营商的移动网络代理。可通过链接切换 IP，具体参数取决于所选套餐和地区。
 
-### [<mark style="color:purple;">ProxyShard Extension</mark>](our-products/proxyshard-extension.md)
+### [<mark style="color:purple;">ShardX Extension</mark>](our-products/shardx-extension.md)
 
 适用于 Chrome、Firefox 和 Chromium 浏览器的扩展。可保存代理配置、切换并测试连接，还能通过定时器或快捷键轮换移动代理 IP。
 

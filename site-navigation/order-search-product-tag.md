@@ -25,7 +25,7 @@ icon: magnifying-glass
   </picture>
 </figure>
 
-在 `Search` 中输入标签，然后点击 `Search`。您可以在对应产品页面和 [`My orders`](https://dashboard.proxyshard.com/products) 中使用此搜索功能。
+在 `Search` 中输入标签，然后点击 `Search`。您可以在对应产品页面和 [`My orders`](https://dashboard.shardx.com/products) 中使用此搜索功能。
 
 <figure>
   <picture>

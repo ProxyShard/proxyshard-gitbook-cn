@@ -17,7 +17,7 @@ noIndex: true
 
 **如果检查成功：**
 
-如果您仍然无法通过插件、浏览器或程序进行连接，请检查输入的数据是否正确以及软件是否正常运行。 **SOCKS 和 HTTP 代理连接协议经常混淆。** <mark style="color:red;">我们不提供与 </mark> <mark style="color:red;">**ProxyShard**</mark><mark style="color:red;"> 项目无关的软件或硬件的支持，除非该问题是由我们的问题引起的侧面.</mark>
+如果您仍然无法通过插件、浏览器或程序进行连接，请检查输入的数据是否正确以及软件是否正常运行。 **SOCKS 和 HTTP 代理连接协议经常混淆。** <mark style="color:red;">我们不提供与 </mark> <mark style="color:red;">**ShardX**</mark><mark style="color:red;"> 项目无关的软件或硬件的支持，除非该问题是由我们的问题引起的侧面.</mark>
 
 **如果检查失败：**
 

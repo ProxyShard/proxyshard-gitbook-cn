@@ -4,7 +4,7 @@ icon: vial
 
 # 代理测试器
 
-<mark style="color:purple;">ProxyShard Proxy Tester</mark> 可直接在网站上快速检查代理是否可用，无需安装额外软件；使用 SOCKS5 时，还可以检查 UDP 支持。
+<mark style="color:purple;">ShardX Proxy Tester</mark> 可直接在网站上快速检查代理是否可用，无需安装额外软件；使用 SOCKS5 时，还可以检查 UDP 支持。
 
 {% embed url="https://proxyshard.com/proxy-tester" %}
 

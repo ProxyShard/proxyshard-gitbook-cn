@@ -67,12 +67,12 @@ Vision Browser 支持通过 SOCKS5 代理传输 TCP 和 UDP 流量。
   </picture>
 </figure>
 
-在 ProxyShard 面板中生成一个 SOCKS5 代理，并复制连接信息。
+在 ShardX 面板中生成一个 SOCKS5 代理，并复制连接信息。
 
 <figure>
   <picture>
     <source srcset="../../.gitbook/assets/vision-residential-generate-single_black.png" media="(prefers-color-scheme: dark)">
-    <img src="../../.gitbook/assets/vision-residential-generate-single_white.png" alt="在 ProxyShard 中生成一个 SOCKS5 代理">
+    <img src="../../.gitbook/assets/vision-residential-generate-single_white.png" alt="在 ShardX 中生成一个 SOCKS5 代理">
   </picture>
 </figure>
 
@@ -98,7 +98,7 @@ Vision Browser 支持通过 SOCKS5 代理传输 TCP 和 UDP 流量。
   </picture>
 </figure>
 
-在 ProxyShard 面板中生成 SOCKS5 代理列表并复制。
+在 ShardX 面板中生成 SOCKS5 代理列表并复制。
 
 <figure>
   <picture>
@@ -130,7 +130,7 @@ Vision Browser 支持通过 SOCKS5 代理传输 TCP 和 UDP 流量。
 
 ## 检查 WebRTC
 
-启动配置并打开 [ProxyShard IP Checker](https://proxyshard.com/ip-checker)。TCP 和 WebRTC 地址应保持一致。
+启动配置并打开 [ShardX IP Checker](https://proxyshard.com/ip-checker)。TCP 和 WebRTC 地址应保持一致。
 
 <figure>
   <picture>

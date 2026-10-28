@@ -50,7 +50,7 @@ icon: octopus
 </figure>
 
 1. 在 **Type** 中选择 HTTP、HTTPS 或 SOCKS5。
-2. 从相应的 ProxyShard 订单中复制完整连接字符串，并粘贴到 **Proxy** 字段。
+2. 从相应的 ShardX 订单中复制完整连接字符串，并粘贴到 **Proxy** 字段。
 3. 点击 **Check proxy**。检查成功后，应用会显示连接的 IP 地址、位置和时区。
 4. 点击 **Done**。
 

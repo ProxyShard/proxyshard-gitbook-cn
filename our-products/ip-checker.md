@@ -4,7 +4,7 @@ icon: magnifying-glass
 
 # IP 检查器
 
-<mark style="color:purple;">ProxyShard IP Checker</mark> 是一款免费工具，用于检查您的 IP 地址、地理位置、浏览器数据、WebRTC 泄漏和独特的浏览器配置文件质量得分。
+<mark style="color:purple;">ShardX IP Checker</mark> 是一款免费工具，用于检查您的 IP 地址、地理位置、浏览器数据、WebRTC 泄漏和独特的浏览器配置文件质量得分。
 
 {% embed url="https://proxyshard.com/ip-checker" %}
 

@@ -16,9 +16,9 @@ icon: fingerprint
 
 **常见问题：** Datacenter 和 ISP 代理通常运行在 Linux 服务器上。如果不修改网络指纹，即使用户使用 Windows 或 macOS，TCP/IP 指纹仍可能显示为 Linux。反欺诈系统可能将这种不一致视为使用代理的迹象。
 
-## ProxyShard 如何解决这个问题
+## ShardX 如何解决这个问题
 
-ProxyShard 支持直接在控制面板中修改 p0f 指纹。选择目标操作系统后，代理服务器会使用与该系统相符的 TCP/IP 参数发送数据包。
+ShardX 支持直接在控制面板中修改 p0f 指纹。选择目标操作系统后，代理服务器会使用与该系统相符的 TCP/IP 参数发送数据包。
 
 可用的伪装选项：
 
@@ -88,7 +88,7 @@ ProxyShard 支持直接在控制面板中修改 p0f 指纹。选择目标操作�
 为了获得最佳效果，我们建议使用：
 
 * [**Vision Browser**](../setup-guides/antidetect-browsers/vision-browser.md)，一款支持 UDP 的反检测浏览器
-* **启用 p0f 伪装的 ProxyShard ISP 代理**
+* **启用 p0f 伪装的 ShardX ISP 代理**
 
 在这种组合中，Vision Browser 负责浏览器指纹，p0f 负责网络层指纹，ISP 代理则提供住宅网络运营商的 IP 地址。
 

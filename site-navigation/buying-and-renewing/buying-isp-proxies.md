@@ -10,7 +10,7 @@ icon: server
 
 ## 购买代理
 
-购买 [ISP 代理](https://dashboard.proxyshard.com/isp-proxy)时：
+购买 [ISP 代理](https://dashboard.shardx.com/isp-proxy)时：
 
 1. 打开 `ISP Proxy`。
 2. 在 `Proxy region` 中选择代理所在国家或地区。
@@ -32,7 +32,7 @@ icon: server
 
 点击 `Buy now` 后，将打开状态为 `Unpaid` 的账单。确认 `Total amount`，然后点击 `Pay with Wallet`。付款流程与[数据中心代理说明](buying-datacenter-proxies.md#zhi-fu-ding-dan)相同。
 
-付款后，订单会显示在 `Active products` 和 [`My orders`](https://dashboard.proxyshard.com/products) 中。
+付款后，订单会显示在 `Active products` 和 [`My orders`](https://dashboard.shardx.com/products) 中。
 
 {% hint style="warning" %}
 订单同步通常需要 1-2 分钟，完成后代理即可使用。

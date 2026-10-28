@@ -1,26 +1,26 @@
 ---
-description: 在 ShardBrowser 应用中使用 ProxyShard 账户
+description: 在 ShardBrowser 应用中使用 ShardX 账户
 icon: gauge
 ---
 
-# ProxyShard Dashboard
+# ShardX Dashboard
 
-<mark style="color:purple;">**ProxyShard**</mark> 页面将你的 [ProxyShard](https://proxyshard.com) 账户接入应用：余额、流量、订单和购买代理都可以直接在 ShardBrowser 中完成。
+<mark style="color:purple;">**ShardX**</mark> 页面将你的 [ShardX](https://proxyshard.com) 账户接入应用：余额、流量、订单和购买代理都可以直接在 ShardBrowser 中完成。
 
-要连接账户，请从 [ProxyShard 个人中心的 API 设置](https://dashboard.proxyshard.com/en/profile?tab=api-key)复制 API 密钥，并粘贴到 <mark style="color:purple;">**Connect your ProxyShard account**</mark> 区块的输入框中。
+要连接账户，请从 [ShardX 个人中心的 API 设置](https://dashboard.shardx.com/en/profile?tab=api-key)复制 API 密钥，并粘贴到 <mark style="color:purple;">**Connect your ShardX account**</mark> 区块的输入框中。
 
 <figure>
   <picture>
     <source srcset="../../.gitbook/assets/shardbrowser-proxyshard-connect_black.png" media="(prefers-color-scheme: dark)">
-    <img src="../../.gitbook/assets/shardbrowser-proxyshard-connect_white.png" alt="ProxyShard 页面">
+    <img src="../../.gitbook/assets/shardbrowser-proxyshard-connect_white.png" alt="ShardX 页面">
   </picture>
-  <figcaption>ProxyShard 页面</figcaption>
+  <figcaption>ShardX 页面</figcaption>
 </figure>
 
 点击 <mark style="color:purple;">**Save**</mark>。
 
 {% hint style="info" %}
-API 密钥保存在您的计算机上，并且只会发送给 ProxyShard。请勿与他人分享。
+API 密钥保存在您的计算机上，并且只会发送给 ShardX。请勿与他人分享。
 {% endhint %}
 
 <figure>
@@ -44,7 +44,7 @@ API 密钥保存在您的计算机上，并且只会发送给 ProxyShard。请�
 <figure>
   <picture>
     <source srcset="../../.gitbook/assets/shardbrowser-proxyshard-dashboard_black.png" media="(prefers-color-scheme: dark)">
-    <img src="../../.gitbook/assets/shardbrowser-proxyshard-dashboard_white.png" alt="ProxyShard 账户面板">
+    <img src="../../.gitbook/assets/shardbrowser-proxyshard-dashboard_white.png" alt="ShardX 账户面板">
   </picture>
-  <figcaption>ProxyShard 账户面板</figcaption>
+  <figcaption>ShardX 账户面板</figcaption>
 </figure>
