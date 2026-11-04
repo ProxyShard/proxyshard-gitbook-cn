@@ -19,7 +19,7 @@
 openapi: 3.0.3
 info:
   title: ShardX 用户 API 计费
-  version: 1.1.0
+  version: 1.3.1
 servers:
   - url: https://user-api.shardx.com
 security:
@@ -38,6 +38,77 @@ components:
     bearerAuth:
       type: http
       scheme: bearer
+  parameters:
+    IdempotencyKey:
+      in: header
+      name: Idempotency-Key
+      required: false
+      description: |
+        可选。逻辑操作的唯一标识符（1–128 个 `[A-Za-z0-9_.:-]` 字符），例如 UUID。
+        重试结果未知的请求（超时、连接中断）时，请发送相同的键：已完成的请求不会再次执行，而是返回其原始响应。
+
+        本 API 的所有修改类端点（`POST`/`PUT`/`PATCH`/`DELETE`）都接受此标头：购买、续订、追加流量、组件以及今后新增的端点；涉及扣款的端点会明确列出。
+
+        * 除子用户操作外的所有端点：保存的响应会在 7 天内带 `Idempotency-Replayed: true` 标头重放。`409`：使用此键的请求仍在执行（`idempotency_state: in_progress`），或未完成且需要人工核实结果（`idempotency_state: unknown`；不会再次执行）。`422`：该键已用于另一个请求。限流返回的 `429` 不会消耗该键，请使用同一个键重试。
+        * 子用户端点（创建、`data/add`、`data/subtract`）：该键会转发给代理提供商，24 小时内重试不会两次修改配额。`409`：操作仍在进行，或该键已用于不同的数据。
+
+        不带此标头时，请求照常执行，但没有上述保障。
+      schema:
+        type: string
+        maxLength: 128
+        pattern: ^[A-Za-z0-9_.:-]+$
+  responses:
+    BadRequest:
+      description: |
+        请求无效；原因见 `message`。大多数校验返回 JSON（`ApiError`），少数返回纯文本（`Content-Type: text/plain`）：`Invalid proxy type`、`User don't have active order with this proxy type`、`User resident not set for user`（住宅代理端点），`Addon not available for this product`、`Invalid addons_json` 以及组件数量校验（组件端点、带组件的购买和计算），还有代理服务器在 `signature/set` 和 `del-np/set` 中返回的错误。
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiError'
+        text/plain:
+          schema:
+            type: string
+            example: Invalid proxy type
+    Unauthorized:
+      description: 缺少 API 密钥或密钥无效：`Missing or invalid Authorization header`、`Invalid API key`、`API key mismatch`
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiError'
+    ServerError:
+      description: |
+        内部错误。当订单（或所需的其他记录）不存在或不属于您的账户时，API 同样返回 `500`；具体原因见 `message`，例如 `Order not found`。
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiError'
+    UpstreamError:
+      description: '代理提供商不可用或返回错误（`Upstream error: <status>`）'
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiError'
+    RateLimited:
+      description: |
+        同一账户 3 秒内超过 1 次请求。响应体为纯文本（`Too many requests, retry in <N>s`），`x-ratelimit-after` 标头给出需要等待的秒数。Idempotency-Key 不会被消耗：请使用同一个键重试。
+      content:
+        text/plain:
+          schema:
+            type: string
+            example: Too many requests, retry in 2s
+    IdempotencyConflict:
+      description: |
+        使用此 Idempotency-Key 的请求仍在执行（`idempotency_state: in_progress`），或未完成且需要人工核实结果（`idempotency_state: unknown`）
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiError'
+    IdempotencyMismatch:
+      description: 该 Idempotency-Key 已用于另一个请求
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiError'
   schemas:
     ActiveProxyItem:
       type: object
@@ -76,6 +147,21 @@ components:
           type: boolean
         message:
           type: string
+        rejected:
+          type: boolean
+          description: 子用户操作：提供商拒绝了该操作且未发生任何更改时为 `true`
+        idempotency_state:
+          type: string
+          enum:
+            - in_progress
+            - unknown
+          description: 仅出现在 Idempotency-Key 校验返回的 `409` 中
+        order_id:
+          type: integer
+          description: 仅出现在购买和 add-bandwidth 返回的 `502` 中：已付款的订单
+        refunded:
+          type: boolean
+          description: 仅出现在购买和 add-bandwidth 返回的 `502` 中：`true` 表示款项已退回钱包，`false` 表示退款尚未完成，请联系支持
       required:
         - success
         - message
@@ -122,6 +208,7 @@ components:
         quantity:
           type: integer
           minimum: 1
+          maximum: 100000
           default: 1
         promo_code:
           type: string
@@ -150,6 +237,7 @@ components:
         quantity:
           type: integer
           minimum: 1
+          maximum: 100000
           default: 1
         promo_code:
           type: string
@@ -173,6 +261,7 @@ components:
         quantity:
           type: integer
           minimum: 1
+          maximum: 100000
           default: 1
         promo_code:
           type: string
@@ -223,6 +312,7 @@ components:
         quantity:
           type: integer
           minimum: 1
+          maximum: 100000
           default: 1
         promo_code:
           type: string
@@ -319,7 +409,7 @@ components:
       properties:
         amount:
           type: integer
-          description: 容量（GB）
+          description: 容量（GB，1 GB = 1 073 741 824 字节），最多 100 000
         promo_code:
           type: string
           nullable: true
@@ -343,6 +433,7 @@ components:
         - name
     CreateSubUserPayload:
       type: object
+      description: 必须提供 `data` 或 `data_bytes`；两者都提供时以 `data_bytes` 为准。
       properties:
         proxy_type:
           type: string
@@ -350,11 +441,14 @@ components:
           type: string
         data:
           type: integer
-          description: 容量（GB）
+          description: 容量（GB，1 GB = 1 073 741 824 字节），最多 100 000
+        data_bytes:
+          type: integer
+          format: int64
+          description: 容量（字节，精确值；优先于 `data`），最多 100 000 GB
       required:
         - proxy_type
         - name
-        - data
     ChangeSubUserPasswordPayload:
       type: object
       properties:
@@ -364,15 +458,96 @@ components:
         - proxy_type
     ModifyTrafficPayload:
       type: object
+      description: 必须提供 `data` 或 `data_bytes`；两者都提供时以 `data_bytes` 为准。
       properties:
         proxy_type:
           type: string
         data:
           type: integer
-          description: 容量（GB）
+          description: 容量（GB，1 GB = 1 073 741 824 字节），最多 100 000
+        data_bytes:
+          type: integer
+          format: int64
+          description: 容量（字节，精确值；优先于 `data`），最多 100 000 GB
       required:
         - proxy_type
-        - data
+    AnalyticsSeries:
+      type: object
+      description: |
+        提供商的原始响应，不做修改。其结构取决于 `kind`：
+        * `overall`：`results` 为时间区间 `{timestamp, data, requests}`，空区间以 0 返回；短时间窗按小时，长时间窗按天；
+        * `domains`：`results` 为主机 `{hostname, data, requests}`，按 `data` 降序排列；没有 `count`；
+        * `connections`：`results` 为当前打开的连接 `{user_id, package_id, server_ip, connections}`；没有时间段（`timezone`、`start`、`end`）。
+      properties:
+        count:
+          type: integer
+          description: 结果总数（`overall`）
+        next:
+          type: string
+          nullable: true
+          description: 下一页链接
+        previous:
+          type: string
+          nullable: true
+          description: 上一页链接
+        timezone:
+          type: string
+        start:
+          type: string
+          format: date-time
+        end:
+          type: string
+          format: date-time
+        results:
+          type: array
+          items:
+            type: object
+            properties:
+              timestamp:
+                type: string
+                format: date-time
+                description: 区间开始时间（`overall`）
+              hostname:
+                type: string
+                description: 目标主机（`domains`）
+              data:
+                type: integer
+                format: int64
+                description: 字节数（`overall`、`domains`）
+              requests:
+                type: integer
+                description: 请求数（`overall`、`domains`）
+              user_id:
+                type: string
+                description: 账户或子用户 ID（`connections`）
+              package_id:
+                type: string
+                description: 套餐 ID（`connections`）
+              server_ip:
+                type: string
+                description: 持有这些连接的网关 IP（`connections`）
+              connections:
+                type: integer
+                description: 打开的连接数（`connections`）
+    SubUserOrderState:
+      type: object
+      nullable: true
+      description: 操作之后的子用户配额状态（提供商未返回订单对象时为 null）
+      properties:
+        proxy_password:
+          type: string
+        data:
+          type: integer
+          format: int64
+          description: 已分配的配额（字节）
+        data_spent:
+          type: integer
+          format: int64
+          description: 已用字节数
+        data_remain:
+          type: integer
+          format: int64
+          description: 剩余字节数（超额使用时可能为负）
     Country:
       type: object
       properties:
@@ -556,18 +731,32 @@ paths:
                 required:
                   - success
                   - data
+        '400':
+          description: 订单尚无代理凭据（`Missing authtoken in order`）
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
         '403':
           description: 此订单无法使用该方法
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ApiError'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        '502':
+          $ref: '#/components/responses/UpstreamError'
   /user/api/orders/{order_id}/del-np/set:
     post:
       tags:
         - Datacenter & ISP Proxies
       summary: "设置按 IP 删除 (del-np)"
-      description: "仅适用于数据中心和 ISP 代理。更新后，重新计算订单 `quantity` 和 `price_paid`。"
+      description: |
+        仅适用于数据中心和 ISP 代理。
+        标记的代理在已付费周期结束前继续工作，并在下次续订时删除。订单的 `quantity` 和 `price_paid` 现在不会改变：续订时按剩余代理收费（订单价格的相应比例），然后再更新这两个字段。见 GET /user/api/orders/{order_id} 中的 `renewal_quantity` 和 `renewal_price`。
       parameters:
         - in: path
           name: order_id
@@ -613,6 +802,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ApiError'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/ServerError'
   /user/api/orders/{order_id}/signature/set:
     post:
       tags:
@@ -675,6 +868,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ApiError'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/ServerError'
   /user/api/orders/{order_id}/addons/calculate:
     get:
       tags:
@@ -727,13 +924,22 @@ paths:
                   add_total:
                     type: integer
                     description: "本次购买的总费用（以美分为单位）"
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/ServerError'
   /user/api/orders/{order_id}/addons/purchase:
     post:
       tags:
         - Datacenter & ISP Proxies
       summary: "购买附加组件"
-      description: "立即从钱包扣款，并将指定数量的组件添加到订单。订单状态必须为 **active**。目前只有 `p0f_slots` 可用。"
+      description: |
+        立即从钱包扣款，并将指定数量的组件添加到订单。订单状态必须为 **active**。目前只有 `p0f_slots` 可用。
+        请发送 `Idempotency-Key` 标头，确保重试安全（会扣款）。
       parameters:
+        - $ref: '#/components/parameters/IdempotencyKey'
         - in: path
           name: order_id
           required: true
@@ -775,6 +981,20 @@ paths:
                     description: "订单中存储的更新附加列表"
                     items:
                       $ref: '#/components/schemas/AddonLine'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '409':
+          description: 该订单的组件同时发生了另一项更改（请重试），或使用此 Idempotency-Key 的请求仍在执行
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '422':
+          $ref: '#/components/responses/IdempotencyMismatch'
+        '500':
+          $ref: '#/components/responses/ServerError'
   /user/api/orders/{order_id}/addons/schedule:
     post:
       tags:
@@ -797,18 +1017,19 @@ paths:
               required:
                 - addon_key
                 - action
-                - next_qty
               properties:
                 addon_key:
                   type: string
                 action:
                   type: string
+                  description: '`downgrade`：下次续订时减少数量；`cancel`：下次续订时移除该组件'
                   enum:
                     - downgrade
+                    - cancel
                 next_qty:
                   type: integer
-                  description: "续订后的目标数量。必须小于当前数量。"
-                  minimum: 1
+                  description: '`downgrade` 时必填：续订后的数量，须小于当前数量（0 表示移除全部单位）'
+                  minimum: 0
       responses:
         '200':
           description: "已安排降级"
@@ -825,6 +1046,18 @@ paths:
                     type: array
                     items:
                       $ref: '#/components/schemas/AddonLine'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          description: 订单不存在
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '500':
+          $ref: '#/components/responses/ServerError'
   /user/api/orders/{order_id}/addons/schedule/cancel:
     post:
       tags:
@@ -865,6 +1098,12 @@ paths:
                     type: array
                     items:
                       $ref: '#/components/schemas/AddonLine'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/ServerError'
   /user/api/orders/purchase:
     post:
       tags:
@@ -872,8 +1111,12 @@ paths:
       summary: 创建订单并付款
       description: |
         按产品名称、地点和周期购买。
-        对于数据中心/ISP，需要位置。
-        对于标准住宅代理，不需要位置。
+        数据中心/ISP 必须提供 location。
+        标准住宅代理（Standart Residential Proxy）无需 location。
+
+        请发送 `Idempotency-Key` 标头以确保重试安全：否则超时后的重试可能会重复扣款并重复发放代理。
+      parameters:
+        - $ref: '#/components/parameters/IdempotencyKey'
       requestBody:
         required: true
         content:
@@ -900,6 +1143,26 @@ paths:
                 $ref: '#/components/schemas/ApiError'
         '401':
           description: 未经授权
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '403':
+          description: 您的账户无法使用此计费周期
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '409':
+          $ref: '#/components/responses/IdempotencyConflict'
+        '422':
+          $ref: '#/components/responses/IdempotencyMismatch'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        '502':
+          description: 库存检查失败，或付款后未能发放代理；此时 `order_id` 和 `refunded` 表明款项是否已退回
           content:
             application/json:
               schema:
@@ -979,6 +1242,14 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ApiError'
+        '403':
+          description: 您的账户无法使用此计费周期
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '500':
+          $ref: '#/components/responses/ServerError'
   /user/api/orders/change-billing-cycle/{order_id}:
     post:
       tags:
@@ -1042,6 +1313,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ApiError'
+        '500':
+          $ref: '#/components/responses/ServerError'
   /user/api/orders/edit-auto-renewal/{order_id}:
     post:
       tags:
@@ -1084,6 +1357,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ApiError'
+        '500':
+          $ref: '#/components/responses/ServerError'
   /user/api/proxies/products:
     get:
       tags:
@@ -1107,6 +1382,8 @@ paths:
                 required:
                   - success
                   - products
+        '401':
+          $ref: '#/components/responses/Unauthorized'
   /user/api/proxies/available-count:
     get:
       tags:
@@ -1122,6 +1399,10 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/AvailableCountResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '502':
+          $ref: '#/components/responses/UpstreamError'
   /user/api/me:
     get:
       tags:
@@ -1134,6 +1415,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ApiMeResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/ServerError'
   /user/api/orders:
     get:
       tags:
@@ -1216,6 +1501,10 @@ paths:
                 required:
                   - success
                   - orders
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/ServerError'
   /user/api/orders/{id}:
     get:
       tags:
@@ -1267,7 +1556,19 @@ paths:
                         description: "目前已被签名代理占用的槽位"
                       p0f_slots_next:
                         type: integer
-                        description: "下次更新后将激活的插槽"
+                        description: 下次续订后生效的槽位（不超过 renewal_quantity）
+                      renewal_quantity:
+                        type: integer
+                        description: 下一周期的代理数量（如有代理标记了 del-np，则少于 quantity）
+                      renewal_price:
+                        type: integer
+                        description: 下次续订将扣除的金额，以美分为单位（renewal_base_price + renewal_addons_price）
+                      renewal_base_price:
+                        type: integer
+                        description: 下次续订中代理部分的费用，以美分为单位（price_paid 的相应比例）
+                      renewal_addons_price:
+                        type: integer
+                        description: 下次续订中组件部分的费用，以美分为单位（已计入计划中的更改）
                       status:
                         type: string
                       created_at:
@@ -1288,13 +1589,21 @@ paths:
                 required:
                   - success
                   - order
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/ServerError'
   /user/api/orders/{id}/renew:
     post:
       tags:
         - General
       summary: 续订订单
-      description: "仅当订单状态为 `on-hold` 时才可以续订。"
+      description: |
+        仅当订单状态为 `on-hold` 时才可以续订。
+        对已续订的订单重复请求时返回 `200` 和 `Order already renewed`。
+        请发送 `Idempotency-Key` 标头，确保重试安全（会扣款）。
       parameters:
+        - $ref: '#/components/parameters/IdempotencyKey'
         - in: path
           name: id
           required: true
@@ -1322,6 +1631,18 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ApiError'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '409':
+          description: 订单已支付当前周期、续订过程中订单发生了变化（请重试），或使用此 Idempotency-Key 的请求仍在执行
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '422':
+          $ref: '#/components/responses/IdempotencyMismatch'
+        '500':
+          $ref: '#/components/responses/ServerError'
   /user/api/orders/{id}/tag:
     post:
       tags:
@@ -1360,12 +1681,17 @@ paths:
                 required:
                   - success
                   - message
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/ServerError'
   /user/api/orders/{id}/add-bandwidth:
     post:
       tags:
         - Residential Proxies
       summary: 购买额外流量（住宅）
       parameters:
+        - $ref: '#/components/parameters/IdempotencyKey'
         - in: path
           name: id
           required: true
@@ -1393,6 +1719,24 @@ paths:
                 required:
                   - success
                   - message
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '409':
+          $ref: '#/components/responses/IdempotencyConflict'
+        '422':
+          $ref: '#/components/responses/IdempotencyMismatch'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        '502':
+          description: 付款后未能添加流量；`order_id` 和 `refunded` 表明款项是否已退回
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
   /user/api/proxies/profile:
     get:
       tags:
@@ -1403,7 +1747,7 @@ paths:
         - in: query
           name: proxy_type
           required: true
-          description: "代理类型（标准 | 高级）"
+          description: 代理类型（standart | premium | unlimited）
           schema:
             type: string
       responses:
@@ -1435,17 +1779,170 @@ paths:
                   - data_spent
                   - proxy_password
         '400':
-          description: "用户驻留未设置/代理类型无效"
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiError'
+          $ref: '#/components/responses/BadRequest'
         '401':
-          description: "未经授权"
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        '502':
+          $ref: '#/components/responses/UpstreamError'
+  /user/api/proxies/analytics/{kind}:
+    get:
+      tags:
+        - Residential Proxies
+      summary: 账户统计
+      description: |
+        账户本身的流量统计。
+
+        `kind`：
+        * `overall`：按时间区间统计该时段内的流量和请求数；
+        * `domains`：按目标主机统计该时段内的流量和请求数；
+        * `connections`：当前打开的连接（无时间段）。
+
+        默认只统计账户自身的流量。传入 `include_sub_users=true` 可加上该账户的所有子用户。
+      parameters:
+        - in: path
+          name: kind
+          required: true
+          description: overall | domains | connections
+          schema:
+            type: string
+            enum:
+              - overall
+              - domains
+              - connections
+        - in: query
+          name: proxy_type
+          required: true
+          description: 代理类型（standart | premium | unlimited）
+          schema:
+            type: string
+        - in: query
+          name: start
+          required: false
+          description: 时间窗开始（含），格式为 ISO 8601、`YYYY-MM-DD HH:MM:SS` 或 Unix 时间戳。`connections` 忽略此参数。
+          schema:
+            type: string
+        - in: query
+          name: end
+          required: false
+          description: 时间窗结束（不含），默认为当前时间。`connections` 忽略此参数。
+          schema:
+            type: string
+        - in: query
+          name: timezone
+          required: false
+          description: 区间边界使用的 IANA 时区，默认 UTC
+          schema:
+            type: string
+        - in: query
+          name: include_sub_users
+          required: false
+          description: 统计账户及其所有子用户（默认 false）
+          schema:
+            type: boolean
+        - in: query
+          name: limit
+          required: false
+          description: 每页数量
+          schema:
+            type: integer
+        - in: query
+          name: offset
+          required: false
+          description: 跳过的结果数
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: 成功
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiError'
+                $ref: '#/components/schemas/AnalyticsSeries'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        '502':
+          $ref: '#/components/responses/UpstreamError'
+  /user/api/proxies/sub-user/{user_id}/analytics/{kind}:
+    get:
+      tags:
+        - Residential Proxies
+      summary: 子用户统计
+      description: |
+        账户下单个子用户的同类统计。访问权限由提供商校验：请求以账户身份发出，而账户只能读取自己的子用户。
+      parameters:
+        - in: path
+          name: user_id
+          required: true
+          description: 子用户在提供商处的 ID
+          schema:
+            type: string
+        - in: path
+          name: kind
+          required: true
+          description: overall | domains | connections
+          schema:
+            type: string
+            enum:
+              - overall
+              - domains
+              - connections
+        - in: query
+          name: proxy_type
+          required: true
+          description: 代理类型（standart | premium | unlimited）
+          schema:
+            type: string
+        - in: query
+          name: start
+          required: false
+          description: 时间窗开始（含），格式为 ISO 8601、`YYYY-MM-DD HH:MM:SS` 或 Unix 时间戳。`connections` 忽略此参数。
+          schema:
+            type: string
+        - in: query
+          name: end
+          required: false
+          description: 时间窗结束（不含），默认为当前时间。`connections` 忽略此参数。
+          schema:
+            type: string
+        - in: query
+          name: timezone
+          required: false
+          description: 区间边界使用的 IANA 时区，默认 UTC
+          schema:
+            type: string
+        - in: query
+          name: limit
+          required: false
+          description: 每页数量
+          schema:
+            type: integer
+        - in: query
+          name: offset
+          required: false
+          description: 跳过的结果数
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: 成功
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AnalyticsSeries'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        '502':
+          $ref: '#/components/responses/UpstreamError'
   /user/api/proxies/sub-users:
     get:
       tags:
@@ -1455,7 +1952,7 @@ paths:
         - in: query
           name: proxy_type
           required: true
-          description: 代理类型（标准 | 高级）
+          description: 代理类型（standart | premium | unlimited）
           schema:
             type: string
         - in: query
@@ -1468,6 +1965,12 @@ paths:
           required: false
           schema:
             type: integer
+        - in: query
+          name: search
+          required: false
+          description: 在提供商侧按子用户名称或登录名搜索
+          schema:
+            type: string
       responses:
         '200':
           description: 成功的
@@ -1505,6 +2008,14 @@ paths:
                         - data
                         - data_spent
                         - data_remain
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        '502':
+          $ref: '#/components/responses/UpstreamError'
   /user/api/proxies/sub-user/{user_id}:
     get:
       tags:
@@ -1519,7 +2030,7 @@ paths:
         - in: query
           name: proxy_type
           required: true
-          description: 代理类型（标准 | 高级）
+          description: 代理类型（standart | premium | unlimited）
           schema:
             type: string
       responses:
@@ -1534,9 +2045,12 @@ paths:
                     type: boolean
                   data:
                     type: array
+                    description: 子用户不存在时为空
                     items:
                       type: object
                       properties:
+                        user_id:
+                          type: string
                         first_name:
                           type: string
                         proxy_password:
@@ -1545,11 +2059,27 @@ paths:
                           type: integer
                         data_spent:
                           type: integer
+                        data_remain:
+                          type: integer
                       required:
+                        - user_id
                         - first_name
                         - proxy_password
                         - data
                         - data_spent
+                        - data_remain
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        '502':
+          description: 提供商错误（子用户可能仍然存在，请重试）
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
     delete:
       tags:
         - Residential Proxies
@@ -1576,6 +2106,18 @@ paths:
                 required:
                   - success
                   - message
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        '502':
+          description: 提供商未删除该子用户（仍然存在）。删除已删除的子用户视为成功。
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
     patch:
       tags:
         - Residential Proxies
@@ -1589,7 +2131,7 @@ paths:
         - in: query
           name: proxy_type
           required: true
-          description: 代理类型（标准 | 高级）
+          description: 代理类型（standart | premium | unlimited）
           schema:
             type: string
       requestBody:
@@ -1614,16 +2156,25 @@ paths:
                 required:
                   - success
                   - message
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/ServerError'
   /user/api/proxies/sub-user:
     post:
       tags:
         - Residential Proxies
       summary: 创建子用户
+      description: |
+        配额是在账户共享流量池之上的虚拟上限：分配配额不会从流量池扣除，只有子用户实际使用代理时才消耗流量。
       parameters:
+        - $ref: '#/components/parameters/IdempotencyKey'
         - in: query
           name: proxy_type
           required: true
-          description: 代理类型（标准 | 高级）
+          description: 代理类型（standart | premium | unlimited）
           schema:
             type: string
       requestBody:
@@ -1632,14 +2183,19 @@ paths:
           application/json:
             schema:
               type: object
+              description: 必须提供 `data` 或 `data_bytes`；两者都提供时以 `data_bytes` 为准。
               properties:
                 name:
                   type: string
                 data:
                   type: integer
+                  description: 容量（GB，1 GB = 1 073 741 824 字节），最多 100 000
+                data_bytes:
+                  type: integer
+                  format: int64
+                  description: 容量（字节，精确值；优先于 `data`），最多 100 000 GB
               required:
                 - name
-                - data
       responses:
         '200':
           description: 成功的
@@ -1665,18 +2221,43 @@ paths:
                           type: integer
                         data_spent:
                           type: integer
+                        data_remain:
+                          type: integer
                       required:
                         - user_id
                         - first_name
                         - proxy_password
                         - data
                         - data_spent
+        '400':
+          description: '校验错误，或提供商拒绝了请求（`rejected: true`）；未创建任何内容'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '409':
+          description: 使用此 Idempotency-Key 的请求仍在执行，或该键已用于不同的数据
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        '502':
+          description: 提供商不可达：结果未知；请使用同一个 Idempotency-Key 重试
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
   /user/api/proxies/sub-user/{user_id}/data/add:
     post:
       tags:
         - Residential Proxies
       summary: 给子用户添加流量
       parameters:
+        - $ref: '#/components/parameters/IdempotencyKey'
         - in: path
           name: user_id
           required: true
@@ -1685,7 +2266,7 @@ paths:
         - in: query
           name: proxy_type
           required: true
-          description: 代理类型（标准 | 高级）
+          description: 代理类型（standart | premium | unlimited）
           schema:
             type: string
       requestBody:
@@ -1694,12 +2275,15 @@ paths:
           application/json:
             schema:
               type: object
+              description: 必须提供 `data` 或 `data_bytes`；两者都提供时以 `data_bytes` 为准。
               properties:
                 data:
                   type: integer
-                  description: 容量（GB）
-              required:
-                - data
+                  description: 容量（GB，1 GB = 1 073 741 824 字节），最多 100 000
+                data_bytes:
+                  type: integer
+                  format: int64
+                  description: 容量（字节，精确值；优先于 `data`），最多 100 000 GB
       responses:
         '200':
           description: 成功的
@@ -1713,15 +2297,40 @@ paths:
                   message:
                     type: string
                     example: Traffic added to sub user successfully
+                  order:
+                    $ref: '#/components/schemas/SubUserOrderState'
                 required:
                   - success
                   - message
+        '400':
+          description: '校验错误，或提供商拒绝了操作（`rejected: true`）；配额未改变'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '409':
+          description: 使用此 Idempotency-Key 的请求仍在执行，或该键已用于不同的数据
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        '502':
+          description: 提供商不可达：结果未知；请使用同一个 Idempotency-Key 重试
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
   /user/api/proxies/sub-user/{user_id}/data/subtract:
     post:
       tags:
         - Residential Proxies
       summary: 扣除子用户流量
       parameters:
+        - $ref: '#/components/parameters/IdempotencyKey'
         - in: path
           name: user_id
           required: true
@@ -1730,7 +2339,7 @@ paths:
         - in: query
           name: proxy_type
           required: true
-          description: 代理类型（标准 | 高级）
+          description: 代理类型（standart | premium | unlimited）
           schema:
             type: string
       requestBody:
@@ -1739,12 +2348,15 @@ paths:
           application/json:
             schema:
               type: object
+              description: 必须提供 `data` 或 `data_bytes`；两者都提供时以 `data_bytes` 为准。
               properties:
                 data:
                   type: integer
-                  description: 容量（GB）
-              required:
-                - data
+                  description: 容量（GB，1 GB = 1 073 741 824 字节），最多 100 000
+                data_bytes:
+                  type: integer
+                  format: int64
+                  description: 容量（字节，精确值；优先于 `data`），最多 100 000 GB
       responses:
         '200':
           description: 成功的
@@ -1758,9 +2370,33 @@ paths:
                   message:
                     type: string
                     example: Traffic subtracted from sub user successfully
+                  order:
+                    $ref: '#/components/schemas/SubUserOrderState'
                 required:
                   - success
                   - message
+        '400':
+          description: '校验错误，或提供商拒绝了操作（`rejected: true`）；配额未改变'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '409':
+          description: 使用此 Idempotency-Key 的请求仍在执行，或该键已用于不同的数据
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        '502':
+          description: 提供商不可达：结果未知；请使用同一个 Idempotency-Key 重试
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
   /user/api/proxies/sub-user/{user_id}/password:
     post:
       tags:
@@ -1775,7 +2411,7 @@ paths:
         - in: query
           name: proxy_type
           required: true
-          description: 代理类型（标准 | 高级）
+          description: 代理类型（standart | premium | unlimited）
           schema:
             type: string
       responses:
@@ -1791,9 +2427,25 @@ paths:
                   message:
                     type: string
                     example: Sub user password changed successfully
+                  proxy_password:
+                    type: string
+                    nullable: true
+                    description: 新的代理密码
                 required:
                   - success
                   - message
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        '502':
+          description: 提供商未更换密码（旧密码仍然有效）
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
   /user/api/proxies/countries:
     get:
       tags:
@@ -1803,7 +2455,7 @@ paths:
         - in: query
           name: proxy_type
           required: true
-          description: 代理类型（标准 | 高级）
+          description: 代理类型（standart | premium | unlimited）
           schema:
             type: string
       responses:
@@ -1813,6 +2465,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PagedCountriesResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/ServerError'
   /user/api/proxies/regions:
     get:
       tags:
@@ -1822,7 +2480,7 @@ paths:
         - in: query
           name: proxy_type
           required: true
-          description: 代理类型（标准 | 高级）
+          description: 代理类型（standart | premium | unlimited）
           schema:
             type: string
         - in: query
@@ -1838,6 +2496,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PagedRegionsResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/ServerError'
   /user/api/proxies/cities:
     get:
       tags:
@@ -1847,7 +2511,7 @@ paths:
         - in: query
           name: proxy_type
           required: true
-          description: 代理类型（标准 | 高级）
+          description: 代理类型（standart | premium | unlimited）
           schema:
             type: string
         - in: query
@@ -1869,6 +2533,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PagedCitiesResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/ServerError'
   /user/api/proxies/isps:
     get:
       tags:
@@ -1910,22 +2580,11 @@ paths:
               schema:
                 $ref: '#/components/schemas/PagedIspsResponse'
         '400':
-          description: "proxy_type 不是 `premium`，未设置用户常驻，或者用户没有对该包的有效订单"
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiError'
-              examples:
-                notPremium:
-                  value:
-                    success: false
-                    message: ISP targeting is available for the premium package only
+          $ref: '#/components/responses/BadRequest'
         '401':
-          description: "未经授权"
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiError'
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/ServerError'
   /health:
     get:
       tags:
