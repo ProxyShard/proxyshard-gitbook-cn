@@ -6,7 +6,7 @@ icon: vial
 
 <mark style="color:purple;">ShardX Proxy Tester</mark> 可直接在网站上快速检查代理是否可用，无需安装额外软件；使用 SOCKS5 时，还可以检查 UDP 支持。
 
-{% embed url="https://proxyshard.com/proxy-tester" %}
+{% embed url="https://shardx.com/proxy-tester" %}
 
 ***
 
@@ -19,7 +19,7 @@ icon: vial
 
 ## 如何使用
 
-1. 打开 [proxyshard.com/proxy-tester](https://proxyshard.com/proxy-tester)
+1. 打开 [proxyshard.com/proxy-tester](https://shardx.com/proxy-tester)
 2. 将一个或多个代理粘贴到 <mark style="color:purple;">**Proxy list**</mark> 字段中，每行一个
 3. 点击 <mark style="color:purple;">**Test Proxy**</mark>
 4. 等待下方 <mark style="color:purple;">**Proxy check history**</mark> 表格显示结果

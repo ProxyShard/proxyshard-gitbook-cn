@@ -12,7 +12,7 @@ icon: flask-vial
 
 最快的选择。
 
-打开我们的[代理测试器](https://proxyshard.com/proxy-tester)，将代理粘贴到字段中，然后单击“**测试代理**”。
+打开我们的[代理测试器](https://shardx.com/proxy-tester)，将代理粘贴到字段中，然后单击“**测试代理**”。
 
 请阅读[代理测试器](../../our-products/proxy-tester.md) 文章，了解有关功能和格式的更多信息。
 

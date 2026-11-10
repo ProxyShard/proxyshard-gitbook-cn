@@ -5,7 +5,7 @@ icon: gauge
 
 # ShardX Dashboard
 
-<mark style="color:purple;">**ShardX**</mark> 页面将你的 [ShardX](https://proxyshard.com) 账户接入应用：余额、流量、订单和购买代理都可以直接在 ShardBrowser 中完成。
+<mark style="color:purple;">**ShardX**</mark> 页面将你的 [ShardX](https://shardx.com) 账户接入应用：余额、流量、订单和购买代理都可以直接在 ShardBrowser 中完成。
 
 要连接账户，请从 [ShardX 个人中心的 API 设置](https://dashboard.shardx.com/en/profile?tab=api-key)复制 API 密钥，并粘贴到 <mark style="color:purple;">**Connect your ShardX account**</mark> 区块的输入框中。
 

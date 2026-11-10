@@ -119,12 +119,12 @@
 
 ## 购买 <a href="#buy" id="buy"></a>
 
-* [购买住宅代理](https://proxyshard.com/residential-proxy)
-* [购买数据中心代理](https://proxyshard.com/datacenter-proxy)
-* [购买 ISP 代理](https://proxyshard.com/isp-proxy)
-* [购买移动代理](https://proxyshard.com/mobile-proxy)
-* [IP Checker](https://proxyshard.com/ip-checker)
-* [Proxy Tester](https://proxyshard.com/proxy-tester)
+* [购买住宅代理](https://shardx.com/residential-proxy)
+* [购买数据中心代理](https://shardx.com/datacenter-proxy)
+* [购买 ISP 代理](https://shardx.com/isp-proxy)
+* [购买移动代理](https://shardx.com/mobile-proxy)
+* [IP Checker](https://shardx.com/ip-checker)
+* [Proxy Tester](https://shardx.com/proxy-tester)
 
 ## API 与集成 <a href="#api-and-integrations" id="api-and-integrations"></a>
 

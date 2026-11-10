@@ -130,7 +130,7 @@ Vision Browser 支持通过 SOCKS5 代理传输 TCP 和 UDP 流量。
 
 ## 检查 WebRTC
 
-启动配置并打开 [ShardX IP Checker](https://proxyshard.com/ip-checker)。TCP 和 WebRTC 地址应保持一致。
+启动配置并打开 [ShardX IP Checker](https://shardx.com/ip-checker)。TCP 和 WebRTC 地址应保持一致。
 
 <figure>
   <picture>
