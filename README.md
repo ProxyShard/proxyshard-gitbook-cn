@@ -1,8 +1,9 @@
 ---
+description: ShardX 住宅、数据中心、ISP 和移动代理：接入方式、浏览器与软件中的配置、常见问题和 API
 icon: hand-wave
 ---
 
-# ShardX GitBook
+# ShardX 文档
 
 <figure>
   <picture>

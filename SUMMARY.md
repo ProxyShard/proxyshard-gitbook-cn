@@ -1,6 +1,6 @@
 # Table of contents
 
-* [ShardX GitBook](README.md)
+* [ShardX 文档](README.md)
 * [什么是 ShardX](about-shardx.md)
 * [联系我们](contact-us.md)
 
