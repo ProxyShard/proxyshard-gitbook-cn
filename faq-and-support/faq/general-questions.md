@@ -43,7 +43,7 @@ Datacenter、ISP、Mobile、Standard Residential、Unlimited Residential 和 Pre
 
 是的，**QUIC 在所有支持 UDP 的代理上均受支持**（请参阅问题 2）。但您的软件也必须能够处理 QUIC。
 
-例如在 [Vision 浏览器](../../setup-guides/antidetect-browsers/vision-browser.md) 中，需要在设置中启用 <mark style="color:purple;">**Enable QUIC**</mark> 选项。
+例如在 [Vision 浏览器](../../setup-guides/antidetect-browsers/vision-browser.md) 中，需要在设置中启用 <mark style="color:purple;">**Enable QUIC**</mark> 选项。免费的 [ShardBrowser](../../our-products/shardx-launcher.md) 会在检测代理的 UDP 支持后自动配置 QUIC 和 WebRTC。
 
 ***
 
@@ -96,7 +96,7 @@ Datacenter 和 ISP 代理的续费期限取决于租期。月付订单可在付�
 * 访问订单中的专属 **Reset URL** 链接
 
 {% hint style="warning" %}
-如果不使用代理，**3 小时**后端口将进入节能模式。该限制无法取消，要恢复运行只需再次调用 Restart proxy 或 Reset URL。
+如果不使用代理，**3 小时**后端口将进入节能模式。该限制无法取消。要恢复运行，请点击 <mark style="color:purple;">**Restart proxy**</mark> 按钮，或再次打开 <mark style="color:purple;">**Reset URL**</mark> 链接。
 {% endhint %}
 
 ***
@@ -114,14 +114,14 @@ Datacenter 和 ISP 代理的续费期限取决于租期。月付订单可在付�
 * 平均而言，运营商**每天**更新一次地址。
 * 运营商可能在任何时刻启动池切换，地址会更早变化。
 
-这是移动互联网的固有特性，**不在我们的控制范围内**。如果需要按计时器或热键进行轮换，请使用[我们扩展程序中的 IP Rotation](../../our-products/shardx-extension.md) 功能。
+这是移动互联网的固有特性，**不在我们的控制范围内**。如果需要按计时器或热键进行轮换，请使用[我们扩展程序中的 IP Rotation](../../our-products/shardextension.md) 功能。
 
 ***
 
 ## 11. 住宅代理中的 TTL 和 Sticky 是什么？
 
 * <mark style="color:purple;">**TTL**</mark>（Time-To-Live）- 会话的「生命周期」秒数。TTL 到期后，代理链路将被重建，您会获得新的 IP。取值范围为 60 至 86400 秒。
-* <mark style="color:purple;">**Sticky / Random**</mark> - 会话模式。<mark style="color:purple;">Sticky</mark> 会尽量在 TTL 内保持相同的 IP，<mark style="color:purple;">Random</mark> 在每次新连接时分配随机 IP。
+* <mark style="color:purple;">**Sticky / Random**</mark> - 会话模式。<mark style="color:purple;">Sticky</mark> 会尽量在 TTL 内保持相同的 IP，<mark style="color:purple;">Random</mark> 会在每次建立新连接时分配随机 IP。
 
 住宅代理订单参数的完整说明请参阅[住宅代理设置](../../our-products/residential-proxies/#dai-li-she-zhi)。
 
@@ -166,7 +166,7 @@ Relay 的选择**不会影响**最终 IP 的国家/地区，它仅为负载均�
 relay-eu.shardx.com:8080:plan-limited-country-any-sid-8dbryym0a32i:7nnrpl63344545gx
 ```
 
-登录名中包含 `sid-8dbryym0a32i` 片段。如果您将其中的一个字符更改为例如 `sid-8dbryym0a324`，IP 地址就会发生变化。点击 <mark style="color:purple;">Generate proxy</mark> 时，「底层」也是这样工作的。
+登录名中包含 `sid-8dbryym0a32i` 片段。如果您将其中的一个字符更改为例如 `sid-8dbryym0a324`，IP 地址就会发生变化。
 
 <mark style="color:purple;">SID</mark> 负责为您的会话连接选择设备和 IP。
 {% endhint %}
@@ -178,10 +178,10 @@ relay-eu.shardx.com:8080:plan-limited-country-any-sid-8dbryym0a32i:7nnrpl6334454
 Google 和 Cloudflare 验证码通常**不是由代理本身**造成的，而是由浏览器指纹造成的。最常见的原因：
 
 * 使用了过时或低质量的反检测浏览器
-* 配置文件指纹「黏滞」/ 重复
+* 多个配置文件重复使用相同的指纹
 * 浏览器泄漏不一致的参数（timezone、language、WebRTC 等）
 
-**怎么办：** 每次出现问题时重新生成配置文件指纹，使用优质反检测方案（例如 [Vision 浏览器](../../setup-guides/antidetect-browsers/vision-browser.md)），并通过 [IP Checker](../../our-products/ip-checker.md) 检测泄漏。
+**怎么办：** 每次出现问题时重新生成配置文件指纹，使用优质反检测方案，例如 [Vision 浏览器](../../setup-guides/antidetect-browsers/vision-browser.md) 或免费的 [ShardBrowser](../../our-products/shardx-launcher.md)，并通过 [IP Checker](../../our-products/ip-checker.md) 检测泄漏。
 
 ***
 
@@ -215,7 +215,7 @@ Google 和 Cloudflare 验证码通常**不是由代理本身**造成的，而是
 
 是的，我们有完整的用户 API。
 
-* **规范与 Try-it-out：** 本 GitBook 中的[用户 API](../../) 章节。
+* **规范与 Try-it-out：** 本 GitBook 中的[用户 API](../../proxyshard-api/getting-started.md) 章节。
 * **俄语使用示例：** [github.com/ProxyShard/proxyshard-api-examples-ru](https://github.com/ProxyShard/proxyshard-api-examples-ru)
 * **英语使用示例：** [github.com/ProxyShard/proxyshard-api-examples](https://github.com/ProxyShard/proxyshard-api-examples)
 
@@ -237,19 +237,14 @@ ISP 代理在以下地区可用：
 | 🇺🇸 美国（宾夕法尼亚州） |
 | 🇹🇷 土耳其 |
 | 🇺🇦 乌克兰 |
+| 🇲🇩 摩尔多瓦 |
+| 🇦🇹 奥地利 |
 
 ***
 
 ## 21. Datacenter 代理可用哪些国家？
 
-可用地区：
-
-* 🇲🇩 摩尔多瓦
-* 🇺🇦 乌克兰
-* 🇳🇱 荷兰
-* 🇩🇪 德国
-* 🇵🇱 波兰
-* 🇺🇸 美国（即将推出）
+最新国家列表请查看 [Datacenter 代理](../../our-products/datacenter-proxies.md)页面，或直接前往 [Datacenter Proxy](https://dashboard.shardx.com/en/datacenter-proxy) 购买页面。
 
 ***
 

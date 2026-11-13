@@ -1,7 +1,7 @@
 # AdsPower
 
 {% hint style="warning" %}
-AdsPower 不支持 UDP 代理。如需使用 UDP，请选择 [Vision Browser](vision-browser.md)。
+AdsPower 不支持 UDP 代理。如需使用 UDP，请选择 [Vision Browser](vision-browser.md) 或免费的 [ShardBrowser](../../our-products/shardx-launcher.md)。
 {% endhint %}
 
 ## 添加代理

@@ -1,11 +1,11 @@
 ---
-description: 适用于 Opera 的 ShardX 扩展程序
+description: 适用于 Opera 的 ShardExtension
 icon: puzzle-piece
 ---
 
-# ShardX Extension
+# ShardExtension
 
-我们官方的 <mark style="color:purple;">**ShardX – Smart Proxy Manager**</mark> 扩展程序可直接从 **Chrome Web Store** 安装到 Opera。
+我们的官方浏览器扩展 <mark style="color:purple;">**ShardExtension**</mark> 可直接从 **Chrome Web Store** 安装到 Opera。
 
 ## 安装
 
@@ -17,6 +17,6 @@ icon: puzzle-piece
 
 扩展程序功能的完整说明、固定步骤、Residential / Datacenter / ISP 代理配置文件的设置，以及移动代理 IP 轮换的启用方法，请参阅独立页面：
 
-{% content-ref url="../../../our-products/shardx-extension.md" %}
-[shardx-extension.md](../../../our-products/shardx-extension.md)
+{% content-ref url="../../../our-products/shardextension.md" %}
+[shardextension.md](../../../our-products/shardextension.md)
 {% endcontent-ref %}

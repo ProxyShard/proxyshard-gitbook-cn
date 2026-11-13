@@ -7,7 +7,7 @@ icon: opera
 
 Opera 浏览器的扩展
 
-* [🔥 ShardX Extension](shardx.md)
+* [🔥 ShardExtension](shardx.md)
 * [ZeroOmega](zeroomega.md)
 
 

@@ -19,7 +19,7 @@ icon: vial
 
 ## 如何使用
 
-1. 打开 [proxyshard.com/proxy-tester](https://shardx.com/proxy-tester)
+1. 打开 [shardx.com/proxy-tester](https://shardx.com/proxy-tester)
 2. 将一个或多个代理粘贴到 <mark style="color:purple;">**Proxy list**</mark> 字段中，每行一个
 3. 点击 <mark style="color:purple;">**Test Proxy**</mark>
 4. 等待下方 <mark style="color:purple;">**Proxy check history**</mark> 表格显示结果
@@ -45,7 +45,7 @@ icon: vial
 | ----------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Proxy** | 建立连接的 IP 地址 |
 | **Response time** | 响应时间，以毫秒为单位。数值越低，代理速度越快 |
-| **Status code** | HTTP 响应代码。`200` 表示连接正常 |
+| **Status code** | HTTP 响应代码。代码 `200` 表示连接已成功建立 |
 | **Result** | 最终状态为 <mark style="color:green;">**Success**</mark>（可用）或 <mark style="color:red;">**Failed**</mark>（不可用）。如果代理支持 UDP，状态旁会显示 <mark style="color:purple;">**UDP**</mark> 标记 |
 
 ***

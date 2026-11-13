@@ -4,7 +4,7 @@ icon: magnifying-glass
 
 # IP 检查器
 
-<mark style="color:purple;">ShardX IP Checker</mark> 是一款免费工具，用于检查您的 IP 地址、地理位置、浏览器数据、WebRTC 泄漏和独特的浏览器配置文件质量得分。
+<mark style="color:purple;">ShardX IP Checker</mark> 是一款免费工具，用于检查您的 IP 地址、地理位置、浏览器数据、WebRTC 泄漏以及浏览器配置文件质量。
 
 {% embed url="https://shardx.com/ip-checker" %}
 
@@ -59,7 +59,7 @@ icon: magnifying-glass
 
 ### Fake ISP
 
-检查提供商是否是“假的”。这对于某些掩盖其来源的 VPN 服务来说很常见。 `No` 表示提供商是真实的。
+检查提供商信息是否与 IP 地址的实际所有者一致。某些 VPN 服务可能会掩盖地址来源。`No` 表示提供商已被识别为真实提供商。
 
 ### Host
 
@@ -195,8 +195,8 @@ icon: magnifying-glass
 {% hint style="danger" %}
 **问题：** 如果 WebRTC 显示的 IP 与代理不同，则必须立即修复泄漏。
 
-我们强烈建议为所有任务使用通用设置：\
-ISP 代理 + 良好的反检测浏览器。设置示例：[Vision](../setup-guides/antidetect-browsers/vision-browser.md)
+对于大多数任务，我们建议使用以下通用组合：\
+ISP 代理 + 良好的反检测浏览器：[Vision](../setup-guides/antidetect-browsers/vision-browser.md) 或免费的 [ShardBrowser](shardx-launcher.md)
 {% endhint %}
 
 

@@ -3,9 +3,9 @@ description: 适用于 Chrome、Firefox 及其他浏览器的扩展程序
 icon: puzzle-piece
 ---
 
-# ShardX Extension
+# ShardExtension
 
-<mark style="color:purple;">**ShardX – Smart Proxy Manager**</mark> 是 ShardX 官方浏览器扩展，支持 Chrome、Mozilla Firefox 以及 Edge、Opera、Brave、Yandex 等 Chromium 浏览器。您可以直接在浏览器中添加、测试和切换代理。
+<mark style="color:purple;">**ShardExtension**</mark> 是 ShardX 官方浏览器扩展，支持 Chrome、Mozilla Firefox 以及 Edge、Opera、Brave、Yandex 等 Chromium 浏览器。您可以直接在浏览器中添加、测试和切换代理。
 
 #### 扩展功能
 
@@ -22,7 +22,7 @@ icon: puzzle-piece
 <figure>
   <picture>
     <source srcset="../.gitbook/assets/proxyshard-extension-popup-overview_black.png" media="(prefers-color-scheme: dark)">
-    <img src="../.gitbook/assets/proxyshard-extension-popup-overview_white.png" alt="ShardX Extension 主窗口">
+    <img src="../.gitbook/assets/proxyshard-extension-popup-overview_white.png" alt="ShardExtension 主窗口">
   </picture>
   <figcaption><p>主窗口和已保存的代理配置</p></figcaption>
 </figure>
@@ -39,12 +39,12 @@ icon: puzzle-piece
 
 {% embed url="https://addons.mozilla.org/en-US/firefox/addon/proxyshard-smart-proxy-manager/" %}
 
-安装后，打开地址栏右侧的 `Extensions` 菜单，点击图钉图标固定 `ShardX – Smart Proxy Manager`。
+安装后，打开地址栏右侧的 `Extensions` 菜单，点击图钉图标固定 `ShardExtension`。
 
 <figure>
   <picture>
     <source srcset="../.gitbook/assets/proxyshard-extension-pin_black.png" media="(prefers-color-scheme: dark)">
-    <img src="../.gitbook/assets/proxyshard-extension-pin_white.png" alt="在浏览器中固定 ShardX Extension">
+    <img src="../.gitbook/assets/proxyshard-extension-pin_white.png" alt="在浏览器中固定 ShardExtension">
   </picture>
   <figcaption><p>打开 Extensions 菜单并固定扩展</p></figcaption>
 </figure>
@@ -60,7 +60,7 @@ SOCKS5 只能在无需凭据或通过 IP 白名单验证时使用。代理需要
 {% hint style="success" %}
 **Mozilla Firefox 中的 SOCKS5**
 
-Mozilla Firefox 版 ShardX Extension 支持带验证的 SOCKS5，因此可以直接使用这类配置。
+Mozilla Firefox 版 ShardExtension 支持带验证的 SOCKS5，因此可以直接使用这类配置。
 {% endhint %}
 
 ## 设置住宅代理
@@ -77,7 +77,7 @@ Mozilla Firefox 版 ShardX Extension 支持带验证的 SOCKS5，因此可以直
   <figcaption><p>住宅代理设置和 Proxy List</p></figcaption>
 </figure>
 
-4. 打开已固定的 ShardX 扩展。
+4. 打开已固定的 ShardExtension。
 5. 将 `ip:port:login:password` 格式的代理字符串粘贴到底部输入框，然后点击 `Add`。
 
 <figure>
@@ -220,7 +220,7 @@ Mozilla Firefox 版 ShardX Extension 支持带验证的 SOCKS5，因此可以直
 <figure>
   <picture>
     <source srcset="../.gitbook/assets/proxyshard-extension-options-import-export_black.png" media="(prefers-color-scheme: dark)">
-    <img src="../.gitbook/assets/proxyshard-extension-options-import-export_white.png" alt="导入和导出 ShardX Extension 配置">
+    <img src="../.gitbook/assets/proxyshard-extension-options-import-export_white.png" alt="导入和导出 ShardExtension 配置">
   </picture>
   <figcaption><p>备份和恢复代理配置</p></figcaption>
 </figure>
@@ -242,11 +242,11 @@ Mozilla Firefox 版 ShardX Extension 支持带验证的 SOCKS5，因此可以直
 <figure>
   <picture>
     <source srcset="../.gitbook/assets/proxyshard-extension-options-preferences_black.png" media="(prefers-color-scheme: dark)">
-    <img src="../.gitbook/assets/proxyshard-extension-options-preferences_white.png" alt="ShardX Extension Preferences 设置">
+    <img src="../.gitbook/assets/proxyshard-extension-options-preferences_white.png" alt="ShardExtension Preferences 设置">
   </picture>
   <figcaption><p>扩展程序的其他设置</p></figcaption>
 </figure>
 
 {% hint style="success" %}
-ShardX Extension 已可使用。您可以从扩展主窗口启用和切换已保存的配置。
+ShardExtension 已可使用。您可以从扩展主窗口启用和切换已保存的配置。
 {% endhint %}

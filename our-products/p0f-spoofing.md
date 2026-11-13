@@ -87,10 +87,10 @@ ShardX 支持直接在控制面板中修改 p0f 指纹。选择目标操作系�
 
 为了获得最佳效果，我们建议使用：
 
-* [**Vision Browser**](../setup-guides/antidetect-browsers/vision-browser.md)，一款支持 UDP 的反检测浏览器
+* [**Vision Browser**](../setup-guides/antidetect-browsers/vision-browser.md) 或免费的 [**ShardBrowser**](shardx-launcher.md)，均为支持 UDP 的反检测浏览器
 * **启用 p0f 伪装的 ShardX ISP 代理**
 
-在这种组合中，Vision Browser 负责浏览器指纹，p0f 负责网络层指纹，ISP 代理则提供住宅网络运营商的 IP 地址。
+在这种组合中，Vision Browser 或 ShardBrowser 负责浏览器指纹，p0f 负责网络层指纹，ISP 代理则提供住宅网络运营商的 IP 地址。
 
 ## 支持情况
 

@@ -7,7 +7,7 @@ description: 在 Microsoft Edge 中配置代理
 ## 安装 ZeroOmega
 
 {% hint style="warning" %}
-ZeroOmega 仅支持 TCP 流量。如需使用 UDP，请改用 [Vision Browser](../../antidetect-browsers/vision-browser.md)。
+ZeroOmega 仅支持 TCP 流量。如需使用 UDP，请改用 [Vision Browser](../../antidetect-browsers/vision-browser.md) 或免费的 [ShardBrowser](../../../our-products/shardx-launcher.md)。
 {% endhint %}
 
 从 Microsoft Edge Add-ons 安装 [ZeroOmega](https://microsoftedge.microsoft.com/addons/detail/proxy-switchyomega-3-zer/dmaldhchmoafliphkijbfhaomcgglmgd)。

@@ -35,7 +35,7 @@ icon: question
 
 支持选择国家和运营商的移动网络代理。可通过链接切换 IP，具体参数取决于所选套餐和地区。
 
-### [<mark style="color:purple;">ShardX Extension</mark>](our-products/shardx-extension.md)
+### [<mark style="color:purple;">ShardExtension</mark>](our-products/shardextension.md)
 
 适用于 Chrome、Firefox 和 Chromium 浏览器的扩展。可保存代理配置、切换并测试连接，还能通过定时器或快捷键轮换移动代理 IP。
 
