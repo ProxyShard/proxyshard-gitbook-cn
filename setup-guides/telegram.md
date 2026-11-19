@@ -1,5 +1,5 @@
 ---
-description: 在 Telegram 中配置代理
+description: "在 Telegram Desktop 和移动应用中配置 ShardX HTTP 或 SOCKS5 代理。"
 icon: telegram
 ---
 

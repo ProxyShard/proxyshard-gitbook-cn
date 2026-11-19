@@ -1,4 +1,5 @@
 ---
+description: "说明生成的住宅代理为何不会保存到订单中，以及如何通过会话参数重复使用同一 IP。"
 icon: arrows-rotate
 ---
 

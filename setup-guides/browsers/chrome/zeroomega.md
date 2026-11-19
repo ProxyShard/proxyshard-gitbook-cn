@@ -1,8 +1,8 @@
 ---
-description: 在 Chrome 中配置代理
+description: "在 Google Chrome 的 ZeroOmega 扩展中配置 ShardX HTTP 或 SOCKS5 代理。"
 ---
 
-# ZeroOmega
+# 适用于 Google Chrome 的 ZeroOmega
 
 ## 安装 ZeroOmega
 

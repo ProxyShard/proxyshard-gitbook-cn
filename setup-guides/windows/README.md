@@ -1,4 +1,5 @@
 ---
+description: "使用 Proxifier、v2rayN、NekoRay 等程序在 Windows 中配置 ShardX HTTP 与 SOCKS5 代理。"
 icon: windows
 ---
 

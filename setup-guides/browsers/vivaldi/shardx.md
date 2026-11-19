@@ -1,9 +1,9 @@
 ---
-description: 适用于 Vivaldi 的 ShardExtension
+description: "在 Vivaldi 中安装 ShardExtension、添加 ShardX 代理、切换配置文件并检查出口 IP。"
 icon: puzzle-piece
 ---
 
-# ShardExtension
+# 适用于 Vivaldi 的 ShardExtension
 
 我们的官方浏览器扩展 <mark style="color:purple;">**ShardExtension**</mark> 可在 Vivaldi 中直接从 **Chrome Web Store** 安装，因为该浏览器使用 Chromium 内核，兼容所有 Chrome 扩展程序。
 

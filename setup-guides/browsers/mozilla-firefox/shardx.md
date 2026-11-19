@@ -1,9 +1,9 @@
 ---
-description: 适用于 Mozilla Firefox 的 ShardExtension
+description: "在 Mozilla Firefox 中安装 ShardExtension、添加 ShardX 代理、切换配置文件并检查 IP。"
 icon: puzzle-piece
 ---
 
-# ShardExtension
+# 适用于 Mozilla Firefox 的 ShardExtension
 
 我们的官方浏览器扩展 <mark style="color:purple;">**ShardExtension**</mark> 可让您直接在 Mozilla Firefox 中管理代理。请从 **Firefox Add-ons** 安装。
 

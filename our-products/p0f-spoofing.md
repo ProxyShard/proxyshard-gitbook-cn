@@ -1,4 +1,5 @@
 ---
+description: "通过 p0f 网络指纹伪装，使代理的 TCP/IP 特征与所选操作系统保持一致。"
 icon: fingerprint
 ---
 

@@ -1,3 +1,7 @@
+---
+description: "在 Windows 版 v2rayN 中配置 ShardX HTTP 或 SOCKS5 代理并启用系统代理模式。"
+---
+
 # v2rayN
 
 {% hint style="success" %}

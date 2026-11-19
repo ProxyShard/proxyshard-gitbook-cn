@@ -1,5 +1,5 @@
 ---
-description: Brave Browser proxy
+description: "通过 ShardExtension、ZeroOmega 或系统代理设置在 Brave 中配置 ShardX 代理。"
 icon: shield-halved
 ---
 

@@ -1,5 +1,5 @@
 ---
-description: MikroTik 上的代理设置
+description: "在 MikroTik 路由器上配置 ShardX 代理，包括连接参数、路由规则和连接测试。"
 icon: router
 ---
 

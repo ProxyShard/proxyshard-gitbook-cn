@@ -1,4 +1,5 @@
 ---
+description: "ShardX 数据中心和 ISP 代理常见问题，包括连接、身份验证、续费和使用限制。"
 icon: server
 ---
 

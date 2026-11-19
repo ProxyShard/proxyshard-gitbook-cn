@@ -1,4 +1,8 @@
-# V2Box
+---
+description: "在 iOS 和 Android 的 V2Box 中配置 ShardX 代理，包括添加连接和检查出口 IP。"
+---
+
+# 适用于 iOS 和 Android 的 V2Box
 
 {% hint style="success" %}
 V2Box 支持 UDP 流量。

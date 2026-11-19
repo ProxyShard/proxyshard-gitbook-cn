@@ -1,4 +1,5 @@
 ---
+description: "比较适用于 ShardX 代理的反检测浏览器，包括支持的平台、UDP 功能和配置指南。"
 icon: window-restore
 ---
 

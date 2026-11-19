@@ -1,3 +1,7 @@
+---
+description: "在 Windows 版 NekoRay 中配置 ShardX HTTP 或 SOCKS5 代理并检查出口 IP。"
+---
+
 # NekoRay
 
 {% hint style="success" %}

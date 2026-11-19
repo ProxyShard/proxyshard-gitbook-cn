@@ -1,4 +1,5 @@
 ---
+description: "ShardX 代理的使用限制，包括禁止场景、连接限制、使用规则和网站可用性。"
 icon: hand
 ---
 

@@ -1,4 +1,5 @@
 ---
+description: "购买或续费 ShardX 数据中心代理：选择地区、周期、IP 数量和附加选项。"
 icon: server
 ---
 

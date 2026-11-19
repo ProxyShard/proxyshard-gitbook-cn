@@ -1,4 +1,5 @@
 ---
+description: "如何充值 ShardX 余额：选择付款方式、创建付款并确认资金到账。"
 icon: dollar-sign
 ---
 

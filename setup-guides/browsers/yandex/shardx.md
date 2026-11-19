@@ -1,9 +1,9 @@
 ---
-description: 适用于 Yandex Browser 的 ShardExtension
+description: "在 Yandex Browser 中安装 ShardExtension、添加 ShardX 代理、切换配置文件并检查 IP。"
 icon: puzzle-piece
 ---
 
-# ShardExtension
+# 适用于 Yandex Browser 的 ShardExtension
 
 我们的官方浏览器扩展 <mark style="color:purple;">**ShardExtension**</mark> 可在 Yandex Browser 中直接从 **Chrome Web Store** 安装，无需额外步骤。
 

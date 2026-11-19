@@ -1,3 +1,7 @@
+---
+description: "ShardX API 参考文档，用于管理代理、订单、配置文件和 ShardBrowser 自动化。"
+---
+
 # API 规范
 
 这里汇总了 <mark style="color:$tint;">ShardX</mark> 和 <mark style="color:$tint;">ShardX Launcher</mark> 的交互式 API 参考文档。

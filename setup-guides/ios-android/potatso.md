@@ -1,4 +1,5 @@
 ---
+description: "在 iPhone 和 iPad 的 Potatso 应用中配置 ShardX HTTP 或 SOCKS5 代理。"
 icon: apple
 ---
 

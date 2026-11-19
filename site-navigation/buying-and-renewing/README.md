@@ -1,4 +1,5 @@
 ---
+description: "在 ShardX 控制面板中购买和续费住宅、数据中心、ISP 与移动代理的说明。"
 icon: coin-vertical
 ---
 

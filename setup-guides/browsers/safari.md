@@ -1,5 +1,5 @@
 ---
-description: Safari 代理
+description: "通过 macOS 系统网络设置为 Safari 配置 ShardX HTTP 或 SOCKS5 代理。"
 icon: safari
 ---
 

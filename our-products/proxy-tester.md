@@ -1,4 +1,5 @@
 ---
+description: "在线批量测试 HTTP 和 SOCKS5 代理的可用性、速度、出口 IP、国家和响应代码。"
 icon: vial
 ---
 

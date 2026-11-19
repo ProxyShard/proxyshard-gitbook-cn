@@ -1,4 +1,5 @@
 ---
+description: "购买 ShardX 住宅代理：选择 Standard、Premium 或 Unlimited 套餐、流量和地区。"
 icon: house-signal
 ---
 

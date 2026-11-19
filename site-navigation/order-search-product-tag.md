@@ -1,4 +1,5 @@
 ---
+description: "如何通过 Product tag 查找 ShardX 订单，并快速打开相关代理和连接信息。"
 icon: magnifying-glass
 ---
 

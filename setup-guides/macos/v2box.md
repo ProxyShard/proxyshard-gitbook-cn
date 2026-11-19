@@ -1,4 +1,8 @@
-# V2Box
+---
+description: "在 macOS 版 V2Box 中配置 ShardX 代理：添加服务器、启用连接并检查 IP。"
+---
+
+# 适用于 macOS 的 V2Box
 
 {% hint style="success" %}
 该解决方案支持 UDP 隧道！

@@ -1,3 +1,7 @@
+---
+description: "在 SocksCap64 中配置 ShardX SOCKS5 代理，让指定 Windows 程序通过代理运行。"
+---
+
 # SocksCap64
 
 {% hint style="success" %}

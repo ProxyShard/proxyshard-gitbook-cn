@@ -1,4 +1,5 @@
 ---
+description: "使用 Proxy Tester、命令行工具和外部服务检查代理可用性、IP 地址和连接状态。"
 icon: flask-vial
 ---
 

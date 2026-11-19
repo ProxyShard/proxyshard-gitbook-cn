@@ -1,4 +1,5 @@
 ---
+description: "ShardX 数据中心代理与独享 IP：可用地区、产品特点、限制和使用场景。"
 icon: server
 ---
 

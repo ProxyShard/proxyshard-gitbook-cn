@@ -1,4 +1,5 @@
 ---
+description: "在 iOS 和 Android 的 Octo Browser 中配置 ShardX 代理：创建配置文件、输入凭据并检查 IP。"
 icon: octopus
 ---
 

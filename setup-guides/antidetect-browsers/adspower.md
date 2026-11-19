@@ -1,3 +1,7 @@
+---
+description: "在 AdsPower 中配置 ShardX 代理：创建配置文件、输入代理凭据并测试连接。"
+---
+
 # AdsPower
 
 {% hint style="warning" %}

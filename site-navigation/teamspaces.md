@@ -1,4 +1,5 @@
 ---
+description: "ShardX 团队空间：创建工作区、邀请成员并协作管理代理。"
 icon: people-group
 ---
 

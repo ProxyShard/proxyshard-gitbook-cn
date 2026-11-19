@@ -1,3 +1,7 @@
+---
+description: "在 Proxifier 中配置 ShardX 代理，让指定 Windows 应用通过 HTTP 或 SOCKS5 连接。"
+---
+
 # Proxifier
 
 {% hint style="danger" %}

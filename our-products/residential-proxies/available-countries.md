@@ -1,4 +1,5 @@
 ---
+description: "ShardX Standard 和 Unlimited Residential 住宅代理支持的国家和地区列表。"
 icon: earth-americas
 ---
 

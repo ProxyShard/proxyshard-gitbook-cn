@@ -1,4 +1,5 @@
 ---
+description: "ShardX“我的订单”页面：查看代理、连接凭据、有效期、状态和可用操作。"
 icon: arrow-up-wide-short
 ---
 

@@ -1,5 +1,5 @@
 ---
-description: ShardBrowser 配置文件的文件夹
+description: "在 ShardBrowser 中创建和管理配置文件夹，包括分组、移动、重命名和删除。"
 icon: folder
 ---
 

@@ -1,5 +1,5 @@
 ---
-description: 在 Mozilla Firefox 中配置代理
+description: "在 Mozilla Firefox 的 FoxyProxy 扩展中配置 ShardX HTTP 或 SOCKS5 代理。"
 ---
 
 # FoxyProxy

@@ -1,4 +1,5 @@
 ---
+description: "ShardX 移动代理与运营商 IP：可用国家、轮换方式、身份验证和使用条件。"
 icon: signal
 ---
 

@@ -1,3 +1,7 @@
+---
+description: "在 Linux 版 v2rayN 图形客户端中配置 ShardX 代理、添加服务器并检查连接。"
+---
+
 # v2rayN 图形用户界面
 
 {% hint style="success" %}

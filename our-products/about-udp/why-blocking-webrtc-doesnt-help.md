@@ -1,4 +1,5 @@
 ---
+description: "为什么完全禁用 WebRTC 不能保证匿名性，反而可能暴露反检测配置。"
 icon: arrow-down-right
 ---
 

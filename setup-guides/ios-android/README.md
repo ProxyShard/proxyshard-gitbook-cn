@@ -1,4 +1,5 @@
 ---
+description: "在 iOS 和 Android 上使用 V2Box、Potatso、Super Proxy 等应用配置 ShardX 代理。"
 icon: mobile-signal-out
 ---
 

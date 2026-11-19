@@ -1,4 +1,5 @@
 ---
+description: "购买或续费 ShardX ISP 代理：选择国家、运营商、周期和静态 IP 数量。"
 icon: server
 ---
 

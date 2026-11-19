@@ -1,4 +1,5 @@
 ---
+description: "在 macOS 系统、浏览器和单独应用中配置 ShardX HTTP 与 SOCKS5 代理。"
 icon: apple
 ---
 

@@ -1,5 +1,5 @@
 ---
-description: Vivaldi Browser proxy
+description: "通过 ShardExtension、Chromium 扩展或系统代理设置在 Vivaldi 中配置 ShardX 代理。"
 icon: circle-half-stroke
 ---
 

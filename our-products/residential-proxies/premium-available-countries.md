@@ -1,4 +1,5 @@
 ---
+description: "ShardX Premium Residential 住宅代理支持的国家、地区和高级地理定位。"
 icon: earth-americas
 ---
 

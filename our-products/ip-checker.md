@@ -1,4 +1,5 @@
 ---
+description: "使用 ShardX IP Checker 检查 IP 地址、地理位置、ISP、网络类型、泄漏风险和代理质量。"
 icon: magnifying-glass
 ---
 

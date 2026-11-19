@@ -1,4 +1,5 @@
 ---
+description: "购买或续费 ShardX 移动代理：选择国家、运营商、周期和轮换参数。"
 icon: sim-card
 ---
 

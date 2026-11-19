@@ -1,4 +1,5 @@
 ---
+description: "在 Chrome、Firefox、Edge、Opera 等浏览器中配置 ShardX 代理和 ShardExtension 的指南。"
 icon: browsers
 ---
 

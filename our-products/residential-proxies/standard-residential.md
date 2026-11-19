@@ -1,4 +1,5 @@
 ---
+description: "ShardX Standard Residential 住宅代理，提供大型 IP 池、国家选择和按流量计费。"
 icon: house-signal
 ---
 

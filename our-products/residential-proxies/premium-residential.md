@@ -1,4 +1,5 @@
 ---
+description: "ShardX Premium Residential 住宅代理，支持精确地理定位、IP 轮换和按流量计费。"
 icon: crown
 ---
 

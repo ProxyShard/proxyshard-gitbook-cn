@@ -1,4 +1,5 @@
 ---
+description: "在 Android 的 Super Proxy 应用中配置 ShardX HTTP 或 SOCKS5 代理并检查连接。"
 icon: android
 ---
 

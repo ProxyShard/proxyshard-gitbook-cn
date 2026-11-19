@@ -1,3 +1,7 @@
+---
+description: "在 ProxyCap 或 NetDetour 中为单独的 Windows 应用配置 ShardX HTTP 与 SOCKS5 代理。"
+---
+
 # ProxyCap (NetDetour)
 
 {% hint style="success" %}

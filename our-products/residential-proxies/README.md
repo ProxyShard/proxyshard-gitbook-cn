@@ -1,4 +1,5 @@
 ---
+description: "ShardX 住宅代理：比较 Standard、Premium 和 Unlimited 套餐、地区、价格与轮换模式。"
 icon: house-signal
 ---
 

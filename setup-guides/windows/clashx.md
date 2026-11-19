@@ -1,3 +1,7 @@
+---
+description: "在 Clash for Windows 中配置 ShardX 代理、启用系统代理并检查连接。"
+---
+
 # Clash for Windows
 
 {% hint style="success" %}

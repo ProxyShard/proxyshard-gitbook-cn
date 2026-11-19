@@ -1,4 +1,5 @@
 ---
+description: "查找和下载 ShardX 发票、检查付款状态并查看交易详情。"
 icon: file-lines
 ---
 

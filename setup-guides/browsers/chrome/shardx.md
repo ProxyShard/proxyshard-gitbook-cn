@@ -1,9 +1,9 @@
 ---
-description: 适用于 Google Chrome 的 ShardExtension
+description: "在 Google Chrome 中安装 ShardExtension、添加 ShardX 代理、切换配置文件并检查 IP。"
 icon: puzzle-piece
 ---
 
-# ShardExtension
+# 适用于 Google Chrome 的 ShardExtension
 
 我们的官方浏览器扩展 <mark style="color:purple;">**ShardExtension**</mark> 可直接在浏览器中管理代理，并可从 **Chrome Web Store** 安装。
 

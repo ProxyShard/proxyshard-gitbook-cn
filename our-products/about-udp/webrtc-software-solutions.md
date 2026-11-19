@@ -1,4 +1,5 @@
 ---
+description: "通过代理安全使用 WebRTC 的软件方案，包括 ShardBrowser、Vision 和其他选项。"
 icon: git-alt
 ---
 

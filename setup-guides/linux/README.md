@@ -1,4 +1,5 @@
 ---
+description: "使用图形界面和命令行工具在 Linux 中配置 ShardX HTTP 与 SOCKS5 代理。"
 icon: linux
 ---
 

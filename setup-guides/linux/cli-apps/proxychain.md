@@ -1,3 +1,7 @@
+---
+description: "在 proxychains 中配置 ShardX HTTP 和 SOCKS5 代理，通过终端让 Linux 应用使用代理。"
+---
+
 # 代理链
 
 ## 代理链（Proxychains4）设置

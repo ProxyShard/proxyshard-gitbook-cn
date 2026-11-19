@@ -1,4 +1,5 @@
 ---
+description: "关于 ShardX 代理、连接设置、订单、地区和故障排除的常见问题与解答。"
 icon: comments-question-check
 ---
 

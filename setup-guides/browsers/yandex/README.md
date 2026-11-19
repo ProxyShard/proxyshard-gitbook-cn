@@ -1,5 +1,5 @@
 ---
-description: Yandex Browser proxy
+description: "通过 ShardExtension、Chromium 扩展或系统设置在 Yandex Browser 中配置 ShardX 代理。"
 icon: yandex
 ---
 

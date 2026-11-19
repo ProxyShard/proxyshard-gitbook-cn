@@ -1,4 +1,5 @@
 ---
+description: "ShardX Unlimited Residential 住宅代理，提供不限流量、IP 轮换和地区选择。"
 icon: triple-chevrons-up
 ---
 

@@ -1,4 +1,5 @@
 ---
+description: "ShardX 代理快速入门：获取订单凭据、选择协议并配置代理连接。"
 icon: clipboard-list
 ---
 
