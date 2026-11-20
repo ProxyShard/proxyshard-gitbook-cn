@@ -19,7 +19,6 @@ icon: window-restore
 ### [<mark style="color:purple;">Adspower</mark>](adspower.md)
 
 * 平台：<mark style="color:purple;">MacOS</mark>、<mark style="color:purple;">Windows</mark>、<mark style="color:purple;">Linux</mark>
-* UDP\QUIC 支持：无
 
 
 

@@ -4,10 +4,6 @@ description: "在 AdsPower 中配置 ShardX 代理：创建配置文件、输入
 
 # AdsPower
 
-{% hint style="warning" %}
-AdsPower 不支持 UDP 代理。如需使用 UDP，请选择 [Vision Browser](vision-browser.md) 或免费的 [ShardBrowser](../../our-products/shardx-launcher.md)。
-{% endhint %}
-
 ## 添加代理
 
 打开 `Proxies`，点击 `Add Proxy`。
